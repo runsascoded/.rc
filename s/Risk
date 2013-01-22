@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scala -classpath . Risk $1 $2

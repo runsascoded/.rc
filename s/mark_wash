@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# update .wash_required file when a ./pants-wash is needed
+
+date +%s > .wash_required && git add .wash_required

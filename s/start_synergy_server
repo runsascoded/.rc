@@ -1,0 +1,5 @@
+#!/bin/sh
+
+killall synergys
+sleep 1
+synergys $SYNERGY_OPTS -c /etc/synergy.conf

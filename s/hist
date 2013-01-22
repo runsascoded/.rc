@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$1" == "-r" ]; then
+    sort | uniq -c | sort -nrk 1 $@
+else
+    sort | uniq -c | sort -nk 1 $@
+fi

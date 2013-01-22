@@ -1,0 +1,12 @@
+#!/bin/sh
+
+install_pants dc
+
+#export DC_HOST=fsad14
+
+#cd /Users/ryan/c/benjy-commons
+
+#REMOTE_PEX_PATH=/home/ryan/pants.pex
+
+#PANTS_DEV=1 ./pants src/python/twitter/pants/ && scp dist/pants.pex fsad14:$REMOTE_PEX_PATH && ssh fsad14 "cd foursquare.web && mkdir -p dist && cp $REMOTE_PEX_PATH dist/pants.pex && ln -sf ../dist/pants.pex build/ && ln -sf"
+

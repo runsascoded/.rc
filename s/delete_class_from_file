@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ "$1" == "-n" ]; then
+    dry_run=1
+    echo "Dry run"
+    shift
+else
+    dry_run=0
+fi
+
+if [ $# -lt 2 ]; then
+    echo "Expected 2 args, class and sourcefile. Got $#"
+    exit 1
+fi
+
+class=$1
+sourcefile=$2
+
+echo "Deleting class $class from file $sourcefile"
+
+class_start_line_num=$(find_class_start_line_num $class $sourcefile)
+
+sed -i.bak "$class_start_line_num,/^}$/d" $sourcefile
+if [ $? -eq 0 ]; then
+    if [ $dry_run -eq 0 ]; then
+        #mv $sourcefile.bak $sourcefile
+        rm -f $sourcefile.bak
+    fi
+else
+    echo "sed error"
+fi
+
+

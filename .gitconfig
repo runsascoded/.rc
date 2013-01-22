@@ -1,0 +1,50 @@
+[user]
+	name = Ryan Williams
+	email = ryan.blake.williams@gmail.com
+
+[color]
+        diff    = auto
+        status  = auto
+        branch  = auto
+
+[alias]
+        b       = branch -avv
+        bu      = branch --set-upstream
+        c       = commit
+        co      = checkout
+        cp      = cherry-pick
+        cpc     = cherry-pick --continue
+        cpa     = cherry-pick --abort
+        d       = diff
+        dc      = diff --cached
+        ds      = diff --stat
+        m       = merge
+        mt      = mergetool -t meld -y
+        ra      = rebase --abort
+        rb      = rebase
+        rc      = rebase --continue
+        rs      = rebase --skip
+        s       = stash
+        sl      = stash list
+        ss      = stash save
+        sa      = stash apply
+        sp      = stash pop
+        h       = help
+        l       = ls-files
+        a       = add
+        r       = remote
+        rv      = remote -v
+        rem     = rebase master
+        pr      = pull --rebase
+        ri      = rebase -i
+        lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        L       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%n%B' --date=relative
+        history = log --full-diff -p
+        ls      = ls-files
+        lso     = ls-files --other --exclude-standard
+        sm      = submodule
+
+[branch "master"]
+	rebase = true
+[branch]
+	autosetuprebase = always

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ $# -lt 2 ]
+then
+    echo "Requires two arguments"
+    exit 1
+fi
+
+tmpfile=/tmp/$(date | md5sum | cut -f 1 -d ' ')
+cp $1 $tmpfile
+cp $2 $1
+cp $tmpfile $2

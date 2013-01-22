@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ -d $1 ]; then
+    cd $1
+else
+    files=$(ls -d *$1*)
+    if [ "$(count $files)" == "1" ]; then
+        cd $files
+    else
+        echo 'select:'
+        select filename in $files; do
+            cd $filename
+            break
+        done
+    fi
+fi

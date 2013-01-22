@@ -1,0 +1,5 @@
+#!/bin/sh
+
+killall synergyc
+sleep 1
+synergyc 192.168.1.188

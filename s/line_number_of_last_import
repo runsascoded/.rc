@@ -1,0 +1,5 @@
+#!/bin/sh
+
+file=$1
+
+grep -n '^import' $file | tail -n 1 | cut -d: -f 1

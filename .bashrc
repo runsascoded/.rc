@@ -1,0 +1,167 @@
+# /etc/skel/.bashrc
+#
+# This file is sourced by all *interactive* bash shells on startup,
+# including some apparently interactive shells such as scp and rcp
+# that can't tolerate any output.  So make sure this doesn't display
+# anything or bad things will happen !
+
+export UNAME=$(uname)
+
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+# virtualenvwrapper
+#export WORKON_HOME=$HOME/Projects/virtualenvs
+#source /usr/local/bin/virtualenvwrapper.sh
+
+
+export PANTS_DEV=1
+
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+shopt -s histappend
+export PROMPT_COMMAND="history -a"
+
+
+# Put your fun stuff here.
+
+try_source() {
+    for arg in $@; do
+        if [ -e "$arg" ]; then
+            source $arg
+        fi
+    done
+}
+
+try_source "/etc/bash_completion"
+try_source "$HOME/.gitcomplete"
+
+# Set colorful prompt
+source ~/s/prompt_colors
+export PS1="$On_IYellow$BIWhite   $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
+
+# Export bash colors
+source ~/s/bash_colors
+
+
+export SCALA=/usr/local/Cellar/scala/2.9.1/libexec
+export ANDROID=$HOME/lib/android-sdk-mac_x86
+export EC2_HOME=$HOME/.ec2
+export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
+    export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
+fi
+if [ -e "ls $EC2_HOME/cert-*.pem" ]; then
+    export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
+fi
+
+try_source "$HOME/.foursquarerc" "$HOME/.asanarc"
+
+export sjcf=src/jvm/com/foursquare
+export tjcf=test/jvm/com/foursquare
+
+
+# Env vars
+export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:~/s:/sbin:/sw/bin"
+export EDITOR=emacs
+if [ ! -z "$(which meld 2> /dev/null)" ]; then
+    export DIFF=meld
+#elif [ ! -z "$(which opendiff)" ]; then
+#    export DIFF=opendiff
+fi
+
+#export RUBYOPT=rubygems
+export GLOG_logtostderr=1
+export C_INCLUDE_PATH=/usr/local/include:$C_INCLUDE_PATH
+
+# Making
+alias dmake="DEBUG=1 make"
+
+# Making
+alias mkae="make"
+alias maek="make"
+alias kmae="echo 'seriously ryan? go to bed, sober up, and try again'"
+
+#alias lpants='export BUILD_NUMBER=$(date +%y%m%d%H%M%S); echo "BUILD NUMBER: $BUILD_NUMBER"; time ./pants compile -u -x --mongo-hosts=localhost --mongo-port=27001 --mongo-db=pants --mongo-collection=timings'
+
+alias top="top -o cpu"
+alias rmu="git ls-files --other --exclude-standard | xargs rm -f"
+alias es="emerge --search"
+
+alias mount_mango="sshfs git@mango:/home/git/dev /Users/ryan/mango -oauto_cache,reconnect,volname=mango"
+
+# Sourcing
+alias resource="unalias -a; source ~/.bashrc"
+alias rsrc="unalias -a; source ~/.bashrc"
+
+# Navigating
+alias c=". ~/s/c"
+alias s="pushd .; cd ~/s"
+alias go="pushd .; cd"
+
+alias u="cd .."
+alias uu="cd ../.."
+alias uuu="cd ../../.."
+alias uuuu="cd ../../../.."
+alias psh="pushd ."
+alias pop="popd"
+alias p="popd"
+alias b="popd"
+
+# Inspecting files
+alias ll="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias lt="ls -ltr"
+alias lss="ls -lSr"
+
+alias pg="ps aux | grep"
+alias es="emerge --search"
+
+# Git aliases
+if [ -z "$DIFF" ]; then
+    alias gd="git diff"
+else
+    alias gd="git difftool -y -t $DIFF"
+fi
+alias gln="git lg -n"
+alias gdc="gd --cached"
+alias gs="git status"
+alias gb="git branch -vv"
+alias gl="git lg"
+alias gls="git ls-files"
+alias gc="git commit -a"
+alias grt=". ~/s/git-root"
+alias gr="git remote -vv"
+alias gf="git fetch"
+alias gss="git stash save"
+alias gsa="git stash apply"
+alias gsp="git stash pop"
+
+if [ "$UNAME" == "Darwin" -a -e "/sw/bin/init.sh" ]; then
+# Prepare Fink
+    . /sw/bin/init.sh
+
+alias mongo_test='mkdir /tmp/mongo-testdb; mongod --dbpath /tmp/mongo-testdb --maxConns 1500'
+
+##
+# Your previous /Users/ryan/.bash_profile file was backed up as /Users/ryan/.bash_profile.macports-saved_2010-12-02_at_17:17:30
+##
+
+# MacPorts Installer addition on 2010-12-02_at_17:17:30: adding an appropriate PATH variable for use with MacPorts.
+    export PATH=/opt/local/bin:/opt/local/sbin:~/s:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+fi
+export PYTHONPATH="/Users/ryan/c/mongo-python-driver/:$PYTHONPATH" #/Library/Python/2.7/site-packages/:$PYTHONPATH"
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while [ 1 ]; do
+    pop_commit_from_file $@
+    if [ $? -ne 0 ]; then
+        break
+    fi
+done

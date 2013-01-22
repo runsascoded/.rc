@@ -1,0 +1,93 @@
+#!/bin/sh
+
+if [ "${1:0:1}" == "-" ]; then
+    flags="$1"
+    shift
+fi
+
+exp=$1
+
+shift
+
+if [ $# -eq 0 ]; then
+    files=$(git ls-files)
+elif [ "$1" == "-p" ]; then
+    shift
+    files=$(find . -type f -name $1 | xargs git ls-files)
+else
+    files=$@
+fi
+
+if [ "$PROMPT" == "" ]; then
+    PROMPT=1
+fi
+
+if [ -z $DIFF ]
+then
+    DIFF=diff
+fi
+
+echo $exp
+echo $path
+
+num_files_copied=0
+
+for f in $files; do
+    echo "Examining $f..."
+    grep -I '' $f > /dev/null;
+    if [ $? -ne 0 ]; then
+	echo "Skipping binary file: $f"
+	continue
+    fi
+    tmp="/tmp/${f##*/}.bak"
+    backup="$tmp.bak"
+    cat $f | perl -p $flags -e "$exp" > $tmp
+    diff -q $f $tmp
+    if [ $? -ne 0 ]
+    then
+	if [ $PROMPT -eq 0 ]
+	then
+	    echo "Swapping $tmp and $f..."
+	    cp $f $backup
+	    cp $tmp $f
+	    mv $backup $tmp
+            let num_files_copied=$num_files_copied+1
+	else
+	    show_diff=1
+	    while [ $show_diff -eq 1 ]
+	    do
+    		$DIFF $f $tmp
+    		while [ 1 ]
+    		do
+    		    echo -n "Copy changes? [Y/n/d to see diff again]: "
+    		    read answer
+    		    if [ "$answer" == "n" -o "$answer" == "N" ]
+		    then
+    			echo "Skipping..."
+			show_diff=0
+    			break
+    		    elif [ -z "$answer" -o "$answer" == "y" -o "$answer" == "Y" ]
+    		    then
+    			echo "Copying..."
+			show_diff=0
+			cp $f $backup
+			cp $tmp $f
+			mv $backup $tmp
+                        let num_files_copied=$num_files_copied+1
+    			break
+		    elif [ "$answer" == "d" -o "$answer" == "D" ]
+		    then
+			show_diff=1
+			break
+    		    else
+    			echo "Invalid response. Try again."
+    		    fi
+    		done
+	    done
+	fi
+    #else
+	#echo "No match for: $f"
+    fi
+done
+
+echo "All done. $num_files_copied files modified."

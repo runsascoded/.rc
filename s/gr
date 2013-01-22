@@ -1,0 +1,13 @@
+#!/bin/sh
+
+needle=$1
+
+shift
+
+if [ $# -lt 1 ]; then
+    dest=.
+else
+    dest=$@
+fi
+
+grep -Ir $FLAGS "$needle" $dest | perl -ne 'print if not /^[^:]*[~#]:/'

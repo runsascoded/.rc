@@ -1,0 +1,3 @@
+#!/bin/sh
+
+grep -iIr $1 $2 | grep -v '~'

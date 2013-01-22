@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ONLYLINK=1 install_pants $@

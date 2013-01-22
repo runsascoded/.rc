@@ -1,0 +1,17 @@
+#!/bin/sh
+
+for arg in $@
+do
+    if [ "${arg:(-4)}" != ".bak" ]
+    then
+	if [ -e $arg.bak ]
+	then
+	    arg=$arg.bak
+	else
+	    echo "Bad argument: $arg"
+	    continue
+	fi
+    fi
+    echo "Unpacking $arg to ${arg%.bak}"
+    cp $arg ${arg%.bak}
+done

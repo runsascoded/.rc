@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find core/src web/src/ batch/src/ -name '*.scala'

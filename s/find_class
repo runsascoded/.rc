@@ -1,0 +1,9 @@
+#!/bin/sh
+
+class=$1
+
+f=$(file_with_class $class $2)
+
+class_start_line_num=$(find_class_start_line_num $class $f)
+
+sed -n "$class_start_line_num,/^}$/p" $f

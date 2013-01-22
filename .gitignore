@@ -1,0 +1,15 @@
+*
+!.bash_profile
+!.bashrc
+!.emacs
+!.gitcomplete
+!.gitconfig
+!.gitignore
+!.screenrc
+!.ssh
+!.ssh/id_rsa.pub
+!.ssh/github_rsa.pub
+!s
+!s/*
+*~
+*#

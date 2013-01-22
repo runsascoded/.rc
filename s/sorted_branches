@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# list git branches in increasing order of last modified time
+
+for b in $(git branch | sed "s/..//"); do 
+    secondsdate=$(git log -n 1 $b --format="%at" --)
+    echo "$secondsdate $b"
+done | sort -nk 1 | sed "s/.* //"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Given a list of paths, this script looks at all BUILD files at or below those
+# paths and removes calls to pants() wrapper that aren't followed by a dot.
+
+for f in $(git ls $@ | grep 'BUILD$'); do
+    perl -pi -e "s/pants\('(.*)'\)([^\.])/'\1'\2/g" $f
+done

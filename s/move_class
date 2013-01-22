@@ -1,0 +1,34 @@
+#!/bin/sh
+
+class=$1
+
+echo "Class: $class, \c"
+
+if [ $# -ge 2 ]; then
+    destfile=$2
+else
+    destfile="$class.scala"
+fi
+
+echo "Destination: $destfile, \c"
+
+sourcefile=$(file_with_class $class $3)
+
+if [ $? -ne 0 ]; then
+    echo ''
+    echo "****Error finding file"
+    echo ''
+    exit 1
+fi
+
+echo "Source: $sourcefile"
+
+set -e
+
+file_up_to_last_import $sourcefile > $destfile
+echo '' >> $destfile
+find_class $class $sourcefile >> $destfile
+
+delete_class_from_file $class $sourcefile
+
+echo "Success!"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for arg in $@; do
+
+    echo "Filling directory: $arg"
+
+    for f in $(find $arg -name "*.scala"); do fill_file $f; done
+
+done
