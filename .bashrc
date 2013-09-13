@@ -19,6 +19,7 @@ fi
 #export WORKON_HOME=$HOME/Projects/virtualenvs
 #source /usr/local/bin/virtualenvwrapper.sh
 
+export SRCDIR=$HOME/s
 
 export PANTS_DEV=1
 
@@ -27,6 +28,14 @@ export HISTFILESIZE=1000000
 shopt -s histappend
 export PROMPT_COMMAND="history -a"
 
+alias hn="history -n"
+alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
+
+alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
+
+alias garc='git arc'
+alias garcs='git arc src'
+alias guu='git conflicting'
 
 # Put your fun stuff here.
 
@@ -49,10 +58,12 @@ export PS1="$On_IYellow$BIWhite   $clear $BBlue\u$clear@$BGreen\h$clear: $BPurpl
 source ~/s/bash_colors
 
 
+export EIP="184.73.189.241"
+
 export SCALA=/usr/local/Cellar/scala/2.9.1/libexec
 export ANDROID=$HOME/lib/android-sdk-mac_x86
 export EC2_HOME=$HOME/.ec2
-export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin
+export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:/Users/ryan/play-2.1.0
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
     export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
@@ -76,6 +87,12 @@ if [ ! -z "$(which meld 2> /dev/null)" ]; then
 #    export DIFF=opendiff
 fi
 
+# PostgresApp
+export PGDIR=/Applications/Postgres.app/Contents/MacOS
+export PGHOME=$PGDIR/bin
+export PGDATA=/Users/ryan/Library/Application\ Support/Postgres/var/
+export PATH=${PATH}:$PGHOME
+
 #export RUBYOPT=rubygems
 export GLOG_logtostderr=1
 export C_INCLUDE_PATH=/usr/local/include:$C_INCLUDE_PATH
@@ -95,6 +112,12 @@ alias rmu="git ls-files --other --exclude-standard | xargs rm -f"
 alias es="emerge --search"
 
 alias mount_mango="sshfs git@mango:/home/git/dev /Users/ryan/mango -oauto_cache,reconnect,volname=mango"
+
+### START-Keychain ###
+# Let  re-use ssh-agent and/or gpg-agent between logins
+keychain $HOME/.ssh/github_rsa
+source $HOME/.keychain/$HOSTNAME-sh
+### End-Keychain ###
 
 # Sourcing
 alias resource="unalias -a; source ~/.bashrc"
@@ -119,6 +142,7 @@ alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls -ltr"
+#alias ltt="lt | tail"
 alias lss="ls -lSr"
 
 alias pg="ps aux | grep"

@@ -1,0 +1,8 @@
+#! /usr/bin/python
+
+import re
+import sys
+
+with open(sys.argv[1], 'r') as fd:
+    for m in re.finditer('%s\(([^\)]*)\)' % sys.argv[2], fd.read()):
+        print m.group(1)

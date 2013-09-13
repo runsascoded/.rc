@@ -28,6 +28,7 @@ fi
 fsq_web="/Users/ryan/c/foursquare.web$fsq_web"
 local_pex_path="/Users/ryan/pants.pex"
 remote_pex_path="/home/ryan/pants.pex"
+pants_dir="/Users/ryan/c/commons"
 
 echo "Building in $fsq_web\c"
 if [ $host ]; then
@@ -42,7 +43,7 @@ if [ "$ONLYLINK" ]; then
         exit 1
     fi
 else
-    cd /Users/ryan/c/benjy-commons
+    cd $pants_dir
     PANTS_DEV=1 ./pants src/python/twitter/pants/
     #mkdir -p $fsq_web/dist
     #cp dist/pants.pex $fsq_web/dist/
@@ -50,8 +51,8 @@ else
 fi
 
 if [ ! $host ]; then
-    ln -sf $local_pex_path $fsq_web/build/pants.pex
-    ln -sf $local_pex_path $fsq_web/build/pants-current.pex
+    ln -sf $local_pex_path $fsq_web/build-support/pants.pex
+    ln -sf $local_pex_path $fsq_web/build-support/pants-current.pex
 else
     scp $local_pex_path $host:$remote_pex_path && ssh $host "if [ -e foursquare.web ]; then cd foursquare.web && ln -sf $remote_pex_path build/pants.pex && ln -sf $remote_pex_path build/pants-current.pex; fi"
 fi

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+A=test/jvm/com/foursquare/coremodel
+B=test/jvm/com/foursquare/counters
+C=test/jvm/com/foursquare/dbtests
+D=test/jvm/com/foursquare/game/model
+
+./pants test $A $B $C $D > /tmp/abcd
+echo "abcd: $?"
+#if [ $? ]; then echo 'fail: abcd'; else echo 'success: abcd'; fi
+
+./pants test $A $B $C > /tmp/abc
+echo "abc: $?"
+#if [ $? ]; then echo 'fail: abc'; else echo 'success: abc'; fi
+
+./pants test $A $B $D > /tmp/abd
+echo "abd: $?"
+#if [ $? ]; then echo 'fail: abd'; else echo 'success: abd'; fi
+
+./pants test $A $C $D > /tmp/acd
+echo "acd: $?"
+#if [ $? ]; then echo 'fail: acd'; else echo 'success: acd'; fi
+
+./pants test $B $C $D > /tmp/bcd
+echo "bcd: $?"
+#if [ $? ]; then echo 'fail: bcd'; else echo 'success: bcd'; fi

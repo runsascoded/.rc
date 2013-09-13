@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+   count=10
+else
+   count=$1
+fi
+
+ls -tr | tail -n $count

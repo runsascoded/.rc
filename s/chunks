@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# chunk a file into fixed-size chunks. Example:
+#
+#   $ chunks 100 /path/to/file | while read line; do count $line; done
+#
+# This will print '100' some number of times, followed by a probably-smaller last-chunk-size.
+
+chunk_size=$1
+if [ $# -lt 2 ]; then
+    i=0
+    end=0
+    while read line; do
+        if [ $i -eq $end ]; then
+            if [ $i -ne 0 ]; then
+                echo $chunk
+            fi
+            let end=$i+$chunk_size
+            chunk=''
+            first='1'
+        fi
+        if [ $first ]; then
+            chunk="$line"
+            first=''
+        else
+            chunk="$chunk $line"
+        fi
+        let i=$i+1
+    done
+else
+    file=$2
+    i=1
+    max=$(wc -l $file | awk '{ print $1 }')
+    let increment=$chunk_size-1
+
+    while [ $i -lt $max ]; do
+        let end=$i+$increment
+        chunk=''
+        first='1'
+        for line in $(sed -n "${i},${end}p" $file); do
+            if [ $first ]; then
+                chunk="$line"
+                first=''
+            else
+                chunk="$chunk $line"
+            fi
+        done
+        echo "$chunk"
+        let i=$end+1
+    done
+fi
