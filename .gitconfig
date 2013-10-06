@@ -8,6 +8,7 @@
         branch  = auto
 
 [alias]
+        a       = add
         arc     = !$SRCDIR/git-add-rebase-continue.sh
         arcs    = !$SRCDIR/git-add-rebase-continue.sh src
         b       = branch -avv
@@ -22,16 +23,29 @@
         ct      = !$SRCDIR/git-conflicting-checkout-theirs.sh
         ctc     = !$SRCDIR/git-conflicting-checkout-theirs-and-continue.sh
         d       = diff
-        df      = diff
         dc      = diff --cached
+        df      = diff
         ds      = diff --stat
+        files   = diff-tree --no-commit-id --name-only -r
+        h       = help
+        history = log --full-diff -p
+        l       = ls-files
+        lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        L       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%n%B' --date=relative
+        ls      = ls-files
+        lso     = ls-files --other --exclude-standard
         lsc     = diff-tree --no-commit-id --name-only -r
         m       = merge
         mt      = mergetool -t meld -y
+        pr      = pull --rebase
+        r       = remote
         ra      = rebase --abort
         rb      = rebase
         rc      = rebase --continue
+        rem     = rebase master
+        ri      = rebase -i
         rs      = rebase --skip
+        rv      = remote -v
         s       = stash
         sl      = stash list
         ss      = stash save
@@ -39,21 +53,6 @@
         sp      = stash pop
         sm      = submodule
         uu      = !$SRCDIR/git-conflicting.sh
-        h       = help
-        l       = ls-files
-        a       = add
-        r       = remote
-        rv      = remote -v
-        rem     = rebase master
-        pr      = pull --rebase
-        ri      = rebase -i
-        lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-        L       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%n%B' --date=relative
-        history = log --full-diff -p
-        ls      = ls-files
-        lso     = ls-files --other --exclude-standard
-        sm      = submodule
-        files   = diff-tree --no-commit-id --name-only -r
 
 [branch "master"]
 	rebase = true
