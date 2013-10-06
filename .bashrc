@@ -37,6 +37,8 @@ alias garc='git arc'
 alias garcs='git arc src'
 alias guu='git conflicting'
 
+alias xt='exit'
+
 # Put your fun stuff here.
 
 try_source() {
