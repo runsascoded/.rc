@@ -23,6 +23,9 @@ export SRCDIR=$HOME/s
 
 export PANTS_DEV=1
 
+alias chomd="chmod"
+alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
+
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 shopt -s histappend
@@ -143,7 +146,7 @@ alias b="popd"
 alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
-alias lt="ls -ltr"
+alias llt="ls -ltr"
 #alias ltt="lt | tail"
 alias lss="ls -lSr"
 

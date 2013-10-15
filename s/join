@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+	echo 'Delimiter required'
+	exit 1
+elif [ $# -eq 1 ]; then
+	xargs $0 $1
+	exit 0
+fi
+
+joined=
+delim=$1
+shift
+args=$@
+
+for arg in $args; do
+	if [ "$joined" ]; then
+		joined="${joined}${delim}"
+	fi
+	joined="${joined}$arg"
+done
+echo $joined

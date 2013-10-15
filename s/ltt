@@ -2,8 +2,16 @@
 
 if [ $# -eq 0 ]; then
    count=10
-else
+   dir=.
+elif [ $# -eq 1 ]; then
+	count=10
+	dir=$1
+elif [ $# -eq 2 ]; then
    count=$1
+   dir=$2
+else
+	echo 'Maximum 2 args'
+	exit 1
 fi
 
-ls -tr | tail -n $count
+ls -tr $dir | tail -n $count
