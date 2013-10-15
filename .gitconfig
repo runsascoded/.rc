@@ -9,23 +9,24 @@
 
 [alias]
         a       = add
-        arc     = !$SRCDIR/git-add-rebase-continue.sh
-        arcs    = !$SRCDIR/git-add-rebase-continue.sh src
+#        arc     = !$SRCDIR/git-add-rebase-continue.sh
+#        arcs    = !$SRCDIR/git-add-rebase-continue.sh src
         b       = branch -avv
-        bu      = branch --set-upstream
+        bu      = branch -u
         c       = commit
         co      = checkout
-        conflicting     =       !$SRCDIR/git-conflicting.sh
-        conflicting-theirs      =       !$SRCDIR/git-conflicting-checkout-theirs.sh
+ #       conflicting     =       !$SRCDIR/git-conflicting.sh
+ #       conflicting-theirs      =       !$SRCDIR/git-conflicting-checkout-theirs.sh
         cp      = cherry-pick
         cpc     = cherry-pick --continue
         cpa     = cherry-pick --abort
         ct      = !$SRCDIR/git-conflicting-checkout-theirs.sh
-        ctc     = !$SRCDIR/git-conflicting-checkout-theirs-and-continue.sh
+#        ctc     = !$SRCDIR/git-conflicting-checkout-theirs-and-continue.sh
         d       = diff
+#        d1      = !$SRCDIR/git-d1.sh
         dc      = diff --cached
         df      = diff
-        ds      = diff --stat
+#        ds      = !$SRCDIR/git-ds.sh
         files   = diff-tree --no-commit-id --name-only -r
         h       = help
         history = log --full-diff -p
@@ -52,7 +53,7 @@
         sa      = stash apply
         sp      = stash pop
         sm      = submodule
-        uu      = !$SRCDIR/git-conflicting.sh
+#        uu      = !$SRCDIR/git-conflicting.sh
 
 [branch "master"]
 	rebase = true
