@@ -99,7 +99,8 @@ fi
 # PostgresApp
 export PGDIR=/Applications/Postgres.app/Contents/MacOS
 export PGHOME=$PGDIR/bin
-export PGDATA=/Users/ryan/Library/Application\ Support/Postgres/var/
+#export PGDATA=/Users/ryan/Library/Application\ Support/Postgres/var/
+export PGDATA=/usr/local/postgres9.3.1/data
 export PATH=${PATH}:$PGHOME
 
 #export RUBYOPT=rubygems
