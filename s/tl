@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# replace a file with the output of a tail command applied to that file.
+
 filename=${@: -1}
 tmp=$(tmpfile)
 tail $@ > $tmp; mv $tmp $filename
