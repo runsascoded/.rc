@@ -130,8 +130,8 @@ source $HOME/.keychain/$HOSTNAME-sh
 ### End-Keychain ###
 
 # Sourcing
-alias resource="unalias -a; source ~/.bashrc"
-alias rsrc="unalias -a; source ~/.bashrc"
+alias resource="unalias resource; source ~/.bashrc"
+alias rsrc="unalias rsrc; source ~/.bashrc"
 
 # Navigating
 alias c=". ~/s/c"

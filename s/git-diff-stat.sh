@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo 'yay'
+git diff --stat $1^..$1

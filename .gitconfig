@@ -7,26 +7,23 @@
         status  = auto
         branch  = auto
 
+[color "diff"]
+       meta = yellow bold
+
 [alias]
         a       = add
-#        arc     = !$SRCDIR/git-add-rebase-continue.sh
-#        arcs    = !$SRCDIR/git-add-rebase-continue.sh src
         b       = branch -avv
-        bu      = branch -u
+        bu      = branch --set-upstream
         c       = commit
         co      = checkout
- #       conflicting     =       !$SRCDIR/git-conflicting.sh
- #       conflicting-theirs      =       !$SRCDIR/git-conflicting-checkout-theirs.sh
         cp      = cherry-pick
         cpc     = cherry-pick --continue
         cpa     = cherry-pick --abort
         ct      = !$SRCDIR/git-conflicting-checkout-theirs.sh
-#        ctc     = !$SRCDIR/git-conflicting-checkout-theirs-and-continue.sh
+        cur     = log -1 --oneline
         d       = diff
-#        d1      = !$SRCDIR/git-d1.sh
         dc      = diff --cached
         df      = diff
-#        ds      = !$SRCDIR/git-ds.sh
         files   = diff-tree --no-commit-id --name-only -r
         h       = help
         history = log --full-diff -p
@@ -45,6 +42,7 @@
         rc      = rebase --continue
         rem     = rebase master
         ri      = rebase -i
+        rl      = rev-list
         rs      = rebase --skip
         rv      = remote -v
         s       = stash
@@ -53,7 +51,7 @@
         sa      = stash apply
         sp      = stash pop
         sm      = submodule
-#        uu      = !$SRCDIR/git-conflicting.sh
+        soft-back = reset HEAD^
 
 [branch "master"]
 	rebase = true
