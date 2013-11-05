@@ -25,6 +25,7 @@ export PANTS_DEV=1
 
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
+alias g="git"
 
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
