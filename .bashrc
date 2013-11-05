@@ -178,20 +178,6 @@ alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsp="git stash pop"
 
-if [ "$UNAME" == "Darwin" -a -e "/sw/bin/init.sh" ]; then
-# Prepare Fink
-    . /sw/bin/init.sh
-
-alias mongo_test='mkdir /tmp/mongo-testdb; mongod --dbpath /tmp/mongo-testdb --maxConns 1500'
-
-##
-# Your previous /Users/ryan/.bash_profile file was backed up as /Users/ryan/.bash_profile.macports-saved_2010-12-02_at_17:17:30
-##
-
-# MacPorts Installer addition on 2010-12-02_at_17:17:30: adding an appropriate PATH variable for use with MacPorts.
-    export PATH=/opt/local/bin:/opt/local/sbin:~/s:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-fi
 export PYTHONPATH="/Users/ryan/c/mongo-python-driver/:$PYTHONPATH" #/Library/Python/2.7/site-packages/:$PYTHONPATH"
 
 
@@ -199,3 +185,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# For brew
+export PATH="/usr/local/bin:$PATH"
