@@ -27,6 +27,9 @@ alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
 alias g="git"
 
+alias dtab="diff /tmp/a /tmp/b"
+alias mtab="meld /tmp/a /tmp/b"
+
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 shopt -s histappend
