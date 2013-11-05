@@ -167,7 +167,7 @@ fi
 alias gln="git lg -n"
 alias gdc="gd --cached"
 alias gs="git status"
-alias gb="git branch -vv"
+alias gb="g b"
 alias gl="git lg"
 alias gls="git ls-files"
 alias gc="git commit -a"

@@ -1,0 +1,191 @@
+#!/usr/bin/python
+
+from color import clen, color
+from datetime import datetime
+import os
+import re
+import subprocess
+
+refname_chars_regex = "[a-zA-Z0-9-_/]+"
+
+def refname_regex(name):
+	return "(?P<%s>%s)" % (name, refname_chars_regex)
+
+def captured_whitespace_regex(name):
+	return "(?P<%s>\s+)" % name
+
+def fixed(width, s):
+	# print '\twidth: %d, s: %s, clen: %d' % (width, s, clen(s))
+	return (' '*(width - clen(s))) + str(s)
+
+class BranchInfo(object):
+
+	hash_regex = "(?P<hash>[0-9a-f]+)"
+
+	line_begin_regex = "(?P<line_begin>^(?:(?P<is_active>\*)| ) )"
+
+	ahead_regex = "ahead (?P<ahead>[0-9]+)"
+	behind_regex = "behind (?P<behind>[0-9]+)"
+	ahead_behind_regex = ": (?:%s)?(?:, )?(?:%s)?" % (ahead_regex, behind_regex)
+	tracking_info_regex = "(?:\s\[%s(?:%s)?\])?" % (refname_regex('tracking_name'), ahead_behind_regex)
+
+	description_regex = "\s(?P<description>.*)"
+
+	regex = ''.join([ 
+		line_begin_regex, 
+		refname_regex('name'), 
+		captured_whitespace_regex('pre_hash'), 
+		hash_regex, 
+		tracking_info_regex,
+		description_regex
+		])
+
+	def get(self, key, default=''):
+		return self.dict[key] if key in self.dict and self.dict[key] != None else default
+
+	def __init__(self, line):
+		self.line = line
+
+		match = re.match(self.regex, line)
+		if (match):
+			pass
+		else:
+			raise Exception("Invalid branch line: %s" % line)
+
+		self.dict = match.groupdict()
+
+		self.colors = {
+			'name': 'Green' if self.dict['is_active'] else 'COff',
+			'hash': 'IRed',
+			'remote': 'Yellow',
+			'ahead_str': 'ICyan',
+			'behind_str': 'IPurple',
+			'date': 'White',
+			'reldate': 'Green',
+			'description': 'IWhite'
+		}
+
+		self.line_begin = self.get('line_begin')
+		self.name = self.get('name')
+		self.pre_hash = self.get('pre_hash')
+		self.hash = self.get('hash')
+
+		self.space = ' '
+
+		self.remote = self.get('tracking_name')
+
+		self.ahead = int(self.get('ahead', 0))
+		self.ahead_str = "+%d" % self.ahead if self.ahead else ''
+
+		self.behind = int(self.get('behind', 0))
+		self.behind_str = "-%d" % self.behind if self.behind else ''
+
+		self.pre_remote = ''#'[' if self.remote else ' '
+		self.post_remote = ''# ']' if self.remote else ' '
+
+		self.description = self.get('description')
+
+
+	def colored_field(self, prop_name):
+		my_val = getattr(self, prop_name)
+		if prop_name in self.colors:
+			return color(self.colors[prop_name], my_val)
+		return my_val
+
+	def field_string(self, prop_name, fixed_width_map):
+		fixed_width = fixed_width_map[prop_name] if prop_name in fixed_width_map else 0
+		return fixed(fixed_width, self.colored_field(prop_name))
+
+	def to_string(self, fixed_width_map={}):
+
+		fields = [
+			'line_begin',
+			'name',
+			'pre_hash',
+			'hash',
+			'space',
+			'pre_remote',
+			'remote',
+			'space',
+			'ahead_str',
+			'space',
+			'behind_str',
+			'post_remote',
+			'space',
+			'reldate',
+			'space',
+			'date',
+			'space',
+			'description'
+		]
+
+		return ''.join(map(lambda field: self.field_string(field, fixed_width_map), fields))
+
+	def __str__(self):
+		return self.to_string()
+
+	trailing_tz_regex = " [-+][0-9]{4}$"
+
+	def set_dates(self, date, reldate):
+		match = re.search(self.trailing_tz_regex, date)
+		if not match:
+			raise Exception('No tz suffix on date: %s' % date)
+
+		self.date = date[:match.start()]
+		self.datetime = datetime.strptime(self.date, "%Y-%m-%d %H:%M:%S")
+		self.unix_timestamp = int(datetime.strftime(self.datetime, "%s"))
+		subs = [
+		(' weeks?', 'wk'),
+		(' years?', 'yr'),
+		(' months?', 'M'),
+		(' days?', 'd'),
+		(' minutes?', 'm'),
+		(' seconds?', 's'),
+		(',', ''),
+		(' ago', '')
+		]
+		self.reldate = reldate
+		for sub in subs:
+			self.reldate = re.sub(sub[0], sub[1], self.reldate)
+
+
+class BranchInfos:
+
+	def set_max(self, prop_name):
+		self.maxs[prop_name] = max(map(lambda bi: clen(getattr(bi, prop_name) if hasattr(bi, prop_name) else ''), self.branches))
+
+	def __init__(self):
+		self.maxs = {}
+
+		cmd = [ "git", "branch", "-vv" ]
+		out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
+
+		lines = out.splitlines()
+
+		self.branches_by_hash = {}
+
+		for line in lines:
+			info = BranchInfo(line)
+			self.branches_by_hash[info.hash] = info
+
+		cmd = [ 'git', 'show', '--quiet', '--format=%h\t%ci\t%cr'] + self.branches_by_hash.keys()
+		out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
+
+		lines = out.splitlines()
+		for line in lines:
+			hsh, date, reldate = line.strip().split('\t')
+			self.branches_by_hash[hsh].set_dates(date, reldate)
+
+		self.branches = sorted(self.branches_by_hash.values(), key=lambda bi: -bi.unix_timestamp)
+
+		self.set_max('remote')
+		self.set_max('ahead_str')
+		self.set_max('behind_str')
+		self.set_max('reldate')
+
+		for bi in self.branches:
+			print bi.to_string(self.maxs)
+
+bis = BranchInfos()
+#print 'maxs: %s' % str(bis.maxs)
+
