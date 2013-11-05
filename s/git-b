@@ -55,14 +55,14 @@ class BranchInfo(object):
 		self.dict = match.groupdict()
 
 		self.colors = {
-			'name': 'Green' if self.dict['is_active'] else 'COff',
+			'name': 'BGreen' if self.dict['is_active'] else 'BWhite',
 			'hash': 'IRed',
 			'remote': 'Yellow',
 			'ahead_str': 'ICyan',
 			'behind_str': 'IPurple',
-			'date': 'White',
-			'reldate': 'Green',
-			'description': 'IWhite'
+			'date': 'IBlue',
+			'reldate': 'IGreen',
+			'description': 'White'
 		}
 
 		self.line_begin = self.get('line_begin')
@@ -137,7 +137,7 @@ class BranchInfo(object):
 		subs = [
 		(' weeks?', 'wk'),
 		(' years?', 'yr'),
-		(' months?', 'M'),
+		(' months?', 'mo'),
 		(' days?', 'd'),
 		(' minutes?', 'm'),
 		(' seconds?', 's'),
@@ -178,14 +178,12 @@ class BranchInfos:
 
 		self.branches = sorted(self.branches_by_hash.values(), key=lambda bi: -bi.unix_timestamp)
 
-		self.set_max('remote')
-		self.set_max('ahead_str')
-		self.set_max('behind_str')
-		self.set_max('reldate')
+		map(self.set_max, [ 'remote', 'ahead_str', 'behind_str', 'reldate', 'hash' ])
 
+		print ''
 		for bi in self.branches:
 			print bi.to_string(self.maxs)
+		print ''
 
 bis = BranchInfos()
-#print 'maxs: %s' % str(bis.maxs)
 
