@@ -88,7 +88,7 @@ export tjcf=test/jvm/com/foursquare
 
 
 # Env vars
-export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:~/s:/sbin:/sw/bin"
+export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:/sbin:/sw/bin"
 export EDITOR=emacs
 if [ ! -z "$(which meld 2> /dev/null)" ]; then
     export DIFF=meld
