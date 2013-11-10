@@ -88,7 +88,7 @@ export tjcf=test/jvm/com/foursquare
 
 
 # Env vars
-export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:/sbin:/sw/bin"
+export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:$HOME/s/git:/sbin:/sw/bin"
 export EDITOR=emacs
 if [ ! -z "$(which meld 2> /dev/null)" ]; then
     export DIFF=meld
@@ -179,7 +179,7 @@ alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsp="git stash pop"
 
-export PYTHONPATH="/Users/ryan/c/mongo-python-driver/:$PYTHONPATH" #/Library/Python/2.7/site-packages/:$PYTHONPATH"
+export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$PYTHONPATH"
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
