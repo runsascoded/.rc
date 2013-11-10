@@ -12,7 +12,6 @@
 
 [alias]
         a       = add
-        b       = branch -avv
         bu      = branch --set-upstream
         c       = commit
         co      = checkout
