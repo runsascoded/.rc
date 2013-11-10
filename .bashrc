@@ -121,6 +121,7 @@ alias top="top -o cpu"
 alias rmu="git ls-files --other --exclude-standard | xargs rm -f"
 alias es="emerge --search"
 
+alias mongo_test='mkdir /tmp/mongo-testdb; mongod --dbpath /tmp/mongo-testdb --maxConns 1500'
 alias mount_mango="sshfs git@mango:/home/git/dev /Users/ryan/mango -oauto_cache,reconnect,volname=mango"
 
 ### START-Keychain ###
