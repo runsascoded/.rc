@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from color import clen, color
-from datetime import datetime
+from dateutil.parser import parse
 import os
 import re
 import subprocess
@@ -124,21 +124,18 @@ class BranchInfo(object):
 	def __str__(self):
 		return self.to_string()
 
-	trailing_tz_regex = " [-+][0-9]{4}$"
-
 	def set_dates(self, date, reldate):
-		match = re.search(self.trailing_tz_regex, date)
-		if not match:
-			raise Exception('No tz suffix on date: %s' % date)
+		# eh, throw out the time zone for display purposes, because I don't care.
+		self.date = re.sub(' [-+][0-9]{4}$', '', date)
 
-		self.date = date[:match.start()]
-		self.datetime = datetime.strptime(self.date, "%Y-%m-%d %H:%M:%S")
-		self.unix_timestamp = int(datetime.strftime(self.datetime, "%s"))
+		# timezone *is* included here, for correct sorting.
+		self.datetime = parse(date)
 		subs = [
 		(' weeks?', 'wk'),
 		(' years?', 'yr'),
 		(' months?', 'mo'),
 		(' days?', 'd'),
+		(' hours?', 'h'),
 		(' minutes?', 'm'),
 		(' seconds?', 's'),
 		(',', ''),
@@ -162,21 +159,26 @@ class BranchInfos:
 
 		lines = out.splitlines()
 
+		self.branches_by_name = {}
 		self.branches_by_hash = {}
 
 		for line in lines:
 			info = BranchInfo(line)
-			self.branches_by_hash[info.hash] = info
+			self.branches_by_name[info.name] = info
+			if info.hash not in self.branches_by_hash:
+				self.branches_by_hash[info.hash] = []
+			self.branches_by_hash[info.hash].append(info)
 
-		cmd = [ 'git', 'show', '--quiet', '--format=%h\t%ci\t%cr'] + self.branches_by_hash.keys()
+		hashes = map(lambda bi: bi.hash, self.branches_by_name.values())
+		cmd = [ 'git', 'show', '--quiet', '--format=%h\t%ci\t%cr'] + hashes
 		out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
 
 		lines = out.splitlines()
 		for line in lines:
 			hsh, date, reldate = line.strip().split('\t')
-			self.branches_by_hash[hsh].set_dates(date, reldate)
+			map(lambda bi: bi.set_dates(date, reldate), self.branches_by_hash[hsh])
 
-		self.branches = sorted(self.branches_by_hash.values(), key=lambda bi: -bi.unix_timestamp)
+		self.branches = sorted(self.branches_by_name.values(), key=lambda bi: bi.datetime, reverse=True)
 
 		map(self.set_max, [ 'remote', 'ahead_str', 'behind_str', 'reldate', 'hash' ])
 
