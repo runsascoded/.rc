@@ -12,7 +12,7 @@
 
 [alias]
         a       = add
-        bu      = branch --set-upstream
+        bu      = branch --set-upstream-to
         c       = commit
         co      = checkout
         cp      = cherry-pick
@@ -27,7 +27,7 @@
         h       = help
         history = log --full-diff -p
         l       = ls-files
-        lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %ci' --abbrev-commit --date=relative
         L       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%n%B' --date=relative
         ls      = ls-files
         lso     = ls-files --other --exclude-standard
