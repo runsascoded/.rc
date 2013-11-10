@@ -1,21 +1,15 @@
 #!/usr/bin/python
 
 from color import clen, color
+from datetime import datetime
 from dateutil.parser import parse
+from util.regexs import refname_chars_regex, refname_regex, captured_whitespace_regex
+from util.reldate_util import shorten_reldate
 import os
 import re
 import subprocess
 
-refname_chars_regex = "[a-zA-Z0-9-_/]+"
-
-def refname_regex(name):
-	return "(?P<%s>%s)" % (name, refname_chars_regex)
-
-def captured_whitespace_regex(name):
-	return "(?P<%s>\s+)" % name
-
 def fixed(width, s):
-	# print '\twidth: %d, s: %s, clen: %d' % (width, s, clen(s))
 	return (' '*(width - clen(s))) + str(s)
 
 class BranchInfo(object):
@@ -124,26 +118,12 @@ class BranchInfo(object):
 	def __str__(self):
 		return self.to_string()
 
-	def set_dates(self, date, reldate):
-		# eh, throw out the time zone for display purposes, because I don't care.
-		self.date = re.sub(' [-+][0-9]{4}$', '', date)
 
-		# timezone *is* included here, for correct sorting.
+	def set_dates(self, date, reldate):
 		self.datetime = parse(date)
-		subs = [
-		(' weeks?', 'wk'),
-		(' years?', 'yr'),
-		(' months?', 'mo'),
-		(' days?', 'd'),
-		(' hours?', 'h'),
-		(' minutes?', 'm'),
-		(' seconds?', 's'),
-		(',', ''),
-		(' ago', '')
-		]
-		self.reldate = reldate
-		for sub in subs:
-			self.reldate = re.sub(sub[0], sub[1], self.reldate)
+
+		self.date = datetime.strftime(self.datetime, '%Y-%m-%d %H:%M:%S')
+		self.reldate = shorten_reldate(reldate)
 
 
 class BranchInfos:

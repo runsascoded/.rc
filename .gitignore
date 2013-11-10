@@ -11,6 +11,10 @@
 !.ssh/github_rsa.pub
 !s
 !s/*
+!s/git
+!s/git/*
+!s/git/util
+!s/git/util/*
 *~
 *#
 *.pyc

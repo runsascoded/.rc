@@ -165,7 +165,7 @@ if [ -z "$DIFF" ]; then
 else
     alias gd="git difftool -y -t $DIFF"
 fi
-alias gln="git lg -n"
+alias gln="git lg"
 alias gdc="gd --cached"
 alias gs="git status"
 alias gb="g b"

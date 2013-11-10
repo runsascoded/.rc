@@ -27,7 +27,6 @@
         h       = help
         history = log --full-diff -p
         l       = ls-files
-        lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %ci' --abbrev-commit --date=relative
         L       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n%n%B' --date=relative
         ls      = ls-files
         lso     = ls-files --other --exclude-standard
