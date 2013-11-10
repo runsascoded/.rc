@@ -72,7 +72,7 @@ export EIP="184.73.189.241"
 export SCALA=/usr/local/Cellar/scala/2.9.1/libexec
 export ANDROID=$HOME/lib/android-sdk-mac_x86
 export EC2_HOME=$HOME/.ec2
-export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:/Users/ryan/play-2.1.0
+export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:$HOME/play-2.1.0
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
     export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
@@ -99,7 +99,7 @@ fi
 # PostgresApp
 export PGDIR=/Applications/Postgres.app/Contents/MacOS
 export PGHOME=$PGDIR/bin
-#export PGDATA=/Users/ryan/Library/Application\ Support/Postgres/var/
+#export PGDATA=$HOME/Library/Application\ Support/Postgres/var/
 export PGDATA=/usr/local/postgres9.3.1/data
 export PATH=${PATH}:$PGHOME
 
@@ -122,7 +122,7 @@ alias rmu="git ls-files --other --exclude-standard | xargs rm -f"
 alias es="emerge --search"
 
 alias mongo_test='mkdir /tmp/mongo-testdb; mongod --dbpath /tmp/mongo-testdb --maxConns 1500'
-alias mount_mango="sshfs git@mango:/home/git/dev /Users/ryan/mango -oauto_cache,reconnect,volname=mango"
+alias mount_mango="sshfs git@mango:/home/git/dev $HOME/mango -oauto_cache,reconnect,volname=mango"
 
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
