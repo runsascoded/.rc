@@ -130,8 +130,11 @@ alias mount_mango="sshfs git@mango:/home/git/dev $HOME/mango -oauto_cache,reconn
 
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
-keychain $HOME/.ssh/github_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+which keychain &> /dev/null
+if [ 0 -eq $? ]; then
+    keychain $HOME/.ssh/github_rsa
+    source $HOME/.keychain/$HOSTNAME-sh
+fi
 ### End-Keychain ###
 
 # Sourcing
