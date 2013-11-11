@@ -73,7 +73,11 @@ export SCALA=/usr/local/Cellar/scala/2.9.1/libexec
 export ANDROID=$HOME/lib/android-sdk-mac_x86
 export EC2_HOME=$HOME/.ec2
 export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:$HOME/play-2.1.0
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+
+mac_java_home=/System/Library/Frameworks/JavaVM.framework/Home/
+if [ -d "$mac_java_home" ]; then
+    export JAVA_HOME=$mac_java_home
+fi
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
     export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
 fi
