@@ -23,6 +23,12 @@ export SRCDIR=$HOME/s
 
 export PANTS_DEV=1
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+export TZ=UTC
+
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
 alias g="git"
