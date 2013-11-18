@@ -74,10 +74,11 @@ export ANDROID=$HOME/lib/android-sdk-mac_x86
 export EC2_HOME=$HOME/.ec2
 export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:$HOME/play-2.1.0
 
-mac_java_home=/System/Library/Frameworks/JavaVM.framework/Home/
-if [ -d "$mac_java_home" ]; then
-    export JAVA_HOME=$mac_java_home
+java_home_cmd="/usr/libexec/java_home"
+if [ -x "$java_home_cmd" ]; then
+    export JAVA_HOME=$($java_home_cmd -v 1.7.0)
 fi
+
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
     export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
 fi
