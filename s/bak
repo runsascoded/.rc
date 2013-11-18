@@ -3,5 +3,5 @@
 for arg in $@
 do
     echo "Backing up $arg to $arg.bak"
-    cp $arg $arg.bak
+    mv $arg $arg.bak
 done
