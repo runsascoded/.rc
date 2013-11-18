@@ -3,10 +3,10 @@
 echo $1
 files=$(git ls-files | grep "$1")
 if [ $(count $files) -eq 1 ]; then
-    git lg -p --follow -- $files
+    git log -p --follow -- $files
 else
     select filename in $files; do
-        git lg -p --follow -- $filename
+        git log -p --follow -- $filename
         break
     done
 fi
