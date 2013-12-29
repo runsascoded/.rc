@@ -121,6 +121,8 @@ export C_INCLUDE_PATH=/usr/local/include:$C_INCLUDE_PATH
 # Making
 alias dmake="DEBUG=1 make"
 
+alias pgrp="pcregrep"
+
 # Making
 alias mkae="make"
 alias maek="make"
