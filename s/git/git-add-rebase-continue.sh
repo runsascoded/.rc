@@ -1,3 +1,9 @@
 #!/bin/sh
 
-git add $@ && git rebase --continue
+if [ $# -eq 0 ]; then
+	args=.
+else
+	args=$@
+fi
+
+git add $args && git rebase --continue
