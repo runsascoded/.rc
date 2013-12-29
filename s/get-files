@@ -1,0 +1,11 @@
+#!/bin/sh
+
+regex='^\+\s+.*L\("'
+for hash in $(git log --format="%h" 71cd7a9e599c743d105ae2b36e9c48099a5ef457..origin/master); do
+	for f in $(git lsc $hash); do 
+		git diff $hash^..$hash -- $f | pcregrep -q "$regex"
+		if [ $? -eq 0 ]; then 
+			echo $f
+		fi
+	done
+done
