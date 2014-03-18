@@ -1,0 +1,42 @@
+#!/bin/sh
+
+
+staged_diff_file=$(tmpfile)
+unstaged_diff_file=$(tmpfile)
+
+git diff --cached > $staged_diff_file
+git diff > $unstaged_diff_file
+
+echo "staged diff:"
+head "$staged_diff_file"
+echo ''
+
+echo "Unstaged diff:"
+head "$unstaged_diff_file"
+echo ''
+
+
+remote_host="dev-$USER"
+
+dest_staged_diff_file="~/dc"
+dest_unstaged_diff_file="~/d"
+
+dest_staged_diff_path="$remote_host:$dest_staged_diff_file"
+dest_unstaged_diff_path="$remote_host:$dest_unstaged_diff_file"
+
+if [ -s "$staged_diff_file" ]; then
+  echo "Copying staged diff file $staged_diff_file to $dest_staged_diff_path"
+  scp $staged_diff_file $dest_staged_diff_path
+fi
+
+if [ -s "$unstaged_diff_file" ]; then
+  echo "Copying diff file $unstaged_diff_file to $dest_unstaged_diff_path"
+  scp $unstaged_diff_file "$dest_unstaged_diff_path"
+fi
+
+remote_dir=$(basename $(pwd))
+remote_cmd="cd $remote_dir && git reset --hard HEAD && rm -rf \$(git ls-files --other --exclude-standard) && if [ -s $dest_staged_diff_file ]; then echo 'staged'; git apply $dest_staged_diff_file; git add .; fi && if [ -s $dest_unstaged_diff_file ]; then echo 'unstaged'; git apply $dest_unstaged_diff_file; fi"
+
+echo "remoting: $remote_cmd"
+ssh $remote_host "$remote_cmd"
+
