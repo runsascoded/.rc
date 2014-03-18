@@ -1,0 +1,5 @@
+#!/bin/sh
+
+git lint
+./fs bg $@
+./fs sc $@
