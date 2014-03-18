@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cur_sha=$(git log -n 1 --format='%h' origin/master)
+git diff origin/master > /tmp/p
+scp /tmp/p dev-$USER:~/
+echo $cur_sha > /tmp/sha
+scp /tmp/sha dev-$USER:~/
+dir_name=$(basename $(pwd))
+
+echo "dir: $dir_name, sha: $cur_sha"
+
+ssh dev-$USER "cd $dir_name && git fetch origin && git reset --hard $cur_sha && git apply ~/p && ./fs sc"
+
