@@ -1,0 +1,12 @@
+#!/bin/sh
+
+name="$1"
+shift
+rest="$@"
+
+cmd="alias $name=\"$rest\""
+echo $cmd
+echo $cmd >> ~/.bashrc
+rsrc
+
+

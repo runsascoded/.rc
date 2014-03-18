@@ -1,0 +1,20 @@
+
+#!/bin/sh
+
+args=$@
+echo $args | grep -q " with "
+if [ $? == 0 ]; then
+	args=$(echo $args | sed "s/ *with / /g")
+fi
+
+echo "args: $args"
+# exit 0
+
+for arg in $args; do
+	first_try=$(git grep -h "import .*$arg" | grep -v '{' | sort | uniq)
+	if [ ! "$first_try" ]; then
+		git grep -h "import .*$arg" | sort | uniq | sed "s/ import/\\`echo -e '\nimport'`/g" | head -n 1 | sed "s/, *$/}/"
+	else
+		echo $first_try | sed "s/ import/\\`echo -e '\nimport'`/g"
+	fi
+done

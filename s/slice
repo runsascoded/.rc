@@ -2,7 +2,19 @@
 
 import sys
 
-start = int(sys.argv[1])
-end = int(sys.argv[2])
+args = sys.argv[1:]
 
-print '\n'.join(sys.argv[start+3:end+3])
+start = int(args[0])
+end = int(args[1])
+
+remainder = args[2:]
+
+if len(remainder) == 1:
+  with open(remainder[0], 'r') as fd:
+    lines=fd.readlines()
+    if len(lines) == 1:
+      print '\n'.join(lines[0].split(' ')[start:end]),
+    else:
+      print ''.join(lines[start:end]),
+else:
+  print '\n'.join(remainder[start:end])
