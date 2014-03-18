@@ -214,7 +214,7 @@ export PATH="/usr/local/bin:$PATH"
 alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
 alias a2v="adam adam2vcf"
 alias v2a="adam vcf2adam"
-alias fwop="./fs web --opinionator=pants"
+alias fwop="./fs web --opinionator=pants --apirouter=pants"
 alias snippets='git log --since "8days" --oneline --author ryan'
 alias sopen='open -a Sublime\ Text\ 2.app'
 
