@@ -1,0 +1,152 @@
+
+import com.foursquare.coremodel.interface.{User, Venue}
+import com.foursquare.ids.gen.IdsTypedefs.VenueId
+
+import com.foursquare.pilgrim.pcheckin.lib.ThriftPCheckinUtils
+import com.foursquare.radar.model.RadarImpression
+import com.foursquare.radar.model.RadarModuleType
+import com.foursquare.venue.category.gen.{CategoryAttributePromptability, ThriftCategory}
+import com.foursquare.venue.gen.ThriftConcreteVenueAttributes
+
+import com.foursquare.record.RogueImplicits._
+//import com.foursquare.roguev2.Query
+import org.bson.types.ObjectId
+import com.foursquare.apiserver.api2.json.OpinionatorDisplayCard
+import com.foursquare.common.base.Bag
+import com.foursquare.common.scala.Identity._
+import com.foursquare.opinionator.gen.{OpinionatorHistory, OpinionatorImpression}
+import com.foursquare.opinionator.gen.OpinionatorTypedefs.OpinionatorImpressionId
+import com.foursquare.opinionator.actions.service.OpinionatorHistoryActions
+import com.foursquare.opinionator.finder.service._
+import com.foursquare.ids.gen.IdsTypedefs
+import com.foursquare.ids.gen.IdsTypedefs._
+import com.foursquare.oauth.model.OAuthConsumer
+import com.foursquare.pilgrim.pcheckin.gen.ThriftPCheckin
+import com.foursquare.pilgrim.pcheckin.model.PCheckin
+import com.foursquare.apiserver.api2.json.{CheckinOrPCheckinVisit, OpinionatorDisplayCard}
+import com.foursquare.coremodel.interface.{Checkin, User, Venue}
+import com.foursquare.coremodel.VenueModelImplicits._
+import com.foursquare.common.scala.Lists.Implicits._
+
+import scala.collection.mutable.{Map => MMap}
+import com.foursquare.rogue.LatLong
+import com.foursquare.opinionator.repl.OpinionatorReplUtils
+val services = OpinionatorReplUtils.services
+
+def dt(n: Int) = new DateTime(n.toLong * 1000)
+def o(s: String) = new ObjectId(s)
+
+val fetchedVenues: MMap[ObjectId, Venue] = MMap.empty
+def v(id: String) = fetchedVenues.getOrElseUpdate(o(id), VenueModel.find(o(id)).open_!)
+def vs(ids: Seq[ObjectId]) = {
+    services.venueFinder.findAllById(ids.filterNot(fetchedVenues.contains _)).map(venue => fetchedVenues.getOrElseUpdate(venue.id, venue))
+    ids.map(fetchedVenues.apply _)
+}
+
+case class UserNotFoundException(msg: String) extends Exception
+
+val fetchedUsers: MMap[Long, User] = MMap.empty
+def u(id: Long) = 
+    fetchedUsers.getOrElseUpdate(
+        id, 
+        UserModel.find(id).toOption.getOrElse(
+            throw UserNotFoundException("Not found uid %d".format(id))
+        )
+    )
+def ut(token: String) = u(services.oauthTokenFinder.byToken(token).get.userid.value)
+
+val me = u(5185507)
+val ryan = me
+val mike = u(846)
+val jeff = u(3724500)
+val vineet = 
+    try {
+        u(242662)
+    } catch {
+        case e: UserNotFoundException => println("not found! " + e.msg)
+    }
+
+val matt = u(143800)
+val tim = u(31666)
+val noah = u(697943)
+
+def prime(venues: Venue*) = services.venueRankingDataFinder.primeVenueRankingData(venues.toList)
+def votes(uid: Long, vids: String*) = vids.toList.map(vid => services.subjectiveVoteFinder.byUserVenue(uid, VenueId(o(vid))))
+
+def cz(o: Object) = o.getClass.toString
+def czz(o: Object) = o.getClass.toString.split("\\.").last
+
+def bph(vid: String) = v(vid).getBestPhotoIdOpt
+
+def imps(id: Long): Seq[OpinionatorImpression] = services.opinionatorHistoryFinder.byId(id).flatMap(_.impressionsOption).get
+
+def impHistory(id: Long): Unit = {
+    services.opinionatorHistoryFinder.byId(id).flatMap(_.impressionsOption).map(imps => {
+        println("%d impressions. IDs:\n%s".format(imps.length, imps.map(_.idOption.get).mkString("\n")))
+    })
+}
+
+def impVenues(id: Long): Unit = {
+    val vids = imps(id).flatMap(_.venueidOption).map(id => VenueId(id))
+    println(services.venueFinder.findAllByIdOrdered(vids).map(_.getVenueName).mkString("\n"))
+}
+
+  def cmp(v1: VenueVisitInfo, v2: VenueVisitInfo): Boolean = {
+    val v1VisitedMoreRecently =
+      CheckinOrPCheckinVisit.isMoreRecent(v1.visitedDateTimeOpt, v2.visitedDateTimeOpt)
+
+    val v2skippedMoreRecently = CheckinOrPCheckinVisit.isMoreRecent(v2.lastSkipTime, v1.lastSkipTime)
+
+    val v2VotedOnMoreRecently = CheckinOrPCheckinVisit.isMoreRecent(v2.lastVoteTime, v1.lastVoteTime)
+
+    v2VotedOnMoreRecently.orElse(v2skippedMoreRecently).orElse(v1VisitedMoreRecently).getOrElse(false)
+  }
+
+//def findvvi(implicit val vsvi: VenuesVisitInfo, vn: String) = vsvi.visitInfos.find(_.venue.getVenueName =? vn).get
+
+def ds(d: Option[DateTime]): String = d.map(_.toString().substring(0, 19)).getOrElse("None")
+
+val iphone = OAuthConsumer.iphoneConsumer
+
+import com.foursquare.venue.prompt.lib._
+def pfs(user: User, version: Option[Int] = Some(20150101), consumer: OAuthConsumer = iphone) = PromptFeatureSupport(services, consumer, version, Some(user))
+
+/*
+def opParams(user: User, includePCheckins:Boolean = false, includeCheckins:Boolean=true, num:Int=10) =
+    OpinionatorFinderParams(
+        Some(user), 100, num, includeCheckins, includePCheckins, None, None, None, false, new ObjectId, pfs(user), false, false, false, None
+    )
+*/
+
+def gvi(user: User, includePCheckins:Boolean = false, includeCheckins:Boolean=true, num:Int=10) = 
+    services.opinionatorCardFinder.getVisitInfo(user, opParams(user, includePCheckins, includeCheckins, num))
+
+def pvvi(vvi: VenueVisitInfo): String = {
+    "%50s: %20s\t%20s\t%20s\t%20s".format(vvi.venue.getVenueName, ds(vvi.visitedDateTimeOpt), ds(vvi.lastImpressionTime), ds(vvi.lastSkipTime), ds(vvi.lastVoteTime))
+}
+
+def pp(vsvi: VenuesVisitInfo): Unit = {
+    println(vsvi.visitInfos.map(pvvi _).mkString("\n"))
+}
+
+  def ppi(imp: OpinionatorImpression): Unit = {
+    println(
+      "%50s: %20s\t%20s".format(
+        v(imp.venueidOption.get.toString).getVenueName,
+        ds(Some(new DateTime(imp.idOption.get.getTime))),
+        imp.skippedOption.get
+      )
+    )
+  }
+
+def rating(v:String, u: User) = services.likeFinder.userVenueExplicit(u, VenueId(new ObjectId(v)))
+
+/*
+val q =
+    Query(ThriftPCheckin)
+        .where(_.userId eqs userId)
+        .applyIf(mustHaveVenueId, _.scan(_.venueId exists true))
+        .applyIf(!includeDenied, _.scan(_.denied neqs true))
+        .orderDesc(_.startTime)
+        .limitOpt(limitOpt)
+*/
