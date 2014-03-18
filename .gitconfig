@@ -12,6 +12,7 @@
 
 [alias]
         a       = add
+        bm      = branch -m
         bu      = branch --set-upstream-to
         c       = commit
         co      = checkout
@@ -42,6 +43,7 @@
         ri      = rebase -i
         rl      = rev-list
         rs      = rebase --skip
+        rsh     = reset HEAD^
         rv      = remote -v
         s       = stash
         sl      = stash list

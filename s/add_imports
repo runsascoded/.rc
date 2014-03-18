@@ -5,7 +5,7 @@ shift
 classes=$1
 shift
 echo "package: $package"
-echo "classes: $class"
+echo "classes: $classes"
 
 for class in $(echo $classes | tr ',' '\n'); do
     files=$(git ls-files $@ | grep ".scala$" | xargs pcregrep -l "^(?:[^/]+/)*[^/]*[^A-Za-z0-9_\.\"]$class([^A-Za-z0-9_\"]|$)" | xargs pcregrep -L "^import.*[^A-Za-z0-9_]$class([^A-Za-z0-9_]|$)" | xargs pcregrep -L "^package $package$")

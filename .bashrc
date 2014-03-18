@@ -36,10 +36,14 @@ alias g="git"
 alias dtab="diff /tmp/a /tmp/b"
 alias mtab="meld /tmp/a /tmp/b"
 
+alias sdr="ssh dev-ryan"
+
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 shopt -s histappend
 export PROMPT_COMMAND="history -a"
+
+source ~/.git-completion.bash
 
 alias hn="history -n"
 alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
@@ -195,7 +199,7 @@ alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsp="git stash pop"
 
-export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$PYTHONPATH"
+export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:/Library/Python/2.7/site-packages:$PYTHONPATH"
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -205,6 +209,21 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # For brew
 export PATH="/usr/local/bin:$PATH"
+
+#[ -s "/Users/ryan/.scm_breeze/scm_breeze.sh" ] && source "/Users/ryan/.scm_breeze/scm_breeze.sh"
 alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
 alias a2v="adam adam2vcf"
 alias v2a="adam vcf2adam"
+alias fwop="./fs web --opinionator=pants"
+alias snippets='git log --since "8days" --oneline --author ryan'
+alias sopen='open -a Sublime\ Text\ 2.app'
+
+alias gfo="git fetch origin"
+alias gfl="git fixlint"
+alias pe="perl -pe"
+alias gfl="git fixlint"
+alias gen-soy="./pants gen --gen-custom-soy-langs=scala"
+alias gen-thrift="./pants gen --gen-custom-thrift-langs=scala_record"
+alias lbgsc="gfl; ./fs bg && ./fs sc"
+alias bgsc="./fs bg && ./fs sc"
+alias sc="./fs sc"
