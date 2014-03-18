@@ -205,3 +205,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # For brew
 export PATH="/usr/local/bin:$PATH"
+alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
+alias a2v="adam adam2vcf"
+alias v2a="adam vcf2adam"
