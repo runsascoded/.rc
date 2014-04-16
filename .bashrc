@@ -152,7 +152,6 @@ fi
 
 # Sourcing
 alias resource="unalias resource; source ~/.bashrc"
-alias rsrc="unalias rsrc; source ~/.bashrc"
 
 # Navigating
 alias c=". ~/s/c"
@@ -227,3 +226,4 @@ alias gen-thrift="./pants gen --gen-custom-thrift-langs=scala_record"
 alias lbgsc="gfl; ./fs bg && ./fs sc"
 alias bgsc="./fs bg && ./fs sc"
 alias sc="./fs sc"
+alias lbg="gfl; ./fs bg"
