@@ -1,4 +1,5 @@
 *
+!install
 !.bash_profile
 !.bashrc
 !.emacs

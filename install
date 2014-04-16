@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mv .git ~/
+cd ~/
+git reset --hard HEAD
+rm -rf bootstrap
