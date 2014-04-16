@@ -4,6 +4,7 @@
 !.bashrc
 !.emacs
 !.foursquare-repl
+!.git-completion.bash
 !.gitcomplete
 !.gitconfig
 !.gitignore
