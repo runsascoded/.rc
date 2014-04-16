@@ -1,6 +1,10 @@
 #!/bin/sh
 
+set +eox
+
+rm -rf ~/.git
 mv ~/bootstrap/.git ~/
 cd ~/
+echo "Resetting from $(pwd).."
 git reset --hard HEAD
 rm -rf bootstrap
