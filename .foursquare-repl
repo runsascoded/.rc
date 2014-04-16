@@ -1,6 +1,8 @@
 
 import com.foursquare.coremodel.interface.{User, Venue}
 import com.foursquare.ids.gen.IdsTypedefs.VenueId
+import org.elasticsearch.common.joda.time.format.DateTimeFormat
+import com.twitter.util.Await
 
 import com.foursquare.pilgrim.pcheckin.lib.ThriftPCheckinUtils
 import com.foursquare.radar.model.RadarImpression
@@ -9,13 +11,13 @@ import com.foursquare.venue.category.gen.{CategoryAttributePromptability, Thrift
 import com.foursquare.venue.gen.ThriftConcreteVenueAttributes
 
 import com.foursquare.record.RogueImplicits._
-//import com.foursquare.roguev2.Query
 import org.bson.types.ObjectId
-import com.foursquare.apiserver.api2.json.OpinionatorDisplayCard
 import com.foursquare.common.base.Bag
 import com.foursquare.common.scala.Identity._
-import com.foursquare.opinionator.gen.{OpinionatorHistory, OpinionatorImpression}
 import com.foursquare.opinionator.gen.OpinionatorTypedefs.OpinionatorImpressionId
+import com.foursquare.base.gen._
+import com.foursquare.opinionator.gen._
+import com.foursquare.hfile.rpc.client._
 import com.foursquare.opinionator.actions.service.OpinionatorHistoryActions
 import com.foursquare.opinionator.finder.service._
 import com.foursquare.ids.gen.IdsTypedefs
@@ -23,7 +25,7 @@ import com.foursquare.ids.gen.IdsTypedefs._
 import com.foursquare.oauth.model.OAuthConsumer
 import com.foursquare.pilgrim.pcheckin.gen.ThriftPCheckin
 import com.foursquare.pilgrim.pcheckin.model.PCheckin
-import com.foursquare.apiserver.api2.json.{CheckinOrPCheckinVisit, OpinionatorDisplayCard}
+import com.foursquare.apiserver.api2.json.opinionator.{CheckinOrPCheckinVisit, OpinionatorDisplayCard}
 import com.foursquare.coremodel.interface.{Checkin, User, Venue}
 import com.foursquare.coremodel.VenueModelImplicits._
 import com.foursquare.common.scala.Lists.Implicits._
@@ -55,10 +57,14 @@ def u(id: Long) =
     )
 def ut(token: String) = u(services.oauthTokenFinder.byToken(token).get.userid.value)
 
+def ri(uid: Long) = RadarImpression.find(uid).open_!
+
 val me = u(5185507)
 val ryan = me
 val mike = u(846)
 val jeff = u(3724500)
+
+// vineet doesn't exist in staging! :(
 val vineet = 
     try {
         u(242662)
@@ -70,6 +76,8 @@ val matt = u(143800)
 val tim = u(31666)
 val noah = u(697943)
 
+val starbucks = v("49da74aef964a5208b5e1fe3")
+
 def prime(venues: Venue*) = services.venueRankingDataFinder.primeVenueRankingData(venues.toList)
 def votes(uid: Long, vids: String*) = vids.toList.map(vid => services.subjectiveVoteFinder.byUserVenue(uid, VenueId(o(vid))))
 
@@ -77,6 +85,31 @@ def cz(o: Object) = o.getClass.toString
 def czz(o: Object) = o.getClass.toString.split("\\.").last
 
 def bph(vid: String) = v(vid).getBestPhotoIdOpt
+
+def attributePromptabilityForCategory(category: ThriftCategory): CategoryAttributePromptability = {
+    val attributeName = ThriftConcreteVenueAttributes.like.name
+    category.attributePromptability.get(attributeName).flatMap(CategoryAttributePromptability.findByStringValue) match {
+      case Some(promptability) => promptability
+      case None =>
+        category.parentFk(ThriftCategory)
+          .map(c => attributePromptabilityForCategory(c))
+          .getOrElse(CategoryAttributePromptability.defer)
+    }
+  }
+
+  def isPromptableForCategory(category: ThriftCategory): Boolean = {
+    val promptability = attributePromptabilityForCategory(category)
+
+    promptability match {
+      case CategoryAttributePromptability.yes  => true
+      case CategoryAttributePromptability.tier1 => true
+      case CategoryAttributePromptability.tier2 => true
+      case CategoryAttributePromptability.tier3 => true
+      case CategoryAttributePromptability.tier4 => true
+      case CategoryAttributePromptability.no => false
+      case CategoryAttributePromptability.defer => false // unused
+    }
+  }
 
 def imps(id: Long): Seq[OpinionatorImpression] = services.opinionatorHistoryFinder.byId(id).flatMap(_.impressionsOption).get
 
@@ -108,18 +141,57 @@ def ds(d: Option[DateTime]): String = d.map(_.toString().substring(0, 19)).getOr
 
 val iphone = OAuthConsumer.iphoneConsumer
 
+def getOpinionatorPrefetch(id: Long): OpinionatorPrefetch = {
+    val hfc = services.hfileService.getTracedClient("opinionator_cards_8", Some(("com.foursquare.hfile.rpc.common.ModShard", 8)))
+    val hc = new HFileClientThriftKeyThriftValue(LongWrapper, OpinionatorPrefetch)(hfc)
+    val of = hc.fetchThriftValuesWithThriftKeys(List(LongWrapper(id)))
+    val op = of(LongWrapper(id))
+    op
+}
+
 import com.foursquare.venue.prompt.lib._
 def pfs(user: User, version: Option[Int] = Some(20150101), consumer: OAuthConsumer = iphone) = PromptFeatureSupport(services, consumer, version, Some(user))
 
-/*
-def opParams(user: User, includePCheckins:Boolean = false, includeCheckins:Boolean=true, num:Int=10) =
-    OpinionatorFinderParams(
-        Some(user), 100, num, includeCheckins, includePCheckins, None, None, None, false, new ObjectId, pfs(user), false, false, false, None
+def promptData(user: User, venue: Venue, checkinId: ObjectId = new ObjectId): PromptData = {
+    services.venuePromptFinder.getPromptData(
+        checkinId,
+        venue,
+        user,
+        Some(user),
+        pfs(user),
+        creatingView = PromptDataViewType.Opinionator
     )
-*/
+    /*
+    PromptData(
+        checkinId = checkinId,
+        venue = venue,
+        promptUser = user,
+        currentUser = Some(user),
+        promptFeatures = pfs(user),
+        services = services,
+        userVotes = Map.empty,
+        userVenueWoesFn = () => Nil,
+        outstandingWoesAtVenueFn = () => Nil,
+        vrdOpt = None,
+        prefetchedDetailedPriceOpt = None,
+        creatingView = PromptDataViewType.Opinionator,
+        radarImpressions = Some(ri(user.id)),
+        visitCount = 0,
+        userLikedVenuesCount = 0,
+        superUserMode = false
+    )
+    */
+}
+
+def opPrompt(user: User, venue: Venue): OpinionatorLaunchPrompt = {
+    OpinionatorLaunchPrompt(promptData(user, venue))
+}
 
 def gvi(user: User, includePCheckins:Boolean = false, includeCheckins:Boolean=true, num:Int=10) = 
     services.opinionatorCardFinder.getVisitInfo(user, opParams(user, includePCheckins, includeCheckins, num))
+
+//def cards(u:User, useHFile:Boolean=true) = Await.result(services.opinionatorCardFinder.getCards(u, opParams(u, useHFile=false))).cards
+//def cardVenues(u: User, useHFile: Boolean=true) = cards(u,useHFile).map(_.venue.getVenueName).mkString("\n")
 
 def pvvi(vvi: VenueVisitInfo): String = {
     "%50s: %20s\t%20s\t%20s\t%20s".format(vvi.venue.getVenueName, ds(vvi.visitedDateTimeOpt), ds(vvi.lastImpressionTime), ds(vvi.lastSkipTime), ds(vvi.lastVoteTime))
@@ -141,12 +213,7 @@ def pp(vsvi: VenuesVisitInfo): Unit = {
 
 def rating(v:String, u: User) = services.likeFinder.userVenueExplicit(u, VenueId(new ObjectId(v)))
 
-/*
-val q =
-    Query(ThriftPCheckin)
-        .where(_.userId eqs userId)
-        .applyIf(mustHaveVenueId, _.scan(_.venueId exists true))
-        .applyIf(!includeDenied, _.scan(_.denied neqs true))
-        .orderDesc(_.startTime)
-        .limitOpt(limitOpt)
-*/
+
+
+
+
