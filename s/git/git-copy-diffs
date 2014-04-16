@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Pushing to devbox.."
+git push devbox
+echo "Pushed!"
 
 staged_diff_file=$(tmpfile)
 unstaged_diff_file=$(tmpfile)
@@ -18,11 +21,32 @@ echo ''
 
 remote_host="dev-$USER"
 
-dest_staged_diff_file="~/dc"
-dest_unstaged_diff_file="~/d"
+if [ ! -z "$REMOTE_STAGED_DIFF_FILE" ]; then
+  dest_staged_diff_file="$REMOTE_STAGED_DIFF_FILE"
+else
+  dest_staged_diff_file="~/dc"
+fi
+
+if [ ! -z "$REMOTE_UNSTAGED_DIFF_FILE" ]; then
+  dest_unstaged_diff_file="$REMOTE_UNSTAGED_DIFF_FILE"
+else
+  dest_unstaged_diff_file="~/d"
+fi
 
 dest_staged_diff_path="$remote_host:$dest_staged_diff_file"
 dest_unstaged_diff_path="$remote_host:$dest_unstaged_diff_file"
+
+ssh $remote_host "[[ -s $dest_staged_diff_file ]]"
+if [ $? -eq 0 ]; then
+  echo "ERROR: staged diff file already exists: $dest_staged_diff_path"
+  exit 1
+fi
+
+ssh $remote_host "[[ -s $dest_unstaged_diff_file ]]"
+if [ $? -eq 0 ]; then
+  echo "ERROR: unstaged diff file already exists: $dest_unstaged_diff_path"
+  exit 1
+fi
 
 if [ -s "$staged_diff_file" ]; then
   echo "Copying staged diff file $staged_diff_file to $dest_staged_diff_path"
@@ -35,7 +59,7 @@ if [ -s "$unstaged_diff_file" ]; then
 fi
 
 remote_dir=$(basename $(pwd))
-remote_cmd="cd $remote_dir && git reset --hard HEAD && rm -rf \$(git ls-files --other --exclude-standard) && if [ -s $dest_staged_diff_file ]; then echo 'staged'; git apply $dest_staged_diff_file; git add .; fi && if [ -s $dest_unstaged_diff_file ]; then echo 'unstaged'; git apply $dest_unstaged_diff_file; fi"
+remote_cmd="cd $remote_dir && git reset --hard HEAD && rm -rf \$(git ls-files --other --exclude-standard) && if [ -s $dest_staged_diff_file ]; then echo 'staged'; git apply $dest_staged_diff_file; git add .; fi && if [ -s $dest_unstaged_diff_file ]; then echo 'unstaged'; git apply $dest_unstaged_diff_file; fi && rm -f $dest_unstaged_diff_file $dest_staged_diff_file"
 
 echo "remoting: $remote_cmd"
 ssh $remote_host "$remote_cmd"
