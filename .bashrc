@@ -29,6 +29,10 @@ export LANGUAGE=en_US.UTF-8
 
 export TZ=UTC
 
+if [ -e $HOME/.rpi_bashrc ]; then
+    source $HOME/.rpi_bashrc
+fi
+
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
 alias g="git"

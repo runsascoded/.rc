@@ -1,5 +1,5 @@
-# /etc/skel/.bash_profile
-
+B# /etc/skel/.bash_profile
+0;95;c
 # This file is sourced by bash for login shells.  The following line
 # runs your .bashrc and is recommended by the bash info pages.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
