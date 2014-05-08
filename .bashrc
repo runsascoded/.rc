@@ -78,6 +78,10 @@ source ~/s/bash_colors
 
 
 export EIP="184.73.189.241"
+export HOMEIP="66.65.177.142"
+export RPIIP="192.168.1.106"
+
+alias srpi="ssh ryan@$RPIIP"
 
 export SCALA=/usr/local/Cellar/scala/2.9.1/libexec
 export ANDROID=$HOME/lib/android-sdk-mac_x86
