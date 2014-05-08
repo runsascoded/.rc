@@ -11,7 +11,7 @@ fi
 joined=
 delim=$1
 shift
-args=$@
+args="$@"
 
 for arg in $args; do
 	if [ "$joined" ]; then
@@ -19,4 +19,4 @@ for arg in $args; do
 	fi
 	joined="${joined}$arg"
 done
-echo $joined
+echo "$joined"
