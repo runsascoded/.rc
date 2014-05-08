@@ -54,7 +54,7 @@ if [ -s "$staged_diff_file" ]; then
 fi
 
 if [ -s "$unstaged_diff_file" ]; then
-  echo "Copying diff file $unstaged_diff_file to $dest_unstaged_diff_path"
+  echo "Copying unstaged diff file $unstaged_diff_file to $dest_unstaged_diff_path"
   scp $unstaged_diff_file "$dest_unstaged_diff_path"
 fi
 
