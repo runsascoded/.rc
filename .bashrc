@@ -15,6 +15,10 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+if [ -e $HOME/.rpi_bashrc ]; then
+    source $HOME/.rpi_bashrc
+fi
+
 # virtualenvwrapper
 #export WORKON_HOME=$HOME/Projects/virtualenvs
 #source /usr/local/bin/virtualenvwrapper.sh
@@ -23,15 +27,18 @@ export SRCDIR=$HOME/s
 
 export PANTS_DEV=1
 
-export LC_ALL=en_US.UTF-8
+if [ $RPI ]; then
+    echo "rpi.. setting LC_ALL=C"
+    export LC_ALL=C
+else
+    echo "not rpi.. setting LC_ALL=en_US.UTF-8"
+    export LC_ALL=en_US.UTF-8
+fi
+
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 export TZ=UTC
-
-if [ -e $HOME/.rpi_bashrc ]; then
-    source $HOME/.rpi_bashrc
-fi
 
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"

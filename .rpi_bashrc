@@ -2,7 +2,7 @@
 
 uname -a | grep -q "raspberrypi" > /dev/null
 if [ $? -eq 0 ]; then
-    RPI=1
+    export RPI=1
     echo "Sourcing .rpi_bashrc.."
 
     export NODE_JS_HOME=/home/$USER/node-v0.10.2-linux-arm-pi 
