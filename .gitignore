@@ -8,6 +8,7 @@
 !.gitcomplete
 !.gitconfig
 !.gitignore
+!.rpi_bashrc
 !.screenrc
 !.ssh
 !.ssh/id_rsa.pub
