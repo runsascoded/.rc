@@ -154,7 +154,7 @@ class BranchInfos:
 			self.branches_by_hash[info.hash].append(info)
 
 		hashes = map(lambda bi: bi.hash, self.branches_by_name.values())
-		cmd = [ 'git', 'show', '--quiet', '--format=%h\t%ci\t%cr'] + hashes
+		cmd = [ 'git', 'show', '--quiet', '-s', '--format=%h\t%ci\t%cr'] + hashes
 		out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
 
 		lines = out.splitlines()
