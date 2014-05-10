@@ -3,13 +3,10 @@
 uname -a | grep -q "raspberrypi" > /dev/null
 if [ $? -eq 0 ]; then
     RPI=1
-else
-    exit
+    echo "Sourcing .rpi_bashrc.."
+
+    export NODE_JS_HOME=/home/$USER/node-v0.10.2-linux-arm-pi 
+    export PATH=$PATH:$NODE_JS_HOME/bin 
 fi
-
-echo "Sourcing .rpi_bashrc.."
-
-export NODE_JS_HOME=/home/$USER/node-v0.10.2-linux-arm-pi 
-export PATH=$PATH:$NODE_JS_HOME/bin 
 
 #sudo apt-get install python-dateutil
