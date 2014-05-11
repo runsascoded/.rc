@@ -151,7 +151,7 @@ alias kmae="echo 'seriously ryan? go to bed, sober up, and try again'"
 
 #alias lpants='export BUILD_NUMBER=$(date +%y%m%d%H%M%S); echo "BUILD NUMBER: $BUILD_NUMBER"; time ./pants compile -u -x --mongo-hosts=localhost --mongo-port=27001 --mongo-db=pants --mongo-collection=timings'
 
-alias top="top -o cpu"
+#alias top="top -o cpu"
 alias rmu="git ls-files --other --exclude-standard | xargs rm -f"
 alias es="emerge --search"
 
