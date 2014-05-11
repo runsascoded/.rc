@@ -91,6 +91,7 @@ source ~/s/bash_colors
 export EIP="184.73.189.241"
 export HOMEIP="66.65.177.142"
 export RPIIP="192.168.1.106"
+export LOKOIP="192.168.1.131"
 export CHROMECAST_MAC="D0:E7:82:55:CD:86"
 
 alias srpi="ssh ryan@$RPIIP"
