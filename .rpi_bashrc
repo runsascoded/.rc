@@ -6,7 +6,7 @@ if [ $? -eq 0 ]; then
     echo "Sourcing .rpi_bashrc.."
 
     export NODE_JS_HOME=/home/$USER/node-v0.10.2-linux-arm-pi 
-    export PATH=$PATH:$NODE_JS_HOME/bin:/opt/mongo/bin:/opt/meteor
+    export PATH=$HOME/bin:$PATH:$NODE_JS_HOME/bin:/opt/mongo/bin:/opt/meteor
     export MONGO_URL=mongodb://127.0.0.1:27017/test
 fi
 
