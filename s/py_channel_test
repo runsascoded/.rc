@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import os
+from ssh_channel import SshChannel
+from subprocess import Popen
+
+channel = SshChannel('dev-ryan')
+
+print ''
+print 'Channel? %s' % os.path.exists(channel.socket)
+print Popen(['ssh', '-S', channel.socket, '-v', 'dev-ryan', 'echo "hi"']).communicate()[0]
+channel.close()
+
+print ''
+print 'Channel? %s' % os.path.exists(channel.socket)
+print Popen(['ssh', '-S', channel.socket, '-v', 'dev-ryan', 'echo "hi"']).communicate()[0]
