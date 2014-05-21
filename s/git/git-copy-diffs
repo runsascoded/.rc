@@ -39,7 +39,7 @@ if not os.environ.get('SKIP_SSH_PIGGYBACKING'):
   ssh_channel = SshChannel(remote.group('host'), remote.group('user'))
 
 print "Got remote %s at host %s. Pushing.." % (remote.group('name'), remote.group('host'))
-subprocess.call([ 'git', 'push', remote.group('name') ])
+subprocess.check_output([ 'git', 'push', remote.group('name') ])
 print 'Pushed!'
 
 try:
