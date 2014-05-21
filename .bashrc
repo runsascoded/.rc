@@ -215,6 +215,9 @@ alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsp="git stash pop"
 
+alias rscr="screen -r -S"
+alias dscr="screen -D -S"
+
 export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:/Library/Python/2.7/site-packages:$PYTHONPATH"
 
 
