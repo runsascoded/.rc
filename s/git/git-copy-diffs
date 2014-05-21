@@ -1,7 +1,28 @@
 #!/bin/sh
 
-echo "Pushing to devbox.."
-git push devbox
+found_remote=
+found_multiple_remotes=
+for remote in devbox rpi; do
+  if git remote | grep -q $remote; then
+    if [ ! -z $found_remote ]; then
+      echo "found another eligible remote: $remote"
+      found_multiple_remotes=1
+    else
+      echo "found remote: $remote"
+      found_remote=$remote
+    fi
+  fi
+done
+
+if [ ! -z $found_multiple_remotes ]; then
+  echo 'Found multiple eligible remotes'
+  exit 1
+fi
+
+remote=$found_remote
+
+echo "Pushing to $remote.."
+git push $remote
 echo "Pushed!"
 
 staged_diff_file=$(tmpfile)
