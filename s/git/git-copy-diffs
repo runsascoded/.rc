@@ -31,6 +31,22 @@ if not found_remotes:
 
 remote = found_remotes[0]
 
+# One weird trick: we can have all SSH commands in this run piggypack off of the same SSH connection
+# by adding the following lines to ~/.ssh/config:
+#
+# Host *
+#      ControlMaster auto
+#      ControlPath ~/.ssh/master-%r@%h:%p
+#
+# This can save time and redundant connection overhead, which can be very useful on e.g. slow 
+# connections.
+#
+# Credit to http://www.linuxjournal.com/content/speed-multiple-ssh-connections-same-server
+
+ssh_channel = None
+if not os.environ.get('SKIP_SSH_PIGGYBACKING'):
+  ssh_channel = subprocess.Popen([ 'ssh', remote.group('host') ], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
 print "Got remote %s at host %s. Pushing.." % (remote.group('name'), remote.group('host'))
 subprocess.call([ 'git', 'push', remote.group('name') ])
 print 'Pushed!'
@@ -70,6 +86,22 @@ try:
     'path': remote.group('path'),
   }
 
+  cmd = [ 
+    'ssh', 
+    remote.group('host'), 
+    "; ".join(
+      [ "cd %(path)s" % basenames_obj ] + 
+      [ "ls %s 2> /dev/null" % filename for filename in [staged_diff_file_basename, unstaged_diff_file_basename, tar_basename]]
+    )
+  ]
+  found_files = filter(lambda x: x, subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0].split('\n'))
+
+  if found_files and len(found_files):
+    inp = raw_input('Found existing files: %s. Overwrite? [Y/n]: ' % ','.join(found_files))
+    if inp and inp.lower() != 'y':
+      print 'Exiting'
+      sys.exit(1)
+
   cmd = ['scp', tar.name, '%s:%s' % (remote.group('host'), remote.group('path'))]
   print "scp'ing tar file: %s" % ' '.join(cmd)
   subprocess.call(cmd)
@@ -77,8 +109,6 @@ try:
   remote_cmd = ' && '.join([
     "cd %s" % remote.group("path"),
     "git reset --hard HEAD",
-    "if [ -e %(staged)s ]; then echo 'ERROR: staged diff file %(staged)s already exists'; exit 1; fi" % basenames_obj,
-    "if [ -e %(unstaged)s ]; then echo 'ERROR: unstaged diff file %(unstaged)s already exists'; exit 1; fi" % basenames_obj,
     "tar mxf %s" % tar_basename,
     "if [ -s %(staged)s ]; then echo 'applying staged diff'; git apply %(staged)s; git add .; git reset %(staged)s %(unstaged)s %(tar)s; fi" % basenames_obj,
     "if [ -s %(unstaged)s ]; then echo 'applying unstaged diff'; git apply %(unstaged)s; fi" % basenames_obj,
@@ -87,13 +117,13 @@ try:
 
   print 'remote_cmd: %s' % remote_cmd
 
-  if subprocess.call([ 'ssh', remote.group('host'), remote_cmd ]) != 0:
-    inp = raw_input('Delete %(user)s%(host)s:%(path)s/{%(staged)s,%(unstaged)s,%(tar)s}? [Y/n]: ' % basenames_obj)
-    if not inp or inp.lower() == 'y':
-      subprocess.call(['ssh', remote.group('host'), "cd %(path)s && rm -f %(staged)s %(unstaged)s %(tar)s" % basenames_obj ])
-      print 'Done'
+  subprocess.check_output([ 'ssh', remote.group('host'), remote_cmd ])
 
 finally:
+
+  if ssh_channel:
+    ssh_channel.terminate()
+
   try:
     shutil.rmtree(tempdir)
   except OSError as exc:  
