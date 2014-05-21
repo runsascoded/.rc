@@ -64,7 +64,15 @@ try:
 
   tar_basename = os.path.basename(tar_file_path)
 
-  #  tar.flush()
+  basenames_obj = { 
+    'staged': staged_diff_file_basename, 
+    'unstaged': unstaged_diff_file_basename, 
+    'tar': tar_basename,
+    'user': (remote.group('user') + '@') if remote.group('user') else '',
+    'host': remote.group('host'),
+    'path': remote.group('path'),
+  }
+
   cmd = ['scp', tar.name, '%s:%s' % (remote.group('host'), remote.group('path'))]
   print "scp'ing tar file: %s" % ' '.join(cmd)
   subprocess.call(cmd)
@@ -72,16 +80,21 @@ try:
   remote_cmd = ' && '.join([
     "cd %s" % remote.group("path"),
     "git reset --hard HEAD",
-    "if [ -e %(staged)s ]; then echo 'ERROR: staged diff file %(staged)s already exists'; exit 1; fi" % { 'staged': staged_diff_file_basename },
+    "if [ -e %(staged)s ]; then echo 'ERROR: staged diff file %(staged)s already exists'; exit 1; fi" % basenames_obj,
+    "if [ -e %(unstaged)s ]; then echo 'ERROR: unstaged diff file %(unstaged)s already exists'; exit 1; fi" % basenames_obj,
     "tar mxf %s" % tar_basename,
-    "if [ -s %(staged)s ]; then echo 'applying staged diff'; git apply %(staged)s; git add .; git reset %(staged)s %(unstaged)s %(tar)s; fi" % { 'staged': staged_diff_file_basename, 'unstaged': unstaged_diff_file_basename, 'tar': tar_basename },
-    "if [ -s %(filename)s ]; then echo 'applying unstaged diff'; git apply %(filename)s; fi" % { 'filename': unstaged_diff_file_basename },
+    "if [ -s %(staged)s ]; then echo 'applying staged diff'; git apply %(staged)s; git add .; git reset %(staged)s %(unstaged)s %(tar)s; fi" % basenames_obj,
+    "if [ -s %(unstaged)s ]; then echo 'applying unstaged diff'; git apply %(unstaged)s; fi" % basenames_obj,
     "rm -rf $(git ls-files --other --exclude-standard)",
   ])
 
   print 'remote_cmd: %s' % remote_cmd
 
-  subprocess.call([ 'ssh', remote.group('host'), remote_cmd ])
+  if subprocess.call([ 'ssh', remote.group('host'), remote_cmd ]) != 0:
+    inp = raw_input('Delete %(user)s%(host)s:%(path)s/{%(staged)s,%(unstaged)s,%(tar)s}? [Y/n]: ' % basenames_obj)
+    if not inp or inp.lower() == 'y':
+      subprocess.call(['ssh', remote.group('host'), "cd %(path)s && rm -f %(staged)s %(unstaged)s %(tar)s" % basenames_obj ])
+      print 'Done'
 
 finally:
   try:
