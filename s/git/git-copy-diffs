@@ -8,24 +8,14 @@ import subprocess
 import sys
 import tarfile
 from tempfile import mkdtemp, NamedTemporaryFile
+from util.remotes import get_remotes
 
 remote=None
-
-push_remote_re = '(?P<name>[^\s]+)\s+((?P<user>[^@]+)@)?(?P<host>[^:]+):(?P<path>[^\s]+)\s\\(push\\)'
-
-def git_remotes():
-  remote_lines = subprocess.Popen(['git', 'remote', '-v'], stdout=subprocess.PIPE).communicate()[0].split('\n')
-  remotes = {}
-  map(
-    lambda remote: remotes.update({remote.group('name'): remote}), 
-    filter(lambda x: x, map(lambda line: re.match(push_remote_re, line), remote_lines))
-  )
-  return remotes
 
 
 remote_names = [ sys.argv[1] ] if len(sys.argv) > 1 else [ 'devbox', 'rpi' ]
 
-remotes = git_remotes()
+remotes = get_remotes()
 found_remotes = [ remotes[remote] for remote in remote_names if remote in remotes ]
 if len(found_remotes) > 1:
   raise Exception('Found multiple eligible remotes: %s' % ','.join(map(lambda remote: remote.group('name'), found_remotes)))
