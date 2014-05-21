@@ -12,8 +12,15 @@ from util.remotes import get_remotes
 
 remote=None
 
-
-remote_names = [ sys.argv[1] ] if len(sys.argv) > 1 else [ 'devbox', 'rpi' ]
+remote_names = []
+if len(sys.argv) > 1:
+  remote_names = [ sys.argv[1] ]
+elif os.environ.get('MIRROR_REMOTES'):
+  remote_names = os.environ.get('MIRROR_REMOTES').split(',')
+else:
+  raise Exception(
+    'Pass remote name as an argument, or set MIRROR_REMOTES environment variable with a comma-separated list of eligible remotes'
+  )
 
 remotes = get_remotes()
 found_remotes = [ remotes[remote] for remote in remote_names if remote in remotes ]
