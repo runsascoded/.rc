@@ -218,7 +218,7 @@ alias gsp="git stash pop"
 alias rscr="screen -r -S"
 alias dscr="screen -D -S"
 
-export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$HOME/s/git:/Library/Python/2.7/site-packages:$PYTHONPATH"
+export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$HOME/s/py:$HOME/s/git:/Library/Python/2.7/site-packages:$PYTHONPATH"
 
 export MIRROR_REMOTES="devbox,rpi"
 
