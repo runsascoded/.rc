@@ -40,9 +40,12 @@ export LANGUAGE=en_US.UTF-8
 
 export TZ=UTC
 
+export NODE_PATH="$NODE_PATH:."
+
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
 alias g="git"
+alias js="node -p -e"
 
 alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i < 1024.0 else '%3.1fKB' % (i / 1024.0) if i < 1048576.0 else '%3.1fMB' % (i / 1048576.0) if i < 1073741824.0 else '%3.1fGB' % (i / 1073741824.0) if i < 1099511627776.0 else '%3.1fTB' % (i / 1099511627776.0))\""
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
