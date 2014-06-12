@@ -85,7 +85,7 @@ try_source "$HOME/.gitcomplete"
 
 # Set colorful prompt
 source ~/s/prompt_colors
-export PS1="$On_IYellow$BIWhite   $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
+export PS1="$On_IYellow$BIBlack \t $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
 
 # Export bash colors
 source ~/s/bash_colors
