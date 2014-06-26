@@ -8,3 +8,7 @@ cd ~/
 echo "Resetting from $(pwd).."
 git reset --hard HEAD
 rm -rf bootstrap
+
+# brew things
+#brew install pcre
+#brew reinstall --build-from-source git
