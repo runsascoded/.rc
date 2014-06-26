@@ -1,0 +1,3 @@
+#!/bin/sh
+
+for f in $(ls ~/.ssh/*.pub); do echo -e "$(basename $f)\t\c"; ssh-keygen -lf $f; done
