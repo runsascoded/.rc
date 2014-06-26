@@ -5,5 +5,5 @@ if [ $# -eq 1 ]; then
 else
 	args=$@
 fi
-args=$(prepend '$' $args | join ,)
-awk "{print $args}"
+args=$(prepend '$' $args | joyn ,)
+awk '{print '"$args"'}'
