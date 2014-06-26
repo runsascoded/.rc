@@ -5,12 +5,32 @@ import sys
 from tempfile import mkdtemp
 import time
 
+control_masters_dir = '%s/.ssh/controlmasters/' % os.getenv('HOME')
+
+def get_socket_for_host(host):
+  sockets = [ control_masters_dir + socket for socket in os.listdir(control_masters_dir) if host in socket ]
+  if len(sockets) > 1:
+      raise Exception('Found multiple sockets for host %s:\n%s' % (host, sockets.join('\n')))
+  if len(sockets):
+    return sockets[0]
+  return None
+
 class SshChannel:
 
   def __init__(self, host, user=None):
 
-    user_str = '%s@' % user if user else ''
+    self.channel = None
+    self.tmpdir = None
 
+    if Popen([ 'ssh', '-O', 'check', host ]).wait() == 0:
+        self.socket = get_socket_for_host(host)
+        if not self.socket:
+            raise Exception(
+                'Expected to find ControlMaster for host %s, but didn\'t find one at %s' % (host, control_masters_dir)
+            )
+        return
+
+    user_str = '%s@' % user if user else ''
     host_str = '%s%s' % (user_str, host)
 
     self.tmpdir = mkdtemp()
@@ -29,7 +49,8 @@ class SshChannel:
       sleep_time *= 1.1
 
   def close(self):
-    self.channel.terminate()
-    os.remove(self.socket)
-    os.rmdir(self.tmpdir)
+    if self.channel:
+      self.channel.terminate()
+      os.remove(self.socket)
+      os.rmdir(self.tmpdir)
 
