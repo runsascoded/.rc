@@ -159,7 +159,12 @@ class BranchInfos:
 
 		lines = out.splitlines()
 		for line in lines:
-			hsh, date, reldate = line.strip().split('\t')
+			if not line:
+				continue
+			cols = line.strip().split('\t')
+			if len(cols) != 3:
+				raise Exception('Expected 3 columns, found %d:\n%s\nfull output:\n%s' % (len(cols), cols, out))
+			hsh, date, reldate = cols
 			map(lambda bi: bi.set_dates(date, reldate), self.branches_by_hash[hsh])
 
 		self.branches = sorted(self.branches_by_name.values(), key=lambda bi: bi.datetime, reverse=True)
