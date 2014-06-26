@@ -11,8 +11,8 @@ elif [ $# -gt 2 ]; then
 	exit 1
 fi
 
-delim=$1
-haystack=$2
+delim="$1"
+haystack="$2"
 echo $haystack | tr $delim "\n"
 
 
