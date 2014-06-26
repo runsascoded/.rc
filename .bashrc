@@ -234,7 +234,7 @@ alias dscr="screen -D -S"
 
 export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$HOME/s/py:$HOME/s/git:/Library/Python/2.7/site-packages:$PYTHONPATH"
 
-export MIRROR_REMOTES="devbox,rpi"
+export MIRROR_REMOTES="devbox,rpi,demeter"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
