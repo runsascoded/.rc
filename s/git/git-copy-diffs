@@ -2,13 +2,12 @@
 
 import errno
 import os
-import re
 import shutil
 from ssh_channel import SshChannel
 import subprocess
 import sys
 import tarfile
-from tempfile import mkdtemp, NamedTemporaryFile
+from tempfile import mkdtemp
 from util.remotes import get_remotes
 
 remote=None
@@ -33,6 +32,7 @@ if not found_remotes:
 remote = found_remotes[0]
 
 # One weird trick: have all SSH commands in this run piggypack off of the same SSH connection
+# NOTE(ryan): it might make more sense to leave this kind of decision up to a user's ssh_config.
 
 ssh_channel = None
 if not os.environ.get('SKIP_SSH_PIGGYBACKING'):
@@ -42,6 +42,7 @@ print "Got remote %s at host %s. Pushing.." % (remote.group('name'), remote.grou
 subprocess.check_output([ 'git', 'push', remote.group('name') ])
 print 'Pushed!'
 
+tempdir = None
 try:
   tempdir = mkdtemp()
 
@@ -141,7 +142,8 @@ finally:
     ssh_channel.close()
 
   try:
-    shutil.rmtree(tempdir)
+    if (tempdir):
+      shutil.rmtree(tempdir)
   except OSError as exc:  
     if exc.errno != errno.ENOENT:  # ENOENT - no such file or directory
       raise  # re-raise exception    
