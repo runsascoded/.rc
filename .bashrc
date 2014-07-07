@@ -113,6 +113,9 @@ export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:$HOME/play-2.1.0
 export PATH="$PATH:$HOME/sinai/internal-tools/scripts/guacamole"
 alias gdos="guacamole-demeter-over-ssh"
 
+export dream=/datasets/dream/data
+export training=$dream/training
+
 java_home_cmd="/usr/libexec/java_home"
 if [ -x "$java_home_cmd" ]; then
     export JAVA_HOME=$($java_home_cmd -v 1.8)
