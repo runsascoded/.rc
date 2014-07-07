@@ -1,3 +1,11 @@
 #!/bin/sh
 
-exec hadoop fs -${@}
+if [ ! $(which hadoop) ]; then
+
+  ssh demeter "hadoop fs -${@}"
+
+else
+
+  hadoop fs -${@}
+
+fi
