@@ -123,7 +123,7 @@ try:
     "tar mxf %s" % tar_basename,
     "if [ -s %(staged)s ]; then echo 'applying staged diff'; git apply %(staged)s; git add .; git reset %(staged)s %(unstaged)s %(tar)s; fi" % basenames_obj,
     "if [ -s %(unstaged)s ]; then echo 'applying unstaged diff'; git apply %(unstaged)s; fi" % basenames_obj,
-    "rm -rf $(git ls-files --other --exclude-standard)",
+    "rm -rf $(git ls-files --other --exclude-standard) %(staged)s %(unstaged)s %(tar)s" % basenames_obj,
   ])
 
   print 'remote_cmd: %s' % remote_cmd
