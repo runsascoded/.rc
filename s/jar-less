@@ -1,0 +1,4 @@
+#!/bin/bash
+
+jar xf $1 $2 && less $2
+
