@@ -19,6 +19,8 @@
 !s/git/*
 !s/git/util
 !s/git/util/*
+!s/hadoop
+!s/hadoop/*
 !s/py
 !s/py/*
 *~
