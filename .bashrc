@@ -113,8 +113,20 @@ export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:$HOME/play-2.1.0
 export PATH="$PATH:$HOME/sinai/internal-tools/scripts/guacamole"
 alias gdos="guacamole-demeter-over-ssh"
 
+
+# Path env-var shorthands
+export c=$HOME/c
+export s=$HOME/s
+export dl=$HOME/Downloads/
+export m2=$HOME/.m2/repository
+
 export dream=/datasets/dream/data
 export training=$dream/training
+
+export sinai=$HOME/sinai
+export data=$sinai/data
+export guac=$sinai/guacamole
+
 
 java_home_cmd="/usr/libexec/java_home"
 if [ -x "$java_home_cmd" ]; then
