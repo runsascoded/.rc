@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# "Unwrap" Hadoop-generated directories with only one "part" (per-shard output file) in them.
+
+for dir in $@; do
+  dir=${dir%/}
+  if [ ! -d $dir ]; then
+    echo "Not a dir: $dir. Skipping.."
+    continue
+  fi
+
+  if [ ! -f "$dir/part-r-00000" ]; then
+    echo "Didn't find $dir/part-r-00000. Skipping"
+    continue
+  fi
+
+  num_parts=$(count "$dir/part-r-*")
+  if [ $num_parts -ne 1 ]; then
+    echo "Expected 1 'part-*' file, found $num_parts"
+    continue
+  fi
+
+  t=$(tmpfile)
+  mv $dir $t
+  mv $t/part-r-00000 $dir
+  #rm -rf $t
+done
