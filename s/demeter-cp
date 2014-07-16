@@ -24,9 +24,9 @@ if [ $? != 0 ]; then
 fi
 
 echo "Copied from hdfs:$from to demeter:$demeter_tmpfile, now copying to local $to"
-scp demeter:"~/$demeter_tmpfile" $to
+scp -r demeter:"~/$demeter_tmpfile" $to
 
 echo "Removing demeter:$demeter_tmpfile"
-ssh demeter "rm -f ~/$demeter_tmpfile"
+ssh demeter "rm -r -f ~/$demeter_tmpfile"
 
 echo "Copied to: $to"
