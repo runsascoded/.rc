@@ -21,6 +21,7 @@ if remote_name not in remotes:
 remote = remotes[remote_name]
 
 remote_cmd = ' && '.join([
+  'mkdir -p %s' % (remote.group('path') or '~'),
   'cd %s' % (remote.group('path') or '~'),
   'git init',
   'git config receive.denyCurrentBranch false',
