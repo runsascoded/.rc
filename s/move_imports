@@ -6,8 +6,10 @@ import sys
 parser = OptionParser()
 # options = OptionGroup(parser)
 
-parser.add_option('--class', dest='clazz', action='store', default=None, help='Class to move')
-parser.add_option('--to', '--to-pkg', '--to-package', dest='to_pkg', action='store', default=None, help='Package to move class to')
+parser.add_option(
+    '--class', dest='clazz', action='store', default=None, help='Class to move')
+parser.add_option('--to', '--to-pkg', '--to-package', dest='to_pkg',
+                  action='store', default=None, help='Package to move class to')
 
 options, args = parser.parse_args()
 
@@ -19,4 +21,3 @@ clazz = clazz_segments[-1]
 to_pkg = options.to_pkg or sys.argv[2]
 
 print "Moving %s from %s to %s" % (clazz, from_pkg, to_pkg)
-

@@ -10,11 +10,11 @@ end = int(args[1])
 remainder = args[2:]
 
 if len(remainder) == 1:
-  with open(remainder[0], 'r') as fd:
-    lines=fd.readlines()
-    if len(lines) == 1:
-      print '\n'.join(lines[0].split(' ')[start:end]),
-    else:
-      print ''.join(lines[start:end]),
+    with open(remainder[0], 'r') as fd:
+        lines = fd.readlines()
+        if len(lines) == 1:
+            print '\n'.join(lines[0].split(' ')[start:end]),
+        else:
+            print ''.join(lines[start:end]),
 else:
-  print '\n'.join(remainder[start:end])
+    print '\n'.join(remainder[start:end])

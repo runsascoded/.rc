@@ -29,4 +29,3 @@ if (line != lines[i]):
 f = open(sys.argv[1], 'w')
 f.write(''.join(lines))
 f.close()
-

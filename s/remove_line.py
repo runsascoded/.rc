@@ -9,7 +9,7 @@ regex = '(^|\n).*import scala_soy_library.*\n(\n?)'
 files = sys.argv[1:]
 for file in files:
     print 'Examining file %s' % file
-    with open(file,'r') as fd:
+    with open(file, 'r') as fd:
         contents = fd.read()
     m = re.search(regex, contents)
     if not m:
@@ -20,4 +20,3 @@ for file in files:
     with open(file, 'w') as fd:
         fd.write(contents)
     print '\tWrote %s' % file
-

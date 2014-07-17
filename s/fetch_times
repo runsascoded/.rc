@@ -4,34 +4,39 @@ import sys
 from pymongo import Connection
 
 connection = Connection(
-  ['localhost'],
-  27001,
-  network_timeout=2,
-  socketTimeoutMS=2000,
-  connectTimeoutMS=2000)
+    ['localhost'],
+    27001,
+    network_timeout=2,
+    socketTimeoutMS=2000,
+    connectTimeoutMS=2000)
 
 c = connection['pants']['timings']
 
+
 def span(build_number):
-  return record_span(get_records(build_number))
+    return record_span(get_records(build_number))
+
 
 def record_span(records):
-  return (max([r['end_time'] for r in records]) - min([r['start_time'] for r in records]))
+    return (max([r['end_time'] for r in records]) - min([r['start_time'] for r in records]))
+
 
 def parallel_build(build_number):
-  records = get_records(build_number)
-  for r in sorted(records, key=lambda r: r['time'], reverse=True):
-    print "%s: %s" % (r['targets'][0], r['time'])
-  print "Total: %s" % record_span(records)
+    records = get_records(build_number)
+    for r in sorted(records, key=lambda r: r['time'], reverse=True):
+        print "%s: %s" % (r['targets'][0], r['time'])
+    print "Total: %s" % record_span(records)
+
 
 def serial_build(build_number):
-  print get_records(build_number)[0]['time']
+    print get_records(build_number)[0]['time']
+
 
 def get_records(build_number, host=None):
-  constraints = {"build_number": build_number}
-  if host:
-    constraints.update({"uname.nodename": host})
-  return list(c.find(constraints))
+    constraints = {"build_number": build_number}
+    if host:
+        constraints.update({"uname.nodename": host})
+    return list(c.find(constraints))
 
 print "parallel:"
 parallel_build(int(sys.argv[2]))

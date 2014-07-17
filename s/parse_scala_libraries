@@ -6,5 +6,6 @@ import sys
 with open(sys.argv[1], 'r') as fd:
     contents = fd.read()
 
-matches = map(lambda match: match.group(1), re.finditer('ScalaLibrary\(([^\)]*)\)', contents))
+matches = map(lambda match: match.group(1), re.finditer(
+    'ScalaLibrary\(([^\)]*)\)', contents))
 print '\n'.join(matches)

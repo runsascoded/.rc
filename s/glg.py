@@ -12,9 +12,11 @@ pattern = sys.argv[1]
 print pattern
 
 ls = subprocess.Popen(['git', 'ls-files'], stdout=subprocess.PIPE).stdout
-choices = subprocess.Popen(['grep', pattern], stdin=ls, stdout=subprocess.PIPE).stdout.read()
+choices = subprocess.Popen(
+    ['grep', pattern], stdin=ls, stdout=subprocess.PIPE).stdout.read()
 
 print choices
+
 
 def getChoice(choices):
     if len(choices) == 1:
@@ -35,4 +37,5 @@ def getChoice(choices):
 
 choice = getChoice(choices)
 
-#print subprocess.Popen(['git', 'log', '-p', '--follow', '--', choice], stdout=subprocess.PIPE).stdout.read()
+# print subprocess.Popen(['git', 'log', '-p', '--follow', '--', choice],
+# stdout=subprocess.PIPE).stdout.read()
