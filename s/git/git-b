@@ -157,7 +157,10 @@ class BranchInfos:
             self.branches_by_hash[info.hash].append(info)
 
         hashes = map(lambda bi: bi.hash, self.branches_by_name.values())
-        cmd = ['git', 'show', '--quiet', '-s',
+        cmd = ['git', 'show',
+               # NOTE(ryan): seems to omit 'master' branch in Git 1.7.1; doesn't seem to be necessary in general.
+               #'--quiet',
+               '-s',
                '--format=%h\t%ci\t%cr'] + hashes
         out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
 
