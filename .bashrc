@@ -268,6 +268,10 @@ export PATH="$HOME:$PATH"
 export home=$HOME
 export hhome=/user/willir31
 
+if which brew &> /dev/null; then
+  export cellar=$(brew --prefix)/Cellar
+fi
+
 #[ -s "/Users/ryan/.scm_breeze/scm_breeze.sh" ] && source "/Users/ryan/.scm_breeze/scm_breeze.sh"
 alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
 alias a2v="adam adam2vcf"
