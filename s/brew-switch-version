@@ -1,10 +1,19 @@
 #!/bin/bash
 
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <formula> <version>"
+  exit 1
+fi
+
 formula=$1
 version=$2
 
 cd $(brew --prefix)
+
+# See what versions of $formula exist
 all_version_lines=$(brew versions $formula 2> /dev/null)
+
+# Look for version $version
 matched_version_lines=$(echo "$all_version_lines" | grep "^${version}\s")
 num_found=$(echo "$matched_version_lines" | wc -l)
 if [ $num_found -lt 1 ]; then
@@ -17,12 +26,19 @@ elif [ $num_found -gt 1 ]; then
   exit 1
 fi
 
+# At this point, $matched_version_lines is something like:
+#
+#     2.9.1    git checkout b78cfbd Library/Formula/scala.rb
+#
+# We want to pull the version off of the front to isolate the `git checkout` command, and run that.
 git_checkout_cmd=$(echo "$matched_version_lines" | perl -pe 's/^[^\s]+\s+//')
 $git_checkout_cmd
 
+# Now we can unlink the existing version of $formula, install the requested version $version, and switch to it.
 brew unlink $formula
 brew install $formula
 brew switch $formula $version
 
+# Clean up this change to the `brew --prefix` directory
 git_checkout_head_cmd=$(echo "$git_checkout_cmd" | perl -pe 's/^git checkout [a-f0-9]+/git checkout HEAD/')
 $git_checkout_head_cmd
