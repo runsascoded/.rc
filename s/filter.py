@@ -1,5 +1,4 @@
 
-import operator
 import re
 import sys
 
