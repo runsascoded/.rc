@@ -17,6 +17,8 @@
 !s/*
 !s/git
 !s/git/*
+!s/git/aliases
+!s/git/aliases/*
 !s/git/util
 !s/git/util/*
 !s/hadoop
