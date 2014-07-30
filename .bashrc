@@ -309,3 +309,6 @@ set-java() {
     jenv shell $jenv_version
   fi
 }
+
+# For ADAM
+export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
