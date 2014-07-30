@@ -312,3 +312,5 @@ set-java() {
 
 # For ADAM
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
+
+export M="$HOME/.m2/repository"
