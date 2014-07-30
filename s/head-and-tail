@@ -7,4 +7,7 @@ if [ $# -eq 1 ]; then
   fi
 fi
 
-(head $arg; echo ''; tail $arg)
+# awesome: http://stackoverflow.com/questions/8624669/unix-head-and-tail-of-file#comment30444236_8624829
+{ tee >((head $arg; echo '') >&2) | tail $arg; } 2>&1
+
+# (head $arg; echo ''; tail $arg)
