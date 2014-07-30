@@ -283,6 +283,8 @@ alias fwop="./fs web --opinionator=pants --apirouter=pants"
 alias snippets='git log --since "8days" --oneline --author ryan'
 alias sopen='open -a Sublime\ Text\ 2.app'
 
+alias bn="basename"
+
 alias gfo="git fetch origin"
 alias gfl="git fixlint"
 alias pe="perl -pe"
