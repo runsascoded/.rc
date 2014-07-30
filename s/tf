@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# -gt 1 ]; then
-	if [ $(isnum $1) ]; then
+	if isnum $1; then
 		num=$1
 		shift
 		tail -n $num -f $@
