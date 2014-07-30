@@ -129,11 +129,11 @@ export sinai=$HOME/sinai
 export data=$sinai/data
 export guac=$sinai/guacamole
 
-
-java_home_cmd="/usr/libexec/java_home"
-if [ -x "$java_home_cmd" ]; then
-    export JAVA_HOME=$($java_home_cmd -v 1.8)
-fi
+# rm this temporarily; trying to use jenv instead...
+#java_home_cmd="/usr/libexec/java_home"
+#if [ -x "$java_home_cmd" ]; then
+#    export JAVA_HOME=$($java_home_cmd -v 1.8)
+#fi
 
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
     export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
