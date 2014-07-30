@@ -268,6 +268,9 @@ export PATH="$HOME:$PATH"
 export home=$HOME
 export hhome=/user/willir31
 
+# default to case-insensitive search in `less`
+export LESS="-i -R"
+
 if which brew &> /dev/null; then
   export cellar=$(brew --prefix)/Cellar
 fi
