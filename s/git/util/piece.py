@@ -2,7 +2,7 @@ from color import color as C
 from datetime import datetime
 from dateutil.parser import parse as parse_datetime
 import re
-from regexs import refname_chars_regex
+from regexs import normal_refname_regex
 from reldate_util import shorten_reldate
 
 
@@ -23,7 +23,7 @@ class Piece:
 
 def parse_refnames(s):
     match = re.match('^\((?P<names>(?:%s, )*%s)\)$' %
-                     (refname_chars_regex, refname_chars_regex), s)
+                     (normal_refname_regex, normal_refname_regex), s)
     if (match):
         return match.group('names').split(', ')
     else:
