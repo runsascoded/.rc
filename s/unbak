@@ -13,5 +13,5 @@ do
 	fi
     fi
     echo "Unpacking $arg to ${arg%.bak}"
-    cp $arg ${arg%.bak}
+    mv $arg ${arg%.bak}
 done
