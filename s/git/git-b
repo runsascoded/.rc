@@ -3,7 +3,7 @@
 from color import clen, color
 from datetime import datetime
 from dateutil.parser import parse
-from util.regexs import refname_chars_regex, refname_regex, captured_whitespace_regex
+from util.regexs import refname_regex, captured_whitespace_regex
 from util.reldate_util import shorten_reldate
 import os
 import re
@@ -32,14 +32,16 @@ class BranchInfo(object):
 
     description_regex = "\s(?P<description>.*)"
 
-    regex = ''.join([
+    regex_pieces = [
         line_begin_regex,
         refname_regex('name'),
         captured_whitespace_regex('pre_hash'),
         hash_regex,
         tracking_info_regex,
         description_regex
-    ])
+    ]
+
+    regex = ''.join(regex_pieces)
 
     def get(self, key, default=''):
         return self.dict[key] if key in self.dict and self.dict[key] != None else default
@@ -51,7 +53,7 @@ class BranchInfo(object):
         if (match):
             pass
         else:
-            raise Exception("Invalid branch line: %s" % line)
+            raise Exception("Invalid branch line:\n%s\nregex:\n%s" % (line, '\n'.join(self.regex_pieces)))
 
         self.dict = match.groupdict()
 

@@ -1,12 +1,14 @@
-refname_chars_regex = "[a-zA-Z0-9-_/]+"
 
+normal_refname_regex = "[a-zA-Z0-9-_/\.]+"
+detached_refname_regex = "\(detached from %s\)" % normal_refname_regex
+combined_refname_regex = "%s|%s" % (normal_refname_regex, detached_refname_regex)
 
 def named(name, regex):
     return "(?P<%s>%s)" % (name, regex)
 
 
 def refname_regex(name):
-    return named(name, refname_chars_regex)
+    return named(name, combined_refname_regex)
 
 
 def captured_whitespace_regex(name):
