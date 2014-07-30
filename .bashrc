@@ -46,7 +46,6 @@ export USE_LIBPCRE=yes
 
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
-alias g="git"
 
 alias grp="ggrep"
 
