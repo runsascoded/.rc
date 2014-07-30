@@ -48,13 +48,27 @@ def parse_col(arg):
     segments = arg.split(':')
     if len(segments) == 1:
         start = 2*int(arg)
-        end = 2*int(arg) + 2
+        if start < 0:
+            start += 1
+            end = min(start + 2, 0)
+        else:
+            end = start + 2
         return (start, None if not end else end)
     if len(segments) == 2:
-        return (
-            None if segments[0] == '' else (2*int(segments[0])),
-            None if segments[1] == '' else (2*int(segments[1]))
-        )
+        start = None
+        if segments[0] != '':
+            start = 2*int(segments[0])
+            if start < 0:
+                start += 1
+
+        end = None
+        if segments[1] != '':
+            end = 2*int(segments[1])
+            if end < 0:
+                end += 1
+
+        return (start, end)
+
     raise Exception('Malformed arg: %s' % arg)
 
 cols = map(parse_col, unknown[0].split(','))
@@ -77,7 +91,7 @@ for line in fileinput.input():
             joiner = ''
         else:
             slice = l[
-                    (None if col[0] == None else col[0] + 1):(None if col[1] == None else col[1] + 1):2
+                    (None if col[0] == None else col[0]):(None if col[1] == None else col[1]):2
             ]
             joiner = output_delimiter
 
