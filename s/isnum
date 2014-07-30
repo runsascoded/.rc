@@ -2,6 +2,7 @@
 
 verbose=
 if [ "$1" == "-v" ]; then
+  shift
   verbose=1
 fi
 
