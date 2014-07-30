@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if isnum "$1"; then
+
+  if [ -f "$1" ]; then
+    echo "Error: ambiguous first arg: $1"
+    exit 1
+  fi
+
+  if [ $1 -eq 0 ]; then
+    echo $2
+  else
+    let num_left=$1-1
+    dn $num_left ${2%/*}
+  fi
+
+else
+
+  dirname $@
+
+fi
