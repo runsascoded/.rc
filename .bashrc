@@ -129,10 +129,13 @@ export data=$sinai/data
 export guac=$sinai/guacamole
 
 # rm this temporarily; trying to use jenv instead...
-#java_home_cmd="/usr/libexec/java_home"
-#if [ -x "$java_home_cmd" ]; then
-#    export JAVA_HOME=$($java_home_cmd -v 1.8)
-#fi
+java_home_cmd="/usr/libexec/java_home"
+jenv_version=$(jenv version | grep -o '1\.[0-9]*')
+if [ -x "$java_home_cmd" ]; then
+    echo "Setting java version from jenv: $jenv_version"
+    export JAVA_HOME=$($java_home_cmd -v $jenv_version)
+    echo "Set: $JAVA_HOME"
+fi
 
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
     export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
@@ -296,3 +299,13 @@ alias sc="./fs sc"
 alias lbg="gfl; ./fs bg"
 alias gcd="g cd"
 alias rsrc="source ~/.bashrc"
+
+set-java() {
+  export JAVA_HOME=$(/usr/libexec/java_home -v $1)
+  jenv_version=$(jenv versions | grep -o "[^ ]*$1[^ ]*")
+  if [ $? -eq 0 ]; then
+    echo "Found $jenv_version"
+    jenv global $jenv_version
+    jenv shell $jenv_version
+  fi
+}
