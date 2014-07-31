@@ -270,8 +270,12 @@ export PATH="$HOME:$PATH"
 export home=$HOME
 export hhome=/user/willir31
 
-# default to case-insensitive search in `less`
-export LESS="-i -R"
+# LESS options:
+#   -i: case-insensitive search
+#   -R: show bash colors
+#   -N: auto-number lines
+#   -S: don't wrap lines
+export LESS="-i -R -N -S"
 
 if which brew &> /dev/null; then
   export cellar=$(brew --prefix)/Cellar
