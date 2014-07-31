@@ -129,8 +129,8 @@ export data=$sinai/data
 export guac=$sinai/guacamole
 
 # rm this temporarily; trying to use jenv instead...
-java_home_cmd="/usr/libexec/java_home"
 jenv_version=$(jenv version | grep -o '1\.[0-9]*')
+export java_home_cmd="/usr/libexec/java_home"
 if [ -x "$java_home_cmd" ]; then
     echo "Setting java version from jenv: $jenv_version"
     export JAVA_HOME=$($java_home_cmd -v $jenv_version)
