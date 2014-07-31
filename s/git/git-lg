@@ -43,8 +43,10 @@ class CommitInfos:
 
         delimiter = '|||'
 
-        pieces = map(lambda name: Pieces[name], [
-                     'refnames', 'hash', 'reldate', 'author', 'date', 'description'])
+        pieces = map(
+            lambda name: Pieces[name],
+            [ 'refnames', 'hash', 'reldate', 'author', 'date', 'description' ]
+        )
 
         cmd = [
             'git',
@@ -57,6 +59,9 @@ class CommitInfos:
         ]
 
         out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
+        if err:
+            raise Exception(err)
+
         lines = out.splitlines()
 
         self.cis = []
