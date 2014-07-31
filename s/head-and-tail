@@ -1,13 +1,17 @@
 #!/bin/bash
 
+#awk_arg=10
 arg=
 if [ $# -eq 1 ]; then
   if isnum $1; then
     arg="-n $1"
+    #awk_arg=$1
+    shift
   fi
 fi
 
 # awesome: http://stackoverflow.com/questions/8624669/unix-head-and-tail-of-file#comment30444236_8624829
-{ tee >((head $arg; echo '') >&2) | tail $arg; } 2>&1
+{ tee >( ( head $arg; echo '' ) >&2; cat >/dev/null ) | tail $arg; } 2>&1
 
-# (head $arg; echo ''; tail $arg)
+# also neat: http://stackoverflow.com/a/8624857
+#awk -v offset=$awk_arg '{ if (NR <= offset) print; else { a[NR] = $0; delete a[NR-offset] } } END { for (i=NR-offset+1; i<=NR; i++) print a[i] }' $@
