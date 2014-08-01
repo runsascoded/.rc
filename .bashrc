@@ -130,8 +130,14 @@ export guac=$sinai/guacamole
 
 # rm this temporarily; trying to use jenv instead...
 export java_home_cmd="/usr/libexec/java_home"
-jenv_version=$(jenv version | grep --color=none -o '1\.[0-9]*')
 if [ -x "$java_home_cmd" ]; then
+
+    if which jenv &> /dev/null; then
+      jenv_version=$(jenv version | grep --color=none -o '1\.[0-9]*')
+    else
+      jenv_version=1.8
+    fi
+
     echo "Setting java version from jenv: $jenv_version"
     export JAVA_HOME=$($java_home_cmd -v $jenv_version)
     echo "Set: $JAVA_HOME"
