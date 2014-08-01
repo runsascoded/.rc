@@ -7,7 +7,6 @@
         status  = auto
         branch  = auto
 	grep = always
-	log = auto
 
 [color "diff"]
        meta = yellow bold
