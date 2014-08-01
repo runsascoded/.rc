@@ -276,12 +276,21 @@ export PATH="$HOME:$PATH"
 export home=$HOME
 export hhome=/user/willir31
 
-# LESS options:
-#   -i: case-insensitive search
-#   -R: show bash colors
-#   -N: auto-number lines
-#   -S: don't wrap lines
-export LESS="-i -R -N -S"
+### LESS options ###
+export LESS=
+
+# case-insensitive search
+export LESS="$LESS -i"
+
+# show bash colors
+export LESS="$LESS -R"
+
+# auto-number lines
+export LESS="$LESS -N"
+
+# don't wrap lines
+export LESS="$LESS -S"
+
 
 if which brew &> /dev/null; then
   export cellar=$(brew --prefix)/Cellar
