@@ -58,3 +58,5 @@
 	rebase = true
 [branch]
 	autosetuprebase = always
+[core]
+	pager = less
