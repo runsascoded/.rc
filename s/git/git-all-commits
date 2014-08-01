@@ -1,4 +1,8 @@
 #!/bin/bash
 
-git rev-list --all --format="%h %d (%ar) - %s" | grep -v '^commit '
+if [ $# -gt 0 ]; then
+  git rev-list --all --format="%h %d (%ar) - %s" | grep -v '^commit '
+else
+  git rev-list --all
+fi
 
