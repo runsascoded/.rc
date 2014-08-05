@@ -329,7 +329,7 @@ alias n="echo no"
 
 set-java() {
   export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-  jenv_version=$(jenv versions | grep -o "[^ ]*$1[^ ]*")
+  jenv_version=$(jenv versions | grep --color=never -o "[^ ]*$1[^ ]*")
   if [ $? -eq 0 ]; then
     echo "Found $jenv_version"
     jenv global $jenv_version
