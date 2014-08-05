@@ -257,6 +257,7 @@ alias gf="git fetch"
 alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsp="git stash pop"
+alias gsh="gn sh"
 
 alias rscr="screen -r -S"
 alias dscr="screen -D -S"
