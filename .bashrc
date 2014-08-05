@@ -95,7 +95,7 @@ try_source "$HOME/.gitcomplete"
 # Set colorful prompt
 source $HOME/s/prompt_colors
 export PS1="$On_IYellow$BIBlack \t $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
-export PROMPT_COMMAND='echo -ne "\033]1;$(basename $(pwd))$(__git_ps1 :%s)\007"'
+export PROMPT_COMMAND='echo -ne "\033]1;$(basename $(pwd | sed "s|$HOME|~|"))\007"'
 
 # Export bash colors
 source $HOME/s/bash_colors
