@@ -23,6 +23,8 @@
 !s/git/util/*
 !s/hadoop
 !s/hadoop/*
+!s/hammerlab
+!s/hammerlab/*
 !s/py
 !s/py/*
 *~

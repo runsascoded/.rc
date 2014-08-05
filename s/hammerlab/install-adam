@@ -1,0 +1,49 @@
+#!/bin/bash
+
+adam_project="$1"
+if [ "$adam_project" != "core" -a "$adam_project" != "cli" -a "$adam_project" != "apis" ]; then
+  echo "Usage: $0 <core|cli|apis>"
+  exit 1
+fi
+
+adam_project="adam-${adam_project}"
+
+if [ ! "$ADAM" ]; then
+  echo "Set the \$ADAM environment variable to the local path to an ADAM checkout."
+  exit 1
+fi
+
+jars=$(find $ADAM/${adam_project}/target -maxdepth 1 -name '*.jar' | grep -v '\-tests\.jar$')
+num_jars=$(count $jars)
+jar=
+if [ $num_jars -eq 1 ]; then
+  jar="$jars"
+else
+  echo "Found $count jars; choose one:"
+  select selected_jar in $jars; do
+    jar="$selected_jar"
+    break
+  done
+fi
+
+version="${jar##*${adam_project}-}"
+version="${version%%.jar}"
+
+echo "Got jar: $jar (version: $version)"
+md5 $jar
+
+echo "Before:"
+md5 $HOME/.m2/repository/org/bdgenomics/adam/${adam_project}/${version}/${adam_project}-${version}.jar
+
+set -v
+mvn install:install-file \
+  -Dfile=$jar \
+  -DgroupId=org.bdgenomics.adam \
+  -DartifactId=${adam_project} \
+  -Dversion=$version -Dpackaging=jar
+set +v
+
+echo "After:"
+md5 $HOME/.m2/repository/org/bdgenomics/adam/${adam_project}/${version}/${adam_project}-${version}.jar
+
+
