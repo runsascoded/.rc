@@ -47,6 +47,8 @@ export USE_LIBPCRE=yes
 alias chomd="chmod"
 alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
 
+alias e="echo"
+
 alias grp="ggrep"
 
 export GREP_OPTIONS="--color=always"
@@ -318,6 +320,9 @@ alias sc="./fs sc"
 alias lbg="gfl; ./fs bg"
 alias gcd="g cd"
 alias rsrc="source ~/.bashrc"
+
+alias y="echo yes"
+alias n="echo no"
 
 set-java() {
   export JAVA_HOME=$(/usr/libexec/java_home -v $1)
