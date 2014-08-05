@@ -277,6 +277,9 @@ export PATH="$HOME:$PATH"
 
 export home=$HOME
 export hhome=/user/willir31
+export hh=/user/willir31
+export ADAM="$HOME/c/adam"
+export m2adam="$m2/org/bdgenomics/adam"
 
 ### LESS options ###
 export LESS=
