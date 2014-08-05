@@ -1,4 +1,6 @@
 #!/bin/bash
 
-jar xf $1 $2 && less $2
+#jar xf $1 $2 && less $2
+jar tf "$@" | less
+
 
