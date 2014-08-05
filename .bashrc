@@ -93,11 +93,12 @@ try_source "/etc/bash_completion"
 try_source "$HOME/.gitcomplete"
 
 # Set colorful prompt
-source ~/s/prompt_colors
+source $HOME/s/prompt_colors
 export PS1="$On_IYellow$BIBlack \t $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
+export PROMPT_COMMAND='echo -ne "\033]1;$(basename $(pwd))$(__git_ps1 :%s)\007"'
 
 # Export bash colors
-source ~/s/bash_colors
+source $HOME/s/bash_colors
 
 
 export EIP="184.73.189.241"
