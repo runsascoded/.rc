@@ -66,7 +66,7 @@ export HISTFILESIZE=1000000
 shopt -s histappend
 export PROMPT_COMMAND="history -a"
 
-source ~/.git-completion.bash
+source $HOME/.git-completion.bash
 
 alias hn="history -n"
 alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
