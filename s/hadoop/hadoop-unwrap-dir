@@ -1,0 +1,23 @@
+#!/bin/bash
+
+dir="$1"
+num_files="$(hadoop-count "$dir/part-*")"
+if [ "$num_files" -ne 1 ]; then
+  echo "Found $num_files files of the form \"$dir/part-*\", expected one"
+  exit 1
+fi
+
+part_file_path=$(h ls "$dir/part-*" | tail -n +2 | col -1)
+echo "Found 'part' file: $part_file_path"
+
+part_file_base=$(basename "$part_file_path")
+
+echo "Moving $dir to $dir.bak"
+h mv "$dir" "$dir.bak"
+
+echo "Moving $dir.bak/$part_file_base to $dir"
+h mv "$dir.bak/$part_file_base" "$dir"
+
+h rm -r "$dir.bak"
+
+

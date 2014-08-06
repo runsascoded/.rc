@@ -1,0 +1,3 @@
+#!/bin/bash
+
+h ls "$@" | head -n 1 | sed -n 's/Found \([0-9]*\) items/\1/p'
