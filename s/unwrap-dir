@@ -2,7 +2,7 @@
 
 # "Unwrap" Hadoop-generated directories with only one "part" (per-shard output file) in them.
 
-for dir in $@; do
+for dir in "$@"; do
   dir=${dir%/}
   if [ ! -d $dir ]; then
     echo "Not a dir: $dir. Skipping.."
