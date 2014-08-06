@@ -144,6 +144,8 @@ if [ -x "$java_home_cmd" ]; then
     echo "Setting java version from jenv: $jenv_version"
     export JAVA_HOME=$($java_home_cmd -v $jenv_version)
     echo "Set: $JAVA_HOME"
+
+    export JAVA6_HOME=$($java_home_cmd -v 1.6)
 fi
 
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
