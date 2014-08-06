@@ -164,9 +164,11 @@ export tjcf=test/jvm/com/foursquare
 # Env vars
 export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:$HOME/s/git:$HOME/s/git/aliases:$HOME/s/hadoop:$HOME/s/hammerlab:/sbin:/sw/bin"
 export EDITOR=emacs
-if [ ! -z "$(which meld 2> /dev/null)" ]; then
+if $(which -s mld); then
+    export DIFF=mld
+elif $(which -s meld); then
     export DIFF=meld
-#elif [ ! -z "$(which opendiff)" ]; then
+#elif $(which opendiff); then
 #    export DIFF=opendiff
 fi
 
