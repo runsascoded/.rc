@@ -282,10 +282,27 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME:$PATH"
 
 export home=$HOME
-export hhome=/user/willir31
-export hh=/user/willir31
+
+export hhome="/user/willir31"
+export hh="$hhome"
+export hdfs="hdfs://demeter-nn1.demeter.hpc.mssm.edu"
+export Hhome="${hdfs}${hhome}"
+export Hh="${hdfs}${hh}"
+export HH="$Hh"
+
+export hdata="${hh}/data"
+export Hdata="${hdfs}${hdata}"
+
+export h100k="${hdata}/100k"
+export H100k="${hdfs}${h100k}"
+
+export hout="${h100k}/out"
+export Hout="${hdfs}${hout}"
+
 export ADAM="$HOME/c/adam"
 export m2adam="$m2/org/bdgenomics/adam"
+
+export PICARD="$HOME/c/picard"
 
 ### LESS options ###
 export LESS=
