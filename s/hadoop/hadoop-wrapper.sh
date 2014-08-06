@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if [ ! $(which hadoop) ]; then
+if [ "$HOSTNAME" == demeter* ]; then
 
-  ssh demeter "hadoop fs -${@}"
+  hadoop fs -"$@"
 
 else
 
-  hadoop fs -${@}
+  ssh demeter "hadoop fs -${@}"
 
 fi
