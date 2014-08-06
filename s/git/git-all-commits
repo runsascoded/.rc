@@ -1,8 +1,10 @@
 #!/bin/bash
 
-if [ $# -gt 0 ]; then
-  git rev-list --all --format="%h %d (%ar) - %s" | grep -v '^commit '
+if [ $# -eq 0 ]; then
+  format="%h %d (%ar) - %s"
 else
-  git rev-list --all
+  format="$1"
 fi
+
+git rev-list --all --format="$format" | grep -v '^commit '
 
