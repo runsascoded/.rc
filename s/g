@@ -2,4 +2,4 @@
 
 # Wrapper for git
 
-git $@
+git "$@"
