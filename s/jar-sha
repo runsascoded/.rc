@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+jar-shas "$1" | shasum
+#jar="$(realpath "$1")"
+#
+#tmpdir="$(tmpfile)"
+#mkdir "$tmpdir"
+#cd "$tmpdir"
+#jar xf "$jar"
+#find . | xargs shasum 2> /dev/null | shasum
+#
+#rm -rf "$tmpdir"

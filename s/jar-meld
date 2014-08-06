@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <jar 1> <jar 2>"
+  exit 1
+fi
+
+jar1="$1"
+jar2="$2"
+
+if [ ! "$DIFF" ]; then
+  DIFF=mld
+fi
+
+$DIFF <(jar-shas "$jar1") <(jar-shas "$jar2")
