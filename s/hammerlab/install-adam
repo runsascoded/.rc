@@ -29,21 +29,6 @@ fi
 version="${jar##*${adam_project}-}"
 version="${version%%.jar}"
 
-echo "Got jar: $jar (version: $version)"
-md5 $jar
+repo_path="$HOME/.m2/repository/org/bdgenomics/adam"
 
-echo "Before:"
-md5 $HOME/.m2/repository/org/bdgenomics/adam/${adam_project}/${version}/${adam_project}-${version}.jar
-
-set -v
-mvn install:install-file \
-  -Dfile=$jar \
-  -DgroupId=org.bdgenomics.adam \
-  -DartifactId=${adam_project} \
-  -Dversion=$version -Dpackaging=jar
-set +v
-
-echo "After:"
-md5 $HOME/.m2/repository/org/bdgenomics/adam/${adam_project}/${version}/${adam_project}-${version}.jar
-
-
+mvn-install "$jar" "$version" "org.bdgenomics.adam" "${adam_project}" "$repo_path"

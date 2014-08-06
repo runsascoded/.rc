@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if [ $# -lt 5 ]; then
+  echo "Usage: $0 <jar> <version> <group id> <artifact id> <maven repo path>"
+  exit 1
+fi
+
+jar="$1"
+version="$2"
+group_id="$3"
+artifact_id="$4"
+mvn_group_dir="$5"
+
+print_jar_shas() {
+  echo "$1:"
+  if [ -f "$2" ]; then
+    echo -e "\t$(shasum "$2")"
+    echo -e "\tJar contents SHA: $(jar-sha "$2")"
+  else
+    echo -e "\t(doesn't exist): $2"
+  fi
+  echo ''
+}
+
+print_jar_shas "Installing jar $jar (version: $version)" "$jar"
+
+if [ "$mvn_group_dir" ]; then
+  dest_path="$mvn_group_dir/${artifact_id}/${version}/${artifact_id}-${version}.jar"
+
+  print_jar_shas "Existing maven jar" "$dest_path"
+fi
+
+set -v
+mvn install:install-file \
+  -Dfile=$jar \
+  -DgroupId=$group_id \
+  -DartifactId=$artifact_id \
+  -Dversion=$version -Dpackaging=jar
+set +v
+
+if [ "$mvn_group_dir" ]; then
+  if [ ! -f "$dest_path" ]; then
+    echo "Error: expected path $dest_path to exist post-maven-install."
+    exit 1
+  fi
+
+  print_jar_shas "After" "$dest_path"
+fi
+
+
