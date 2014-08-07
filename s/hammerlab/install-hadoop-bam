@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+if [ ! "$HADOOP_BAM" ]; then
+  echo "Must point env var \$HADOOP_BAM at the root of a hadoop-bam checkout."
+  exit 1
+fi
+
+artifact="hadoop-bam"
+version="6.2"
+
+jar="$HADOOP_BAM/target/$artifact-$version.jar"
+
+group_id="fi.tkk.ics.hadoop.bam"
+
+mvn-install "$jar" "$version" "$group_id" "$artifact" "$HOME/.m2/repository/fi/tkk/ics/hadoop/bam"
+
