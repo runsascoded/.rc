@@ -22,6 +22,11 @@ print_jar_shas() {
   echo ''
 }
 
+if [ ! -f "$jar" ]; then
+  echo "Couldn't find jar: $jar"
+  exit 1
+fi
+
 print_jar_shas "Installing jar $jar (version: $version)" "$jar"
 
 if [ "$mvn_group_dir" ]; then
