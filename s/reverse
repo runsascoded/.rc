@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ $# -gt 0 ]; then
-    arg=$1
+    arg="$1"
     shift
-    reverse $@
-    echo $arg
+    reverse "$@"
+    echo "$arg"
 fi
