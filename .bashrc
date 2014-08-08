@@ -162,7 +162,7 @@ export tjcf=test/jvm/com/foursquare
 
 
 # Env vars
-export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:$HOME/s/git:$HOME/s/git/aliases:$HOME/s/hadoop:$HOME/s/hammerlab:/sbin:/sw/bin"
+export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:$HOME/s/git:$HOME/s/git/aliases:$HOME/s/hadoop:$HOME/s/hammerlab:$HOME/s/mvn:/sbin:/sw/bin"
 
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
