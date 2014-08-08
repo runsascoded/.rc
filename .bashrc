@@ -249,13 +249,14 @@ alias pg="ps aux | grep"
 alias es="emerge --search"
 
 # Git aliases
-if [ -z "$DIFF" ]; then
-    alias gd="git diff"
-else
-    alias gd="git difftool -y -t $DIFF"
-fi
-alias gln="git lg"
+#if [ -z "$DIFF" ]; then
+#    alias gd="git diff"
+#else
+#    alias gd="git difftool -y -t $DIFF"
+#fi
+alias gd="git diff"
 alias gdc="gd --cached"
+alias gln="git lg"
 alias gs="git status"
 alias gb="g b"
 alias gl="git lg"
