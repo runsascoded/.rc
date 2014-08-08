@@ -167,6 +167,7 @@ export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:$HOM
 export PATH="${PATH}:$HOME/s/diff-helpers"
 export PATH="${PATH}:$HOME/s/head-tail-helpers"
 export PATH="${PATH}:$HOME/s/jar-utils"
+export PATH="${PATH}:$HOME/s/ls-helpers"
 export PATH="${PATH}:$HOME/s/perl"
 export PATH="${PATH}:$HOME/s/returncode-helpers"
 
