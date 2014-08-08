@@ -265,9 +265,12 @@ alias gc="git commit -a"
 alias grt=". ~/s/git-root"
 alias gr="git remote -vv"
 alias gf="git fetch"
+
 alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsp="git stash pop"
+
+# git-show-short
 alias gsh="gn sh"
 
 alias rscr="screen -r -S"
