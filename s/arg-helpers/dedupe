@@ -36,7 +36,7 @@ elif [ $num_args -gt $num_unique_args ]; then
 
   while read -r arg; do
     echo "$args" | grep --color=never -n "^$arg\$" | head -n 1
-  done <<< "$sorted_unique_args" | sort -t: -nk1 | col -i : 1
+  done <<< "$sorted_unique_args" | sort -t: -nk1 | awk -F':' '{print $2}'
 
 else
 
