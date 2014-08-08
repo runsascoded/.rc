@@ -170,9 +170,9 @@ if whch meld; then
 fi
 
 export EDITOR=emacs
-if [ ! -z "$(which mld 2> /dev/null)" ]; then
+if whch mld; then
     export DIFF=mld
-elif [ ! -z "$(which meld 2> /dev/null)" ]; then
+elif whch meld; then
     export DIFF=meld
 #elif $(which opendiff); then
 #    export DIFF=opendiff
