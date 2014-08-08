@@ -164,6 +164,7 @@ export tjcf=test/jvm/com/foursquare
 # Env vars
 export PATH=${PATH}":/opt/google/depot_tools:/usr/sbin:/usr/include:$HOME/s:$HOME/s/git:$HOME/s/git/aliases:$HOME/s/hadoop:$HOME/s/hammerlab:$HOME/s/mvn:/sbin:/sw/bin"
 
+export PATH="${PATH}:$HOME/s/case-helpers"
 export PATH="${PATH}:$HOME/s/diff-helpers"
 export PATH="${PATH}:$HOME/s/head-tail-helpers"
 export PATH="${PATH}:$HOME/s/jar-utils"
