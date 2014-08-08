@@ -1,5 +1,0 @@
-#!/bin/sh
-
-cut -f 1 $1 > /tmp/$1
-cut -f 1 $2 > /tmp/$2
-diff /tmp/$1 /tmp/$2
