@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+  xargs "$0"
+  exit $?
+fi
+
+rev_helper() {
+  if [ $# -eq 0 ]; then
+    return 0
+  fi
+  local arg="$1"
+  shift
+  rev_helper "$@"
+  echo "$arg"
+}
+
+rev_helper "$@"

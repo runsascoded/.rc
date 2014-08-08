@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  xargs "$0"
+  exit $?
+fi
+
+for arg in "$@"; do
+  echo "$arg" | perl -pe "s/^\s*(.*?)\s*$/\1\n/"
+done
