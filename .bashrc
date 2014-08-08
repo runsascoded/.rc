@@ -171,6 +171,7 @@ export PATH="${PATH}:$HOME/s/head-tail-helpers"
 export PATH="${PATH}:$HOME/s/jar-utils"
 export PATH="${PATH}:$HOME/s/ls-helpers"
 export PATH="${PATH}:$HOME/s/perl"
+export PATH="${PATH}:$HOME/s/py"
 export PATH="${PATH}:$HOME/s/returncode-helpers"
 export PATH="${PATH}:$HOME/s/which-helpers"
 
@@ -289,7 +290,7 @@ alias gsh="gn sh"
 alias rscr="screen -r -S"
 alias dscr="screen -D -S"
 
-export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$HOME/s/py:$HOME/s/git:/Library/Python/2.7/site-packages:$PYTHONPATH"
+export PYTHONPATH="$HOME/c/mongo-python-driver/:$HOME/s:$HOME/s/py:$HOME/s/git:$HOME/s/git/util:/Library/Python/2.7/site-packages:$PYTHONPATH"
 
 export MIRROR_REMOTES="devbox,rpi,demeter"
 
