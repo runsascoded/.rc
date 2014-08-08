@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo -n "a"
-echo -n "b"
-echo "c"
