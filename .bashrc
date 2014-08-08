@@ -392,3 +392,18 @@ set-java() {
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
 
 export M="$HOME/.m2/repository"
+
+path_segments=$(echo "$PATH" | splt :)
+num_path_segments=$(echo "$path_segments" | wc -l | trim)
+
+sorted_unique_path_segments=$(echo "$PATH" | splt : | sort | uniq)
+num_unique_num_path_segments=$(echo "$sorted_unique_path_segments" | wc -l | trim)
+
+if [ $num_path_segments -ne $num_unique_num_path_segments ]; then
+  echo "Deduping \$PATH variable from $num_path_segments segments down to $num_unique_num_path_segments..."
+
+  #echo "Before PATH: $PATH"
+  export PATH="$(echo $PATH | splt : | dedupe | joyn :)"
+  #echo "After PATH: $PATH"
+fi
+
