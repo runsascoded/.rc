@@ -25,6 +25,8 @@
 !s/hadoop/*
 !s/hammerlab
 !s/hammerlab/*
+!s/mld-dir
+!s/mld-dir/*
 !s/py
 !s/py/*
 *~
