@@ -170,6 +170,7 @@ export PATH="${PATH}:$HOME/s/jar-utils"
 export PATH="${PATH}:$HOME/s/ls-helpers"
 export PATH="${PATH}:$HOME/s/perl"
 export PATH="${PATH}:$HOME/s/returncode-helpers"
+export PATH="${PATH}:$HOME/s/which-helpers"
 
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
