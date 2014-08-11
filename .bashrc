@@ -326,6 +326,8 @@ export Hout="${hdfs}${hout}"
 export ADAM="$HOME/c/adam"
 export m2adam="$m2/org/bdgenomics/adam"
 
+export SPARK="$HOME/c/spark"
+
 export PICARD="$HOME/c/picard"
 export HADOOP_BAM="$HOME/c/hadoop-bam"
 

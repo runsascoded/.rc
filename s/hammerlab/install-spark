@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! "$SPARK" ]; then
+  echo "Set the \$SPARK environment variable to the local path of a spark source directory checkout."
+  exit 1
+fi
+
+mvn-install "$jar" "1.0.0" "org.apache.spark" "spark-core_2.10"
