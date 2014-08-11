@@ -5,4 +5,9 @@ if [ ! "$SPARK" ]; then
   exit 1
 fi
 
-mvn-install "$jar" "1.0.0" "org.apache.spark" "spark-core_2.10"
+group="org.apache.spark"
+artifact="spark-core_2.10"
+version="1.0.0"
+jar="$SPARK/core/target/${artifact}-${version}.jar"
+
+mvn-install "$jar" "$version" "$group" "$artifact"
