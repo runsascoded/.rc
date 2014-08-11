@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -lt 5 ]; then
-  echo "Usage: $0 <jar> <version> <group id> <artifact id> <maven repo path>"
+if [ $# -lt 4 ]; then
+  echo "Usage: $0 <jar> <version> <group id> <artifact id> <maven repo path to group>"
   exit 1
 fi
 
@@ -9,7 +9,11 @@ jar="$1"
 version="$2"
 group_id="$3"
 artifact_id="$4"
-mvn_group_dir="$5"
+if [ "$5" ]; then
+  mvn_group_dir="$5"
+else
+  mvn_group_dir="$(echo $group_id | sed "s/\./\//g")"
+fi
 
 print_jar_shas() {
   echo "$1:"
@@ -37,10 +41,10 @@ fi
 
 set -v
 mvn install:install-file \
-  -Dfile=$jar \
-  -DgroupId=$group_id \
-  -DartifactId=$artifact_id \
-  -Dversion=$version -Dpackaging=jar
+  -Dfile="$jar" \
+  -DgroupId="$group_id" \
+  -DartifactId="$artifact_id" \
+  -Dversion="$version" -Dpackaging=jar
 set +v
 
 if [ "$mvn_group_dir" ]; then
