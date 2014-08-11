@@ -378,6 +378,8 @@ alias rsrc="source ~/.bashrc"
 alias y="echo yes"
 alias n="echo no"
 
+alias dush="du -s -h"
+
 set-java() {
   export JAVA_HOME=$(/usr/libexec/java_home -v $1)
   jenv_version=$(jenv versions | grep --color=never -o "[^ ]*$1[^ ]*")
