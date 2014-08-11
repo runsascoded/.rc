@@ -1,34 +1,51 @@
 #!/bin/bash
 
-adam_project="$1"
-if [ "$adam_project" != "core" -a "$adam_project" != "cli" -a "$adam_project" != "apis" ]; then
-  echo "Usage: $0 <core|cli|apis>"
-  exit 1
-fi
+install-adam-project() {
+  adam_project="$1"
 
-adam_project="adam-${adam_project}"
+  if [ "$adam_project" != "core" -a "$adam_project" != "cli" -a "$adam_project" != "apis" ]; then
+    echo "Usage: $0 <core|cli|apis>+"
+    exit 1
+  fi
 
-if [ ! "$ADAM" ]; then
-  echo "Set the \$ADAM environment variable to the local path to an ADAM checkout."
-  exit 1
-fi
+  if [ ! "$ADAM" ]; then
+    echo "Set the \$ADAM environment variable to the local path to an ADAM checkout."
+    exit 1
+  fi
 
-jars=$(find $ADAM/${adam_project}/target -maxdepth 1 -name '*.jar' | grep -v '\-tests\.jar$')
-num_jars=$(count $jars)
-jar=
-if [ $num_jars -eq 1 ]; then
-  jar="$jars"
-else
-  echo "Found $count jars; choose one:"
-  select selected_jar in $jars; do
-    jar="$selected_jar"
-    break
-  done
-fi
+  adam_project="adam-${adam_project}"
+  echo "Installing $adam_project into maven..."
 
-version="${jar##*${adam_project}-}"
-version="${version%%.jar}"
+  stat_fmt="$(echo -e "%Sm\t%z\t%N")"
+  date_fmt="%Y/%m/%d-%H:%M:%S"
+  jars="$(stat -t "$date_fmt" -f "$stat_fmt" "$ADAM/${adam_project}"/target/*.jar | grep -v '\-tests.jar$')"
 
-repo_path="$HOME/.m2/repository/org/bdgenomics/adam"
+  num_jars=$(echo "$jars" | wc -l | trim)
 
-mvn-install "$jar" "$version" "org.bdgenomics.adam" "${adam_project}" "$repo_path"
+  jar=
+  if [ $num_jars -eq 1 ]; then
+    jar="$jars"
+  else
+    PS3="Found $num_jars jars; choose one:"
+    OLD_IFS="$IFS"
+    IFS=$'\n'
+    select selected_jar in $jars; do
+      jar="$selected_jar"
+      break
+    done
+    IFS="$OLD_IFS"
+  fi
+
+  jar="$(echo "$jar" | perl -pe 's/.*\t//')"
+
+  version="${jar##*${adam_project}-}"
+  version="${version%%.jar}"
+
+  repo_path="$HOME/.m2/repository/org/bdgenomics/adam"
+
+  mvn-install "$jar" "$version" "org.bdgenomics.adam" "${adam_project}"
+}
+
+for arg in $@; do
+  install-adam-project "$arg"
+done
