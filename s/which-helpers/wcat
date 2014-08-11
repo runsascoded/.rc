@@ -1,3 +1,8 @@
 #!/bin/sh
 
-cat $(which $@)
+w=$(which $@)
+if [ $? -ne 0 ]; then
+  echo "Not found"
+  exit 1
+fi
+cat "$w"
