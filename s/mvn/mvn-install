@@ -12,7 +12,7 @@ artifact_id="$4"
 if [ "$5" ]; then
   mvn_group_dir="$5"
 else
-  mvn_group_dir="$(echo $group_id | sed "s/\./\//g")"
+  mvn_group_dir="$HOME/.m2/repository/$(echo $group_id | sed "s/\./\//g")"
 fi
 
 print_jar_shas() {
