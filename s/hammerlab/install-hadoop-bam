@@ -14,5 +14,5 @@ jar="$HADOOP_BAM/target/$artifact-$version.jar"
 
 group_id="fi.tkk.ics.hadoop.bam"
 
-mvn-install "$jar" "$version" "$group_id" "$artifact" "$HOME/.m2/repository/fi/tkk/ics/hadoop/bam"
+mvn-install "$jar" "$version" "$group_id" "$artifact"
 

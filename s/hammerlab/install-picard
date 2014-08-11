@@ -19,7 +19,7 @@ install-picard-facet() {
     exit 1
   fi
 
-  mvn-install "$jarpath" "$version" "$1" "$1" "$HOME/.m2/repository/$1"
+  mvn-install "$jarpath" "$version" "$1" "$1"
 }
 
 if [ $# -gt 0 ]; then
