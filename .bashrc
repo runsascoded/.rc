@@ -227,22 +227,6 @@ export HADOOP_BAM="$HOME/c/hadoop-bam"
 alias gdos="guacamole-demeter-over-ssh"
 
 
-### LESS options ###
-export LESS=
-
-# case-insensitive search
-export LESS="$LESS -i"
-
-# show bash colors
-export LESS="$LESS -R"
-
-# auto-number lines
-export LESS="$LESS -N"
-
-# don't wrap lines
-export LESS="$LESS -S"
-
-
 if which brew &> /dev/null; then
   export cellar=$(brew --prefix)/Cellar
 fi
@@ -290,6 +274,7 @@ try_source "$HOME/.foursquarerc"
 
 
 try_source ".colors-rc"
+try_source ".less-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
 try_source ".grep-rc"

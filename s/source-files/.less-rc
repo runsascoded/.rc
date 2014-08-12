@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# LESS options; source me from .bashrc!
+export LESS=
+
+# case-insensitive search
+export LESS="$LESS -i"
+
+# show bash colors
+export LESS="$LESS -R"
+
+# auto-number lines
+export LESS="$LESS -N"
+
+# don't wrap lines
+export LESS="$LESS -S"
+
+
