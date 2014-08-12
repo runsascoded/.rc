@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Navigation aliases
+alias c=". ~/s/c"
+alias s="pushd .; cd ~/s"
+alias go="pushd .; cd"
+
+alias u="cd .."
+alias uu="cd ../.."
+alias uuu="cd ../../.."
+alias uuuu="cd ../../../.."
+alias psh="pushd ."
+alias pop="popd"
+alias p="popd"
+alias b="popd"
+
+

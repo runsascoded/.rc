@@ -134,21 +134,6 @@ alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i <
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
 
 
-# Navigation aliases
-alias c=". ~/s/c"
-alias s="pushd .; cd ~/s"
-alias go="pushd .; cd"
-
-alias u="cd .."
-alias uu="cd ../.."
-alias uuu="cd ../../.."
-alias uuuu="cd ../../../.."
-alias psh="pushd ."
-alias pop="popd"
-alias p="popd"
-alias b="popd"
-
-
 # `ls` aliases
 alias ll="ls -l"
 alias la="ls -a"
@@ -337,6 +322,7 @@ try_source ".java-rc"
 try_source ".js-rc"
 try_source ".keychain-rc"
 try_source ".locale-rc"
+try_source ".nav-rc"
 try_source ".postgres-rc"
 try_source ".rpi-rc"
 try_source ".source-rc"
