@@ -15,6 +15,7 @@ fi
 
 
 # Path env-var shorthands
+export home="$HOME"
 export c="$HOME/c"
 export C="$c"
 
@@ -25,17 +26,42 @@ export SRCDIR="$s"
 export dl="$HOME/Downloads"
 export DL="$dl"
 
-# Add $HOME to $PATH
-export PATH="$HOME:$PATH"
-export home=$HOME
+append_to() {
+  var="$1"
+  shift
+  echo "$# args"
+  for arg in $@; do
+    if [ -d "$arg" ]; then
+      #echo "Appending $arg to var $var (currently $(eval "echo \$$var"))"
+      eval "export $var=$(eval "echo \$$var"):$arg"
+    elif [ "$VERBOSE" ]; then
+      echo "Not appending '$arg' to '\$$var'; '$arg' not a directory"
+      return 1
+    fi
+  done
+}
 
-PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+prepend_to() {
+  var="$1"
+  shift
+  for arg in $@; do
+    if [ -d "$arg" ]; then
+      #echo "Prepending $arg to var $var (currently $(eval "echo \$$var"))"
+      eval "export $var=$arg:$(eval "echo \$$var")"
+    elif [ "$VERBOSE" ]; then
+      echo "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
+      return 1
+    fi
+  done
+}
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+prepend_to_path() {
+  prepend_to PATH "$@"
+}
 
-# For brew
-export PATH="/usr/local/bin:$PATH"
+append_to_path() {
+  append_to PATH "$@"
+}
 
 
 # Sourcing
@@ -69,7 +95,7 @@ export TZ=UTC
 
 
 # Node
-export NODE_PATH="$NODE_PATH:."
+append_to NODE_PATH .
 
 
 # Grep options
@@ -126,51 +152,56 @@ fi
 
 export SCALA_HOME="/usr/local/Cellar/scala/2.10.3/libexec"
 export SCALA="$SCALA_HOME"
-export PATH="$PATH:$HOME/play-2.1.0"
 export ANDROID="$HOME/lib/android-sdk-mac_x86"
 
 
 # EC2 creds, paths
+export EC2_HOME="$HOME/.ec2"
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
-    export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
+    export EC2_PRIVATE_KEY=`ls "$EC2_HOME"/pk-*.pem`
 fi
 if [ -e "ls $EC2_HOME/cert-*.pem" ]; then
-    export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
+    export EC2_CERT=`ls "$EC2_HOME"/cert-*.pem`
 fi
-
-export EC2_HOME="$HOME/.ec2"
-export PATH="$PATH:$EC2_HOME/bin"
 
 
 # PATH initialization
-export PATH="${PATH}:/opt/google/depot_tools"
-export PATH="${PATH}:/usr/sbin"
-export PATH="${PATH}:/usr/include"
-export PATH="${PATH}:/sbin"
-export PATH="${PATH}:/sw/bin"
-export PATH="${PATH}:$HOME/bin"
+#append_to_path "/opt/google/depot_tools"
+append_to_path "/usr/sbin"
+append_to_path "/usr/include"
+append_to_path "/sbin"
+append_to_path "/sw/bin"
+append_to_path "$HOME/bin"
 
-export PATH="${PATH}:$s"
-export PATH="${PATH}:$s/arg-helpers"
-export PATH="${PATH}:$s/case-helpers"
-export PATH="${PATH}:$s/diff-helpers"
-export PATH="${PATH}:$s/git"
-export PATH="${PATH}:$s/git/aliases"
-export PATH="${PATH}:$s/hadoop"
-export PATH="${PATH}:$s/hammerlab"
-export PATH="${PATH}:$s/head-tail-helpers"
-export PATH="${PATH}:$s/jar-utils"
-export PATH="${PATH}:$s/ls-helpers"
-export PATH="${PATH}:$s/mvn"
-export PATH="${PATH}:$s/perl"
-export PATH="${PATH}:$s/py"
-export PATH="${PATH}:$s/returncode-helpers"
-export PATH="${PATH}:$s/which-helpers"
+append_to_path "$s"
+append_to_path "$s/arg-helpers"
+append_to_path "$s/case-helpers"
+append_to_path "$s/diff-helpers"
+append_to_path "$s/git"
+append_to_path "$s/git/aliases"
+append_to_path "$s/hadoop"
+append_to_path "$s/hammerlab"
+append_to_path "$s/head-tail-helpers"
+append_to_path "$s/jar-utils"
+append_to_path "$s/ls-helpers"
+append_to_path "$s/mvn"
+append_to_path "$s/perl"
+append_to_path "$s/py"
+append_to_path "$s/returncode-helpers"
+append_to_path "$s/which-helpers"
 
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
-  export PATH="${PATH}:$s/mld-dir";
+  append_to_path "$s/mld-dir";
 fi
+
+append_to_path "$HOME"  # Add $HOME to $PATH
+append_to_path "/usr/local/bin"  # For brew
+#append_to_path "$HOME/.rvm/bin"  # Add RVM to PATH for scripting
+#append_to_path "/usr/local/heroku/bin"  # Added by the Heroku Toolbelt
+#append_to_path "$HOME/play-2.1.0"
+#append_to_path "$EC2_HOME/bin"
+
 
 # $EDITOR, $DIFF
 export EDITOR=emacs
@@ -178,8 +209,6 @@ if whch mld; then
     export DIFF=mld
 elif whch meld; then
     export DIFF=meld
-#elif $(which opendiff); then
-#    export DIFF=opendiff
 fi
 
 
@@ -188,12 +217,12 @@ export PGDIR=/Applications/Postgres.app/Contents/MacOS
 export PGHOME=$PGDIR/bin
 #export PGDATA=$HOME/Library/Application\ Support/Postgres/var/
 export PGDATA=/usr/local/postgres9.3.1/data
-export PATH=${PATH}:$PGHOME
+append_to_path "$PGHOME"
 
 
 #export RUBYOPT=rubygems
-export GLOG_logtostderr=1
-export C_INCLUDE_PATH=/usr/local/include:$C_INCLUDE_PATH
+#export GLOG_logtostderr=1
+prepend_to "C_INCLUDE_PATH" "/usr/local/include"
 
 
 # Make aliases
@@ -303,13 +332,7 @@ alias gsl="gn sl"
 alias gss="g ss"
 
 export MIRROR_REMOTES="devbox,rpi,demeter"
-export PATH="$PATH:/usr/local/git/bin"
-
-#if [ -z "$DIFF" ]; then
-#    alias gd="git diff"
-#else
-#    alias gd="git difftool -y -t $DIFF"
-#fi
+#append_to_path "/usr/local/git/bin"
 
 
 # `screen` aliases
@@ -318,17 +341,17 @@ alias dscr="screen -D -S"
 
 
 # PYTHONPATH
-export PYTHONPATH="$PYTHONPATH:$HOME/c/mongo-python-driver/"
-export PYTHONPATH="$PYTHONPATH:/Library/Python/2.7/site-packages"
+append_to "PYTHONPATH" "$HOME/c/mongo-python-driver/"
+append_to "PYTHONPATH" "/Library/Python/2.7/site-packages"
 
-export PYTHONPATH="$PYTHONPATH:$s"
-export PYTHONPATH="$PYTHONPATH:$s/py"
-export PYTHONPATH="$PYTHONPATH:$s/git"
-export PYTHONPATH="$PYTHONPATH:$s/git/util"
+append_to "PYTHONPATH" "$s"
+append_to "PYTHONPATH" "$s/py"
+append_to "PYTHONPATH" "$s/git"
+append_to "PYTHONPATH" "$s/git/util"
 
 # Hammerlab internal-tools PYTHONPATH
-export PYTHONPATH="$PYTHONPATH:$ints/scripts/git"
-export PYTHONPATH="$PYTHONPATH:$ints/scripts/git/util"
+append_to "PYTHONPATH" "$ints/scripts/git"
+append_to "PYTHONPATH" "$ints/scripts/git/util"
 
 
 # Sinai path vars
@@ -347,7 +370,7 @@ export guac_tools="$ints/scripts/guacamole"
 export mvn_tools="$ints/scripts/mvn-utils"
 export jar_tools="$ints/scripts/jar-utils"
 
-export PATH="$PATH:$guac_tools:$mvn_tools:$jar_tools"
+append_to_path "$guac_tools" "$mvn_tools" "$jar_tools"
 
 # Sinai Hadoop/Demeter paths
 export hhome="/user/willir31"
