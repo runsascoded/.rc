@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Set up JAVA_HOME, jenv
+# rm this temporarily; trying to use jenv instead...
+export java_home_cmd="/usr/libexec/java_home"
+if [ -x "$java_home_cmd" ]; then
+
+    if which jenv &> /dev/null; then
+      jenv_version=$(jenv version | grep --color=none -o '1\.[0-9]*')
+    else
+      jenv_version=1.8
+    fi
+
+    debug "Setting java version from jenv: $jenv_version"
+    export JAVA_HOME=$($java_home_cmd -v $jenv_version)
+    debug "Set: $JAVA_HOME"
+
+    export JAVA6_HOME=$($java_home_cmd -v 1.6)
+fi
+
+export SCALA_HOME="/usr/local/Cellar/scala/2.10.3/libexec"
+export SCALA="$SCALA_HOME"
+export ANDROID="$HOME/lib/android-sdk-mac_x86"
+
+
+set-java() {
+  export JAVA_HOME=$(/usr/libexec/java_home -v $1)
+  jenv_version=$(jenv versions | grep --color=never -o "[^ ]*$1[^ ]*")
+  if [ $? -eq 0 ]; then
+    echo "Found $jenv_version"
+    jenv global $jenv_version
+    jenv shell $jenv_version
+  fi
+}
+

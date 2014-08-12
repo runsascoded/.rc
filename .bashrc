@@ -57,29 +57,6 @@ export RPIIP="192.168.1.106"
 alias srpi="ssh ryan@$RPIIP"
 
 
-# Set up JAVA_HOME, jenv
-# rm this temporarily; trying to use jenv instead...
-export java_home_cmd="/usr/libexec/java_home"
-if [ -x "$java_home_cmd" ]; then
-
-    if which jenv &> /dev/null; then
-      jenv_version=$(jenv version | grep --color=none -o '1\.[0-9]*')
-    else
-      jenv_version=1.8
-    fi
-
-    debug "Setting java version from jenv: $jenv_version"
-    export JAVA_HOME=$($java_home_cmd -v $jenv_version)
-    debug "Set: $JAVA_HOME"
-
-    export JAVA6_HOME=$($java_home_cmd -v 1.6)
-fi
-
-export SCALA_HOME="/usr/local/Cellar/scala/2.10.3/libexec"
-export SCALA="$SCALA_HOME"
-export ANDROID="$HOME/lib/android-sdk-mac_x86"
-
-
 # EC2 creds, paths
 export EC2_HOME="$HOME/.ec2"
 if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
@@ -365,16 +342,6 @@ alias a2v="adam adam2vcf"
 alias v2a="adam vcf2adam"
 
 
-set-java() {
-  export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-  jenv_version=$(jenv versions | grep --color=never -o "[^ ]*$1[^ ]*")
-  if [ $? -eq 0 ]; then
-    echo "Found $jenv_version"
-    jenv global $jenv_version
-    jenv shell $jenv_version
-  fi
-}
-
 dedupe_path_var PATH
 dedupe_path_var PYTHONPATH
 dedupe_path_var NODE_PATH
@@ -394,12 +361,14 @@ export PANTS_DEV=1
 alias sdr="ssh dev-ryan"
 alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
+
 try_source "$HOME/.foursquarerc"
 
 
 try_source ".colors-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
+try_source ".java-rc"
 try_source ".js-rc"
 try_source ".locale-rc"
 try_source ".rpi-rc"
