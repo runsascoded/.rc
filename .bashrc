@@ -496,18 +496,12 @@ alias bgsc="./fs bg && ./fs sc"
 alias sc="./fs sc"
 alias lbg="gfl; ./fs bg"
 alias mongo_test='mkdir /tmp/mongo-testdb; mongod --dbpath /tmp/mongo-testdb --maxConns 1500'
-#alias lpants='export BUILD_NUMBER=$(date +%y%m%d%H%M%S); echo "BUILD NUMBER: $BUILD_NUMBER"; time ./pants compile -u -x --mongo-hosts=localhost --mongo-port=27001 --mongo-db=pants --mongo-collection=timings'
 export sjcf=src/jvm/com/foursquare
 export tjcf=test/jvm/com/foursquare
 export PANTS_DEV=1
 alias sdr="ssh dev-ryan"
 alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
-#alias gfl="git fixlint"
 
 try_source "$HOME/.foursquarerc"
 
-
-# virtualenvwrapper
-#export WORKON_HOME=$HOME/Projects/virtualenvs
-#source /usr/local/bin/virtualenvwrapper.sh
 
