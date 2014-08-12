@@ -57,16 +57,6 @@ export RPIIP="192.168.1.106"
 alias srpi="ssh ryan@$RPIIP"
 
 
-# EC2 creds, paths
-export EC2_HOME="$HOME/.ec2"
-if [ -e "ls $EC2_HOME/pk-*.pem" ]; then
-    export EC2_PRIVATE_KEY=`ls "$EC2_HOME"/pk-*.pem`
-fi
-if [ -e "ls $EC2_HOME/cert-*.pem" ]; then
-    export EC2_CERT=`ls "$EC2_HOME"/cert-*.pem`
-fi
-
-
 # PATH initialization
 #append_to_path "/opt/google/depot_tools"
 append_to_path "/usr/sbin"
@@ -366,6 +356,7 @@ try_source "$HOME/.foursquarerc"
 
 
 try_source ".colors-rc"
+try_source ".ec2-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
