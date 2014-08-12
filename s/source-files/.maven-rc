@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Maven aliases
+alias mvnp="mvn package -DskipTests"
+alias mvncp="mvn clean package -DskipTests"
+
+export m2="$HOME/.m2/repository"
+export M="$m2"
+
+

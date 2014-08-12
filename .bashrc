@@ -228,14 +228,6 @@ alias gdos="guacamole-demeter-over-ssh"
 
 #[ -s "/Users/ryan/.scm_breeze/scm_breeze.sh" ] && source "/Users/ryan/.scm_breeze/scm_breeze.sh"
 
-# Maven aliases
-alias mvnp="mvn package -DskipTests"
-alias mvncp="mvn clean package -DskipTests"
-
-export m2="$HOME/.m2/repository"
-export M="$m2"
-
-
 # For ADAM
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
 export m2adam="$m2/org/bdgenomics/adam"
@@ -266,6 +258,7 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
 
 try_source "$HOME/.foursquarerc"
+try_source ".maven-rc"
 
 
 try_source ".brew-rc"
