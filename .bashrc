@@ -175,11 +175,6 @@ export MIRROR_REMOTES="devbox,rpi,demeter"
 #append_to_path "/usr/local/git/bin"
 
 
-# `screen` aliases
-alias rscr="screen -r -S"
-alias dscr="screen -D -S"
-
-
 # PYTHONPATH
 append_to "PYTHONPATH" "$HOME/c/mongo-python-driver/"
 append_to "PYTHONPATH" "/Library/Python/2.7/site-packages"
@@ -316,5 +311,6 @@ try_source ".ls-rc"
 try_source ".nav-rc"
 try_source ".postgres-rc"
 try_source ".rpi-rc"
+try_source ".screen-rc"
 try_source ".source-rc"
 
