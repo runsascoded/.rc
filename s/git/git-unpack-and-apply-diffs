@@ -51,8 +51,16 @@ if [ -s "$staged" ]; then
 
   git apply "$staged"
   git add .
-  git add -f $(cat "$added_files")
-  git rm -f $(cat "$deleted_files")
+
+  if [ -s "$added_files" ]; then
+    echo "Force adding files: $(cat "$added_files")"
+    git add -f -- $(cat "$added_files")
+  fi
+
+  if [ -s "$deleted_files" ]; then
+    echo "Force removing files: $(cat "$deleted_files")"
+    git rm -f -- $(cat "$deleted_files")
+  fi
 
   set +e
   echo "Resetting: $(cat "$tar_files_file")"
