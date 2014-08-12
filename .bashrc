@@ -85,7 +85,6 @@ try_source() {
     done
 }
 
-try_source "$HOME/.asanarc"
 try_source "$HOME/.rpi_bashrc"
 
 alias resource="unalias resource; source ~/.bashrc"
