@@ -29,10 +29,8 @@ export DL="$dl"
 append_to() {
   var="$1"
   shift
-  echo "$# args"
   for arg in $@; do
     if [ -d "$arg" ]; then
-      #echo "Appending $arg to var $var (currently $(eval "echo \$$var"))"
       eval "export $var=$(eval "echo \$$var"):$arg"
     elif [ "$VERBOSE" ]; then
       echo "Not appending '$arg' to '\$$var'; '$arg' not a directory"
@@ -46,7 +44,6 @@ prepend_to() {
   shift
   for arg in $@; do
     if [ -d "$arg" ]; then
-      #echo "Prepending $arg to var $var (currently $(eval "echo \$$var"))"
       eval "export $var=$arg:$(eval "echo \$$var")"
     elif [ "$VERBOSE" ]; then
       echo "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
