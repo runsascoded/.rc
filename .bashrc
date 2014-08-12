@@ -134,23 +134,6 @@ alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i <
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
 
 
-# Foursquare aliases
-alias fwop="./fs web --opinionator=pants --apirouter=pants"
-alias gen-soy="./pants gen --gen-custom-soy-langs=scala"
-alias gen-thrift="./pants gen --gen-custom-thrift-langs=scala_record"
-alias lbgsc="gfl; ./fs bg && ./fs sc"
-alias bgsc="./fs bg && ./fs sc"
-alias sc="./fs sc"
-alias lbg="gfl; ./fs bg"
-alias mongo_test='mkdir /tmp/mongo-testdb; mongod --dbpath /tmp/mongo-testdb --maxConns 1500'
-export sjcf=src/jvm/com/foursquare
-export tjcf=test/jvm/com/foursquare
-export PANTS_DEV=1
-alias sdr="ssh dev-ryan"
-alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
-
-
-try_source "$HOME/.foursquarerc"
 try_source ".maven-rc"
 try_source ".sinai-rc"
 
