@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+"""Adds a mirrored git remote suitable for pushing local, uncommitted changes to"""
+
+__author__ = "Ryan Williams"
+
 import subprocess
 import sys
 from util.remotes import get_remotes
