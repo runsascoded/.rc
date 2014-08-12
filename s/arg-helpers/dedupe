@@ -21,7 +21,7 @@ if [ $original_num_args -ne $num_args ]; then
 fi
 
 sorted_unique_args=$(for arg in "$args"; do echo "$arg"; done | sort | uniq)
-num_unique_args=$(echo "$sorted_unique_args" | wc -l | trim)
+num_unique_args=$(echo "$sorted_unique_args" | wc -l | tr -d ' ')
 
 if [ $num_args -lt $num_unique_args ]; then
   echo "Error: more unique args than original args."

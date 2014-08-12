@@ -452,10 +452,10 @@ set-java() {
 
 # Dedupe PATH variable, e.g. on re-source-ing this .bashrc.
 path_segments=$(echo "$PATH" | splt :)
-num_path_segments=$(echo "$path_segments" | wc -l | trim)
+num_path_segments=$(echo "$path_segments" | wc -l | tr -d ' ')
 
 sorted_unique_path_segments=$(echo "$PATH" | splt : | sort | uniq)
-num_unique_num_path_segments=$(echo "$sorted_unique_path_segments" | wc -l | trim)
+num_unique_num_path_segments=$(echo "$sorted_unique_path_segments" | wc -l | tr -d ' ')
 
 if [ $num_path_segments -ne $num_unique_num_path_segments ]; then
   #echo "Deduping \$PATH variable from $num_path_segments segments down to $num_unique_num_path_segments..."
