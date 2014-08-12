@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Node
+append_to NODE_PATH .

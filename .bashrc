@@ -47,10 +47,6 @@ try_source() {
     done
 }
 
-# Node
-append_to NODE_PATH .
-
-
 # Grep options
 export USE_LIBPCRE=yes
 alias grp="ggrep"
@@ -424,6 +420,7 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
 try_source "$HOME/.foursquarerc"
 
+try_source ".js-rc"
 try_source ".locale-rc"
 try_source ".rpi-rc"
 try_source ".source-rc"
