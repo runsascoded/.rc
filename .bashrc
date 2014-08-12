@@ -47,13 +47,6 @@ try_source() {
     done
 }
 
-# Grep options
-export USE_LIBPCRE=yes
-alias grp="ggrep"
-export GREP_OPTIONS="--color=always"
-alias pgrp="pcregrep"
-
-
 # History setup
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
@@ -420,6 +413,8 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
 try_source "$HOME/.foursquarerc"
 
+
+try_source ".grep-rc"
 try_source ".js-rc"
 try_source ".locale-rc"
 try_source ".rpi-rc"

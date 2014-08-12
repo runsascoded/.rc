@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Grep options
+export USE_LIBPCRE=yes
+alias grp="ggrep"
+export GREP_OPTIONS="--color=always"
+alias pgrp="pcregrep"
+
+
