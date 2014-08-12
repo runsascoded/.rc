@@ -47,14 +47,6 @@ try_source() {
     done
 }
 
-# History setup
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
-shopt -s histappend
-export PROMPT_COMMAND="history -a"
-alias hn="history -n"
-
-
 # Setup prompt colors, bash colors, bash completion
 try_source "$s/prompt_colors"
 export PS1="$On_IYellow$BIBlack \D{%a %H:%M:%S} $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
@@ -415,6 +407,7 @@ try_source "$HOME/.foursquarerc"
 
 
 try_source ".grep-rc"
+try_source ".history-rc"
 try_source ".js-rc"
 try_source ".locale-rc"
 try_source ".rpi-rc"
