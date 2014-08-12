@@ -14,6 +14,12 @@ if [[ $- != *i* ]] ; then
 fi
 
 
+debug() {
+  if [ "$VERBOSE" ]; then
+    echo $@
+  fi
+}
+
 # Path env-var shorthands
 export home="$HOME"
 export c="$HOME/c"
@@ -25,12 +31,6 @@ export SRCDIR="$s"
 
 export dl="$HOME/Downloads"
 export DL="$dl"
-
-debug() {
-  if [ "$VERBOSE" ]; then
-    echo $@
-  fi
-}
 
 export_assign() {
   key="$1"
