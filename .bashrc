@@ -402,6 +402,8 @@ export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
 
 export M="$HOME/.m2/repository"
 
+export DL="$HOME/Downloads"
+
 path_segments=$(echo "$PATH" | splt :)
 num_path_segments=$(echo "$path_segments" | wc -l | trim)
 
