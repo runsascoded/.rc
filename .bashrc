@@ -109,10 +109,16 @@ export CHROMECAST_MAC="D0:E7:82:55:CD:86"
 
 alias srpi="ssh ryan@$RPIIP"
 
-export SCALA=/usr/local/Cellar/scala/2.9.1/libexec
-export ANDROID=$HOME/lib/android-sdk-mac_x86
-export EC2_HOME=$HOME/.ec2
-export PATH=$PATH:$EC2_HOME/bin:/usr/local/git/bin:$HOME/bin:$HOME/play-2.1.0
+export SCALA="/usr/local/Cellar/scala/2.9.1/libexec"
+export ANDROID="$HOME/lib/android-sdk-mac_x86"
+export EC2_HOME="$HOME/.ec2"
+export PATH="$PATH:$EC2_HOME/bin"
+
+export PATH="$PATH:/usr/local/git/bin"
+
+export PATH="$PATH:$HOME/bin"
+
+export PATH="$PATH:$HOME/play-2.1.0"
 
 export PATH="$PATH:$HOME/sinai/internal-tools/scripts/guacamole"
 alias gdos="guacamole-demeter-over-ssh"
