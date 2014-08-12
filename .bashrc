@@ -72,10 +72,15 @@ append_to_path() {
 
 
 # Sourcing
+export SOURCEME_DIR="$s/source-files"
 try_source() {
-    for arg in $@; do
-        if [ -e "$arg" ]; then
+    for arg in "$@"; do
+        if [ -s "$arg" ]; then
             source "$arg"
+        elif [ -s "$SOURCEME_DIR/$arg" ]; then
+            source "$SOURCEME_DIR/$arg"
+        else
+          debug "Couldn't source nonexistent file: '$arg'"
         fi
     done
 }
