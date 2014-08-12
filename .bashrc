@@ -95,14 +95,6 @@ append_to_path "/usr/local/bin"  # For brew
 #append_to_path "$EC2_HOME/bin"
 
 
-# Postgres paths
-export PGDIR=/Applications/Postgres.app/Contents/MacOS
-export PGHOME=$PGDIR/bin
-#export PGDATA=$HOME/Library/Application\ Support/Postgres/var/
-export PGDATA=/usr/local/postgres9.3.1/data
-append_to_path "$PGHOME"
-
-
 #export RUBYOPT=rubygems
 #export GLOG_logtostderr=1
 prepend_to "C_INCLUDE_PATH" "/usr/local/include"
@@ -354,6 +346,7 @@ try_source ".history-rc"
 try_source ".java-rc"
 try_source ".js-rc"
 try_source ".locale-rc"
+try_source ".postgres-rc"
 try_source ".rpi-rc"
 try_source ".source-rc"
 
