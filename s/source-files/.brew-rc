@@ -1,0 +1,7 @@
+#!/bin/bash
+
+append_to_path "/usr/local/bin"  # For brew
+if which brew &> /dev/null; then
+  export cellar=$(brew --prefix)/Cellar
+fi
+

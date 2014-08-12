@@ -226,11 +226,6 @@ export HADOOP_BAM="$HOME/c/hadoop-bam"
 
 alias gdos="guacamole-demeter-over-ssh"
 
-
-if which brew &> /dev/null; then
-  export cellar=$(brew --prefix)/Cellar
-fi
-
 #[ -s "/Users/ryan/.scm_breeze/scm_breeze.sh" ] && source "/Users/ryan/.scm_breeze/scm_breeze.sh"
 
 # Maven aliases
@@ -273,6 +268,7 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 try_source "$HOME/.foursquarerc"
 
 
+try_source ".brew-rc"
 try_source ".colors-rc"
 try_source ".less-rc"
 try_source ".ec2-rc"
