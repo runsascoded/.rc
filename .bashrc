@@ -32,12 +32,18 @@ debug() {
   fi
 }
 
+export_assign() {
+  key="$1"
+  val="$2"
+  eval "export $key=$val"
+}
+
 append_to() {
   var="$1"
   shift
   for arg in $@; do
     if [ -d "$arg" ]; then
-      eval "export $var=$(eval "echo \$$var"):$arg"
+      export_assign "$var" "$(eval "echo \$$var"):$arg"
     else
       debug "Not appending '$arg' to '\$$var'; '$arg' not a directory"
     fi
@@ -49,7 +55,7 @@ prepend_to() {
   shift
   for arg in $@; do
     if [ -d "$arg" ]; then
-      eval "export $var=$arg:$(eval "echo \$$var")"
+      export_assign "$var" "$arg:$(eval "echo \$$var")"
     else
       debug "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
     fi
