@@ -120,22 +120,31 @@ export PATH="$PATH:$HOME/bin"
 
 export PATH="$PATH:$HOME/play-2.1.0"
 
-export PATH="$PATH:$HOME/sinai/internal-tools/scripts/guacamole"
 alias gdos="guacamole-demeter-over-ssh"
 
 
 # Path env-var shorthands
-export c=$HOME/c
-export s=$HOME/s
-export dl=$HOME/Downloads/
-export m2=$HOME/.m2/repository
+export c="$HOME/c"
+export s="$HOME/s"
 
-export dream=/datasets/dream/data
-export training=$dream/training
+export dl="$HOME/Downloads"
+export DL="$dl"
 
-export sinai=$HOME/sinai
-export data=$sinai/data
-export guac=$sinai/guacamole
+export m2="$HOME/.m2/repository"
+export M="$m2"
+
+export dream="/datasets/dream/data"
+export training="$dream/training"
+
+# Sinai path vars
+export sinai="$HOME/sinai"
+export data="$sinai/data"
+export guac="$sinai/guacamole"
+export ints="$sinai/internal-tools"
+export guac_tools="$ints/scripts/guacamole"
+export mvn_tools="$ints/scripts/mvn-utils"
+export jar_tools="$ints/scripts/jar-utils"
+export PATH="$PATH:$guac_tools:$mvn_tools:$jar_tools"
 
 # rm this temporarily; trying to use jenv instead...
 export java_home_cmd="/usr/libexec/java_home"
@@ -405,10 +414,6 @@ set-java() {
 
 # For ADAM
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
-
-export M="$HOME/.m2/repository"
-
-export DL="$HOME/Downloads"
 
 path_segments=$(echo "$PATH" | splt :)
 num_path_segments=$(echo "$path_segments" | wc -l | trim)
