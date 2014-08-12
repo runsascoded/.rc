@@ -368,6 +368,9 @@ alias bn="basename"
 
 alias gfo="git fetch origin"
 alias gfl="git fixlint"
+alias gsl="gn sl"
+alias gss="g ss"
+
 alias pe="perl -pe"
 alias gfl="git fixlint"
 alias gen-soy="./pants gen --gen-custom-soy-langs=scala"
