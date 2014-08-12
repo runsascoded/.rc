@@ -50,20 +50,6 @@ try_source() {
 try_source "$HOME/.rpi_bashrc"
 
 
-# Locale / Lang initialization
-if [ "$RPI" ]; then
-    debug "rpi.. setting LC_ALL=C"
-    export LC_ALL="C"
-else
-    debug "not rpi.. setting LC_ALL=en_US.UTF-8"
-    export LC_ALL="en_US.UTF-8"
-fi
-
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export TZ=UTC
-
-
 # Node
 append_to NODE_PATH .
 
@@ -441,5 +427,6 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
 try_source "$HOME/.foursquarerc"
 
+try_source ".locale-rc"
 try_source ".source-rc"
 
