@@ -47,15 +47,6 @@ try_source() {
     done
 }
 
-# Setup prompt colors, bash colors, bash completion
-try_source "$s/prompt_colors"
-export PS1="$On_IYellow$BIBlack \D{%a %H:%M:%S} $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
-export PROMPT_COMMAND='echo -ne "\033]1;$(basename $(pwd | sed "s|$HOME|~|"))\007"'
-
-try_source "$s/bash_colors"
-try_source "/etc/bash_completion"
-
-
 # IP vars
 export EIP="184.73.189.241"
 #export HOMEIP="66.65.177.142"
@@ -406,6 +397,7 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 try_source "$HOME/.foursquarerc"
 
 
+try_source ".colors-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".js-rc"
