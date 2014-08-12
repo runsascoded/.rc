@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# $EDITOR, $DIFF
+export EDITOR=emacs
+if whch mld; then
+    export DIFF=mld
+elif whch meld; then
+    export DIFF=meld
+fi
+

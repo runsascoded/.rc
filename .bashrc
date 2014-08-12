@@ -95,15 +95,6 @@ append_to_path "/usr/local/bin"  # For brew
 #append_to_path "$EC2_HOME/bin"
 
 
-# $EDITOR, $DIFF
-export EDITOR=emacs
-if whch mld; then
-    export DIFF=mld
-elif whch meld; then
-    export DIFF=meld
-fi
-
-
 # Postgres paths
 export PGDIR=/Applications/Postgres.app/Contents/MacOS
 export PGHOME=$PGDIR/bin
@@ -357,6 +348,7 @@ try_source "$HOME/.foursquarerc"
 
 try_source ".colors-rc"
 try_source ".ec2-rc"
+try_source ".editor-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
