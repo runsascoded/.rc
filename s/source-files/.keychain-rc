@@ -1,0 +1,12 @@
+#!/bin/bash
+
+### START-Keychain ###
+# Let  re-use ssh-agent and/or gpg-agent between logins
+which keychain &> /dev/null
+if [ 0 -eq $? ]; then
+    keychain "$HOME/.ssh/github_rsa"
+    source "$HOME/.keychain/$HOSTNAME-sh"
+fi
+### End-Keychain ###
+
+

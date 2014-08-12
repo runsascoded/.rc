@@ -107,16 +107,6 @@ alias kmae="echo 'seriously ryan? go to bed, sober up, and try again'"
 alias dmake="DEBUG=1 make"
 
 
-### START-Keychain ###
-# Let  re-use ssh-agent and/or gpg-agent between logins
-which keychain &> /dev/null
-if [ 0 -eq $? ]; then
-    keychain "$HOME/.ssh/github_rsa"
-    source "$HOME/.keychain/$HOSTNAME-sh"
-fi
-### End-Keychain ###
-
-
 # General utilities
 alias pe="perl -pe"
 alias bn="basename"
@@ -345,6 +335,7 @@ try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
 try_source ".js-rc"
+try_source ".keychain-rc"
 try_source ".locale-rc"
 try_source ".postgres-rc"
 try_source ".rpi-rc"
