@@ -457,21 +457,35 @@ set-java() {
   fi
 }
 
-# Dedupe PATH variable, e.g. on re-source-ing this .bashrc.
-path_segments=$(echo "$PATH" | splt :)
-num_path_segments=$(echo "$path_segments" | wc -l | tr -d ' ')
+dedupe_path_var() {
+  if [ $# -gt 0 ]; then
+    var="$1"
+  else
+    var="PATH"
+  fi
 
-sorted_unique_path_segments=$(echo "$PATH" | splt : | sort | uniq)
-num_unique_num_path_segments=$(echo "$sorted_unique_path_segments" | wc -l | tr -d ' ')
+  var_contents="$(eval "echo \"\$$var\"")"
 
-if [ $num_path_segments -ne $num_unique_num_path_segments ]; then
-  #echo "Deduping \$PATH variable from $num_path_segments segments down to $num_unique_num_path_segments..."
+  # Dedupe variable `var`, e.g. on re-source-ing this .bashrc.
+  path_segments=$(echo "$var_contents" | splt :)
+  num_path_segments=$(echo "$path_segments" | wc -l | tr -d ' ')
 
-  #echo "Before PATH: $PATH"
-  export PATH="$(echo $path_segments | dedupe | joyn :)"
-  #echo "After PATH: $PATH"
-fi
+  sorted_unique_path_segments=$(echo "$var_contents" | splt : | sort | uniq)
+  num_unique_num_path_segments=$(echo "$sorted_unique_path_segments" | wc -l | tr -d ' ')
 
+  if [ $num_path_segments -ne $num_unique_num_path_segments ]; then
+
+    debug "Deduping \$$var variable from $num_path_segments segments down to $num_unique_num_path_segments..."
+
+    debug "Before \$$var: $var_contents"
+    export_assign "$var" "$(echo $path_segments | dedupe | joyn :)"
+    debug "After \$$var: $(eval "echo \"\$$var\"")"
+  fi
+}
+
+dedupe_path_var PATH
+dedupe_path_var PYTHONPATH
+dedupe_path_var NODE_PATH
 
 # Foursquare aliases
 alias fwop="./fs web --opinionator=pants --apirouter=pants"
