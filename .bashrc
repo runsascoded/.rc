@@ -42,7 +42,7 @@ export PATH="/usr/local/bin:$PATH"
 try_source() {
     for arg in $@; do
         if [ -e "$arg" ]; then
-            source $arg
+            source "$arg"
         fi
     done
 }
