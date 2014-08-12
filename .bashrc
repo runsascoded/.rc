@@ -26,15 +26,20 @@ export SRCDIR="$s"
 export dl="$HOME/Downloads"
 export DL="$dl"
 
+debug() {
+  if [ "$VERBOSE" ]; then
+    echo $@
+  fi
+}
+
 append_to() {
   var="$1"
   shift
   for arg in $@; do
     if [ -d "$arg" ]; then
       eval "export $var=$(eval "echo \$$var"):$arg"
-    elif [ "$VERBOSE" ]; then
-      echo "Not appending '$arg' to '\$$var'; '$arg' not a directory"
-      return 1
+    else
+      debug "Not appending '$arg' to '\$$var'; '$arg' not a directory"
     fi
   done
 }
@@ -45,9 +50,8 @@ prepend_to() {
   for arg in $@; do
     if [ -d "$arg" ]; then
       eval "export $var=$arg:$(eval "echo \$$var")"
-    elif [ "$VERBOSE" ]; then
-      echo "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
-      return 1
+    else
+      debug "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
     fi
   done
 }
@@ -79,10 +83,10 @@ alias rsrc="source ~/.bashrc"
 
 # Locale / Lang initialization
 if [ "$RPI" ]; then
-    echo "rpi.. setting LC_ALL=C"
+    debug "rpi.. setting LC_ALL=C"
     export LC_ALL="C"
 else
-    echo "not rpi.. setting LC_ALL=en_US.UTF-8"
+    debug "not rpi.. setting LC_ALL=en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"
 fi
 
@@ -140,9 +144,9 @@ if [ -x "$java_home_cmd" ]; then
       jenv_version=1.8
     fi
 
-    echo "Setting java version from jenv: $jenv_version"
+    debug "Setting java version from jenv: $jenv_version"
     export JAVA_HOME=$($java_home_cmd -v $jenv_version)
-    echo "Set: $JAVA_HOME"
+    debug "Set: $JAVA_HOME"
 
     export JAVA6_HOME=$($java_home_cmd -v 1.6)
 fi
