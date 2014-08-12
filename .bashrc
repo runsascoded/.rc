@@ -47,9 +47,6 @@ try_source() {
     done
 }
 
-try_source "$HOME/.rpi_bashrc"
-
-
 # Node
 append_to NODE_PATH .
 
@@ -428,5 +425,6 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 try_source "$HOME/.foursquarerc"
 
 try_source ".locale-rc"
+try_source ".rpi-rc"
 try_source ".source-rc"
 
