@@ -134,16 +134,6 @@ alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i <
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
 
 
-# `ls` aliases
-alias ll="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias llt="ls -ltr"
-alias lh="ls -lh"
-alias lhs="ls -lhS"
-alias lss="ls -lSr"
-
-
 # Git aliases
 alias gcd="g cd"
 alias gf="git fetch"
@@ -322,6 +312,7 @@ try_source ".java-rc"
 try_source ".js-rc"
 try_source ".keychain-rc"
 try_source ".locale-rc"
+try_source ".ls-rc"
 try_source ".nav-rc"
 try_source ".postgres-rc"
 try_source ".rpi-rc"
