@@ -8,8 +8,9 @@ from reldate_util import shorten_reldate
 import re
 
 
-def fixed(width, s):
-    return (' ' * (width - clen(s))) + str(s)
+def fixed(width, s, left_justified=False):
+    spaces = (' ' * (width - clen(s)))
+    return str(s) + spaces if left_justified else spaces + str(s)
 
 
 class BranchInfo(object):
@@ -34,10 +35,23 @@ class BranchInfo(object):
         description_regex
     ]
 
-    regex = ''.join(regex_pieces)
+    def regex(self):
+        return ''.join(self.regex_pieces)
 
     def get(self, key, default=''):
         return self.dict[key] if key in self.dict and self.dict[key] != None else default
+
+    def colors(self):
+        return {
+            'name': 'BGreen' if 'is_active' in self.dict and self.dict['is_active'] else 'BWhite',
+            'hash': 'IRed',
+            'remote': 'Yellow',
+            'ahead_str': 'ICyan',
+            'behind_str': 'IPurple',
+            'date': 'IBlue',
+            'reldate': 'IGreen',
+            'description': 'White'
+        }
 
     def __getattr__(self, item):
         if re.match('\s+$', item):
@@ -47,24 +61,13 @@ class BranchInfo(object):
     def __init__(self, line):
         self.line = line
 
-        match = re.match(self.regex, line)
+        match = re.match(self.regex(), line)
         if (match):
             pass
         else:
             raise Exception("Invalid branch line:\n%s\nregex:\n%s" % (line, '\n'.join(self.regex_pieces)))
 
         self.dict = match.groupdict()
-
-        self.colors = {
-            'name': 'BGreen' if self.dict['is_active'] else 'BWhite',
-            'hash': 'IRed',
-            'remote': 'Yellow',
-            'ahead_str': 'ICyan',
-            'behind_str': 'IPurple',
-            'date': 'IBlue',
-            'reldate': 'IGreen',
-            'description': 'White'
-        }
 
         self.line_begin = self.get('line_begin')
         self.name = self.get('name')
@@ -86,21 +89,20 @@ class BranchInfo(object):
 
     def colored_field(self, prop_name):
         my_val = getattr(self, prop_name)
-        if prop_name in self.colors:
-            return color(self.colors[prop_name], my_val)
+        if prop_name in self.colors():
+            return color(self.colors()[prop_name], my_val)
         return my_val
 
     def field_string(self, prop_name, fixed_width_map):
-        fixed_width = fixed_width_map[
-            prop_name] if prop_name in fixed_width_map else 0
-        return fixed(fixed_width, self.colored_field(prop_name))
+        fixed_width, left_justify = \
+            fixed_width_map[prop_name] if fixed_width_map and prop_name in fixed_width_map else (0, False)
+        return fixed(fixed_width, self.colored_field(prop_name), left_justified=left_justify)
 
-    def to_string(self, fixed_width_map={}):
-
-        fields = [
+    def fields(self):
+        return [
             'line_begin',
             'name',
-            'pre_hash',
+            ' ',
             'hash',
             ' ',
             'pre_remote',
@@ -118,7 +120,8 @@ class BranchInfo(object):
             'description'
         ]
 
-        return ''.join(map(lambda field: self.field_string(field, fixed_width_map), fields))
+    def to_string(self, fixed_width_map=None):
+        return ''.join(map(lambda field: self.field_string(field, fixed_width_map), self.fields()))
 
     def __str__(self):
         return self.to_string()
