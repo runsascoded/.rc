@@ -134,47 +134,6 @@ alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i <
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
 
 
-# Git aliases
-alias gcd="g cd"
-alias gf="git fetch"
-alias gfo="git fetch origin"
-
-try_source "$HOME/.gitcomplete"
-try_source "$HOME/.git-completion.bash"
-
-alias gd="git diff"
-alias gdc="gd --cached"
-alias gln="git lg"
-alias gs="git status"
-alias gb="g b"
-alias gl="git lg"
-alias gls="git ls-files"
-
-alias gc="git commit"
-alias gcm="git commit -m"
-alias gca="git commit -a"
-alias gcam="git commit -a -m"
-
-alias garc='git arc'
-alias garcs='git arc src'
-alias guu='git conflicting'
-
-alias grt=". ~/s/git-root"
-alias gr="git remote -vv"
-alias gsh="gn sh"  # git-show-short
-alias rmu="git ls-files --other --exclude-standard | xargs rm -f"
-alias snippets='git log --since "8days" --oneline --author ryan'
-
-alias gss="git stash save"
-alias gsa="git stash apply"
-alias gsp="git stash pop"
-alias gsl="gn sl"
-alias gss="g ss"
-
-export MIRROR_REMOTES="devbox,rpi,demeter"
-#append_to_path "/usr/local/git/bin"
-
-
 # Hammerlab internal-tools PYTHONPATH
 append_to "PYTHONPATH" "$ints/scripts/git"
 append_to "PYTHONPATH" "$ints/scripts/git/util"
@@ -226,7 +185,6 @@ export HADOOP_BAM="$HOME/c/hadoop-bam"
 
 alias gdos="guacamole-demeter-over-ssh"
 
-#[ -s "/Users/ryan/.scm_breeze/scm_breeze.sh" ] && source "/Users/ryan/.scm_breeze/scm_breeze.sh"
 
 # For ADAM
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
@@ -266,6 +224,7 @@ try_source ".colors-rc"
 try_source ".less-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
+try_source ".git-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
