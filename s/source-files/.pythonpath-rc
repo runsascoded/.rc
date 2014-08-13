@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# PYTHONPATH
+append_to "PYTHONPATH" "$HOME/c/mongo-python-driver/"
+append_to "PYTHONPATH" "/Library/Python/2.7/site-packages"
+
+append_to "PYTHONPATH" "$s"
+append_to "PYTHONPATH" "$s/py"
+append_to "PYTHONPATH" "$s/git"
+append_to "PYTHONPATH" "$s/git/util"
+

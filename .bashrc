@@ -175,15 +175,6 @@ export MIRROR_REMOTES="devbox,rpi,demeter"
 #append_to_path "/usr/local/git/bin"
 
 
-# PYTHONPATH
-append_to "PYTHONPATH" "$HOME/c/mongo-python-driver/"
-append_to "PYTHONPATH" "/Library/Python/2.7/site-packages"
-
-append_to "PYTHONPATH" "$s"
-append_to "PYTHONPATH" "$s/py"
-append_to "PYTHONPATH" "$s/git"
-append_to "PYTHONPATH" "$s/git/util"
-
 # Hammerlab internal-tools PYTHONPATH
 append_to "PYTHONPATH" "$ints/scripts/git"
 append_to "PYTHONPATH" "$ints/scripts/git/util"
@@ -310,6 +301,7 @@ try_source ".locale-rc"
 try_source ".ls-rc"
 try_source ".nav-rc"
 try_source ".postgres-rc"
+try_source ".pythonpath-rc"
 try_source ".rpi-rc"
 try_source ".screen-rc"
 try_source ".source-rc"
