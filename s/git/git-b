@@ -14,10 +14,6 @@ def fixed(width, s):
     return (' ' * (width - clen(s))) + str(s)
 
 
-# TODO:
-#    * (no branch, rebasing master) da7a48d Comment on bottom bar in friend content.
-#      bg                           dcaf33d [origin/ryan-buildgens] many base2 deps not needed bc of common.logging
-
 class BranchInfo(object):
     hash_regex = "(?P<hash>[0-9a-f]+)"
 
