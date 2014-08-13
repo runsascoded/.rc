@@ -134,66 +134,6 @@ alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i <
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
 
 
-# Hammerlab internal-tools PYTHONPATH
-append_to "PYTHONPATH" "$ints/scripts/git"
-append_to "PYTHONPATH" "$ints/scripts/git/util"
-
-
-# Sinai path vars
-export sinai="$HOME/sinai"
-
-export data="$sinai/data"
-export DATA="$data"
-
-export guac="$sinai/guacamole"
-export GUAC="$guac"
-
-export ints="$sinai/internal-tools"
-export INTERNAL_TOOLS="$ints"
-
-export guac_tools="$ints/scripts/guacamole"
-export mvn_tools="$ints/scripts/mvn-utils"
-export jar_tools="$ints/scripts/jar-utils"
-
-append_to_path "$guac_tools" "$mvn_tools" "$jar_tools"
-
-# Sinai Hadoop/Demeter paths
-export hhome="/user/willir31"
-export hh="$hhome"
-export hdfs="hdfs://demeter-nn1.demeter.hpc.mssm.edu"
-export Hhome="${hdfs}${hhome}"
-export Hh="${hdfs}${hh}"
-export HH="$Hh"
-
-export hdata="${hh}/data"
-export Hdata="${hdfs}${hdata}"
-
-export h100k="${hdata}/100k"
-export H100k="${hdfs}${h100k}"
-
-export hout="${h100k}/out"
-export Hout="${hdfs}${hout}"
-
-export dream="/datasets/dream/data"
-export training="$dream/training"
-
-# Guac dependency paths
-export ADAM="$HOME/c/adam"
-export SPARK="$HOME/c/spark"
-export PICARD="$HOME/c/picard"
-export HADOOP_BAM="$HOME/c/hadoop-bam"
-
-alias gdos="guacamole-demeter-over-ssh"
-
-
-# For ADAM
-export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
-export m2adam="$m2/org/bdgenomics/adam"
-
-alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
-alias a2v="adam adam2vcf"
-alias v2a="adam vcf2adam"
-
 
 dedupe_path_var PATH
 dedupe_path_var PYTHONPATH
@@ -217,6 +157,7 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
 try_source "$HOME/.foursquarerc"
 try_source ".maven-rc"
+try_source ".sinai-rc"
 
 
 try_source ".brew-rc"

@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Sinai path vars and aliases; source me from .bashrc!
+
+export sinai="$HOME/sinai"
+
+export data="$sinai/data"
+export DATA="$data"
+
+export guac="$sinai/guacamole"
+export GUAC="$guac"
+
+export ints="$sinai/internal-tools"
+export INTERNAL_TOOLS="$ints"
+
+export guac_tools="$ints/scripts/guacamole"
+export mvn_tools="$ints/scripts/mvn-utils"
+export jar_tools="$ints/scripts/jar-utils"
+
+append_to_path "$guac_tools" "$mvn_tools" "$jar_tools"
+
+# Sinai Hadoop/Demeter paths
+export hhome="/user/willir31"
+export hh="$hhome"
+export hdfs="hdfs://demeter-nn1.demeter.hpc.mssm.edu"
+export Hhome="${hdfs}${hhome}"
+export Hh="${hdfs}${hh}"
+export HH="$Hh"
+
+export hdata="${hh}/data"
+export Hdata="${hdfs}${hdata}"
+
+export h100k="${hdata}/100k"
+export H100k="${hdfs}${h100k}"
+
+export hout="${h100k}/out"
+export Hout="${hdfs}${hout}"
+
+export dream="/datasets/dream/data"
+export training="$dream/training"
+
+# Guac dependency paths
+export ADAM="$HOME/c/adam"
+export SPARK="$HOME/c/spark"
+export PICARD="$HOME/c/picard"
+export HADOOP_BAM="$HOME/c/hadoop-bam"
+
+alias gdos="guacamole-demeter-over-ssh"
+
+# Hammerlab internal-tools PYTHONPATH
+append_to "PYTHONPATH" "$ints/scripts/git"
+append_to "PYTHONPATH" "$ints/scripts/git/util"
+
+
+# For ADAM
+export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
+export m2adam="$m2/org/bdgenomics/adam"
+
+alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
+alias a2v="adam adam2vcf"
+alias v2a="adam vcf2adam"
+
+
