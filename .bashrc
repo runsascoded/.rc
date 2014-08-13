@@ -47,15 +47,6 @@ try_source() {
     done
 }
 
-# IP vars
-export EIP="184.73.189.241"
-#export HOMEIP="66.65.177.142"
-export LOKOIP="192.168.1.131"
-
-export RPIIP="192.168.1.106"
-alias srpi="ssh ryan@$RPIIP"
-
-
 # PATH initialization
 #append_to_path "/opt/google/depot_tools"
 append_to_path "/usr/sbin"
