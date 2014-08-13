@@ -14,3 +14,6 @@ def refname_regex(name):
 
 def captured_whitespace_regex(name):
     return named(name, '\s+')
+
+
+hash_regex = named("hash", "[0-9a-f]+")

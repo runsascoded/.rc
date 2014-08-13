@@ -3,7 +3,7 @@ __author__ = 'ryan'
 from color import clen, color
 from datetime import datetime
 from dateutil.parser import parse
-from regexs import refname_regex, captured_whitespace_regex
+from regexs import refname_regex, captured_whitespace_regex, hash_regex
 from reldate_util import shorten_reldate
 import re
 
@@ -13,7 +13,6 @@ def fixed(width, s):
 
 
 class BranchInfo(object):
-    hash_regex = "(?P<hash>[0-9a-f]+)"
 
     line_begin_regex = "(?P<line_begin>^(?:(?P<is_active>\*)| ) )"
 
