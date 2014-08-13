@@ -71,7 +71,6 @@ append_to_path() {
 }
 
 
-# Sourcing
 export SOURCEME_DIR="$s/source-files"
 try_source() {
     for arg in "$@"; do
@@ -86,9 +85,6 @@ try_source() {
 }
 
 try_source "$HOME/.rpi_bashrc"
-
-alias resource="unalias resource; source ~/.bashrc"
-alias rsrc="source ~/.bashrc"
 
 
 # Locale / Lang initialization
@@ -508,4 +504,5 @@ alias devport="ssh dev-ryan sudo /usr/sbin/lsof -P -i TCP | grep 7136"
 
 try_source "$HOME/.foursquarerc"
 
+try_source ".source-rc"
 

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Sourcing
+alias resource="unalias resource; source ~/.bashrc"
+alias rsrc="source ~/.bashrc"
+
