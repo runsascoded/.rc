@@ -134,11 +134,6 @@ alias ppb="python -c \"import sys;i=float(sys.argv[1]);print('%3.1fB' % i if i <
 alias oiddate="python -c \"import struct;import sys;import datetime;print(datetime.datetime.utcfromtimestamp(struct.unpack('>i', sys    .argv[1].decode('hex')[0:4])[0]))\""
 
 
-
-dedupe_path_var PATH
-dedupe_path_var PYTHONPATH
-dedupe_path_var NODE_PATH
-
 # Foursquare aliases
 alias fwop="./fs web --opinionator=pants --apirouter=pants"
 alias gen-soy="./pants gen --gen-custom-soy-langs=scala"
@@ -179,4 +174,6 @@ try_source ".pythonpath-rc"
 try_source ".rpi-rc"
 try_source ".screen-rc"
 try_source ".source-rc"
+
+dedupe_path_var PATH PYTHONPATH NODE_PATH
 
