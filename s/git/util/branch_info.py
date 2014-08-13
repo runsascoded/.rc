@@ -39,6 +39,11 @@ class BranchInfo(object):
     def get(self, key, default=''):
         return self.dict[key] if key in self.dict and self.dict[key] != None else default
 
+    def __getattr__(self, item):
+        if re.match('\s+$', item):
+            return item
+        return super(BranchInfo, self).__getattribute__(item)
+
     def __init__(self, line):
         self.line = line
 
@@ -65,8 +70,6 @@ class BranchInfo(object):
         self.name = self.get('name')
         self.pre_hash = self.get('pre_hash')
         self.hash = self.get('hash')
-
-        self.space = ' '
 
         self.remote = self.get('tracking_name')
 
@@ -99,19 +102,19 @@ class BranchInfo(object):
             'name',
             'pre_hash',
             'hash',
-            'space',
+            ' ',
             'pre_remote',
             'remote',
-            'space',
+            ' ',
             'ahead_str',
-            'space',
+            ' ',
             'behind_str',
             'post_remote',
-            'space',
+            ' ',
             'reldate',
-            'space',
+            ' ',
             'date',
-            'space',
+            ' ',
             'description'
         ]
 
