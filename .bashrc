@@ -20,6 +20,8 @@ debug() {
   fi
 }
 
+try_source ".vars-rc"
+
 # Path env-var shorthands
 export home="$HOME"
 export c="$HOME/c"
@@ -31,45 +33,6 @@ export SRCDIR="$s"
 
 export dl="$HOME/Downloads"
 export DL="$dl"
-
-export_assign() {
-  key="$1"
-  val="$2"
-  eval "export $key=$val"
-}
-
-append_to() {
-  var="$1"
-  shift
-  for arg in $@; do
-    if [ -d "$arg" ]; then
-      export_assign "$var" "$(eval "echo \$$var"):$arg"
-    else
-      debug "Not appending '$arg' to '\$$var'; '$arg' not a directory"
-    fi
-  done
-}
-
-prepend_to() {
-  var="$1"
-  shift
-  for arg in $@; do
-    if [ -d "$arg" ]; then
-      export_assign "$var" "$arg:$(eval "echo \$$var")"
-    else
-      debug "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
-    fi
-  done
-}
-
-prepend_to_path() {
-  prepend_to PATH "$@"
-}
-
-append_to_path() {
-  append_to PATH "$@"
-}
-
 
 export SOURCEME_DIR="$s/source-files"
 try_source() {
@@ -454,32 +417,6 @@ set-java() {
     echo "Found $jenv_version"
     jenv global $jenv_version
     jenv shell $jenv_version
-  fi
-}
-
-dedupe_path_var() {
-  if [ $# -gt 0 ]; then
-    var="$1"
-  else
-    var="PATH"
-  fi
-
-  var_contents="$(eval "echo \"\$$var\"")"
-
-  # Dedupe variable `var`, e.g. on re-source-ing this .bashrc.
-  path_segments=$(echo "$var_contents" | splt :)
-  num_path_segments=$(echo "$path_segments" | wc -l | tr -d ' ')
-
-  sorted_unique_path_segments=$(echo "$var_contents" | splt : | sort | uniq)
-  num_unique_num_path_segments=$(echo "$sorted_unique_path_segments" | wc -l | tr -d ' ')
-
-  if [ $num_path_segments -ne $num_unique_num_path_segments ]; then
-
-    debug "Deduping \$$var variable from $num_path_segments segments down to $num_unique_num_path_segments..."
-
-    debug "Before \$$var: $var_contents"
-    export_assign "$var" "$(echo $path_segments | dedupe | joyn :)"
-    debug "After \$$var: $(eval "echo \"\$$var\"")"
   fi
 }
 
