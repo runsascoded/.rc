@@ -169,7 +169,7 @@ try:
     print "scp'ing tar file: %s" % ' '.join(cmd)
     subprocess.call(cmd)
 
-    remote_cmd = './%s' % remote_script_basename
+    remote_cmd = 'cd %s && ./%s "%s"' % (remote.group('path'), remote_script_basename, cur_branch_name)
 
     print 'remote_cmd: %s' % remote_cmd
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # TODO: arg-ify these
 staged="staged_diff_file"
 unstaged="unstaged_diff_file"
@@ -10,7 +9,11 @@ added_files="added_files"
 deleted_files="deleted_files"
 remote_script="git-unpack-and-apply-diffs"
 
-cur_branch_name="master"
+if [ $# -eq 0 ]; then
+  cur_branch_name="master"
+else
+  cur_branch_name="$1"
+fi
 
 echo "remote.. git-unpack-and-apply-diffs!"
 
