@@ -13,11 +13,14 @@ export GUAC="$guac"
 export ints="$sinai/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
-export guac_tools="$ints/scripts/guacamole"
-export mvn_tools="$ints/scripts/mvn-utils"
-export jar_tools="$ints/scripts/jar-utils"
+export int_scripts="$ints/scripts"
 
-append_to_path "$guac_tools" "$mvn_tools" "$jar_tools"
+export guac_tools="$int_scripts/guacamole"
+export file_tools="$int_scripts/file-utils"
+export mvn_tools="$int_scripts/mvn-utils"
+export jar_tools="$int_scripts/jar-utils"
+
+append_to_path "$guac_tools" "$file_tools" "$mvn_tools" "$jar_tools" "$int_scripts"
 
 # Sinai Hadoop/Demeter paths
 export hhome="/user/willir31"
@@ -49,8 +52,8 @@ export HADOOP_BAM="$HOME/c/hadoop-bam"
 alias gdos="guacamole-demeter-over-ssh"
 
 # Hammerlab internal-tools PYTHONPATH
-append_to "PYTHONPATH" "$ints/scripts/git"
-append_to "PYTHONPATH" "$ints/scripts/git/util"
+append_to "PYTHONPATH" "$int_scripts/git"
+append_to "PYTHONPATH" "$int_scripts/git/util"
 
 
 # For ADAM
