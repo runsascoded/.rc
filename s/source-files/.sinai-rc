@@ -41,6 +41,7 @@ export training="$dream/training"
 
 # Guac dependency paths
 export ADAM="$HOME/c/adam"
+export adam="$ADAM"
 export SPARK="$HOME/c/spark"
 export PICARD="$HOME/c/picard"
 export HADOOP_BAM="$HOME/c/hadoop-bam"
