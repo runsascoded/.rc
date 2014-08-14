@@ -17,6 +17,7 @@ alias gb="g b"
 alias grb="g rb"
 alias gl="git lg"
 alias gls="git ls-files"
+alias gac="g ac '%h'"
 
 alias gc="git commit"
 alias gcm="git commit -m"
