@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 dir="$1"
 num_files="$(hadoop-count "$dir/part-*")"
 if [ "$num_files" -ne 1 ]; then
@@ -7,10 +9,10 @@ if [ "$num_files" -ne 1 ]; then
   exit 1
 fi
 
-part_file_path=$(h ls "$dir/part-*" | tail -n +2 | col -1)
+part_file_path=$(hadoop-ls-C "$dir/part-*")
 echo "Found 'part' file: $part_file_path"
 
-part_file_base=$(basename "$part_file_path")
+part_file_base="$(basename "$part_file_path")"
 
 echo "Moving $dir to $dir.bak"
 h mv "$dir" "$dir.bak"
