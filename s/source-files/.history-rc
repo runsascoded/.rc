@@ -4,6 +4,6 @@
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 shopt -s histappend
-export PROMPT_COMMAND="history -a"
+#export PROMPT_COMMAND="history -a"
 alias hn="history -n"
 
