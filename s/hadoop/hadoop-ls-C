@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Mimics `ls -C` (only file names, no other file metadata) on Hadoop.
+
+h ls "$@" | sed 1d | perl -wlne'print +(split " ",$_,8)[7]'
+
