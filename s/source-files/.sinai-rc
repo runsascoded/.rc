@@ -15,8 +15,9 @@ export INTERNAL_TOOLS="$ints"
 
 export int_scripts="$ints/scripts"
 
-export guac_tools="$int_scripts/guacamole"
 export file_tools="$int_scripts/file-utils"
+export guac_tools="$int_scripts/guacamole"
+export file_tools="$int_scripts/hadoop-utils"
 export mvn_tools="$int_scripts/mvn-utils"
 export jar_tools="$int_scripts/jar-utils"
 
