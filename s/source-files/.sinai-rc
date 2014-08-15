@@ -13,15 +13,10 @@ export GUAC="$guac"
 export ints="$sinai/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
-export int_scripts="$ints/scripts"
+. "$ints/environment/paths.sourceme"
 
-export file_tools="$int_scripts/file-utils"
-export guac_tools="$int_scripts/guacamole"
-export file_tools="$int_scripts/hadoop-utils"
-export mvn_tools="$int_scripts/mvn-utils"
-export jar_tools="$int_scripts/jar-utils"
-
-append_to_path "$guac_tools" "$file_tools" "$mvn_tools" "$jar_tools" "$int_scripts"
+export its="$ints/scripts"
+alias h="hfs"
 
 # Sinai Hadoop/Demeter paths
 export hhome="/user/willir31"
@@ -51,11 +46,6 @@ export PICARD="$HOME/c/picard"
 export HADOOP_BAM="$HOME/c/hadoop-bam"
 
 alias gdos="guacamole-demeter-over-ssh"
-
-# Hammerlab internal-tools PYTHONPATH
-append_to "PYTHONPATH" "$int_scripts/git"
-append_to "PYTHONPATH" "$int_scripts/git/util"
-
 
 # For ADAM
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
