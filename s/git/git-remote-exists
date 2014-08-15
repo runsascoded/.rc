@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+if ! git ls-remote $1 &> /dev/null; then
+	echo 'none'
+else
+	echo 'found'
+fi
