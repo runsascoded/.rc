@@ -2,7 +2,11 @@
 
 #echo $@
 #echo "num: $#"
-format="$1"
+if [ $# -eq 0 ]; then
+  format="%h"
+else
+  format="$1"
+fi
 #echo "format: $format"
 shift
 #git log -n $# --format="$format" "$@"
