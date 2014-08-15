@@ -6,5 +6,5 @@ else
 	arg="$(git cb):"
 fi
 
-git push origin ${arg}master
+git push origin "${arg}master"
 
