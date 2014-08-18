@@ -17,6 +17,7 @@ export INTERNAL_TOOLS="$ints"
 
 export its="$ints/scripts"
 alias h="hfs"
+alias mvnt="mvn-test"
 
 # Sinai Hadoop/Demeter paths
 export hhome="/user/willir31"
