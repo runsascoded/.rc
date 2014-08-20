@@ -26,7 +26,7 @@ alias gca="git commit -a"
 alias gcam="git commit -a -m"
 
 alias garc='git arc'
-alias garcs='git arc src'
+alias gaurc='git aurc'
 alias guu='git conflicting'
 
 alias grt=". ~/s/git-root"
