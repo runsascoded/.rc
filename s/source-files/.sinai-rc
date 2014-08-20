@@ -19,6 +19,8 @@ export its="$ints/scripts"
 alias h="hfs"
 alias mvnt="mvn-test"
 
+alias bak-iml="cp $guac/guacamole.iml ~/Dropbox/guacamole.iml.$(dt)"
+
 # Sinai Hadoop/Demeter paths
 export hhome="/user/willir31"
 export hh="$hhome"
