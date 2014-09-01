@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! alias "$@" 2> /dev/null; then
+  which "$@"
+fi
+
+
