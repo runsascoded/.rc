@@ -3,14 +3,22 @@
 verbose=
 if [ "$1" == "-v" ]; then
   shift
-  verbose=1
+  verbose="-v"
 fi
 
-if [[ $1 =~ ^[0-9]+$ ]]; then
-  if [ "$verbose" ]; then
-    echo 1
-  fi
-  exit 0
-fi
+if [ $# -eq 0 ]; then
+  xargs "$0" "$verbose" "$@"
+else
+  all_nums=0
+  for arg in "$@"; do
+    if [[ $arg =~ ^[0-9]+$ ]]; then
+      if [ "$verbose" ]; then
+        echo "$arg"
+      fi
+    else
+      all_nums=1
+    fi
+  done
 
-exit 1
+  exit $all_nums
+fi
