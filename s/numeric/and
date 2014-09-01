@@ -7,10 +7,6 @@ elif [ $# -eq 1 ]; then
   xargs "$0" "$1"
 else
   base="$1"
-  if ! isnum "$base"; then
-    err "Arg 1 must be a number; found: $base"
-    exit 1
-  fi
   shift
 
   for arg in "$@"; do
