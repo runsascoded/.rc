@@ -19,6 +19,8 @@ alias grb="g rb"
 alias gl="git lg"
 alias gls="git ls-files"
 alias gac="g ac '%h'"
+alias gng="git --no-pager grep"
+alias gg="git grep"
 
 alias gc="git commit"
 alias gcm="git commit -m"
