@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  xargs "$0" "$@"
+else
+  for arg in "$@"; do
+    js "($arg).toString(16)"
+  done
+fi
