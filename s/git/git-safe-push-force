@@ -11,10 +11,16 @@ else
   exit 1
 fi
 
-dry_run_cmd="git push -f -n '$remote' '$refspec'"
-echo "Dry run: $dry_run_cmd"
-#eval "$dry_run_cmd"
+non_force_cmd="git push '$remote' '$refspec' 2> /dev/null"
+if eval "$non_force_cmd"; then
+  exit 0
+fi
 
-if "$dry_run_cmd" || prompt "Continue?"; then
-  git push -f "$remote" "$refspec"
+dry_run_cmd="git push -f -n '$remote' '$refspec'"
+echo "Non-fast-forward push? Dry-running -f: $dry_run_cmd"
+
+if eval "$dry_run_cmd" || prompt "Continue?"; then
+  cmd="git push -f '$remote' '$refspec'"
+  echo "$cmd"
+  eval "$cmd"
 fi
