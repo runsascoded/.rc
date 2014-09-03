@@ -1,14 +1,10 @@
 #!/bin/bash
 
-#echo $@
-#echo "num: $#"
 if [ $# -eq 0 ]; then
   format="%h"
 else
   format="$1"
 fi
-#echo "format: $format"
 shift
-#git log -n $# --format="$format" "$@"
 git show -s --format="$format" "$@"
 
