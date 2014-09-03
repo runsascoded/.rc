@@ -28,7 +28,7 @@ for b in $(sorted_branches); do
     echo "Last modified $relativedate: $lastdate"
     echo "\t\c"; git branch --list -vv $b
 
-    if [ $(prompt "$prompt $b? [Y/n]: ") ]; then
+    if prompt "$prompt $b? [Y/n]: "; then
         if [ ! $dry_run ]; then
             git branch -D $b
         fi
