@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+  err "Usage: $0 <full git extension> <git alias>"
+  exit 1
+fi
+
+cd "$s/git"
+full="git-$1"
+short="git-$2"
+
+chmd "$full"
+cd "aliases"
+ln -s ../"$full" "$short"
+
