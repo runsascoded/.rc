@@ -14,7 +14,6 @@
 [alias]
         a       = add
         bm      = branch -m
-        bu      = branch --set-upstream-to
         c       = commit
         co      = checkout
         cp      = cherry-pick
