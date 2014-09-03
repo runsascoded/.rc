@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -eq 2 ]; then
+  remote="$1"
+  refspec="$2"
+elif [ $# -eq 1 ]; then
+  remote="origin"
+  refspec="$1"
+else
+  err "Usage: $0 [remote] <refspec>"
+  exit 1
+fi
+
+dry_run_cmd="git push -f -n '$remote' '$refspec'"
+echo "Dry run: $dry_run_cmd"
+#eval "$dry_run_cmd"
+
+if "$dry_run_cmd" || prompt "Continue?"; then
+  git push -f "$remote" "$refspec"
+fi
