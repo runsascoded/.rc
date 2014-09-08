@@ -13,7 +13,7 @@ export GUAC="$guac"
 export ints="$sinai/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
-. "$ints/environment/paths.sourceme"
+try_source "$ints/environment/paths.sourceme"
 
 export its="$ints/scripts"
 alias h="hfs"
