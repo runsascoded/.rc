@@ -10,6 +10,8 @@ try_source "$HOME/.gitcomplete"
 try_source "$HOME/.git-completion.bash"
 
 alias gbd="git branch -d"
+alias gbD="git branch -D"
+alias gbdf="git branch -D"
 alias gd="git diff"
 alias gdc="gd --cached"
 alias gln="git lg"
