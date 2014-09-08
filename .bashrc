@@ -75,3 +75,5 @@ try_source ".screen-rc"
 try_source ".source-rc"
 
 dedupe_path_var PATH PYTHONPATH NODE_PATH
+
+export MIRROR_REMOTES="demeter,rpi"
