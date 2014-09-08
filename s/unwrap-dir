@@ -3,7 +3,7 @@
 # "Unwrap" Hadoop-generated directories with only one "part" (per-shard output file) in them.
 
 for dir in "$@"; do
-  dir=${dir%/}
+  dir="${dir%/}"
   if [ ! -d $dir ]; then
     echo "Not a dir: $dir. Skipping.."
     continue
@@ -20,8 +20,9 @@ for dir in "$@"; do
     continue
   fi
 
-  t=$(tmpfile)
-  mv $dir $t
-  mv $t/part-r-00000 $dir
-  #rm -rf $t
+  t="$(tmpfile)"
+  rm -f "$t"
+  mv -f "$dir" "$t"
+  mv "$t/part-r-00000" "$dir"
+  rm -rf "$t"
 done
