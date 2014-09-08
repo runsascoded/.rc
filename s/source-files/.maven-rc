@@ -3,6 +3,8 @@
 # Maven aliases
 alias mvnp="mvn package -DskipTests"
 alias mvncp="mvn clean package -DskipTests"
+alias mvnc="mvn compile"
+alias mvntc="mvn test-compile"
 
 export m2="$HOME/.m2/repository"
 export M="$m2"
