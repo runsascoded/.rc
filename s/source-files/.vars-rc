@@ -9,7 +9,7 @@ export_assign() {
 append_to() {
   var="$1"
   shift
-  for arg in $@; do
+  for arg in "$@"; do
     if [ -d "$arg" ]; then
       export_assign "$var" "$(eval "echo \$$var"):$arg"
     else
@@ -21,7 +21,7 @@ append_to() {
 prepend_to() {
   var="$1"
   shift
-  for arg in $@; do
+  for arg in "$@"; do
     if [ -d "$arg" ]; then
       export_assign "$var" "$arg:$(eval "echo \$$var")"
     else
