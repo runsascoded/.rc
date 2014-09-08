@@ -1,5 +1,0 @@
-#!/usr/bin/python
-
-from util.branch_infos import BranchInfos
-
-BranchInfos()

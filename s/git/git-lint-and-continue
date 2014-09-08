@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-git lint
-./fs bg --shas=HEAD
-./fs sc --shas=HEAD
-set +e
-git cane
-git rebase --continue

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-for arg in "$@"; do
-  if [ -s "$arg" ]; then
-    git apply "$arg"
-  fi
-done

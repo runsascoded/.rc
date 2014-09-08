@@ -1,3 +1,0 @@
-#!/bin/bash
-
-git status -s | pne 's/^[^\s]?D[^\s]?[\s]*//'

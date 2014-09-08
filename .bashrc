@@ -58,7 +58,7 @@ try_source ".colors-rc"
 try_source ".less-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
-try_source ".git-rc"
+try_source "$c/git-helpers/.git-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
@@ -75,4 +75,3 @@ try_source ".screen-rc"
 try_source ".source-rc"
 
 dedupe_path_var PATH PYTHONPATH NODE_PATH
-
