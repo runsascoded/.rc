@@ -16,7 +16,6 @@ export INTERNAL_TOOLS="$ints"
 try_source "$ints/environment/paths.sourceme"
 
 export its="$ints/scripts"
-alias h="hfs"
 alias mvnt="mvn-test"
 
 alias bak-iml="cp $guac/guacamole.iml ~/Dropbox/guacamole.iml.$(dt)"

@@ -1,1 +1,3 @@
-hadoop-wrapper
+#!/bin/bash
+
+hfs "$@"
