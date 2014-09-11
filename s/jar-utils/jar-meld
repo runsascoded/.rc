@@ -12,4 +12,4 @@ if [ ! "$DIFF" ]; then
   DIFF=mld
 fi
 
-$DIFF <(jar-shas "$jar1") <(jar-shas "$jar2")
+$DIFF <(jar-hashes "$jar1") <(jar-hashes "$jar2")
