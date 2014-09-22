@@ -8,7 +8,7 @@ else
     select filename in $files; do
         echo $filename
         set -v
-        git log -p --follow -- $filename
+        git log -p --follow -- "$filename"
         set +v
         break
     done
