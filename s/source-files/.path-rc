@@ -8,6 +8,9 @@ append_to_path "/sbin"
 append_to_path "/sw/bin"
 append_to_path "$HOME/bin"
 
+append_to_path "$HOME/usr/local/bin"
+append_to_path "$HOME/.local/bin"
+
 append_to_path "$s"
 append_to_path "$s/arg-helpers"
 append_to_path "$s/case-helpers"
