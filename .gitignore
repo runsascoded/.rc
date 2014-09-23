@@ -10,7 +10,7 @@
 !.gitignore
 !.rpi_bashrc
 !.screenrc
-!.slate
+!.slate.js
 !.ssh
 !.ssh/id_rsa.pub
 !.ssh/github_rsa.pub
