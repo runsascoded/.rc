@@ -1,10 +1,6 @@
 
-S.source("/Users/ryan/s/slate/screen.js");
-S.source("/Users/ryan/s/slate/utils.js");
-
 var laptop = new Screen('1440x900');
 var apple = new Screen('2560x1440');
-
 
 var bindings = {};
 
@@ -12,12 +8,13 @@ var bindings = {};
 bindings["d:alt"] = function() { S.source("/Users/ryan/.slate.js"); };
 
 
-// Alt+N, Alt+Shift+N give you left- or right-most N columns. Alt+0 gives you full screen.
+// {Alt+N, Alt+Shift+N}: {left,right}-most N columns
 for (var n = 1; n < 10; ++n) {
   bindings[n + ":alt"] = left(n);
   bindings[n + ":alt;shift"] = right(n);
 }
-bindings["0.alt"] = grid();
+// Alt+0: full screen
+bindings["0:alt"] = grid();
 
 
 // Organize windows on laptop + apple-monitor.

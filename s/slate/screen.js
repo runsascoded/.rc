@@ -1,6 +1,4 @@
 
-S.source("/Users/ryan/s/slate/utils.js");
-
 // Screen class: wrap {grid,left,right} for a given screen ID.
 var Screen = function(id) {
   this.id = id;
