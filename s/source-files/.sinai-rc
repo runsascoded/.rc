@@ -57,4 +57,9 @@ alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHO
 alias a2v="adam adam2vcf"
 alias v2a="adam vcf2adam"
 
+export arun="/hpc/users/ahujaa01"
+export harun="/user/ahujaa01"
 
+export harundata="/user/ahujaa01/dream/synsets"
+export tumor3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.tumor.withMDTags.chr2.bam"
+export normal3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.normal.withMDTags.chr2.bam"
