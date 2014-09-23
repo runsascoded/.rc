@@ -3,7 +3,7 @@
 # PYTHONPATH
 append_to "PYTHONPATH" "$HOME/c/mongo-python-driver/"
 append_to "PYTHONPATH" "/Library/Python/2.7/site-packages"
-
+append_to "PYTHONPATH" "/usr/local/lib/python2.7/site-packages"
 append_to "PYTHONPATH" "$HOME/Library/Python/2.7/site-packages"
 
 append_to "PYTHONPATH" "$s"
