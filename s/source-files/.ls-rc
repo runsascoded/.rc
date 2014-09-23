@@ -6,6 +6,7 @@ alias la="ls -a"
 alias lla="ls -la"
 alias llt="ls -ltr"
 alias lh="ls -lh"
+alias llh="ls -lh"
 alias lhs="ls -lhS"
 alias lss="ls -lSr"
 
