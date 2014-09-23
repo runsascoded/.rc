@@ -16,6 +16,8 @@
 !.ssh/github_rsa.pub
 !s
 !s/**/*
+!slate
+!slate/**/*
 *~
 *#
 *.pyc
