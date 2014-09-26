@@ -2,6 +2,6 @@
 
 prefix="$1"
 shift
-for arg in $@; do
+for arg in "$@"; do
 	echo "${prefix}${arg}"
 done
