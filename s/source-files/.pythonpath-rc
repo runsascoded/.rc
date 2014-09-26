@@ -11,3 +11,4 @@ append_to "PYTHONPATH" "$s/py"
 
 alias piu="pip install --user"
 
+append_to "PERL5LIB" "$HOME/bin"
