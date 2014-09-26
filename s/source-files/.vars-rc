@@ -55,7 +55,10 @@ dedupe_path_var() {
       debug "Deduping \$$var variable from $num_path_segments segments down to $num_unique_num_path_segments..."
 
       debug "Before \$$var: $var_contents"
-      export_assign "$var" "$(echo $path_segments | dedupe | joyn :)"
+      val="$(echo $path_segments | dedupe | joyn :)"
+      if [ "$val" ]; then
+        export_assign "$var" "$val"
+      fi
       debug "After \$$var: $(eval "echo \"\$$var\"")"
     fi
   done
