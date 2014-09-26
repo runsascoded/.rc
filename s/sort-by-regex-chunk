@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+from itertools import izip
+import re
+import sys
+
+regex = sys.argv[1]
+input = sys.argv[2]
+outfile = sys.argv[3] if len(sys.argv) >= 4 else None
+
+def pairwise(iterable):
+    "s -> (s0,s1), (s2,s3), (s4, s5), ..."
+    a = iter(iterable)
+    return izip(a, a)
+
+with open(input, 'r') as in_fd, open(outfile, 'w') if outfile else sys.stdout as out_fd:
+  matches = re.split(regex, in_fd.read())
+  out_fd.write(''.join([matches[0]] + map(''.join, sorted(pairwise(matches[1:]), key=lambda p: p[0]))))
+
