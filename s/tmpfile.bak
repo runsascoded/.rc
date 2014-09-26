@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Temporarily delegated to internal-tools repo.
-
-echo "${TMPDIR}tmp.$RANDOM"
