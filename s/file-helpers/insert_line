@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -x
+
+if [ ! "$file" -o ! "$regex" ]; then
+  err "Set \$file and \$regex env vars"
+  exit 1
+fi
+
+outfile="$file.bak"
+line_num="$(pcregrep -n "$regex" "$file" | head -n 1 | cut -d: -f 1)"
+let prev_num=$line_num-1
+head -n $prev_num "$file" > "$outfile"
+echo "$extra_line" >> "$outfile"
+tail -n +$line_num "$file" >> "$outfile"
+
+mv "$outfile" "$file"
