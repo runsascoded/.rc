@@ -1,10 +1,10 @@
 #!/bin/sh
 
-filename=$1
+filename="$1"
 shift
-echo -n '' > $filename
-for arg in $@; do
-    echo $arg >> $filename
+echo -n '' > "$filename"
+for arg in "$@"; do
+    echo $arg >> "$filename"
 done
 
-echo "Wrote $(wc -l $filename | awk '{ print $1 }') lines to $filename"
+echo "Wrote $(wc -l "$filename" | awk '{ print $1 }') lines to $filename"
