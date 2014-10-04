@@ -1,3 +1,5 @@
 #!/bin/sh
 
-find . -name '$1'
+name="$1"
+shift
+find . -name "$name" "$@"
