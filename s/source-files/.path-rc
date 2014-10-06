@@ -49,4 +49,4 @@ append_to_path "/usr/local/bin"  # For brew
 #append_to_path "$HOME/play-2.1.0"
 #append_to_path "$EC2_HOME/bin"
 
-
+append_to_path "$HOME/Library/Python/2.7/bin"
