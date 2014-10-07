@@ -1,3 +1,24 @@
 #!/bin/bash
 
-du -s "$@" | gsort -h -r
+reverse_sort=
+if [ "$1" == "-r" ]; then
+  reverse_sort="-r"
+  shift
+fi
+
+human_readable=
+if [ "$1" == "-h" ]; then
+  human_readable="-h"
+  shift
+fi
+
+if [ -z "$reverse_sort" -a "$1" == "-r" ]; then
+  reverse_sort="-r"
+  shift
+fi
+
+if [ $# -eq 0 ]; then
+  du -s $human_readable ./* | sort $reverse_sort
+else
+  du -s $human_readable "$@" | sort $reverse_sort
+fi
