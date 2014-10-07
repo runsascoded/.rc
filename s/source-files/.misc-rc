@@ -3,11 +3,17 @@
 # General utilities
 alias pe="perl -pe"
 alias bn="basename"
+
 alias y="echo yes"
 alias n="echo no"
+
+alias cdw=". cd-which"
+
 alias sopen='open -a Sublime\ Text\ 2.app'
+
 #alias top="top -o cpu"
 alias tp="htop --sort-key cpu"
+
 alias chomd="chmod"
 alias e="echo"
 alias dtab="diff /tmp/a /tmp/b"
