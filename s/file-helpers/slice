@@ -11,10 +11,12 @@ remainder = args[2:]
 
 if len(remainder) == 1:
     with open(remainder[0], 'r') as fd:
-        lines = fd.readlines()
-        if len(lines) == 1:
-            print '\n'.join(lines[0].split(' ')[start:end]),
-        else:
-            print ''.join(lines[start:end]),
+        num = 0
+        for line in fd:
+            if num >= start:
+                if num >= end:
+                    break
+                print line,
+            num += 1
 else:
     print '\n'.join(remainder[start:end])
