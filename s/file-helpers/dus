@@ -18,7 +18,7 @@ if [ -z "$reverse_sort" -a "$1" == "-r" ]; then
 fi
 
 if [ $# -eq 0 ]; then
-  du -s $human_readable ./* | sort $reverse_sort
+  du -s $human_readable ./* | sort $reverse_sort $human_readable
 else
-  du -s $human_readable "$@" | sort $reverse_sort
+  du -s $human_readable "$@" | sort $reverse_sort $human_readable
 fi
