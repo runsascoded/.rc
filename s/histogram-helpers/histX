@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import fileinput
+import re
+
+max_width = 80
+max_count = None
+
+for line in fileinput.input():
+  segments = re.split(r'\s', line.strip())
+  if len(segments) != 2:
+    raise Exception('Bad line: %s' % line.strip())
+
+  count, id = (int(segments[0]), segments[1])
+  if max_count == None:
+    max_count = count
+
+  print '%s:\t%s' % (id, 'X'*(count * max_width / max_count))
+
+
