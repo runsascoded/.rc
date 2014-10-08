@@ -1,3 +1,5 @@
 #!/bin/sh
 
-node -p -e "$@"
+for arg in "$@"; do
+  node -p -e "$arg"
+done
