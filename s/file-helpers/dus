@@ -9,7 +9,10 @@ fi
 human_readable=
 if [ "$1" == "-h" ]; then
   human_readable="-h"
+  sort_human_readable="-h"
   shift
+else
+  sort_human_readable="-nk 1"
 fi
 
 if [ -z "$reverse_sort" -a "$1" == "-r" ]; then
@@ -18,7 +21,11 @@ if [ -z "$reverse_sort" -a "$1" == "-r" ]; then
 fi
 
 if [ $# -eq 0 ]; then
-  du -s $human_readable ./* | sort $reverse_sort $human_readable
+  du -s $human_readable ./* | sort $reverse_sort $sort_human_readable
 else
-  du -s $human_readable "$@" | sort $reverse_sort $human_readable
+  if [ $# -eq 1 -a -d "$1" ]; then
+    du -s $human_readable "$1" "$1"/* | sort $reverse_sort $sort_human_readable
+  else
+    du -s $human_readable "$@" | sort $reverse_sort $sort_human_readable
+  fi
 fi
