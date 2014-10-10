@@ -74,32 +74,36 @@ def parse_col(arg):
 cols = map(parse_col, unknown[0].split(','))
 sys.argv = unknown[0:]
 
-for line in fileinput.input():
-    l = re.split('(%s)' % args.input_delimiter, line.strip())
+try:
+    for line in fileinput.input():
+        l = re.split('(%s)' % args.input_delimiter, line.strip())
 
-    offset = 0
+        offset = 0
 
-    # print "line: %s, cols: %s" % (l, cols)
+        # print "line: %s, cols: %s" % (l, cols)
 
-    first = True
-    for col in cols:
+        first = True
+        for col in cols:
 
-        if args.keep_original_range_spacing:
-            slice = l[
-                    (None if col[0] == None else col[0] + offset):(None if col[1] == None else col[1] + offset)
-            ]
-            joiner = ''
-        else:
-            slice = l[
-                    (None if col[0] == None else col[0]):(None if col[1] == None else col[1]):2
-            ]
-            joiner = output_delimiter
+            if args.keep_original_range_spacing:
+                slice = l[
+                        (None if col[0] == None else col[0] + offset):(None if col[1] == None else col[1] + offset)
+                ]
+                joiner = ''
+            else:
+                slice = l[
+                        (None if col[0] == None else col[0]):(None if col[1] == None else col[1]):2
+                ]
+                joiner = output_delimiter
 
-        # print slice
+            # print slice
 
-        if not first:
-            sys.stdout.write(output_delimiter)
-        first = False
+            if not first:
+                sys.stdout.write(output_delimiter)
 
-        sys.stdout.write(joiner.join(slice).strip())
-    print ''
+            first = False
+
+            sys.stdout.write(joiner.join(slice).strip())
+        print ''
+except IOError:
+    pass
