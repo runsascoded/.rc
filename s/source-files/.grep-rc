@@ -3,7 +3,7 @@
 # Grep options
 export USE_LIBPCRE=yes
 alias grp="ggrep"
-export GREP_OPTIONS="--color=always"
+export GREP_OPTIONS="--color=auto"
 alias pgrp="pcregrep"
 
 
