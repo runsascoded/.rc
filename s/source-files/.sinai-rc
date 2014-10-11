@@ -41,11 +41,14 @@ export dream="/datasets/dream/data"
 export training="$dream/training"
 
 # Guac dependency paths
-export ADAM="$HOME/c/adam"
+export ADAM="$c/adam"
 export adam="$ADAM"
-export SPARK="$HOME/c/spark"
-export PICARD="$HOME/c/picard"
-export HADOOP_BAM="$HOME/c/hadoop-bam"
+export SPARK="$c/spark"
+if [ -z "$SPARK_HOME" ]; then
+  export SPARK_HOME="$SPARK"
+fi
+export PICARD="$c/picard"
+export HADOOP_BAM="$c/hadoop-bam"
 
 alias gdos="guacamole-demeter-over-ssh"
 
@@ -53,7 +56,8 @@ alias gdos="guacamole-demeter-over-ssh"
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
 export m2adam="$m2/org/bdgenomics/adam"
 
-alias adam='java -jar /Users/ryan/c/neal-adam/adam-cli/target/adam-0.6.1-SNAPSHOT.jar'
+alias adam="${ADAM}/bin/adam-submit"
+alias adam-shell="${ADAM}/bin/adam-shell"
 alias a2v="adam adam2vcf"
 alias v2a="adam vcf2adam"
 
