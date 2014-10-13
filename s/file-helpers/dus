@@ -24,7 +24,8 @@ if [ $# -eq 0 ]; then
   du -s $human_readable ./* | sort $reverse_sort $sort_human_readable
 else
   if [ $# -eq 1 -a -d "$1" ]; then
-    du -s $human_readable "$1" "$1"/* | sort $reverse_sort $sort_human_readable
+    path="${1%/}"
+    du -s $human_readable "$path" "$path"/* | sort $reverse_sort $sort_human_readable
   else
     du -s $human_readable "$@" | sort $reverse_sort $sort_human_readable
   fi
