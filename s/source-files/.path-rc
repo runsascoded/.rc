@@ -6,7 +6,7 @@ append_to_path "/usr/sbin"
 append_to_path "/usr/include"
 append_to_path "/sbin"
 append_to_path "/sw/bin"
-append_to_path "$HOME/bin"
+prepend_to_path "$HOME/bin"
 
 append_to_path "$HOME/usr/local/bin"
 append_to_path "$HOME/.local/bin"
