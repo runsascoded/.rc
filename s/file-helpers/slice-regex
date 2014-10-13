@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ $# -lt 1 ]; then
   err "Usage: $0 <from_regex> <file>"
   exit 1
@@ -17,7 +19,7 @@ else
   remove_haystack=1
 fi
 
-from="$(grep -n -p "$from_regex" "$haystack" | col -i : 0)"
+from="$(grep -n "$from_regex" "$haystack" | col -i : 0)"
 let from=$from-1
 to="$(wc -l "$haystack" | col 0)"
 slice "$from" "$to" "$haystack"
