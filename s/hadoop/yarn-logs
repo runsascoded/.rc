@@ -1,0 +1,7 @@
+#!/bin/bash
+
+appid="$1"
+if [[ $appid =~ [0-9]{4} ]]; then
+  appid="application_1403901413406_$appid"
+fi
+yarn logs -applicationId "appid"
