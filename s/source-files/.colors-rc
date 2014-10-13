@@ -2,8 +2,37 @@
 
 # Setup prompt colors, bash colors, bash completion
 try_source "$s/color-helpers/prompt_colors"
-export PS1="$On_IYellow$BIBlack \D{%a %H:%M:%S} $clear $BBlue\u$clear@$BGreen\h$clear: $BPurple\W$clear$BRed\$(__git_ps1 :%s)$clear\$ "
-export PROMPT_COMMAND='history -a && echo -ne "\033]1;$(basename $(pwd | sed "s|$HOME|~|"))\007"'
+
+__prompt_command() {
+  local EXIT="$?"
+  PS1=""
+
+  history -a
+  echo -ne "\033]1;$(basename $(pwd | sed "s|$HOME|~|"))\007"
+
+  # Red background if previous command failed, yellow otherwise.
+  if [ $EXIT != 0 ]; then
+    PS1+="${On_IRed}"
+  else
+    PS1+="${On_IYellow}"
+  fi
+
+  PS1+="${BIBlack}"
+  PS1+=" "
+  PS1+="\D{%a %H:%M:%S}"
+  PS1+=" "
+  PS1+="$clear"
+  PS1+=" "
+  PS1+="${BBlue}\u${clear}"
+  PS1+="@"
+  PS1+="${BGreen}\h${clear}"
+  PS1+=": "
+  PS1+="${BPurple}\W${clear}"
+  PS1+="${BRed}\$(__git_ps1 :%s)${clear}"
+  PS1+="\$ "
+}
+
+export PROMPT_COMMAND=__prompt_command
 
 try_source "$s/color-helpers/bash_colors"
 try_source "/etc/bash_completion"
