@@ -8,6 +8,8 @@ append_to_path "/sbin"
 append_to_path "/sw/bin"
 prepend_to_path "$HOME/bin"
 
+append_to_path "/usr/local/ncbi/blast/bin"
+
 append_to_path "$HOME/usr/local/bin"
 append_to_path "$HOME/.local/bin"
 
