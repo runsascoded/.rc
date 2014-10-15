@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Setup prompt colors, bash colors, bash completion
-try_source "$s/color-helpers/prompt_colors"
-
 __prompt_command() {
   local EXIT="$?"
   PS1=""
+
+  # Setup prompt colors
+  try_source "$s/color-helpers/prompt_colors"
 
   history -a
   echo -ne "\033]1;$(basename $(pwd | sed "s|$HOME|~|"))\007"
