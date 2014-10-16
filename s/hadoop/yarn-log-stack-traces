@@ -1,0 +1,5 @@
+#!/bin/bash
+
+appid="$1"
+shift
+yl "$appid" | stack-traces.py "$@" | less
