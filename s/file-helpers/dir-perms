@@ -1,0 +1,11 @@
+#!/bin/bash
+
+dir="$1"
+while [ 1 ]; do
+  ls -ld "$dir"
+  new_dir="$(dirname "$dir")"
+  if [ "$new_dir" == "$dir" ]; then
+    break
+  fi
+  dir="$new_dir"
+done
