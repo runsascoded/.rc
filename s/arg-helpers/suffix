@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -eq 1 -a ${#1} -eq 1 ]; then
+  delim="$1"
+  if [ "$delim" == "." ]; then
+    escaped_delim="\\$1"
+  else
+    escaped_delim="$1"
+  fi
+  shift
+else
+  escaped_delim='\.'
+  delim='.'
+fi
+
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do echo "$arg"; done | "$0"
+else
+  sed -n "s/.*\($escaped_delim[^$delim]*\)/\1/p"
+fi
