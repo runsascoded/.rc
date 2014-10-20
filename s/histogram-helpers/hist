@@ -1,7 +1,18 @@
 #!/bin/sh
 
-if [ "$1" == "-r" ]; then
-    sort | uniq -c | sort -nrk 1 "$@"
-else
-    sort | uniq -c | sort -nk 1 "$@"
-fi
+reverse=
+while [[ $# > 1 ]]; do
+  arg="$1"
+  shift
+
+  case "$arg" in
+    -r)
+    reverse="-r"
+    ;;
+    *)
+      break
+    ;;
+  esac
+done
+
+sort | uniq -c | sort $reverse -nk 1 "$@"
