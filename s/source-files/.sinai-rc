@@ -64,6 +64,9 @@ alias v2a="adam vcf2adam"
 export arun="/hpc/users/ahujaa01"
 export harun="/user/ahujaa01"
 
+export hg19="/hpc/users/ahujaa01/reference_genomes/Homo_sapiens_assembly19.fasta"
+export hhg19="/user/willir31/data/refs/hg19.fasta"
+
 export harundata="/user/ahujaa01/dream/synsets"
 export tumor3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.tumor.withMDTags.chr2.bam"
 export normal3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.normal.withMDTags.chr2.bam"
