@@ -2,8 +2,8 @@
 
 import argparse
 import datetime
-import math
 import sys
+import threading
 import time
 
 parser = argparse.ArgumentParser()
@@ -42,6 +42,15 @@ print_strategy_group.add_argument(
     dest="fibonacci",
     help="Print an intermediate status every Fibonacci number"
 )
+
+print_strategy_group.add_argument(
+    "-i",
+    "--interval",
+    type=int,
+    dest="interval",
+    help="Interval (in seconds) at which to print status updates"
+)
+
 
 parser.add_argument(
     "-m",
@@ -128,6 +137,32 @@ class FibonacciPrintStrategy(PrintStrategy):
         self.next_checkpoint += t
 
 
+class IntervalPrintStrategy(PrintStrategy):
+    def __init__(self, interval_s, init=True):
+        self.next_checkpoint = 0
+        self.initd = False
+        self.killed = False
+        self.interval_s = interval_s
+        if init:
+            self.init()
+
+    def start_fn_interval(self, func):
+        def func_wrapper():
+            if not self.killed:
+                self.start_fn_interval(func)
+            func()
+        self.t = threading.Timer(self.interval_s, func_wrapper)
+        self.t.start()
+
+    def init(self, fn):
+        self.start_fn_interval(fn)
+        self.initd = True
+
+    def kill(self):
+        self.killed = True
+        self.t.cancel()
+
+
 print_strategy = None
 
 if opts.exponential_backoff_strategy:
@@ -147,6 +182,9 @@ elif opts.round_numbers:
 
 elif opts.fibonacci:
     print_strategy = FibonacciPrintStrategy()
+
+elif opts.interval:
+    print_strategy = IntervalPrintStrategy(opts.interval, init=False)
 
 else:
     print_strategy = GeometricPrintStrategy(10, [ 1, 2, 5 ])
@@ -215,29 +253,39 @@ rater = RateComputer(init=False)
 def fmt_float(f):
     return "%s" % float("%f" % f)
 
-
 num = 0
-while True:
-    line = sys.stdin.readline()
-    if not rater.initd:
-        rater.init()
-    if not line:
-        break
-    num += 1
-    if num >= print_strategy.next_checkpoint:
-        if num >= opts.minimum_print:
-            printer.p(
-                "%s%d%s" % (
-                    ("%s: " % datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
-                     if opts.timestamps
-                     else ""),
-                    num,
-                    (" %s/s (%s/s all time)" % tuple(map(lambda f: str(int(f)), list(rater.get_rates(num))))
-                     if opts.durations
-                     else "")
-                )
-            )
+def print_num():
+    printer.p(
+        "%s%d%s" % (
+            ("%s: " % datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+             if opts.timestamps
+             else ""),
+            num,
+            (" %s/s (%s/s all time)" % tuple(map(lambda f: str(int(f)), list(rater.get_rates(num))))
+             if opts.durations
+             else "")
+        )
+    )
 
-        print_strategy.compute_next_checkpoint()
+try:
+    while True:
+        line = sys.stdin.readline()
+        if hasattr(print_strategy, 'initd') and print_strategy.initd == False:
+            print_strategy.init(print_num)
+        if not rater.initd:
+            rater.init()
+        if not line:
+            break
+        num += 1
+        if print_strategy.next_checkpoint and num >= print_strategy.next_checkpoint:
+            if num >= opts.minimum_print:
+                print_num()
+
+            print_strategy.compute_next_checkpoint()
+except KeyboardInterrupt:
+    if hasattr(print_strategy, 'kill'):
+        print_strategy.kill()
+    print ''
+    pass
 
 printer.p(num)
