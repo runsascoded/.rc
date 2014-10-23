@@ -4,7 +4,14 @@
 
 export sinai="$HOME/sinai"
 
-export data="$sinai/data"
+if [ -d "$sinai/data" ]; then
+  export data="$sinai/data"
+elif [ -d "$HOME/data" ]; then
+  export data="$HOME/data"
+else
+  err "Couldn't find \$data directory at $sinai/data or $HOME/data"
+fi
+
 export DATA="$data"
 
 export guac="$sinai/guacamole"
