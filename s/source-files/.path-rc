@@ -39,6 +39,8 @@ prepend_to_path "$s/py"
 prepend_to_path "$s/returncode-helpers"
 prepend_to_path "$s/which-helpers"
 
+append_to_path "$c/streaming-wc-l"
+
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
   append_to_path "$s/mld-dir";
