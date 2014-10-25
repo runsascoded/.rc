@@ -46,6 +46,7 @@ try_source() {
 }
 
 alias awch=". alias-which"
+alias aw=". alias-which"
 
 try_source ".vars-rc"
 try_source ".path-rc"
