@@ -1,0 +1,6 @@
+#!/bin/bash
+
+needle="$1"
+group="$2"
+
+pne "s/.*?${needle}(${group}).*/\1/p"

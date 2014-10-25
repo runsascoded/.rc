@@ -1,0 +1,58 @@
+#!/usr/bin/python
+
+import argparse
+import fileinput
+import re
+import sys
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+  "-n", "--line-numbers",
+  action="store_true",
+  dest="line_nums",
+  help="Print line nums with each match"
+)
+
+parser.add_argument(
+  "-m", "--multiple",
+  action="store_true",
+  dest="allow_multiple_matches_per_line",
+  help="Allows printing of multiple matches per line"
+)
+
+parser.add_argument(
+  "-a", "--after",
+  action="store_true",
+  dest="display_after",
+  help="Only display the portion of the word that comes *after* the matched regex."
+)
+
+opts, args = parser.parse_known_args()
+
+num = 0
+try:
+  while True:
+    num += 1
+    line = sys.stdin.readline()
+    if not line:
+      break
+    for word in re.split('\s+', line):
+      m = re.search(args[0], word)
+      if not m:
+        continue
+
+      w = word[m.end():] if opts.display_after else word
+
+      if opts.line_nums:
+        print '%d:%s' % (num, w)
+      else:
+        print w
+
+      if not opts.allow_multiple_matches_per_line:
+        break
+
+except IOError:
+  pass
+
+#ggrep -Po "[^\s]*$1[^\s]*"
+#pne 's/(?:^|\s)
