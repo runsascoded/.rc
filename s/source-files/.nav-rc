@@ -13,5 +13,3 @@ alias psh="pushd ."
 alias pop="popd"
 alias p="popd"
 alias b="popd"
-
-
