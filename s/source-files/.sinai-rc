@@ -13,6 +13,7 @@ else
 fi
 
 export DATA="$data"
+export refs="$data"/refs
 
 export guac="$sinai/guacamole"
 export GUAC="$guac"
