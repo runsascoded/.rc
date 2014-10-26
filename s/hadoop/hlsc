@@ -1,1 +1,3 @@
-/Users/ryan/sinai/internal-tools/scripts/hadoop-utils/hadoop-ls-C
+#!/bin/bash
+$ints/scripts/hadoop-utils/hadoop-ls-C "$@"
+

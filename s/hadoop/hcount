@@ -1,1 +1,3 @@
-/Users/ryan/sinai/internal-tools/scripts/hadoop-utils/hadoop-count
+#!/bin/bash
+$ints/scripts/hadoop-utils/hcount "$@"
+
