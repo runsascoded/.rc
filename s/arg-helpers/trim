@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sed "s/^[[:space:]]*//;s/[[:space:]]*$//"
+
+# Alternative, seems almost as fast but maybe a little less
+#pe "s/^\s+(.*?)\s*\n$/\1\n/"
+
+
