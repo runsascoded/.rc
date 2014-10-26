@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while read -r line; do
+  #let num=$num+1
+  #echo "$@"
+  cmd="$line $@"
+  #echo "cmd: $cmd"
+  node -p -e "$cmd" #"$line $@"
+  #node -p -e "$line $@"
+done
