@@ -1,0 +1,9 @@
+#!/bin/bash
+
+first_file="${@: -2:1}"
+second_file="${@: -1}"
+
+args=${@:1:$((${#@} - 2))}
+
+comm "$args" <(sort "$first_file") <(sort "$second_file")
+
