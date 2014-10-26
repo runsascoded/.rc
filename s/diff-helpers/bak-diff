@@ -1,0 +1,13 @@
+#!/bin/bash
+
+arg=${@: -1}
+opts=${@: 1:$((${#@} - 1))}
+
+if [[ "$arg" =~ \.bak$ ]]; then
+  bak_arg="$arg"
+  arg="${bak_arg%.bak}"
+else
+  bak_arg="$arg".bak
+fi
+
+diff $opts "$arg" "$bak_arg"

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bak-diff -q "$@"
