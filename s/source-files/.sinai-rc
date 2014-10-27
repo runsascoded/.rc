@@ -55,6 +55,9 @@ export SPARK="$c/spark"
 if [ -z "$SPARK_HOME" ]; then
   export SPARK_HOME="$SPARK"
 fi
+export sparklogs="hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs"
+export mysparklogs="$hhome/spark.logs"
+
 export PICARD="$c/picard"
 export HADOOP_BAM="$c/hadoop-bam"
 
