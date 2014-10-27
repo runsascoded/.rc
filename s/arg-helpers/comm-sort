@@ -5,5 +5,5 @@ second_file="${@: -1}"
 
 args=${@:1:$((${#@} - 2))}
 
-comm "$args" <(sort "$first_file") <(sort "$second_file")
+comm $args <(sort "$first_file") <(sort "$second_file")
 
