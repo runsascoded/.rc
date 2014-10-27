@@ -1,0 +1,4 @@
+#!/bin/bash
+
+escaped_regex="$(echo "$1" | sed 's_/_\\/_g')"
+pne "s/${escaped_regex}$//"
