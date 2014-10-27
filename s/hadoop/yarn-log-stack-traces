@@ -2,4 +2,4 @@
 
 appid="$1"
 shift
-yl "$appid" | stack-traces.py "$@" | less
+yl "$appid" | stack_traces.py "$@" | less
