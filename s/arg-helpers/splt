@@ -6,13 +6,11 @@ if [ $# -eq 0 ]; then
 elif [ $# -eq 1 ]; then
 	xargs "$0" "$1"
 	exit 0
-elif [ $# -gt 2 ]; then
-	echo 'Must pass exactly two arguments: delimiter and haystack'
-	exit 1
 fi
 
 delim="$1"
-haystack="$2"
-echo $haystack | tr $delim "\n"
+shift
+haystack="$@"
+echo "$haystack" | tr "$delim" '\n'
 
 
