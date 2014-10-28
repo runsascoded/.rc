@@ -4,11 +4,6 @@ n=10
 while getopts "n:" opt; do
   case $opt in
     n)
-#      echo 'got n!'
-#      echo all: "$@"
-#      echo opt: "$opt"
-#      echo 1: "$1"
-#      echo ''
       n=$2
       shift
       shift
@@ -16,7 +11,4 @@ while getopts "n:" opt; do
   esac
 done
 
-#echo "$@"
-#echo "$n"
-
-h cat "$@" | head -n $n 2> /dev/null
+h cat "$@" | head -n $n
