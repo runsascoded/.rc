@@ -1,0 +1,3 @@
+#!/bin/bash
+
+h mv "$1" "$1.bak"
