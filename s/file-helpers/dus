@@ -1,32 +1,33 @@
 #!/bin/bash
 
-reverse_sort=
-if [ "$1" == "-r" ]; then
-  reverse_sort="-r"
-  shift
-fi
+sort_opts=
+du_opts="-s"
+while getopts "rhb" opt; do
+  case $opt in
+    r)
+      sort_opts="$sort_opts -r"
+      shift
+    ;;
+    h)
+      du_opts="$du_opts -h"
+      sort_opts="$sort_opts -h"
+      shift
+    ;;
+    b)
+      du_opts="$du_opts -b"
+      shift
+    ;;
+  esac
+done
 
-human_readable=
-if [ "$1" == "-h" ]; then
-  human_readable="-h"
-  sort_human_readable="-h"
-  shift
-else
-  sort_human_readable="-nk 1"
-fi
-
-if [ -z "$reverse_sort" -a "$1" == "-r" ]; then
-  reverse_sort="-r"
-  shift
-fi
 
 if [ $# -eq 0 ]; then
-  du -s $human_readable ./* | sort $reverse_sort $sort_human_readable
+  du $du_opts ./* | sort $sort_opts
 else
   if [ $# -eq 1 -a -d "$1" ]; then
     path="${1%/}"
-    du -s $human_readable "$path" "$path"/* | sort $reverse_sort $sort_human_readable
+    du $du_opts "$path" "$path"/* | sort $sort_opts
   else
-    du -s $human_readable "$@" | sort $reverse_sort $sort_human_readable
+    du $du_opts "$@" | sort $sort_opts
   fi
 fi
