@@ -58,6 +58,10 @@ fi
 export sparklogs="hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs"
 export mysparklogs="$hhome/spark.logs"
 
+if [ -d "/etc/hadoop/conf" ]; then
+  export YARN_CONF_DIR=/etc/hadoop/conf
+fi
+
 export PICARD="$c/picard"
 export HADOOP_BAM="$c/hadoop-bam"
 
