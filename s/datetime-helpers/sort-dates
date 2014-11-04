@@ -32,11 +32,13 @@ process.stdin.on('end', function() {
     if (!format) {
       throw new Error("Couldn't parse datetime: " + line);
     }
-    return moment(line, format);
-  }).sort(function(d1, d2) {
-    return parseInt(d1.format('X')) - parseInt(d2.format('X'));
-  }).forEach(function(d) {
-    console.log(d.format(d._f));
+    var m = moment(line, format);
+    var unix = parseInt(m.format('X'));
+    return [unix, line];
+  }).sort(function(p1, p2) {
+    return p1[0] - p2[0];
+  }).forEach(function(p) {
+    console.log(p[1]);
   });
 });
 
