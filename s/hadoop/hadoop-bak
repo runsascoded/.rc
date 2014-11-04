@@ -1,3 +1,6 @@
 #!/bin/bash
 
-h mv "$1" "$1.bak"
+for arg in "$@"; do
+  h rm -r "$arg.bak"
+  h mv "$arg" "$arg.bak"
+done

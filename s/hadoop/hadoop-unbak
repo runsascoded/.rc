@@ -1,3 +1,8 @@
 #!/bin/bash
 
-h mv "$1" "$1.bak"
+for arg in "$@"; do
+  unbakd="${arg%.bak}"
+  bakd="${unbakd}.bak"
+  h rm -r "$unbakd"
+  h mv "$bakd" "$unbakd"
+done
