@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if [[ $# -gt 1 && "$2" =~ [0-9]+ ]]; then
-  samtools view "$1" | head -n "$2"
+if [[ "$1" =~ [0-9]+ ]]; then
+  num="$1"
+  shift
+  samtools view "$@" | head -n "$num"
 else
   samtools view "$@" | head
 fi
