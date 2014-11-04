@@ -24,6 +24,8 @@ export GUAC="$guac"
 export ints="$sinai/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
+export yarn_appid_base="1414786346526"
+
 try_source "$ints/environment/paths.sourceme"
 
 export its="$ints/scripts"

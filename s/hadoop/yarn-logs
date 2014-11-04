@@ -2,6 +2,6 @@
 
 appid="$1"
 if [[ $appid =~ ^[0-9]{4}$ ]]; then
-  appid="application_1414786346526_$appid"
+  appid="application_${yarn_appid_base}_${appid}"
 fi
 yarn logs -applicationId "$appid" 2> grep -v 'Connecting to ResourceManager'
