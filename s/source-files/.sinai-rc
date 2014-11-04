@@ -50,6 +50,9 @@ export Hout="${hdfs}${hout}"
 
 export dream="/datasets/dream/data"
 export training="$dream/training"
+export real="$dream/real-data"
+export hset3="$dream/synthetic-challenge-3"
+export hset4="$dream/synthetic-challenge-4"
 
 export ADAM="$c/adam"
 export adam="$ADAM"
