@@ -14,6 +14,9 @@ fi
 
 export DATA="$data"
 export refs="$data"/refs
+export chr20="$data/training/chr20"
+export set3="$data/set3"
+export set4="$data/set4"
 
 export guac="$sinai/guacamole"
 export GUAC="$guac"
@@ -48,9 +51,17 @@ export Hout="${hdfs}${hout}"
 export dream="/datasets/dream/data"
 export training="$dream/training"
 
-# Guac dependency paths
 export ADAM="$c/adam"
 export adam="$ADAM"
+export ADAM_HOME="$ADAM"
+alias adam="${ADAM}/bin/adam-submit"
+alias adam-local="bash ${ADAM_HOME}/adam-cli/target/appassembler/bin/adam"
+alias adam-submit="${ADAM}/bin/adam-submit"
+alias adam-shell="${ADAM}/bin/adam-shell"
+alias a2v="adam adam2vcf"
+alias v2a="adam vcf2adam"
+
+
 export SPARK="$c/spark"
 if [ -z "$SPARK_HOME" ]; then
   export SPARK_HOME="$SPARK"
@@ -70,11 +81,6 @@ alias gdos="guacamole-demeter-over-ssh"
 # For ADAM
 export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
 export m2adam="$m2/org/bdgenomics/adam"
-
-alias adam="${ADAM}/bin/adam-submit"
-alias adam-shell="${ADAM}/bin/adam-shell"
-alias a2v="adam adam2vcf"
-alias v2a="adam vcf2adam"
 
 export arun="/hpc/users/ahujaa01"
 export harun="/user/ahujaa01"
