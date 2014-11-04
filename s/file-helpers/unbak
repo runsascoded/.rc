@@ -1,17 +1,14 @@
 #!/bin/bash
 
-for arg in $@
-do
-    if [ "${arg:(-4)}" != ".bak" ]
-    then
-	if [ -e $arg.bak ]
-	then
-	    arg=$arg.bak
-	else
-	    echo "Bad argument: $arg"
-	    continue
-	fi
+for arg in "$@"; do
+  if [ "${arg:(-4)}" != ".bak" ]; then
+    if [ -e "$arg.bak" ]; then
+      arg="$arg.bak"
+    else
+      echo "Bad argument: $arg"
+      continue
     fi
-    echo "Unpacking $arg to ${arg%.bak}"
-    mv $arg ${arg%.bak}
+  fi
+  echo "Unpacking $arg to ${arg%.bak}"
+  mv "$arg" "${arg%.bak}"
 done
