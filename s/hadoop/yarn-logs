@@ -2,6 +2,6 @@
 
 appid="$1"
 if [[ $appid =~ ^[0-9]{4}$ ]]; then
-  appid="application_1413512480649_$appid"
+  appid="application_1414786346526_$appid"
 fi
 yarn logs -applicationId "$appid"
