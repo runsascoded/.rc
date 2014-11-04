@@ -1,0 +1,5 @@
+#!/bin/bash
+
+name="$1"
+shift
+find . -name "$name*"
