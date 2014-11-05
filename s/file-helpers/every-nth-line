@@ -1,16 +1,16 @@
 #!/bin/bash
 
-arg=$1
+arg="$1"
 if ! [[ "$arg" =~ ^[0-9]+$ ]]; then
   if [[ "$arg" =~ ^[0-9]+%[0-9]+$ ]]; then
-    num=${arg##*%}
-    offset=${arg%%%*}
+    num="${arg##*%}"
+    offset="${arg%%%*}"
   else
     err "Usage: $0 <num>"
     exit 1
   fi
 else
-  num=$arg
+  num="$arg"
   offset=0
 fi
 
