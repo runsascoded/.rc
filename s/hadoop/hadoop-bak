@@ -1,6 +1,8 @@
 #!/bin/bash
 
-for arg in "$@"; do
+args="$(hls -d "$@" | grep -v '^Found ' | col -1)"
+
+for arg in "$args"; do
   h rm -r "$arg.bak" 2> /dev/null
   h mv "$arg" "$arg.bak"
 done
