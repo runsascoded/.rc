@@ -52,9 +52,26 @@ export Hout="${hdfs}${hout}"
 
 export dream="/datasets/dream/data"
 export training="$dream/training"
-export real="$dream/real-data"
+export real="$dream/real-data-sorted"
+
+export panc="$real/pancreatic"
+export panc0="$panc/PCSI0023"
+export panc1="$panc/PCSI0044"
+export panc2="$panc/PCSI0046"
+export panc3="$panc/PCSI0048"
+export panc4="$panc/PCSI0072"
+
+export pros="$real/prostate"
+export pros0="$pros/CPCG0100"
+export pros1="$pros/CPCG0183"
+export pros2="$pros/CPCG0184"
+export pros3="$pros/CPCG0196"
+export pros4="$pros/CPCG0235"
+
 export hset3="$dream/synthetic-challenge-3"
 export hset4="$dream/synthetic-challenge-4"
+
+export adam_args="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs --conf spark.default.parallelism=2000 --master yarn"
 
 export ADAM="$c/adam"
 export adam="$ADAM"
@@ -84,7 +101,7 @@ export HADOOP_BAM="$c/hadoop-bam"
 alias gdos="guacamole-demeter-over-ssh"
 
 # For ADAM
-export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m"
+export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=256m"
 export m2adam="$m2/org/bdgenomics/adam"
 
 export arun="/hpc/users/ahujaa01"
