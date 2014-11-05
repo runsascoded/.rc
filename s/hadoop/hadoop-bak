@@ -1,6 +1,6 @@
 #!/bin/bash
 
 for arg in "$@"; do
-  h rm -r "$arg.bak"
+  h rm -r "$arg.bak" 2> /dev/null
   h mv "$arg" "$arg.bak"
 done

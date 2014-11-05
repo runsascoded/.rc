@@ -3,6 +3,6 @@
 for arg in "$@"; do
   unbakd="${arg%.bak}"
   bakd="${unbakd}.bak"
-  h rm -r "$unbakd"
+  h rm -r "$unbakd" 2> /dev/null
   h mv "$bakd" "$unbakd"
 done
