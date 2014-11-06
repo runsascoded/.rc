@@ -1,0 +1,5 @@
+#!/bin/bash
+
+num="$1"
+shift
+pne "s/^(.{$num}).*/\1/" "$@"
