@@ -1,0 +1,3 @@
+#!/bin/bash
+
+every-nth-line 4 "$@"
