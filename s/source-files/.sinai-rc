@@ -71,7 +71,7 @@ export pros4="$pros/CPCG0235"
 export hset3="$dream/synthetic-challenge-3"
 export hset4="$dream/synthetic-challenge-4"
 
-export adam_args="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs --conf spark.default.parallelism=2000 --master yarn"
+export adam_args="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs --conf spark.default.parallelism=2000 --conf spark.storage.memoryFraction=0.1 --master yarn"
 
 export ADAM="$c/adam"
 export adam="$ADAM"
