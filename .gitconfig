@@ -33,7 +33,6 @@
         lso     = ls-files --other --exclude-standard
         lsc     = diff-tree --no-commit-id --name-only -r
         m       = merge
-        mb      = merge-base
         mt      = mergetool -t meld -y
         pr      = pull --rebase
         r       = remote
