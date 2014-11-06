@@ -27,24 +27,28 @@ process.stdin.resume();
 process.stdin.on('data', function(buf) { content += buf.toString(); });
 process.stdin.on('end', function() {
 
-  var lines = content.split("\n").filter(function(line) { return !!line; });   // split the lines
-  lines.map(function(line) {
-    var format = parseDateFormat(line);
-    if (!format) {
-      if (dropNoDateLines) {
-        return undefined;
-      }
-      throw new Error("Couldn't parse datetime: " + line);
-    }
-    var m = moment(line, format);
-    var unix = parseInt(m.format('X'));
-    return [unix, line];
-  }).filter(function(x) {
-    return !!x;
-  }).sort(function(p1, p2) {
-    return p1[0] - p2[0];
-  }).forEach(function(p) {
-    console.log(p[1]);
-  });
+  var truthy = function(x) { return !!x; }
+
+  content
+        .split("\n")
+        .filter(truthy)
+        .map(function(line) {
+          var format = parseDateFormat(line);
+          if (!format) {
+            if (dropNoDateLines) {
+              return undefined;
+            }
+            throw new Error("Couldn't parse datetime: " + line);
+          }
+          var m = moment(line, format);
+          var unix = parseInt(m.format('X'));
+          return [unix, line];
+        })
+        .filter(truthy)
+        .sort(function(p1, p2) {
+          return p1[0] - p2[0];
+        }).forEach(function(p) {
+          console.log(p[1]);
+        });
 });
 

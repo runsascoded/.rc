@@ -1,4 +1,3 @@
-#!/usr/local/bin/node
 
 var moment = require('moment');
 
