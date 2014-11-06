@@ -1,0 +1,6 @@
+#!/bin/bash
+
+x="$1"
+shift
+let y=$x+1
+slice $x $y "$@"
