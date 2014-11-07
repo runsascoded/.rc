@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat "$1" | e4l | drop 1 | drop-right 2
