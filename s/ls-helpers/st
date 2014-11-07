@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ $# -eq 0 ] || ! isnum "$1"; then
    count=10
@@ -7,4 +7,4 @@ else
    shift
 fi
 
-l $dir | tail -n $count
+s $dir | tail -n $count

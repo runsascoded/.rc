@@ -2,14 +2,15 @@
 
 # Navigation aliases
 alias c=". ~/s/c"
-alias s="pushd .; cd ~/s"
-alias go="pushd .; cd"
+alias go="pushd"
 
 alias u="cd .."
 alias uu="cd ../.."
 alias uuu="cd ../../.."
 alias uuuu="cd ../../../.."
-alias psh="pushd ."
+
+alias psh="pushd"
 alias pop="popd"
+alias P="pushd"
 alias p="popd"
 alias b="popd"
