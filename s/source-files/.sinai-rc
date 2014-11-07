@@ -85,6 +85,7 @@ alias v2a="adam vcf2adam"
 
 
 export SPARK="$c/spark"
+export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
   export SPARK_HOME="$SPARK"
 fi
