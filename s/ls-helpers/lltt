@@ -1,9 +1,10 @@
 #!/bin/sh
 
-if [ $# -eq 0 ]; then
+if [ $# -eq 0 ] || ! isnum "$1"; then
    count=10
 else
-   count=$1
+    count=$1
+    shift
 fi
 
-ls -ltr | tail -n $count
+ls -ltr "$@" | tail -n $count
