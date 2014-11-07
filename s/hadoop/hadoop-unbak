@@ -2,9 +2,12 @@
 
 args="$(hls -d "$@" | grep -v '^Found ' | col -1)"
 
-for arg in "$args"; do
+OLD_IFS="$IFS"
+IFS=$'\n'
+for arg in $args; do
   unbakd="${arg%.bak}"
   bakd="${unbakd}.bak"
   h rm -r "$unbakd" 2> /dev/null
   h mv "$bakd" "$unbakd"
 done
+IFS="$OLD_IFS"
