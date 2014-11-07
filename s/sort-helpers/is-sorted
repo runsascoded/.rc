@@ -1,0 +1,24 @@
+#!/bin/bash
+
+t="$(mktemp)"
+if [ $# -gt 0 ]; then
+  echo "found: $1"
+  cat "$1"
+  f="$1"
+  rm_f=
+else
+  f="$(mktemp)"
+  rm_f=1
+  cat > "$f"
+fi
+cat "$f" | sort > "$t"
+echo "file:"
+cat "$f"
+echo ''
+diff "$1" "$t" #> /dev/null
+ret=$?
+rm -f "$t"
+if [ $rm_f ]; then
+  rm -f "$f"
+fi
+exit $ret
