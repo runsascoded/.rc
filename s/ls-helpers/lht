@@ -1,3 +1,10 @@
 #!/bin/bash
 
-l -htr "$@"
+if [ $# -eq 0 ] || ! isnum "$1"; then
+   count=10
+else
+   count=$1
+   shift
+fi
+
+l -hSr "$@" | tail -n $count
