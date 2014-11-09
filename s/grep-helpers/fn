@@ -2,5 +2,10 @@
 
 name="$1"
 shift
-find . -name "*$name*" "$@"
+if [ $# -eq 0 ]; then
+  args="."
+else
+  args="$@"
+fi
+find $args -name "*$name*"
 
