@@ -44,6 +44,9 @@ export HH="$Hh"
 export hdata="${hh}/data"
 export Hdata="${hdfs}${hdata}"
 
+export hset3="$hdata/set3"
+export hset4="$hdata/set4"
+
 export h100k="${hdata}/100k"
 export H100k="${hdfs}${h100k}"
 
@@ -68,8 +71,8 @@ export pros2="$pros/CPCG0184"
 export pros3="$pros/CPCG0196"
 export pros4="$pros/CPCG0235"
 
-export hset3="$dream/synthetic-challenge-3"
-export hset4="$dream/synthetic-challenge-4"
+export hsyn3="$dream/synthetic-challenge-3"
+export hsyn4="$dream/synthetic-challenge-4"
 
 export adam_args="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs --conf spark.default.parallelism=2000 --conf spark.storage.memoryFraction=0.1 --master yarn"
 
