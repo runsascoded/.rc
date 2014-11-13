@@ -38,6 +38,13 @@ append_to_path() {
   append_to PATH "$@"
 }
 
+remove_from_var() {
+  var="$1"
+  shift
+  for arg in "$@"; do
+    export_assign "$var" "$(echo "$(eval "echo \$$var")" | splt : | grep -v "$arg" | joyn :)"
+  done
+}
 
 dedupe_path_var() {
   for var in "$@"; do
