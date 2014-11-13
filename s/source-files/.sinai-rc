@@ -45,7 +45,14 @@ export hdata="${hh}/data"
 export Hdata="${hdfs}${hdata}"
 
 export hset3="$hdata/set3"
+export h3="$hset3"
+export h3n="$hset3/normal"
+export h3t="$hset3/tumor"
+
 export hset4="$hdata/set4"
+export h4="$hset4"
+export h4n="$hset4/normal"
+export h4t="$hset4/tumor"
 
 export h100k="${hdata}/100k"
 export H100k="${hdfs}${h100k}"
