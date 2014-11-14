@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -gt 0 ]; then
+  sep="$1"
+else
+  sep=' '
+fi
+
+pne "s/^\s*([^\s]+):\s+([0-9]+)\s*$/\1${sep}\2\n/"
