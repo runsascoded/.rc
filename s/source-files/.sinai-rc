@@ -81,8 +81,26 @@ export pros4="$pros/CPCG0235"
 export hsyn3="$dream/synthetic-challenge-3"
 export hsyn4="$dream/synthetic-challenge-4"
 
-export SPARK_JAVA_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps"
-export adam_args="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs --conf spark.default.parallelism=2000 --conf spark.storage.memoryFraction=0.1 --master yarn"
+# Spark/ADAM opts
+export em=--executor-memory
+export ec=--executor-cores
+export ne=--num-executors
+export dm=--driver-memory
+export mf="--conf spark.storage.memoryFraction"
+export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:"
+export dp="--conf spark.storage.memoryFraction"
+
+adam_args=
+adam_args="$adam_args --conf spark.eventLog.enabled=true"
+adam_args="$adam_args --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs"
+adam_args="$adam_args --conf spark.default.parallelism=2000"
+adam_args="$adam_args --conf spark.storage.memoryFraction=0.1"
+adam_args="$adam_args --executor-memory 10g"
+adam_args="$adam_args --executor-cores 4"
+adam_args="$adam_args --driver-memory 10g"
+adam_args="$adam_args --num-executors 1000"
+adam_args="$adam_args --master yarn"
+export adam_args
 
 export ADAM="$c/adam"
 export adam="$ADAM"
