@@ -89,6 +89,7 @@ export dm=--driver-memory
 export mf="--conf spark.storage.memoryFraction"
 export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:"
 export dp="--conf spark.storage.memoryFraction"
+export mo="--conf spark.yarn.executor.memoryOverhead"
 
 adam_args=
 adam_args="$adam_args --conf spark.eventLog.enabled=true"
@@ -100,6 +101,14 @@ adam_args="$adam_args --executor-cores 4"
 adam_args="$adam_args --driver-memory 10g"
 adam_args="$adam_args --num-executors 1000"
 adam_args="$adam_args --master yarn"
+
+adam_args="$adam_args --conf spark.yarn.executor.memoryOverhead=1024"
+adam_args="$adam_args --conf spark.app.name=Guacamole"
+adam_args="$adam_args --conf spark.core.connection.ack.wait.timeout=600"
+adam_args="$adam_args --conf spark.file.transferTo=false"
+adam_args="$adam_args --conf spark.shuffle.manager=sort"
+adam_args="$adam_args --conf spark.akka.timeout=1000"
+
 export adam_args
 
 export ADAM="$c/adam"
