@@ -1,0 +1,16 @@
+#!/bin/bash
+
+appid="$(yarn-appid "$1")"
+shift
+if [ $# -gt 0 ]; then
+  dest_dir="$1"
+else
+  dest_dir=.
+fi
+
+cd "$dest_dir"
+
+dest_file="$appid".logs
+yarn-logs "$appid" > "$dest_file"
+
+awk '/Container:/{g++} { print $0 > "container-"g }' "$dest_file"
