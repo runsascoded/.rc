@@ -15,7 +15,7 @@ fi
 
 
 debug() {
-  if [ "$VERBOSE" ]; then
+  if [ ! -z "$VERBOSE" -o ! -z "$DEBUG" ]; then
     echo $@
   fi
 }
