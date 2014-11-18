@@ -49,6 +49,7 @@ prepend_to_path "$s/samtools-helpers"
 prepend_to_path "$s/sort-helpers"
 prepend_to_path "$s/sinai"
 prepend_to_path "$s/which-helpers"
+prepend_to_path "$s/yarn"
 
 append_to_path "$c/bedtools2/bin"
 append_to_path "$c/stack_traces"
