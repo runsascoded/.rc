@@ -5,12 +5,17 @@ shift
 if [ $# -gt 0 ]; then
   dest_dir="$1"
 else
-  dest_dir=.
+  dest_dir=./"$appid"
 fi
 
+mkdir -p "$dest_dir"
 cd "$dest_dir"
 
-dest_file="$appid".logs
+dest_file=logs
+echo "Downloading logs to $PWD/$dest_file"
 yarn-logs "$appid" > "$dest_file"
+du -sh "$dest_file"
 
-awk '/Container:/{g++} { print $0 > "container-"g }' "$dest_file"
+split-yarn-logs "$dest_file"
+rm -f "$dest_file"
+
