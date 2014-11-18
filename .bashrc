@@ -81,3 +81,8 @@ try_source ".source-rc"
 dedupe_path_var PATH PYTHONPATH NODE_PATH
 
 export MIRROR_REMOTES="demeter,rpi"
+
+# added by travis gem
+if [ -f /Users/ryan/.travis/travis.sh ]; then
+  source /Users/ryan/.travis/travis.sh
+fi
