@@ -1,7 +1,3 @@
 #!/bin/bash
 
-appid="$1"
-if [[ $appid =~ ^[0-9]{4}$ ]]; then
-  appid="application_${yarn_appid_base}_${appid}"
-fi
-yarn logs -applicationId "$appid" 2> grep -v 'Connecting to ResourceManager'
+yarn logs -applicationId "$(yarn-appid "$@")" 2> grep -v 'Connecting to ResourceManager'

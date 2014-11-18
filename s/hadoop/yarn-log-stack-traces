@@ -1,5 +1,5 @@
 #!/bin/bash
 
-appid="$1"
+appid="$(yarn-appid "$@")"
 shift
 yl "$appid" | stack_traces.py "$@" | less
