@@ -1,3 +1,0 @@
-#!/bin/bash
-
-yarn logs -applicationId "$(yarn-appid "$@")" | grep -Pzo "(?s)LogType: stdout\nLogLength: [^0].*?stderr"

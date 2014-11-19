@@ -1,3 +1,0 @@
-#!/bin/bash
-
-yarn logs -applicationId "$(yarn-appid "$@")" 2> grep -v 'Connecting to ResourceManager'

@@ -54,6 +54,7 @@ prepend_to_path "$s/yarn"
 append_to_path "$c/bedtools2/bin"
 append_to_path "$c/stack_traces"
 append_to_path "$c/streaming-wc-l"
+append_to_path "$c/yarn-logs-helpers"
 
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
