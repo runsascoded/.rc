@@ -24,16 +24,11 @@ export GUAC="$guac"
 export ints="$sinai/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
-yarn_refresh_appid_base() {
-  if $(which yarn &> /dev/null); then
-    export yarn_appid_base="$(yarn application -list -appStates ALL | first | cw application_ | awk -F_ '{ print $2 }' | head -n 1)"
-    echo "Got yarn appid base: $yarn_appid_base"
-  fi
-}
+export ylh="$c/yarn-logs-helpers"
+try_source "$ylh/.yarn.sourceme"
 
-if [ -z "$yarn_appid_base" ]; then
-  yarn_refresh_appid_base
-fi
+export YARN_HELPERS_STRIP_HOST_SUFFIX=".demeter.hpc.mssm.edu_"
+export YARN_HELPERS_DRIVER_GREP_NEEDLE="Guacamole starting."
 
 try_source "$ints/environment/paths.sourceme"
 
