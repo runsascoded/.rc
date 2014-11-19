@@ -1,0 +1,15 @@
+#!/bin/bash
+
+debug "Making yarn-logs-helpers symlinks"
+
+yarn_aliases_dir="$s"/yarn
+
+mkdir -p "$yarn_aliases_dir"
+ln -sf "$ylh"/link-driver-logs "$yarn_aliases_dir"/ldl
+ln -sf "$ylh"/yarn-appid "$yarn_aliases_dir"/ya
+ln -sf "$ylh"/yarn-container-logs "$yarn_aliases_dir"/ycl
+ln -sf "$ylh"/yarn-logs "$yarn_aliases_dir"/yl
+ln -sf "$ylh"/yarn-kill "$yarn_aliases_dir"/yk
+ln -sf "$ylh"/yarn-logs-less "$yarn_aliases_dir"/yll
+ln -sf "$ylh"/yarn-log-stack-traces "$yarn_aliases_dir"/yls
+ln -sf "$ylh"/split-yarn-logs-per-container "$yarn_aliases_dir"/syl

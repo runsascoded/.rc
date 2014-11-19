@@ -26,6 +26,7 @@ export INTERNAL_TOOLS="$ints"
 
 export ylh="$c/yarn-logs-helpers"
 try_source "$ylh/.yarn.sourceme"
+try_source "$s/source-files/.yarn-rc"
 
 export YARN_HELPERS_STRIP_HOST_SUFFIX=".demeter.hpc.mssm.edu_"
 export YARN_HELPERS_DRIVER_GREP_NEEDLE="Guacamole starting."
