@@ -25,11 +25,8 @@ export ints="$sinai/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
 export ylh="$c/yarn-logs-helpers"
-try_source "$ylh/.yarn.sourceme"
-try_source "$s/source-files/.yarn-rc"
-
-export YARN_HELPERS_STRIP_HOST_SUFFIX=".demeter.hpc.mssm.edu_"
-export YARN_HELPERS_DRIVER_GREP_NEEDLE="Guacamole starting."
+export yarn_aliases_dir="$s"/yarn
+try_source "$ylh/.yarn-logs-helpers-config.sourceme"
 
 try_source "$ints/environment/paths.sourceme"
 
