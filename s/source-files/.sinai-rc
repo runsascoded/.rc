@@ -28,7 +28,7 @@ export YARN_HELPERS_DROP_HOST_SUFFIX_FROM=".demeter.hpc.mssm.edu_"
 export YARN_HELPERS_DRIVER_GREP_NEEDLE="Guacamole starting."
 export ylh="$c/yarn-logs-helpers"
 export yarn_aliases_dir="$s"/yarn
-try_source "$ylh/.yarn-logs-helpers-config.sourceme"
+try_source "$ylh/.yarn-logs-helpers.sourceme"
 
 try_source "$ints/environment/paths.sourceme"
 
