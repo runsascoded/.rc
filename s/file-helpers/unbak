@@ -9,6 +9,10 @@ for arg in "$@"; do
       continue
     fi
   fi
+  if [ -e "$arg" ]; then
+    echo "Removing $arg"
+    rm -rf "$arg"
+  fi
   echo "Unpacking $arg to ${arg%.bak}"
   mv "$arg" "${arg%.bak}"
 done

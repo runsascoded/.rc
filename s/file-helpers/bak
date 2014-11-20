@@ -1,7 +1,11 @@
 #!/bin/sh
 
-for arg in $@
+for arg in "$@"
 do
+    if [ -e "$arg.bak" ]; then
+        echo "Removing $arg.bak"
+        rm -rf "$arg.bak"
+    fi
     echo "Moving $arg to $arg.bak"
-    mv $arg $arg.bak
+    mv "$arg" "$arg.bak"
 done
