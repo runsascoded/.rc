@@ -106,7 +106,9 @@ spark_args="$spark_args --executor-cores 4"
 spark_args="$spark_args --driver-memory 10g"
 spark_args="$spark_args --num-executors 1000"
 spark_args="$spark_args --master yarn"
-spark_args="$spark_args --driver-java-options -Dyarn.resourcemanager.am.max-attempts=1"
+spark_args="$spark_args --deploy-mode cluster"
+driver_java_options="-Dyarn.resourcemanager.am.max-attempts=1"
+spark_args="$spark_args --driver-java-options $driver_java_options"
 
 spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=1024"
 spark_args="$spark_args --conf spark.app.name=Guacamole"
@@ -115,7 +117,17 @@ spark_args="$spark_args --conf spark.file.transferTo=false"
 spark_args="$spark_args --conf spark.shuffle.manager=sort"
 spark_args="$spark_args --conf spark.akka.timeout=1000"
 
+export gc_opts=-XX:+PrintGCDetails\ -XX:+PrintGCTimeStamps
+spark_args="$spark_args --conf spark.executor.extraJavaOptions=$gc_opts"
+
 export spark_args
+
+log4j_properties=$ints/scripts/guacamole/log4j.properties
+guac_args="$spark_args"
+guac_args="$guac_args --driver-java-options $driver_java_options\ -Dlog4j.configuration=$log4j_properties"
+guac_args="$guac_args --class org.bdgenomics.guacamole.Guacamole"
+guac_args="$guac_args --verbose"
+export guac_args
 
 export ADAM="$c/adam"
 export adam="$ADAM"
