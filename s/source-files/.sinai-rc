@@ -106,6 +106,7 @@ spark_args="$spark_args --executor-cores 4"
 spark_args="$spark_args --driver-memory 10g"
 spark_args="$spark_args --num-executors 1000"
 spark_args="$spark_args --master yarn"
+spark_args="$spark_args --driver-java-options -Dyarn.resourcemanager.am.max-attempts=1"
 
 spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=1024"
 spark_args="$spark_args --conf spark.app.name=Guacamole"
