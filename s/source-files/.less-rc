@@ -10,7 +10,7 @@ export LESS="$LESS -i"
 export LESS="$LESS -R"
 
 # auto-number lines
-export LESS="$LESS -N"
+#export LESS="$LESS -N"
 
 # don't wrap lines
 export LESS="$LESS -S"
