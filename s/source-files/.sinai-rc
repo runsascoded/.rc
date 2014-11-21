@@ -91,14 +91,19 @@ export ec=--executor-cores
 export ne=--num-executors
 export dm=--driver-memory
 export mf="--conf spark.storage.memoryFraction"
-export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:"
+export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
 export dp="--conf spark.storage.memoryFraction"
 export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
 
+export oldsparklogs="/spark/tmp/logs"
+export sparklogs="/spark/tmp/logs/willir31"
+export hsparklogs="${hdfs}${sparklogs}"
+export mysparklogs="$hhome/spark.logs"
+
 spark_args=
 spark_args="$spark_args --conf spark.eventLog.enabled=true"
-spark_args="$spark_args --conf spark.eventLog.dir=hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs"
+spark_args="$spark_args --conf spark.eventLog.dir=$hdfs:$sparklogs"
 spark_args="$spark_args --conf spark.default.parallelism=1000"
 spark_args="$spark_args --conf spark.storage.memoryFraction=0.1"
 spark_args="$spark_args --executor-memory 10g"
@@ -149,10 +154,6 @@ export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
   export SPARK_HOME="$SPARK"
 fi
-
-export sparklogs="/spark/tmp/logs/willir31"
-export hsparklogs="${hdfs}${sparklogs}"
-export mysparklogs="$hhome/spark.logs"
 
 if [ -d "/etc/hadoop/conf" ]; then
   export YARN_CONF_DIR=/etc/hadoop/conf
