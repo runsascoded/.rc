@@ -107,24 +107,28 @@ spark_args="$spark_args --driver-memory 10g"
 spark_args="$spark_args --num-executors 1000"
 spark_args="$spark_args --master yarn"
 spark_args="$spark_args --deploy-mode cluster"
-driver_java_options="-Dyarn.resourcemanager.am.max-attempts=1"
-spark_args="$spark_args --driver-java-options $driver_java_options"
+spark_djov="-Dyarn.resourcemanager.am.max-attempts=1"
+spark_args="$spark_args --driver-java-options $spark_djov"
+
+sort_shuffle="--conf spark.shuffle.manager=SORT"
+hash_shuffle="--conf spark.shuffle.manager=HASH"
 
 spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=1024"
 spark_args="$spark_args --conf spark.app.name=Guacamole"
 spark_args="$spark_args --conf spark.core.connection.ack.wait.timeout=600"
 spark_args="$spark_args --conf spark.file.transferTo=false"
-spark_args="$spark_args --conf spark.shuffle.manager=sort"
 spark_args="$spark_args --conf spark.akka.timeout=1000"
-
-export gc_opts=-XX:+PrintGCDetails\ -XX:+PrintGCTimeStamps
-spark_args="$spark_args --conf spark.executor.extraJavaOptions=$gc_opts"
+spark_args="$spark_args --conf -Dyarn.nodemanager.aux-services=org.apache.spark.network.yarn.YarnShuffleService"
+spark_args="$spark_args $sort_shuffle"
+export gc_opts="-XX:+PrintGCDetails -XX:+PrintGCTimeStamps"
+export ejo="spark.executor.extraJavaOptions=$gc_opts"
 
 export spark_args
 
-log4j_properties=$ints/scripts/guacamole/log4j.properties
 guac_args="$spark_args"
-guac_args="$guac_args --driver-java-options $driver_java_options\ -Dlog4j.configuration=$log4j_properties"
+export djo="--driver-java-options"
+log4j_properties=$ints/scripts/guacamole/log4j.properties
+export djov="$spark_djov -Dlog4j.configuration=$log4j_properties"
 guac_args="$guac_args --class org.bdgenomics.guacamole.Guacamole"
 guac_args="$guac_args --verbose"
 export guac_args
@@ -145,7 +149,9 @@ export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
   export SPARK_HOME="$SPARK"
 fi
-export sparklogs="hdfs://demeter-nn1.demeter.hpc.mssm.edu:/spark/tmp/logs"
+
+export sparklogs="/spark/tmp/logs/willir31"
+export hsparklogs="${hdfs}${sparklogs}"
 export mysparklogs="$hhome/spark.logs"
 
 if [ -d "/etc/hadoop/conf" ]; then
