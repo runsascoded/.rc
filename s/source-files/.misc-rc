@@ -19,6 +19,7 @@ alias e="echo"
 alias dtab="diff /tmp/a /tmp/b"
 alias mtab="meld /tmp/a /tmp/b"
 alias pg="ps aux | grep"
+alias pgi="ps aux | grep -i"
 alias xt='exit'
 alias es="emerge --search"
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
