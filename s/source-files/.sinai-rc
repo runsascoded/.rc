@@ -138,6 +138,12 @@ guac_args="$guac_args --class org.bdgenomics.guacamole.Guacamole"
 guac_args="$guac_args --verbose"
 export guac_args
 
+SPARK_HISTORY_OPTS=
+SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.ui.port=18081"
+SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=${hsparklogs}"
+SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.retainedApplications=1000"
+export SPARK_HISTORY_OPTS
+
 export ADAM="$c/adam"
 export adam="$ADAM"
 export ADAM_HOME="$ADAM"
