@@ -13,6 +13,7 @@
 !.ssh
 !.ssh/id_rsa.pub
 !.ssh/github_rsa.pub
+!.tmux.conf
 !s
 !s/**/*
 !slate
