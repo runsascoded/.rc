@@ -3,4 +3,5 @@
 # Sourcing
 alias resource="unalias resource; source ~/.bashrc"
 alias rsrc="source ~/.bashrc"
+alias src="source ~/.bashrc"
 
