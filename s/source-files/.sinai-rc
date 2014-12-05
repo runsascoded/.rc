@@ -38,7 +38,8 @@ alias mvnt="mvn-test"
 alias bak-iml="cp $guac/guacamole.iml ~/Dropbox/guacamole.iml.$(dt)"
 
 # Sinai Hadoop/Demeter paths
-export hhome="/user/willir31"
+export huser="willir31"
+export hhome="/user/$huser"
 export hh="$hhome"
 export hdfs="hdfs://demeter-nn1.demeter.hpc.mssm.edu"
 export Hhome="${hdfs}${hhome}"
@@ -47,6 +48,7 @@ export HH="$Hh"
 
 export hdata="${hh}/data"
 export Hdata="${hdfs}${hdata}"
+export hrefs="$hdata/refs"
 
 export hset3="$hdata/set3"
 export h3="$hset3"
@@ -97,7 +99,7 @@ export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
 
 export oldsparklogs="/spark/tmp/logs"
-export sparklogs="/spark/tmp/logs/willir31"
+export sparklogs="/spark/tmp/logs/$huser"
 export hsparklogs="${hdfs}${sparklogs}"
 export mysparklogs="$hhome/spark.logs"
 
@@ -178,7 +180,7 @@ export arun="/hpc/users/ahujaa01"
 export harun="/user/ahujaa01"
 
 export hg19="/hpc/users/ahujaa01/reference_genomes/Homo_sapiens_assembly19.fasta"
-export hhg19="/user/willir31/data/refs/hg19.fasta"
+export hhg19="$hrefs/hg19.fasta"
 
 export harundata="/user/ahujaa01/dream/synsets"
 export tumor3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.tumor.withMDTags.chr2.bam"
