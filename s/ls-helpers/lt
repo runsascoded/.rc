@@ -7,4 +7,4 @@ else
    shift
 fi
 
-l $dir | tail -n $count
+l "$1" | tail -n $count
