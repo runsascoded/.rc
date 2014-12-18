@@ -25,6 +25,8 @@ export home="$HOME"
 export c="$HOME/c"
 export C="$c"
 
+export GITHUBUSER="ryan-williams"
+
 export s="$HOME/s"
 export S="$s"
 export SRCDIR="$s"
