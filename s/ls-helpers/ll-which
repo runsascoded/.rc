@@ -1,6 +1,11 @@
 #!/bin/sh
 
+candidates=$(which -a "$@")
+ret=$?
+
 IFS=$'\n'
-for w in $(which -a "$@"); do
+for w in $candidates; do
   ls -l "$w"
 done
+
+exit $ret
