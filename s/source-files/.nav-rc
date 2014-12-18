@@ -3,6 +3,7 @@
 # Navigation aliases
 alias c=". ~/s/c"
 alias go="pushd"
+alias cdp="cd $PWD"
 
 alias u="cd .."
 alias uu="cd ../.."
