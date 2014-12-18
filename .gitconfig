@@ -2,4 +2,8 @@
 	name = Ryan Williams
 	email = ryan.blake.williams@gmail.com
 [include]
-	path = /Users/ryan/c/git-helpers/.gitconfig
+	path = /Users/ryan/c/git-helpers/config/.gitconfig
+[branch "master"]
+	rebase = true
+[branch]
+	autosetuprebase = always
