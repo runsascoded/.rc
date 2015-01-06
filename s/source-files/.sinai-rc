@@ -103,6 +103,8 @@ export sparklogs="/spark/tmp/logs/$huser"
 export hsparklogs="${hdfs}${sparklogs}"
 export mysparklogs="$hhome/spark.logs"
 
+export SPARK_HADOOP_VERSION=2.3.0
+
 spark_args=
 spark_args="$spark_args --conf spark.eventLog.enabled=true"
 spark_args="$spark_args --conf spark.eventLog.dir=$hdfs:$sparklogs"
