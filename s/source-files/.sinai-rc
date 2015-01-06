@@ -138,7 +138,7 @@ guac_args="$spark_args"
 export djo="--driver-java-options"
 log4j_properties=$ints/scripts/guacamole/log4j.properties
 export djov="$spark_djov -Dlog4j.configuration=$log4j_properties"
-guac_args="$guac_args --class org.bdgenomics.guacamole.Guacamole"
+guac_args="$guac_args --class org.hammerlab.guacamole.Guacamole"
 guac_args="$guac_args --verbose"
 export guac_args
 
