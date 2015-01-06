@@ -1,18 +1,19 @@
 #!/bin/bash
 
-for arg in "$@"; do
-  if [ "${arg:(-4)}" != ".bak" ]; then
-    if [ -e "$arg.bak" ]; then
-      arg="$arg.bak"
+for source in "$@"; do
+  if [ "${source:(-4)}" != ".bak" ]; then
+    if [ -e "$source.bak" ]; then
+      source="$source.bak"
     else
-      echo "Bad argument: $arg"
+      echo "Bad argument: $source"
       continue
     fi
   fi
-  if [ -e "$arg" ]; then
-    echo "Removing $arg"
-    rm -rf "$arg"
+  dest="${source%.bak}"
+  if [ -e "$dest" ]; then
+    echo "Removing $dest"
+    rm -rf "$dest"
   fi
-  echo "Unpacking $arg to ${arg%.bak}"
-  mv "$arg" "${arg%.bak}"
+  echo "Unpacking $source to $dest"
+  mv "$source" "$dest"
 done
