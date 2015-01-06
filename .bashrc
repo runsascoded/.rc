@@ -90,3 +90,7 @@ export MIRROR_REMOTES="demeter,rpi"
 if [ -f /Users/ryan/.travis/travis.sh ]; then
   source /Users/ryan/.travis/travis.sh
 fi
+
+# OPAM configuration
+. /Users/ryan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
