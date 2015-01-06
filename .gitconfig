@@ -2,7 +2,7 @@
 	name = Ryan Williams
 	email = ryan.blake.williams@gmail.com
 [include]
-	path = ~/.git-helpers.config
+	path = /Users/ryan/.git-helpers.config
 [branch "master"]
 	rebase = true
 [branch]
