@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias edp="explode-parent-dirs"
+
