@@ -118,6 +118,7 @@ spark_args="$spark_args --master yarn"
 spark_args="$spark_args --deploy-mode cluster"
 spark_djov="-Dyarn.resourcemanager.am.max-attempts=1"
 spark_args="$spark_args --driver-java-options $spark_djov"
+spark_args="$spark_args --files=$HOME/metrics.properties"
 
 sort_shuffle="--conf spark.shuffle.manager=SORT"
 hash_shuffle="--conf spark.shuffle.manager=HASH"
