@@ -7,12 +7,14 @@ append_to_path "/usr/include"
 append_to_path "/sbin"
 append_to_path "/sw/bin"
 prepend_to_path "$HOME/bin"
+prepend_to_path "$HOME/sbin"
+
 
 append_to_path "/usr/local/ncbi/blast/bin"
 
 append_to_path "$HOME/usr/local/bin"
 append_to_path "$HOME/local/bin"
-append_to_path "$HOME/.local/bin"
+prepend_to_path "$HOME/.local/bin"
 
 export ruby_version="2.0.0"
 append_to_path "$HOME/.gem/ruby/$ruby_version/bin"
@@ -56,6 +58,10 @@ append_to_path "$c/bedtools2/bin"
 append_to_path "$c/stack_traces"
 append_to_path "$c/streaming-wc-l"
 append_to_path "$c/yarn-logs-helpers"
+
+prepend_to_path "$HOME/meld-1.8.6/bin"
+
+prepend_to_path "$HOME/apache/bin"
 
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
