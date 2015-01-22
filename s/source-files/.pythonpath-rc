@@ -9,6 +9,15 @@ append_to "PYTHONPATH" "$HOME/Library/Python/Current/site-packages"
 append_to "PYTHONPATH" "$s"
 append_to "PYTHONPATH" "$s/py"
 
+append_to PYTHONPATH "/lib/python2.7/site-packages"
+
+append_to PYTHONPATH /usr/lib/python2.6/site-packages
+
+append_to PYTHONPATH "$HOME/.local/lib/python2.7"
+
+append_to LD_LIBRARY_PATH "$HOME/.local/lib"
+
 alias piu="pip install --user"
 
+# Perl
 append_to "PERL5LIB" "$HOME/bin"
