@@ -26,6 +26,7 @@ export c="$HOME/c"
 export C="$c"
 
 export GITHUBUSER="ryan-williams"
+export GITHUB_USER="ryan-williams"
 
 export s="$HOME/s"
 export S="$s"
