@@ -3,7 +3,7 @@
 alias "$@" 2> /dev/null
 alias_ret=$?
 
-ll-which "$@"
+ll-which "$@" 2> /dev/null
 which_ret=$?
 
 [ $alias_ret -eq 0 -o $which_ret -eq 0 ]
