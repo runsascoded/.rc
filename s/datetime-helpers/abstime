@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var m = require('moment');
+
+process.argv.slice(2).forEach(function(arg) {
+  console.log(m(new Date(m().format('YYYY/MM/DD') + ' ' + arg)).unix());
+});
