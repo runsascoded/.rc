@@ -1,0 +1,6 @@
+
+if [ $# -eq 0 ]; then
+  xargs "$0"
+else
+  js "console.log(JSON.stringify($1,null,4))"
+fi
