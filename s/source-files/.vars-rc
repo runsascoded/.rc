@@ -11,7 +11,16 @@ append_to() {
   shift
   for arg in "$@"; do
     if [ -d "$arg" ]; then
-      export_assign "$var" "$(eval "echo \$$var"):$arg"
+
+      cur_val="$(eval "echo \$$var")"
+
+      new_val="$arg"
+      if [ -n "$cur_val" ]; then
+        new_val="$cur_val:$arg"
+      fi
+
+      export_assign "$var" "$new_val"
+
     else
       debug "Not appending '$arg' to '\$$var'; '$arg' not a directory"
     fi
@@ -23,7 +32,15 @@ prepend_to() {
   shift
   for arg in "$@"; do
     if [ -d "$arg" ]; then
-      export_assign "$var" "$arg:$(eval "echo \$$var")"
+
+      cur_val="$(eval "echo \$$var")"
+
+      new_val="$arg"
+      if [ -n "$cur_val" ]; then
+        new_val="$arg:$cur_val"
+      fi
+
+      export_assign "$var" "$new_val"
     else
       debug "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
     fi
