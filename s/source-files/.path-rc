@@ -64,6 +64,14 @@ prepend_to_path "$HOME/meld-1.8.6/bin"
 
 prepend_to_path "$HOME/apache/bin"
 
+if [ -e "/usr/local/Cellar" ]; then
+  export hb=/usr/local/Cellar
+fi
+
+export ah="$s/arg-helpers"
+export fh="$s/file-helpers"
+export wh="$s/which-helpers"
+
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
   append_to_path "$s/mld-dir";
