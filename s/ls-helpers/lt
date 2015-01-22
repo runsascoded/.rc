@@ -7,4 +7,9 @@ else
    shift
 fi
 
-l "$1" | tail -n $count
+path="$1"
+if [ -z "$path" ]; then
+   path="."
+fi
+
+l "$path" | tail -n $count
