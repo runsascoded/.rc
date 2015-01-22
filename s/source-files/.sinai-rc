@@ -134,6 +134,9 @@ export ejo="spark.executor.extraJavaOptions=$gc_opts"
 
 export spark_args
 
+export m2spark="$m2/org/apache/spark"
+export m2core="$m2/org/apache/spark/spark-core_2.10"
+
 guac_args="$spark_args"
 export djo="--driver-java-options"
 log4j_properties=$ints/scripts/guacamole/log4j.properties
