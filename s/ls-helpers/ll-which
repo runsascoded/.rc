@@ -1,6 +1,6 @@
 #!/bin/sh
 
-candidates=$(which -a "$@")
+candidates=$(which -a "$@" 2> /dev/null)
 ret=$?
 
 IFS=$'\n'
