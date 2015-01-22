@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+for arg in "$@"; do
+  from="$arg"
+  to="$arg"
+  if [[ $arg =~ .example$ ]]; then
+    to="${arg%.example}"
+  else
+    to="$arg.example"
+  fi
+
+  if [ -e "$from" ]; then
+    mv "$from" "$to"
+  else
+    echo "Error: $arg doesn't exist" 1>&2
+  fi
+done
