@@ -1,0 +1,9 @@
+#!/bin/bash
+
+dest="$1"
+mkdir -p "$dest"
+
+find . -name '*.iml' | cut -d/ -f 2- | explode-parent-dirs | rsync -avz --include-from=- --include='.idea' --include='.idea/**' --exclude='*' ./ "$dest"/
+
+
+
