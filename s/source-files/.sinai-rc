@@ -193,3 +193,7 @@ export tumor3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.tumor.withM
 export normal3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.normal.withMDTags.chr2.bam"
 
 debug ".sinai-rc" done
+
+alias sd=". ssh-demeter"
+alias sd1="ssh demeter1"
+alias sd2="ssh demeter2"
