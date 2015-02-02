@@ -73,6 +73,8 @@ export ah="$s/arg-helpers"
 export fh="$s/file-helpers"
 export wh="$s/which-helpers"
 
+export db="$HOME/Dropbox"
+
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
   append_to_path "$s/mld-dir";
@@ -92,3 +94,5 @@ if which greadlink &> /dev/null; then
 else
   ln -sf $(which readlink) $s/file-helpers/rl
 fi
+
+alias jsh="jekyll serve -H 0.0.0.0"

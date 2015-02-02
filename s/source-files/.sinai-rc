@@ -88,10 +88,10 @@ export hsyn3="$dream/synthetic-challenge-3"
 export hsyn4="$dream/synthetic-challenge-4"
 
 # Spark/ADAM opts
-export em=--executor-memory
-export ec=--executor-cores
-export ne=--num-executors
-export dm=--driver-memory
+export em="--executor-memory"
+export ec="--executor-cores"
+export ne="--num-executors"
+export dm="--driver-memory"
 export mf="--conf spark.storage.memoryFraction"
 export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
 export dp="--conf spark.storage.memoryFraction"
@@ -129,6 +129,7 @@ spark_args="$spark_args --conf spark.core.connection.ack.wait.timeout=600"
 spark_args="$spark_args --conf spark.file.transferTo=false"
 spark_args="$spark_args --conf spark.akka.timeout=1000"
 spark_args="$spark_args --conf -Dyarn.nodemanager.aux-services=org.apache.spark.network.yarn.YarnShuffleService"
+spark_args="$spark_args --conf spark.metrics.conf=metrics.properties"
 spark_args="$spark_args $sort_shuffle"
 export gc_opts="-XX:+PrintGCDetails -XX:+PrintGCTimeStamps"
 export ejo="spark.executor.extraJavaOptions=$gc_opts"
