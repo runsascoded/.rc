@@ -28,6 +28,6 @@ process.stdin.on('end', function() {
     if (!line.trim()) return;
     var m = moment(line, 'YYYY-MM-DD HH:mm');
     console.log(m.add(intervalNum, intervalScale).format(m._f));
-  })
+  });
 });
 
