@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cp $guac/guacamole.iml ~/Dropbox/guacamole.iml.$(now)

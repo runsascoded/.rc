@@ -35,8 +35,6 @@ try_source "$ints/environment/paths.sourceme"
 export its="$ints/scripts"
 alias mvnt="mvn-test"
 
-alias bak-iml="cp $guac/guacamole.iml ~/Dropbox/guacamole.iml.$(dt)"
-
 # Sinai Hadoop/Demeter paths
 export huser="willir31"
 export hhome="/user/$huser"
