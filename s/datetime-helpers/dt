@@ -1,3 +1,29 @@
-#!/bin/sh
+#!/usr/bin/env node
 
-date +%Y-%m-%d-%H:%M:%S
+var moment = require('moment');
+
+function convert(args) {
+  args.forEach(function (arg) {
+    if (arg.match(/^[0-9]+/)) {
+      var num = parseInt(arg);
+      var log10 = Math.log(num) / Math.log(10);
+      if (log10 < 10) {
+        num *= 1000;
+      }
+      console.log(moment(new Date(num)).toString());
+    } else {
+      console.log(moment(new Date(arg)).unix());
+    }
+  });
+}
+
+var args = process.argv.slice(2);
+if (args.length) {
+  convert(args)
+} else {
+  var stdin = '';
+  process.stdin.on('data', function(buf) { stdin += buf.toString(); });
+  process.stdin.on('end', function() {
+    convert(stdin.split('\n').filter(function(line) { return !!line; }));
+  });
+}
