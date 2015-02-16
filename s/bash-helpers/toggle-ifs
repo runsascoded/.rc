@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [ "$IFS" == $'\n' ]; then
+  if [ -z "$OLD_IFS" ]; then
+    echo "ERROR: No OLD_IFS set" 1>&2
+    exit 1
+  else
+    export IFS="$OLD_IFS"
+    echo "\$IFS restored"
+  fi
+else
+  export OLD_IFS="$IFS"
+  export IFS=$'\n'
+  echo "\$IFS now \$'\\n'"
+fi
