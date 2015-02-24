@@ -1,3 +1,33 @@
 #!/bin/sh
 
-h copyToLocal "$@"
+set -e
+
+if [[ "$HOSTNAME" == demeter* ]]; then
+  h copyToLocal "$@"
+else
+  src="$1"
+  shift
+
+  echo "Copying $src from HDFS to demeter.."
+  tmpdir="$(ssh demeter "d=\"\$(mktemp -d)\"; hadoop fs -copyToLocal $src \"\$d\"/; echo \$d")"
+
+  finally() {
+    echo "Cleaning up.."
+    if [ -n "$tmpdir" ]; then
+      ssh demeter "rm -rf $tmpdir"
+      echo "Removed demeter:$tmpdir"
+    fi
+  }
+
+  trap finally EXIT
+
+  echo "Copied $src into demeter:$tmpdir; scp'ing down.."
+  if [ $# -eq 0 ]; then
+    args=.
+  else
+    args=$@
+  fi
+  scp -r demeter:"$tmpdir/*" "$args"
+  echo "Copied from demeter"
+
+fi
