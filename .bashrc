@@ -51,6 +51,8 @@ try_source() {
 alias awch=". alias-which"
 alias aw=". alias-which"
 
+alias enw="emacs -nw"
+
 try_source ".vars-rc"
 try_source ".path-rc"
 
