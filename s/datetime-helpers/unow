@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+args = process.argv.slice(2);
+
+var m = require('moment');
+
+var now = m();
+if (args.length) {
+  var arg = args[0];
+  var intervalNum = parseInt(arg.substr(0, arg.length - 1));
+  var intervalScale = arg[arg.length - 1];
+  now = now.add(intervalNum, intervalScale);
+}
+console.log(now.unix());
