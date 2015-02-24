@@ -75,6 +75,9 @@ fi
 export ah="$s/arg-helpers"
 export fh="$s/file-helpers"
 export wh="$s/which-helpers"
+export jh="$s/js-helpers"
+
+alias j="js"
 
 export db="$HOME/Dropbox"
 
