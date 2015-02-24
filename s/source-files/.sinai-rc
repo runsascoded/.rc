@@ -120,7 +120,6 @@ sort_shuffle="--conf spark.shuffle.manager=SORT"
 hash_shuffle="--conf spark.shuffle.manager=HASH"
 
 spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=1024"
-spark_args="$spark_args --conf spark.app.name=Guacamole"
 spark_args="$spark_args --conf spark.core.connection.ack.wait.timeout=600"
 spark_args="$spark_args --conf spark.file.transferTo=false"
 spark_args="$spark_args --conf spark.akka.timeout=1000"
