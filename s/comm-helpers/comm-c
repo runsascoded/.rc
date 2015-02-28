@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+t1="$(mktemp)"
+t2="$(mktemp)"
+
+finish() {
+  rm -f "$t1" "$t2"
+}
+trap finish EXIT
+
+cat "$1" > "$t1"
+cat "$2" > "$t2"
+only_first="$(comm -23 "$t1" "$t2" | wc -l)"
+only_second="$(comm -13 "$t1" "$t2" | wc -l)"
+both="$(comm -12 "$t1" "$t2" | wc -l)"
+
+echo -e "${only_first}\t${only_second}\t${both}"
