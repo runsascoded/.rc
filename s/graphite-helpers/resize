@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ -d "$1" ]; then
+  if [ $# -gt 1 ]; then
+    num="$2"
+    echo "Resizing .wsp's below $1 using $num processes"
+    find-wsp "$1" > wsps
+    split-file $num wsps
+    for f in wsps.*; do
+      nohup resize "$f" > nohup.$f.out &
+    done
+  else
+    echo "Resizing .wsp's below $1"
+    for f in $(find-wsp "$1"); do
+        bin/whisper-resize.py --nobackup "$f" 10s:365d 60s:1001d
+    done
+  fi
+elif [ -f "$1" ]; then
+  if [ $# -gt 1 ]; then
+    num="$2"
+    echo "Resizing .wsp's from $1 using $num processes"
+    split-file $num "$1"
+    for f in "$1".*; do
+      nohup resize "$f" > nohup.$f.out &
+    done
+  else
+    for f in $(cat "$1"); do
+      bin/whisper-resize.py --nobackup "$f" 10s:365d 60s:1001d
+    done
+  fi
+else
+  err "Bad arg: $1"
+fi
