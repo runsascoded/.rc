@@ -39,8 +39,10 @@ export SOURCEME_DIR="$s/source-files"
 try_source() {
     for arg in "$@"; do
         if [ -s "$arg" ]; then
+            debug "Sourcing: $arg"
             source "$arg"
         elif [ -s "$SOURCEME_DIR/$arg" ]; then
+            debug "Sourcing: $SOURCEME_DIR/$arg"
             source "$SOURCEME_DIR/$arg"
         else
           debug "Couldn't source nonexistent file: '$arg'"
