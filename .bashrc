@@ -104,3 +104,7 @@ fi
 # OPAM configuration
 . /Users/ryan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
+export ZEROS_DIR="$HOME/zeros"
+if [ -s /usr/share/dict/words ]; then
+  export dict=/usr/share/dict/words
+fi
