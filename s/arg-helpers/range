@@ -8,4 +8,8 @@ start = args[0] if len(args) >= 2 else 0
 end = args[1] if len(args) >= 2 else args[0]
 step = args[2] if len(args) >= 3 else 1
 
-print '\n'.join(map(str, range(start, end, step)))
+try:
+  print '\n'.join(map(str, range(start, end, step)))
+except IOError:
+  pass
+

@@ -9,22 +9,25 @@ end = int(args[1])
 
 remainder = args[2:]
 
-if not remainder:
-    num = 0
-    for line in sys.stdin:
-        if num >= start:
-            if num >= end:
-                break
-            print line,
-        num += 1
-elif len(remainder) == 1:
-    with open(remainder[0], 'r') as fd:
+try:
+    if not remainder:
         num = 0
-        for line in fd:
+        for line in sys.stdin:
             if num >= start:
                 if num >= end:
                     break
                 print line,
             num += 1
-else:
-    print '\n'.join(remainder[start:end])
+    elif len(remainder) == 1:
+        with open(remainder[0], 'r') as fd:
+            num = 0
+            for line in fd:
+                if num >= start:
+                    if num >= end:
+                        break
+                    print line,
+                num += 1
+    else:
+        print '\n'.join(remainder[start:end])
+except IOError:
+    pass
