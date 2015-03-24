@@ -1,0 +1,7 @@
+
+alias gfr="git fetch ryan"
+
+git config --global --unset-all include.path
+git config --global --remove-section include
+git config --global --add include.path "$HOME"/s/git-configs/.gitconfig
+
