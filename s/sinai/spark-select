@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+set -e
+
+assembly_dir="$SPARK_HOME/assembly/target/scala-2.10"
+artifact_dir="$HOME/spark"
+
+if [ ! -d "$assembly_dir" ]; then
+  echo "Missing assembly dir: $assembly_dir" 1>&2
+  exit 1
+fi
+
+if [ ! -d "$artifact_dir" ]; then
+  echo "Missing artifact dir: $artifact_dir" 1>&2
+  exit 1
+fi
+
+num_jars="$(find "$assembly_dir" -type f | wc -l)"
+if [ $num_jars -gt 1 ]; then
+  echo "Error: $num_jars assembly JARs found in $assembly_dir" 1>&2
+  exit 1
+elif [ $num_jars -eq 1 ]; then
+  if ! git is-clean; then
+    echo "Error: git repo has uncommitted changes" 1>&2
+    exit 1
+  fi
+  sha="$(git --no-pager sha)"
+  dest="$artifact_dir/$sha"
+  mkdir -p "$dest"
+  cp "$assembly_dir"/* "$dest"/
+fi
+
+if [ $# -eq 0 ]; then
+  toggle-ifs
+  select jar in $(find "$artifact_dir" -type f); do
+    break
+  done
+  toggle-ifs
+  echo "cp'ing $jar"
+  rm -f "$assembly_dir"/*
+  cp "$jar" "$assembly_dir"/
+else
+  sha="$1"
+  jar_dir="$artifact_dir/$sha"
+  if [ -d "$jar_dir" ]; then
+    num_jars="$(find "$jar_dir" -type f | wc -l)"
+    if [ $num_jars -eq 0 ]; then
+      echo "No jars found at $jar_dir" 1>&2
+      exit 1
+    elif [ $num_jars -eq 1 ]; then
+      rm -f "$assembly_dir"/*
+      cp "$jar_dir/*" "$assembly_dir"/
+    else
+      toggle-ifs
+      select jar in $(find "$jar_dir" -type f; do
+        break
+      done
+      toggle-ifs
+      echo "cp'ing jar: $jar"
+      rm -f "$assembly_dir"/*
+      cp "$jar_dir/$jar" "$assembly_dir"/
+    fi
+  else
+    echo "No jars found at $jar_dir" 1>&2
+    exit 1
+  fi
+fi
