@@ -145,6 +145,11 @@ guac_args="$guac_args --conf spark.metrics.conf=metrics.properties"
 
 export guac_args
 
+export nr="--normal-reads"
+export tr="--tumor-reads"
+export pa="--partition-accuracy"
+
+
 SPARK_HISTORY_OPTS=
 SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.ui.port=18082"
 SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=${hsparklogs}"
