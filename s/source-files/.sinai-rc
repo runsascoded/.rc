@@ -18,10 +18,10 @@ export chr20="$data/training/chr20"
 export set3="$data/set3"
 export set4="$data/set4"
 
-export guac="$sinai/guacamole"
+export guac="$c/guacamole"
 export GUAC="$guac"
 
-export ints="$sinai/internal-tools"
+export ints="$c/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
 export YARN_HELPERS_DROP_HOST_SUFFIX_FROM=".demeter.hpc.mssm.edu_"
