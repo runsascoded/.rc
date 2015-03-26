@@ -119,7 +119,7 @@ spark_args="$spark_args --files=$HOME/metrics.properties"
 sort_shuffle="--conf spark.shuffle.manager=SORT"
 hash_shuffle="--conf spark.shuffle.manager=HASH"
 
-spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=1024"
+spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=3072"
 spark_args="$spark_args --conf spark.core.connection.ack.wait.timeout=600"
 spark_args="$spark_args --conf spark.file.transferTo=false"
 spark_args="$spark_args --conf spark.akka.timeout=1000"
