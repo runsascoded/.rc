@@ -15,7 +15,7 @@ if [ ! -d "$artifact_dir" ]; then
   exit 1
 fi
 
-num_jars="$(find "$assembly_dir" -type f | wc -l)"
+num_jars="$(find "$assembly_dir" -type f -name '*.jar' | wc -l)"
 if [ $num_jars -gt 1 ]; then
   echo "Error: $num_jars assembly JARs found in $assembly_dir" 1>&2
   exit 1
@@ -27,7 +27,7 @@ elif [ $num_jars -eq 1 ]; then
   sha="$(git --no-pager sha)"
   dest="$artifact_dir/$sha"
   mkdir -p "$dest"
-  cp "$assembly_dir"/* "$dest"/
+  mv "$assembly_dir"/* "$dest"/
 fi
 
 if [ $# -eq 0 ]; then
@@ -52,7 +52,7 @@ else
       cp "$jar_dir/*" "$assembly_dir"/
     else
       toggle-ifs
-      select jar in $(find "$jar_dir" -type f; do
+      select jar in $(find "$jar_dir" -type f); do
         break
       done
       toggle-ifs
