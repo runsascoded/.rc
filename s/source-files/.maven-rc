@@ -9,4 +9,16 @@ alias mvntc="mvn test-compile"
 export m2="$HOME/.m2/repository"
 export M="$m2"
 
+if [ -z "$JAVA_HOME" -a -d "$HOME"/java8 ]; then
+  export JAVA_HOME="$HOME"/java8
+fi
 
+if [ -z "$MAVEN_HOME" -a -d "$HOME"/apache-maven-3.3.1 ]; then
+  export MAVEN_HOME="$HOME"/apache-maven-3.3.1
+fi
+
+if [ -z "$M2_HOME" -a -d "$HOME"/apache-maven-3.3.1 ]; then
+  export M2_HOME="$HOME"/apache-maven-3.3.1
+fi
+
+prepend_to PATH "$HOME/java8/bin"
