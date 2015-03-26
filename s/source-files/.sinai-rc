@@ -139,6 +139,10 @@ log4j_properties=$ints/scripts/guacamole/log4j.properties
 export djov="$spark_djov -Dlog4j.configuration=$log4j_properties"
 guac_args="$guac_args --class org.hammerlab.guacamole.Guacamole"
 guac_args="$guac_args --verbose"
+guac_args="$guac_args --conf spark.shuffle.service.enabled=true"
+guac_args="$guac_args --files=$HOME/metrics.properties"
+guac_args="$guac_args --conf spark.metrics.conf=metrics.properties"
+
 export guac_args
 
 SPARK_HISTORY_OPTS=
