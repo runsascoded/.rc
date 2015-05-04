@@ -5,3 +5,4 @@ git config --global --unset-all include.path
 git config --global --remove-section include 2> /dev/null
 git config --global --add include.path "$HOME"/s/git-configs/.gitconfig
 
+export GITHUB_TOKEN="c9b369cc416ad9a1eea144cf4d3d25057cabc43f"
