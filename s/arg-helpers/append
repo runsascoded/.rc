@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+suffix="$1"
+shift
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do
+    echo "${arg}${suffix}"
+  done
+else
+  while read -r line; do
+    echo "${line}${suffix}"
+  done
+fi
