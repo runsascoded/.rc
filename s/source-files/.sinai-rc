@@ -91,6 +91,7 @@ export ec="--executor-cores"
 export ne="--num-executors"
 export dm="--driver-memory"
 export mf="--conf spark.storage.memoryFraction"
+export smf="--conf spark.shuffle.memoryFraction"
 export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
 export dp="--conf spark.storage.memoryFraction"
 export mo="--conf spark.yarn.executor.memoryOverhead"
@@ -210,3 +211,8 @@ alias gamrd="git add-mirror-remote demeter demeter:c/"
 export DEFAULT_MIRROR_REMOTE_NAME=demeter
 export DEFAULT_MIRROR_REMOTE_HOST=demeter
 export DEFAULT_MIRROR_REMOTE_DIR=c
+
+export r1="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L1/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L1.PT189_Right_Ovary_L1.clean.dedup.recal.bam"
+export r2="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L2/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L2.PT189_Right_Ovary_L2.clean.dedup.recal.bam"
+
+export adam_shell_args="--master yarn --deploy-mode client $ne 10 $ec 4 $em 10g $dm 10g $mf=0.05 --conf spark.shuffle.memoryFraction=0.4 --conf spark.akka.timeout=100000 --conf spark.shuffle.service.enabled=true --conf spark.shuffle.manager=SORT $mo=1024 --conf spark.file.transferTo=false"

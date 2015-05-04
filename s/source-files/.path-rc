@@ -82,6 +82,7 @@ export jh="$s/js-helpers"
 alias j="js"
 
 export db="$HOME/Dropbox"
+export gd="$HOME/Google Drive"
 
 # Only put `mld` on PATH if `meld` exists!
 if whch meld; then
