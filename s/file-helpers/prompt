@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Prompt a user for a y/n response until they give you a satisfactory answer.
 # Usage: `prompt <prompt> <default=y>`
