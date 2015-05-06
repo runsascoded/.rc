@@ -62,6 +62,7 @@ prepend_to_path "$s/which-helpers"
 prepend_to_path "$s/yarn"
 
 append_to_path "$c/bedtools2/bin"
+append_to_path "$HOME/mongo/bin"
 append_to_path "$c/stack_traces"
 append_to_path "$c/streaming-wc-l"
 append_to_path "$c/yarn-logs-helpers"
