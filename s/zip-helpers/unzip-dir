@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 1 ]; then
+  echo "Usage: $0 foo.zip" >&2
+  exit 1
+fi
+
+unzip "$1" -d "${1%.zip}"
