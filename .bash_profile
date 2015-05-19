@@ -14,3 +14,6 @@ if which jenv &> /dev/null; then
   eval "$(jenv init -)"
   export JAVA_HOME="$JAVA_HOME_bak"
 fi
+
+# added by Anaconda3 2.2.0 installer
+export PATH="/Users/ryan/anaconda/bin:$PATH"
