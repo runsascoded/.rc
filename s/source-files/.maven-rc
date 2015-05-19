@@ -17,8 +17,10 @@ if [ -z "$MAVEN_HOME" -a -d "$HOME"/apache-maven-3.3.1 ]; then
   export MAVEN_HOME="$HOME"/apache-maven-3.3.1
 fi
 
-if [ -z "$M2_HOME" -a -d "$HOME"/apache-maven-3.3.1 ]; then
-  export M2_HOME="$HOME"/apache-maven-3.3.1
+if [ -z "$M2_HOME" ]; then
+  if [ -d "$HOME"/apache-maven-3.3.1 ]; then
+    export M2_HOME="$HOME"/apache-maven-3.3.1
+  #elif [ -d "/usr/local/Cellar/maven/3.3.1" ]; then
+    #export M2_HOME="/usr/local/Cellar/maven/3.3.1"
+  fi
 fi
-
-prepend_to PATH "$HOME/java8/bin"

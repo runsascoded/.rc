@@ -7,5 +7,5 @@ if [ $# -eq 0 ]; then
 else
   args="$@"
 fi
-find $args -name "*$name*"
+find "$args" -name "*$name*"
 

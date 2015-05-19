@@ -1,19 +1,14 @@
 #!/bin/bash
 
 # PYTHONPATH
-append_to "PYTHONPATH" "$HOME/c/mongo-python-driver/"
-append_to "PYTHONPATH" "/Library/Python/Current/site-packages"
-append_to "PYTHONPATH" "/usr/local/lib/python2.7/site-packages"
-append_to "PYTHONPATH" "$HOME/Library/Python/Current/site-packages"
+append_to PYTHONPATH "$HOME/c/mongo-python-driver/"
+append_to PYTHONPATH "/Library/Python/Current/site-packages"
+append_to PYTHONPATH "$HOME/Library/Python/Current/site-packages"
 
-append_to "PYTHONPATH" "$s"
-append_to "PYTHONPATH" "$s/py"
+prepend_to_path "$HOME"/anaconda/bin
 
-append_to PYTHONPATH "/lib/python2.7/site-packages"
-
-append_to PYTHONPATH /usr/lib/python2.6/site-packages
-
-append_to PYTHONPATH "$HOME/.local/lib/python2.7"
+append_to PYTHONPATH "$s"
+append_to PYTHONPATH "$s/py"
 
 # LD_LIBRARY_PATH: move from this file later
 append_to LD_LIBRARY_PATH "$HOME/.local/lib" "$HOME/lib64" "$HOME/lib"
@@ -26,4 +21,4 @@ append_to PYTHONPATH "$WHISPER/lib"
 alias piu="pip install --user"
 
 # Perl
-append_to "PERL5LIB" "$HOME/bin"
+append_to PERL5LIB "$HOME/bin"

@@ -63,6 +63,22 @@ remove_from_var() {
   done
 }
 
+remove_from() {
+  var="$1"
+  shift
+
+  cur_val="$(eval "echo $(echo "\$$var")")"
+  new_val="$(echo "$cur_val" | splt : | grep -v "$1")"
+
+  echo "Removing from \$$var:"
+  comm -23 <(echo "$cur_val" | splt :) <(echo "$new_val") | indent
+  export_assign "$var" "$(echo "$new_val" | joyn :)"
+}
+
+remove_from_path() {
+  remove_from PATH "$1"
+}
+
 dedupe_path_var() {
   for var in "$@"; do
     var_contents="$(eval "echo \"\$$var\"")"

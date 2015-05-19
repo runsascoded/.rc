@@ -9,3 +9,5 @@ fi
 png="${jpg%.jpg}.png"
 convert "$jpg" "$png"
 
+
+

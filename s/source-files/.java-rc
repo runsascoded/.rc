@@ -5,31 +5,86 @@
 export java_home_cmd="/usr/libexec/java_home"
 if [ -x "$java_home_cmd" ]; then
 
-    if which jenv &> /dev/null; then
-      jenv_version=$(jenv version | grep --color=none -o '1\.[0-9]*')
-    else
-      jenv_version=1.8
-    fi
+  export JAVA6_HOME=$($java_home_cmd -v 1.6)
+  export JAVA7_HOME=$($java_home_cmd -v 1.7)
+  export JAVA8_HOME=$($java_home_cmd -v 1.8)
 
-    debug "Setting java version from jenv: $jenv_version"
-    export JAVA_HOME=$($java_home_cmd -v $jenv_version)
-    debug "Set: $JAVA_HOME"
+else
 
-    export JAVA6_HOME=$($java_home_cmd -v 1.6)
+  if [ -d "$HOME/java6" ]; then
+    export JAVA6_HOME="$HOME/java6"
+  fi
+
+  if [ -d "$HOME/java7" ]; then
+    export JAVA7_HOME="$HOME/java7"
+  fi
+
+  if [ -d "$HOME/java8" ]; then
+    export JAVA8_HOME="$HOME/java8"
+  fi
+
 fi
 
 export SCALA_HOME="/usr/local/Cellar/scala/2.10.3/libexec"
 export SCALA="$SCALA_HOME"
 export ANDROID="$HOME/lib/android-sdk-mac_x86"
 
+java-version() {
+  echo "\$JAVA_HOME: $JAVA_HOME"
+  java -version
+}
 
 set-java() {
-  export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-  jenv_version=$(jenv versions | grep --color=never -o "[^ ]*$1[^ ]*")
+  ok=1
+  if [ "$1" == "1.6" -o "$1" == "1.7" -o "$1" == "1.8" ]; then
+    longer_version="$1"
+    version="${1#1.}"
+  elif [ "$1" == "6" -o "$1" == "7" -o "$1" == "8" ]; then
+    longer_version="1.$1"
+    version="$1"
+  else
+    echo "Usage: set-java [6|7|8]" >&2
+    ok=
+  fi
+
+  if [ "$ok" ]; then
+    if [ -x /usr/libexec/java_home ]; then
+      export JAVA_HOME="$(/usr/libexec/java_home -v "$longer_version")"
+      debug "Set \$JAVA_HOME to $JAVA_HOME"
+    elif [ -d "$HOME/java${version}" ]; then
+      debug "Setting \$JAVA_HOME to $HOME/java${version}"
+      export JAVA_HOME="$HOME/java${version}"
+    elif [ -n "$(echo "$(eval "\$JAVA${version}_HOME")")" ]; then
+      export JAVA_HOME="$(eval "echo $(echo "\$JAVA${version}_HOME")")"
+      debug "Setting \$JAVA_HOME to value of \$JAVA${version}_HOME: $JAVA_HOME"
+    fi
+  fi
+  jenv_version=$(jenv versions | grep --color=never -o "[^ ]*$longer_version[^ ]*")
   if [ $? -eq 0 ]; then
-    echo "Found $jenv_version"
+    debug "Found $jenv_version"
     jenv global $jenv_version
     jenv shell $jenv_version
   fi
+
+  java-version
 }
+
+alias jv=java-version
+alias sj=set-java
+alias sj6="set-java 6"
+alias sj7="set-java 7"
+alias sj8="set-java 8"
+alias mvnv="mvn -version"
+
+if [[ "$(uname -a)" =~ ^Darwin ]]; then
+  echo "Setting Java 8"
+  set-java 8
+elif [[ "$(uname -a)" =~ ^Linux ]]; then
+  echo "Setting Java 7"
+  set-java 7
+else
+  current_version="$(java -version 2>&1 | sed -n 's/^java version "1\.\([0-9]\).*/\1/p')"
+  echo "Setting Java: $current_version"
+  set-java "$current_version"
+fi
 

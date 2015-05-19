@@ -108,3 +108,8 @@ export ZEROS_DIR="$HOME/zeros"
 if [ -s /usr/share/dict/words ]; then
   export dict=/usr/share/dict/words
 fi
+
+alias pgc="ping google.com"
+alias dg="cat $dict | grep"
+
+alias uz="unzip-dir"

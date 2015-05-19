@@ -216,3 +216,6 @@ export r1="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L1/
 export r2="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L2/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L2.PT189_Right_Ovary_L2.clean.dedup.recal.bam"
 
 export adam_shell_args="--master yarn --deploy-mode client $ne 10 $ec 4 $em 10g $dm 10g $mf=0.05 --conf spark.shuffle.memoryFraction=0.4 --conf spark.akka.timeout=100000 --conf spark.shuffle.service.enabled=true --conf spark.shuffle.manager=SORT $mo=1024 --conf spark.file.transferTo=false"
+
+export d1="demeter-login1.hpc.mssm.edu"
+export d2="demeter-login2.hpc.mssm.edu"
