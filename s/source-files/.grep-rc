@@ -6,4 +6,6 @@ alias grp="ggrep"
 export GREP_OPTIONS="--color=auto"
 alias pgrp="pcregrep"
 
+alias gv="grep -v"
+
 
