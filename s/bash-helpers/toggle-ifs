@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 verbose=
 if [ $# -gt 0 -a "$1" == "-v" ]; then
   verbose=1
