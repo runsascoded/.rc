@@ -71,7 +71,7 @@ remove_from() {
   new_val="$(echo "$cur_val" | splt : | grep -v "$1")"
 
   echo "Removing from \$$var:"
-  comm -23 <(echo "$cur_val" | splt :) <(echo "$new_val") | indent
+  comm -23 <(echo "$cur_val" | splt : | sort) <(echo "$new_val" | sort) | indent
   export_assign "$var" "$(echo "$new_val" | joyn :)"
 }
 

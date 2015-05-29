@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 alias gfr="git fetch ryan"
 

@@ -4,6 +4,9 @@
 alias mvnp="mvn package -DskipTests"
 alias mvncp="mvn clean package -DskipTests"
 alias mvnc="mvn compile"
+alias mvncc="mvn clean compile"
+alias mvndt="mvn dependency:tree"
+alias mvnsc="mvn scala:cc"
 alias mvntc="mvn test-compile"
 
 export m2="$HOME/.m2/repository"

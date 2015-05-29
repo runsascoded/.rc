@@ -113,3 +113,10 @@ alias pgc="ping google.com"
 alias dg="cat $dict | grep"
 
 alias uz="unzip-dir"
+
+
+alias jl=jar-less
+alias pyv="python --version"
+
+alias hrm="h rm"
+alias hrmr="h rm -r"
