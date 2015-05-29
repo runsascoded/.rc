@@ -71,7 +71,7 @@ try_source ".ec2-rc"
 try_source ".editor-rc"
 
 export dh="$s/diff-helpers"
-export gh="$c/git-helpers"
+export gh="$HOME/.git-helpers"
 export gha="$gh/aliases"
 try_source "$gh/.git-rc"
 

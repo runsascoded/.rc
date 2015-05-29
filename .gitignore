@@ -5,6 +5,7 @@
 !.emacs
 !.foursquare-repl
 !.git-completion.bash
+!.git-helpers
 !.gitcomplete
 !.gitignore
 !.rpi_bashrc

@@ -1,0 +1,3 @@
+[submodule ".git-helpers"]
+	path = .git-helpers
+	url = git@github.com:ryan-williams/git-helpers.git
