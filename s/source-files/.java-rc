@@ -1,5 +1,17 @@
 #!/bin/bash
 
+JAVA_INITD=
+
+prepend_to_path "$HOME/.jenv/bin"
+
+if which jenv &> /dev/null; then
+  JAVA_HOME_bak="$JAVA_HOME"
+  eval "$(jenv init -)"
+  export JAVA_HOME="$JAVA_HOME_bak"
+else
+  echo "Couldn't find jenv.." >&2
+fi
+
 # Set up JAVA_HOME, jenv
 # rm this temporarily; trying to use jenv instead...
 export java_home_cmd="/usr/libexec/java_home"
@@ -66,7 +78,9 @@ set-java() {
     jenv shell $jenv_version
   fi
 
-  java-version
+  if [ -n "$VERBOSE" -o -n "$JAVA_INITD" ]; then
+    java-version
+  fi
 }
 
 alias jv=java-version
@@ -77,14 +91,16 @@ alias sj8="set-java 8"
 alias mvnv="mvn -version"
 
 if [[ "$(uname -a)" =~ ^Darwin ]]; then
-  echo "Setting Java 8"
+  debug "Setting Java 8"
   set-java 8
 elif [[ "$(uname -a)" =~ ^Linux ]]; then
-  echo "Setting Java 7"
+  debug "Setting Java 7"
   set-java 7
 else
   current_version="$(java -version 2>&1 | sed -n 's/^java version "1\.\([0-9]\).*/\1/p')"
-  echo "Setting Java: $current_version"
+  debug "Setting Java: $current_version"
   set-java "$current_version"
 fi
+
+JAVA_INITD=1
 
