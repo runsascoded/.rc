@@ -198,6 +198,7 @@ export normal3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.normal.wit
 debug ".sinai-rc" done
 
 export DEMETER_PORT=6000
+export MINERVA_PORT=6001
 
 alias sd=". ssh-demeter"
 alias sD="ssh -D $DEMETER_PORT demeter"
@@ -205,6 +206,8 @@ alias sd1="ssh demeter1"
 alias sD1="ssh -D $DEMETER_PORT demeter1"
 alias sd2="ssh demeter2"
 alias sD2="ssh -D $DEMETER_PORT demeter2"
+alias sM="ssh -D $MINERVA_PORT minerva"
+alias sm="ssh minerva"
 
 alias gamrd="git add-mirror-remote demeter demeter:c/"
 
