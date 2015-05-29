@@ -22,3 +22,23 @@ alias piu="pip install --user"
 
 # Perl
 append_to PERL5LIB "$HOME/bin"
+
+if [ -d "$HOME/py2" ]; then
+  export PYTHON2_HOME="$HOME/py2"
+elif [ -d "/usr/local/Cellar/python/2.7.9/bin" ]; then
+  export PYTHON2_HOME=/usr/local/Cellar/python/2.7.9
+elif [ -x "$HOME/.local/bin/python2" ]; then
+  export PYTHON2_HOME="$HOME/.local"
+elif python --version 2>&1 | grep -q 'Python 2'; then
+  export PYTHON2_HOME="$(dirname "$(dirname "$(which python)")")"
+else
+  echo "Warning: unable to find a sensible Python2 directory to set \$PYTHON2_HOME" >&2
+fi
+
+if [ -d "$HOME/py3" ]; then
+  export PYTHON3_HOME="$HOME/py3"
+elif python --version 2>&1 | grep -q 'Python 3'; then
+  export PYTHON3_HOME="$(dirname "$(dirname "$(which python)")")"
+else
+  echo "Warning: unable to find a sensible Python3 directory to set \$PYTHON3_HOME" >&2
+fi
