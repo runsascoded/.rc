@@ -50,6 +50,28 @@ try_source() {
     done
 }
 
+source_and_path() {
+    for dir in "$@"; do
+        if [ -d "$dir" ]; then
+          debug "Adding $dir to \$PATH and sourcing rc files..."
+          prepend_to_path "$dir"
+          try_source "$dir"/.*-rc
+        elif [ -d "$s/$dir" ]; then
+          debug "Adding $s/$dir to \$PATH and sourcing rc files..."
+          prepend_to_path "$s/$dir"
+          try_source "$s/$dir"/.*-rc
+        elif [ -s "$arg" ]; then
+            debug "Sourcing: $arg"
+            source "$arg"
+        elif [ -s "$SOURCEME_DIR/$arg" ]; then
+            debug "Sourcing: $SOURCEME_DIR/$arg"
+            source "$SOURCEME_DIR/$arg"
+        else
+          debug "Couldn't source nonexistent file: '$arg'"
+        fi
+    done
+}
+
 alias awch=". alias-which"
 alias aw=". alias-which"
 
@@ -58,7 +80,7 @@ alias enw="emacs -nw"
 try_source ".vars-rc"
 try_source ".path-rc"
 
-try_source ".maven-rc"
+source_and_path "maven-helpers"
 try_source ".sinai-rc"
 
 try_source "$s/bash-helpers/.bash-rc"
