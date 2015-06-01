@@ -215,6 +215,9 @@ export DEFAULT_MIRROR_REMOTE_NAME=demeter
 export DEFAULT_MIRROR_REMOTE_HOST=demeter
 export DEFAULT_MIRROR_REMOTE_DIR=c
 
+alias gamrm="gamr minerva"
+alias gcdm="gcd minerva"
+
 export r1="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L1/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L1.PT189_Right_Ovary_L1.clean.dedup.recal.bam"
 export r2="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L2/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L2.PT189_Right_Ovary_L2.clean.dedup.recal.bam"
 
