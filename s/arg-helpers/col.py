@@ -42,7 +42,8 @@ parser.add_argument(
 
 args, unknown = parser.parse_known_args()
 
-output_delimiter = args.output_delimiter.decode('string-escape')
+output_delimiter = args.output_delimiter#.decode('string-escape')
+#print("out delim: %s" % output_delimiter)
 
 def parse_col(arg):
     segments = arg.split(':')
@@ -104,6 +105,6 @@ try:
             first = False
 
             sys.stdout.write(joiner.join(slice).strip())
-        print ''
+        print('')
 except IOError:
     pass
