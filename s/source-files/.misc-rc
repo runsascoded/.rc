@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # General utilities
-alias pe="perl -pe"
 alias bn="basename"
 
 alias y="echo yes"

@@ -81,6 +81,7 @@ try_source ".vars-rc"
 try_source ".path-rc"
 
 source_and_path "maven-helpers"
+source_and_path "perl-helpers"
 try_source ".sinai-rc"
 
 try_source "$s/bash-helpers/.bash-rc"
