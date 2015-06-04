@@ -133,6 +133,8 @@ export spark_args
 
 export m2spark="$m2/org/apache/spark"
 export m2core="$m2/org/apache/spark/spark-core_2.10"
+export msc="$m2spark/spark-core_2.10"
+export mac="$m2adam/adam-core_2.10"
 
 guac_args="$spark_args"
 export djo="--driver-java-options"

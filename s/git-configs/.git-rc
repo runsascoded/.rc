@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias gfr="git fetch ryan"
+alias gfr="git fetch --tags ryan"
 
 git config --global --unset-all include.path
 git config --global --remove-section include 2> /dev/null

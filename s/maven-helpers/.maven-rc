@@ -1,18 +1,20 @@
 #!/bin/bash
 
+export nt="-Dmaven.test.skip -DskipTests"
 # Maven aliases
-alias mvnp="mvn package -DskipTests"
-alias mvncp="mvn clean package -DskipTests"
+alias mvnp="mvn package $nt"
+alias mvncp="mvn clean package $nt"
 alias mvnc="mvn compile"
 alias mvncc="mvn clean compile"
 alias mvnct="mvn clean test"
 alias mvndt="mvn dependency:tree"
 alias mvnsc="mvn scala:cc"
 alias mvntc="mvn test-compile"
-alias mvni="mvn install -DskipTests"
-alias mvnil="mvn install -DskipTests -Plocal"
+alias mvni="mvn install $nt"
+alias mvnil="mvn install $nt -Plocal"
 alias mvnl=maven-install-local-sha
-alias mvnci="mvn clean install -DskipTests"
+alias mi=maven-install-local-sha
+alias mvnci="mvn clean install $nt"
 alias mvs=maven-version-set
 
 export m2="$HOME/.m2/repository"
