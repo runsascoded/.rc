@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+zinc -scala-home $SCALA_HOME -nailed -start "$@"
