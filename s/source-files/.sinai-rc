@@ -131,6 +131,9 @@ export ejo="spark.executor.extraJavaOptions=$gc_opts"
 
 export spark_args
 
+if [ -z "$m2" ]; then
+  echo "Error: \$m2 not set when setting Maven env vars" >&2
+fi
 export m2spark="$m2/org/apache/spark"
 export m2core="$m2/org/apache/spark/spark-core_2.10"
 export msc="$m2spark/spark-core_2.10"
