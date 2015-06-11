@@ -135,7 +135,6 @@ if [ -s /usr/share/dict/words ]; then
 fi
 
 alias pgc="ping google.com"
-alias dg="cat $dict | grep"
 
 alias uz="unzip-dir"
 
