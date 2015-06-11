@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Sourcing
 alias resource="unalias resource; source ~/.bashrc"

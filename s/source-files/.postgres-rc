@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Postgres paths
 export PGDIR=/Applications/Postgres.app/Contents/MacOS

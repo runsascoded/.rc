@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # PYTHONPATH
 append_to PYTHONPATH "$HOME/c/mongo-python-driver/"

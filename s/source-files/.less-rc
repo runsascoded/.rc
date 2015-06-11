@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # LESS options; source me from .bashrc!
 export LESS=

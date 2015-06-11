@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 append_to_path "$(dirname "${BASH_SOURCE[0]}")"
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 regex="$1"
 outfile_format="$2"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 sed "s/^[[:space:]]*//;s/[[:space:]]*$//;/^$/d"
 

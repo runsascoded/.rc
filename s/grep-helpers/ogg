@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 grp=grep
 if command -v ggrep &> /dev/null; then

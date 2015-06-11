@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Grep options
 export USE_LIBPCRE=yes

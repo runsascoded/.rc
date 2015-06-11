@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script running for phabricator arcanist command-line tool.
 # This checks to see if it's been installed. If not, it downloads and
 # installs phabricator.

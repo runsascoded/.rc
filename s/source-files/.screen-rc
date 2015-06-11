@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # `screen` aliases
 alias rscr="screen -r -S"

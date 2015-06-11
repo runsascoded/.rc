@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias "$@" 2> /dev/null
 alias_ret=$?

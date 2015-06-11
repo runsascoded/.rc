@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ $# -lt 2 ]; then
   err "Usage: $0 <from_regex> <to_regex> <file>"

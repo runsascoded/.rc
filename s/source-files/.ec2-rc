@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # EC2 creds, paths
 export EC2_HOME="$HOME/.ec2"

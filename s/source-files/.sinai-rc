@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Sinai path vars and aliases; source me from .bashrc!
 

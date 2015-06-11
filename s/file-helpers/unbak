@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for source in "$@"; do
   if [ "${source:(-4)}" != ".bak" ]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # "Unwrap" Hadoop-generated directories with only one "part" (per-shard output file) in them.
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # PATH initialization
 #append_to_path "/opt/google/depot_tools"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Wrapper for `dirname` that:
 #   * takes an optional numeric first argument (default 1) for how many directories up to go
