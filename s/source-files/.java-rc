@@ -91,8 +91,8 @@ alias sj8="set-java 8"
 alias mvnv="mvn -version"
 
 if [[ "$(uname -a)" =~ ^Darwin ]]; then
-  debug "Setting Java 8"
-  set-java 8
+  debug "Setting Java 7"
+  set-java 7
 elif [[ "$(uname -a)" =~ ^Linux ]]; then
   debug "Setting Java 7"
   set-java 7
