@@ -9,4 +9,4 @@ alias pgrp="pcregrep"
 alias gv="grep -v"
 
 alias dg="dict-grep"
-
+alias dgs="dict-grep-subsequence"

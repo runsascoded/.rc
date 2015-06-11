@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+needle=
+for arg in "$@"; do
+  if [ -n "$needle" ]; then
+    needle="${needle}.*"
+  fi
+  needle="${needle}${arg}"
+done
+
+dict-grep "$needle"
+
