@@ -146,3 +146,9 @@ alias pyv="python --version"
 
 alias hrm="h rm"
 alias hrmr="h rm -r"
+alias kca="killall CloudApp"
+alias mdp="mkdir -p"
+alias d="diff"
+
+append_to_path "$HOME/Library/Android/sdk/platform-tools"
+append_to_path "$HOME/node_modules/.bin"

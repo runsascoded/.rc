@@ -99,7 +99,9 @@ export pll="--conf spark.default.parallelism"
 
 export oldsparklogs="/spark/tmp/logs"
 export sparklogs="/spark/tmp/logs/$huser"
+export sl="$sparklogs"
 export hsparklogs="${hdfs}${sparklogs}"
+export hsl="$hsparklogs"
 export mysparklogs="$hhome/spark.logs"
 
 spark_args=
@@ -174,7 +176,11 @@ alias v2a="adam vcf2adam"
 export SPARK="$c/spark"
 export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
-  export SPARK_HOME="$SPARK"
+  if [ -d "$HOME/spark/spark-1.4.1-bin-hadoop2.4" ]; then
+    export SPARK_HOME="$HOME/spark/spark-1.4.1-bin-hadoop2.4"
+  else
+    export SPARK_HOME="$SPARK"
+  fi
 fi
 
 if [ -d "/etc/hadoop/conf" ]; then

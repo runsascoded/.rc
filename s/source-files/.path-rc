@@ -70,6 +70,7 @@ prepend_to_path "$s/yarn"
 
 append_to_path "$c/bedtools2/bin"
 append_to_path "$HOME/mongo/bin"
+prepend_to_path "$HOME/.meteor"
 append_to_path "$c/meteor"
 append_to_path "$c/stack_traces"
 append_to_path "$c/streaming-wc-l"
