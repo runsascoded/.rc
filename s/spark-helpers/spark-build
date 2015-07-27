@@ -1,0 +1,31 @@
+#!/usr/bin/env
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <sha> [hadoop version]" 1>&2
+  exit 1
+fi
+
+sha="$1"
+shift
+
+if [ $# -gt 0]; then
+  hadoop_version="$1"
+  shift
+else
+  hadoop_version="2.4"
+fi
+
+if [ "$hadoop_version" == "2.2" ]; then
+  hadoop_args="-Phadoop-${hadoop_version}"
+elif [ "$hadoop_version" == "2.3" ]; then
+  hadoop_args="-Phadoop-${hadoop_version} -Dhadoop.version=2.3.0"
+elif [ "$hadoop_version" == "2.4" -o "$hadoop_version" == "2.5" ]; then
+  hadoop_args="-Phadoop-${hadoop_version} -Dhadoop.version=2.4.0"
+else
+  echo "Hadoop version must be 2.2, 2.3, 2.4, or 2.5" 1>&2
+  exit 1
+fi
+
+cmd="build/mvn -Pyarn $hadoop_args -DskipTests clean package"
+echo "Cmd: $cmd"
+$cmd
