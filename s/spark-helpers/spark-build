@@ -1,31 +1,51 @@
-#!/usr/bin/env
+#!/usr/bin/env bash
+
+# Given a SHA and a Hadoop version, clone Spark into a folder namespaced
+# according to those arguments, check out the SHA, and build/package Spark.
 
 if [ $# -eq 0 ]; then
-  echo "Usage: $0 <sha> [hadoop version]" 1>&2
+  echo "Usage: $0 [--clean] <sha> [hadoop version]" 1>&2
   exit 1
 fi
 
-sha="$1"
-shift
-
-if [ $# -gt 0]; then
-  hadoop_version="$1"
+clean=
+if [ "$1" == "--clean" ]; then
+  clean=1
   shift
-else
-  hadoop_version="2.4"
 fi
 
-if [ "$hadoop_version" == "2.2" ]; then
-  hadoop_args="-Phadoop-${hadoop_version}"
-elif [ "$hadoop_version" == "2.3" ]; then
-  hadoop_args="-Phadoop-${hadoop_version} -Dhadoop.version=2.3.0"
-elif [ "$hadoop_version" == "2.4" -o "$hadoop_version" == "2.5" ]; then
-  hadoop_args="-Phadoop-${hadoop_version} -Dhadoop.version=2.4.0"
-else
-  echo "Hadoop version must be 2.2, 2.3, 2.4, or 2.5" 1>&2
-  exit 1
+dir="$(dirname "${BASH_SOURCE[0]}")"
+source "$dir"/.spark-rc
+
+get_sha_and_hadoop_version "$@"
+get_hadoop_args
+
+set -e
+
+. spark-clone
+
+clean_arg=
+if [ "$clean" ]; then
+  clean_arg="clean"
 fi
 
-cmd="build/mvn -Pyarn $hadoop_args -DskipTests clean package"
+if [ -z "$ZINC_PORT" ]; then
+  attempts=0
+  ZINC_PORT=3030
+  echo "Attempting to find free \$ZINC_PORT starting from $port"
+  while [ 1 ]; do
+    if ! lsof -i :$ZINC_PORT; then
+      break
+    fi
+    let ZINC_PORT=$ZINC_PORT+1
+    let attempts=$attempts+1
+    if [ $attempts -ge 100 ]; then
+      echo "Quitting after $attempts attempts to find a free port for zinc" 1>&2
+      exit 1
+    fi
+  done
+fi
+echo "zinc: $ZINC_PORT"
+cmd="build/mvn -Pyarn $hadoop_args -DskipTests -DzincPort="${ZINC_PORT:-3030}" $clean_arg package"
 echo "Cmd: $cmd"
 $cmd

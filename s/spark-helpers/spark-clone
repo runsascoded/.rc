@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <sha> <hadoop version>" 1>&2
+fi
+
+dir="$(dirname "${BASH_SOURCE[0]}")"
+source "$dir"/.spark-rc
+
+get_sha_and_hadoop_version "$@"
+get_spark_dir
+
+if [ -d "$spark_dir" ]; then
+  echo "Found dir $spark_dir"
+else
+  echo "Cloning spark into $spark_dir"
+  git clone "${SPARK_REPO_URL:-git@github.com:apache/spark.git}" "$spark_dir"
+fi
+cd "$spark_dir"
+git checkout "$sha"

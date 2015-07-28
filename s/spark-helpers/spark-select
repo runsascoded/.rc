@@ -2,127 +2,23 @@
 
 set -e
 
-if [ -z "$SPARK_HOME" ]; then
-  echo "Set \$SPARK_HOME" 1>&2
-  exit 1
-fi
-
-if [ ! -d "$SPARK_HOME" ]; then
-  echo "Invalid \$SPARK_HOME: $SPARK_HOME" 1>&2
-  exit 1
-fi
-
-pushd "$SPARK_HOME"
-
-assembly_dir="$SPARK_HOME/assembly/target/scala-2.10"
-mkdir -p "$assembly_dir"
-
-if [ -z "$artifact_dir" ]; then
-  artifact_dir="$HOME/spark"
-fi
-mkdir -p "$artifact_dir"
-
-if [ ! -d "$assembly_dir" ]; then
-  echo "Assembly dir not a directory: $assembly_dir" 1>&2
-  exit 1
-fi
-
-if [ ! -d "$artifact_dir" ]; then
-  echo "Missing artifact dir: $artifact_dir" 1>&2
-  exit 1
-fi
-
-if ! git is-clean; then
-  echo "Error: git repo has uncommitted changes" 1>&2
-  exit 1
-fi
-
-# Inspect / Archive currently-built JARs
-num_jars="$(find -L "$assembly_dir" -maxdepth 1 -type f -name '*.jar' | wc -l)"
-if [ $num_jars -gt 1 ]; then
-  echo "Warning: $num_jars assembly JARs found in $assembly_dir:" 1>&2
-  shas="$(find -L "$assembly_dir" -maxdepth 1 -type f -name '*.jar' | xargs shasum | first | sort)"
-  artifact_shas="$(find -L "$artifact_dir" -type f -name '*.jar' | xargs shasum | first | sort)"
-  num_missing_shas="$(comm -23 <(echo "$shas") <(echo "$artifact_shas") | wc -l)"
-  if [ $num_missing_shas -eq 0 ]; then
-    echo "All JARs backed up; killing them"
-    rm -rf "$assembly_dir"/*
-  else
-    echo "JARs with hashes not backed up:"
-    comm -23 <(echo "$shas") <(echo "$artifact_shas")
-    exit 1
-  fi
-elif [ $num_jars -eq 1 ]; then
-
-  # Move the assembly JAR to a directory based on the current git SHA.
-  sha="$(git --no-pager sha)"
-  dest="$artifact_dir/$sha"
-  mkdir -p "$dest"
-  mv "$assembly_dir"/*.jar "$dest"/
-
-  # Set up / Verify symlink from a git tag to the current SHA, if one exists.
-  tag="$(git get-tag)" && echo "Found tag: $tag" || echo "No tag"
-  if [ -n "$tag" ]; then
-    tag_dir="$assembly_dir/$tag"
-    if [ -e "$tag_dir" ]; then
-      if [ ! -d "$tag_dir" ]; then
-        if prompt "Warning: $tag_dir exists and is not a directory. Remove? [Y/n]"; then
-          rm -rf "$tag_dir"
-        fi
-      fi
-    else
-      ln -s "$sha" "$tag_dir"
-    fi
-  fi
-fi
-
-
-cp_jar() {
-  sha="$(basename "$(dirname "$jar")")"
-  echo "Checking out $sha"
-  git checkout "$sha"
-
-  echo "cp'ing $jar"
-  rm -f "$assembly_dir"/*
-  cp "$jar" "$assembly_dir"/
-
-  rev="$(git get-tag "$sha" || echo "$sha")"
-  echo "Spark assembly JAR from $rev at: $assembly_dir/$(basename "$jar")"
-}
-
 if [ $# -eq 0 ]; then
-
-  # Select a JAR from available artifacts.
-  toggle-ifs
-  select jar in $(find -L "$artifact_dir" -type f); do
-    break
-  done
-  toggle-ifs
-
-  cp_jar
-
-else
-  sha="$1"
-  jar_dir="$artifact_dir/$sha"
-  if [ -d "$jar_dir" ]; then
-    num_jars="$(find -L "$jar_dir" -type f | wc -l)"
-    if [ $num_jars -eq 0 ]; then
-      echo "No jars found at $jar_dir" 1>&2
-      exit 1
-    elif [ $num_jars -eq 1 ]; then
-      jar="$(find -L "$jar_dir" -type f)"
-      cp_jar
-    else
-      toggle-ifs
-      select jar in $(find -L "$jar_dir" -type f); do
-        break
-      done
-      toggle-ifs
-
-      cp_jar
-    fi
-  else
-    echo "No jars found at $jar_dir" 1>&2
-    exit 1
-  fi
+  echo "Usage: $0 <sha or version> [Hadoop version]" 1>&2
+  exit 1
 fi
+
+dir="$(dirname "${BASH_SOURCE[0]}")"
+source "$dir"/.spark-rc
+
+get_sha_and_hadoop_version "$@"
+get_spark_dir
+
+if [ -d "$spark_dir" ]; then
+  export SPARK_HOME="$spark_dir"
+else
+  echo "$spark_dir not found; cloning and building..."
+  spark-build
+  export SPARK_HOME="$spark_dir"
+fi
+
+exit 0
