@@ -92,13 +92,10 @@ source_and_path spark-helpers
 source_and_path perl-helpers
 source_and_path zinc-helpers
 
-try_source ".sinai-rc"
-
 try_source "$s/bash-helpers/.bash-rc"
 try_source "$s/diff-helpers/.diff-rc"
 try_source "$s/git-configs/.git-rc"
 try_source ".brew-rc"
-try_source ".colors-rc"
 try_source ".less-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
@@ -116,9 +113,7 @@ try_source ".locale-rc"
 try_source ".misc-rc"
 try_source ".nav-rc"
 try_source ".postgres-rc"
-try_source ".pythonpath-rc"
 try_source ".rpi-rc"
-try_source ".rsync-rc"
 try_source ".screen-rc"
 try_source ".source-rc"
 try_source "$s/watchman-helpers/.watchman-rc"
