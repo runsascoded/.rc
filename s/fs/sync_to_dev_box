@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 cur_sha=$(git log -n 1 --format='%h' origin/master)
 git diff origin/master > /tmp/p

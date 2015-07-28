@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 killall synergys
 sleep 1

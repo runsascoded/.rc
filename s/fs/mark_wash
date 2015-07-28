@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # update .wash_required file when a ./pants-wash is needed
 

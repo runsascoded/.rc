@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # replace a file with the output of a tail command applied to that file.
 

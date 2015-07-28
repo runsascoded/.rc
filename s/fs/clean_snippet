@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 rm -rf .pants.d/build_invalidator/classes/0/web.src.main.scala.com.foursquare.snippet.*
 rm -rf .pants.d/scalac/classes/web.src.main.scala.com.foursquare.snippet.*

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 A=test/jvm/com/foursquare/coremodel
 B=test/jvm/com/foursquare/counters

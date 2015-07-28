@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 regex='^\+\s+.*L\("'
 for hash in $(git log --format="%h" $1..origin/master); do

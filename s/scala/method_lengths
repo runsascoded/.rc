@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 filename=$1
 pairs=$(grep -hn '^  def ' $filename | sed "s/  def \([a-zA-Z_]*\).*/\1/")

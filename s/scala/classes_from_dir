@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 for dir in $@; do
     for class in $(git ls $dir/*.scala | xargs pcregrep -o '^(?:abstract |case |sealed )*(?:class|object|trait) [A-Za-z0-9_]+' | sed -n 's/.* //p'); do

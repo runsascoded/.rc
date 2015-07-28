@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 export BUILD_NUMBER=$(date +%y%m%d%H%M%S)
 echo "BUILD NUMBER: $BUILD_NUMBER"

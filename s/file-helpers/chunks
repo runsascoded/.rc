@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # chunk a file into fixed-size chunks. Example:
 #
