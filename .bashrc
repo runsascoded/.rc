@@ -84,6 +84,7 @@ source_and_path grep-helpers
 source_and_path js-helpers
 source_and_path ls-helpers
 source_and_path maven-helpers
+source_and_path py-helpers
 source_and_path rsync-helpers
 source_and_path sinai
 source_and_path spark-helpers
