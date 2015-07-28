@@ -2,3 +2,5 @@
 
 # Node
 append_to NODE_PATH .
+
+export jh="$s/js-helpers"

@@ -81,6 +81,7 @@ try_source ".vars-rc"
 try_source ".path-rc"
 
 source_and_path grep-helpers
+source_and_path js-helpers
 source_and_path maven-helpers
 source_and_path spark-helpers
 source_and_path perl-helpers
@@ -105,7 +106,6 @@ try_source "$gh/.git-rc"
 try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
-try_source ".js-rc"
 try_source ".keychain-rc"
 try_source ".ls-rc"
 try_source ".locale-rc"

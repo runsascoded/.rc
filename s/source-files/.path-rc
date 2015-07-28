@@ -50,7 +50,6 @@ prepend_to_path "$s/image-helpers"
 prepend_to_path "$s/intellij-helpers"
 prepend_to_path "$s/jar-utils"
 prepend_to_path "$s/java-helpers"
-prepend_to_path "$s/js-helpers"
 prepend_to_path "$s/link-helpers"
 prepend_to_path "$s/ls-helpers"
 prepend_to_path "$s/math-helpers"
@@ -87,7 +86,6 @@ fi
 export ah="$s/arg-helpers"
 export fh="$s/file-helpers"
 export wh="$s/which-helpers"
-export jh="$s/js-helpers"
 
 alias j="js"
 
