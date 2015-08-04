@@ -38,3 +38,5 @@ get_spark_dir() {
     spark_dir="$sparks/$spark_dir"
   fi
 }
+
+alias spark-select=". spark-select-impl"

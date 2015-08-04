@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <sha or version> [Hadoop version]" 1>&2
+else
+  dir="$(dirname "${BASH_SOURCE[0]}")"
+  source "$dir"/.spark-rc
+
+  get_sha_and_hadoop_version "$@"
+  get_spark_dir
+
+  if [ -d "$spark_dir" ]; then
+    export SPARK_HOME="$spark_dir"
+  else
+    echo "$spark_dir not found; cloning and building..."
+    spark-build "$sha" "$hadoop_version"
+    export SPARK_HOME="$spark_dir"
+  fi
+fi
+
