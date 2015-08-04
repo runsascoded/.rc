@@ -2,14 +2,14 @@
 
 import sys
 
-args = map(int, sys.argv[1:])
+args = [int(x) for x in sys.argv[1:]]
 
 start = args[0] if len(args) >= 2 else 0
 end = args[1] if len(args) >= 2 else args[0]
 step = args[2] if len(args) >= 3 else 1
 
 try:
-  print '\n'.join(map(str, range(start, end, step)))
+  print('\n'.join([str(x) for x in range(start, end, step)]))
 except IOError:
   pass
 
