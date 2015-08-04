@@ -87,7 +87,7 @@ source_and_path ls-helpers
 source_and_path maven-helpers
 source_and_path py-helpers
 source_and_path rsync-helpers
-source_and_path sinai
+source_and_path "$s/sinai"
 source_and_path spark-helpers
 source_and_path perl-helpers
 source_and_path zinc-helpers
