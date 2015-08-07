@@ -72,7 +72,7 @@ def parse_col(arg):
 
     raise Exception('Malformed arg: %s' % arg)
 
-cols = map(parse_col, unknown[0].split(','))
+cols = [parse_col(c) for c in unknown[0].split(',')]
 sys.argv = unknown[0:]
 
 try:
