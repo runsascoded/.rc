@@ -88,7 +88,11 @@ source_and_path maven-helpers
 source_and_path py-helpers
 source_and_path rsync-helpers
 source_and_path "$s/sinai"
-source_and_path spark-helpers
+
+export SPARK_HADOOP_VERSION=2.4
+export SPARK_BUILD_ARGS="-Pyarn"
+source_and_path "$c/spark-helpers"
+
 source_and_path perl-helpers
 source_and_path zinc-helpers
 
