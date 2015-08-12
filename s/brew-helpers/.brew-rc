@@ -1,0 +1,11 @@
+
+alias bs="brew search"
+alias bi="brew install"
+alias bud="brew update"
+alias bug="brew upgrade"
+alias bl="brew list"
+
+if [ -s "$HOME/.brew" ]; then
+  # exports brew Github token
+  source "$HOME/.brew"
+fi

@@ -1,0 +1,6 @@
+
+export jh="$s/jar-helpers"
+
+alias jl=jar-less
+alias jg=jar-grep
+alias jgi="jar-grep -i"

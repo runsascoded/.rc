@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-pid=$(devport | awk '{print $2}')
-if [ $pid ]; then
-    echo "killing $pid"
-    ssh dev-ryan "kill $pid"
-fi
-
-

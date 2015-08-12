@@ -62,3 +62,9 @@ set-python() {
 }
 
 alias sp=set-python
+alias pci="python-check-import"
+alias ppp="print-python-path"
+alias pmp="print-module-path"
+
+alias pii="pip install"
+alias pis="pip search"

@@ -80,6 +80,7 @@ alias enw="emacs -nw"
 try_source ".vars-rc"
 try_source ".path-rc"
 
+source_and_path adam-helpers
 source_and_path color-helpers
 source_and_path grep-helpers
 source_and_path js-helpers
@@ -93,6 +94,10 @@ export SPARK_HADOOP_VERSION=2.4
 export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c/spark-helpers"
 
+source_and_path brew-helpers
+source_and_path hadoop-helpers
+source_and_path jar-helpers
+source_and_path net-helpers
 source_and_path perl-helpers
 source_and_path zinc-helpers
 
@@ -103,6 +108,10 @@ try_source ".brew-rc"
 try_source ".less-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
+
+try_source "$c/z/z.sh"
+try_source "$c/commacd/.commacd.bash"
+prepend_to_path "$c/sejda-1.0.0/bin/"
 
 export dh="$s/diff-helpers"
 export gh="$c/git-helpers"
@@ -124,8 +133,6 @@ try_source "$s/watchman-helpers/.watchman-rc"
 
 dedupe_path_var PATH PYTHONPATH NODE_PATH
 
-export MIRROR_REMOTES="demeter,rpi"
-
 # added by travis gem
 if [ -f /Users/ryan/.travis/travis.sh ]; then
   source /Users/ryan/.travis/travis.sh
@@ -143,15 +150,33 @@ alias pgc="ping google.com"
 
 alias uz="unzip-dir"
 
-
-alias jl=jar-less
 alias pyv="python --version"
 
-alias hrm="h rm"
-alias hrmr="h rm -r"
 alias kca="killall CloudApp"
 alias mdp="mkdir -p"
 alias d="diff"
 
 append_to_path "$HOME/Library/Android/sdk/platform-tools"
 append_to_path "$HOME/node_modules/.bin"
+
+# Dropbox
+append_to_path "$c/Dropbox-Uploader"
+alias db="dropbox_uploader.sh"
+alias dbu="dropbox_uploader.sh upload"
+
+alias sal="ssh-add -l"
+alias m=man
+
+alias sejda=sejda-console
+alias ydl="youtube-dl"
+
+
+# git-helpers
+export DEFAULT_REMOTE=upstream
+
+# spark-helpers
+export sh="$c/spark-helpers"
+export SPARK_LOG_DIR=hdfs://demeter-nn1.demeter.hpc.mssm.edu/spark/tmp/logs/willir31
+
+alias rmf="rm -f"
+alias rmrf="rm -rf"

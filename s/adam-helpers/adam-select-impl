@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+export ADAM_HELPERS_DIR="${ADAM_HELPERS_DIR:-$HOME/adams}"
+
+if [ ! -d "$ADAM_HELPERS_DIR" ]; then
+  mkdir -p "$ADAM_HELPERS_DIR"
+fi
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <sha> [scala version]" 1>&2
+  return 1
+fi
+
+sha="$1"
+shift
+scala_version="${1:-$ADAM_SCALA_VERSION}"
+scala_version="${scala_version:-2.10}"
+
+adam_dir="$ADAM_HELPERS_DIR"/adam-"$sha"-${scala_version}
+
+if ! adam-build "$sha" "$scala_version" "$adam_dir"; then
+  return 1
+fi
+
+export ADAM_HOME="$adam_dir"

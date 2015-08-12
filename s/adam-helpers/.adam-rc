@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+alias adam-select=". adam-select-impl"

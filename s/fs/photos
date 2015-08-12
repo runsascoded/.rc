@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-./api/scripts/oauth2get.py venues/$rdubs/photos group=all limit=$1 offset=$2 > /tmp/rdub 2> /dev/null; grep url /tmp/rdub | grep -v derived | sed "s/ //g" | uniq | grep play

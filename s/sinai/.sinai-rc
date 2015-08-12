@@ -176,8 +176,8 @@ alias v2a="adam vcf2adam"
 export SPARK="$c/spark"
 export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
-  if [ -d "$HOME/spark/spark-1.4.1-bin-hadoop2.4" ]; then
-    export SPARK_HOME="$HOME/spark/spark-1.4.1-bin-hadoop2.4"
+  if [ -d "$HOME/sparks/spark-1.4.1-bin-hadoop2.4" ]; then
+    export SPARK_HOME="$HOME/sparks/spark-1.4.1-bin-hadoop2.4"
   else
     export SPARK_HOME="$SPARK"
   fi
@@ -222,9 +222,10 @@ alias sm="ssh minerva"
 
 alias gamrd="git add-mirror-remote demeter demeter:c/"
 
-export DEFAULT_MIRROR_REMOTE_NAME=demeter
-export DEFAULT_MIRROR_REMOTE_HOST=demeter
+export DEFAULT_MIRROR_REMOTE_NAME=dev3
+export DEFAULT_MIRROR_REMOTE_HOST=dev3
 export DEFAULT_MIRROR_REMOTE_DIR=c
+export MIRROR_REMOTES="dev3,demeter,rpi"
 
 alias gamrm="gamr minerva"
 alias gcdm="gcd minerva"

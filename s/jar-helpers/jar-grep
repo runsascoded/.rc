@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+jar tf "${!#}" | grep "${@:1: (($# - 1))}"

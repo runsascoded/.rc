@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-#cd ~/c/foursquare.web/build
-cd build-support/
-restored_pex_path=$(ls pants-[0-9]*.pex | tail -n 1)
-echo "Restoring $restored_pex_path"
-ln -sf $restored_pex_path pants-current.pex

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <sha> <clone dir>" 1>&2
+  exit 1
+fi
+
+sha="$1"
+shift
+scala_version="$1"
+shift
+adam_dir="$1"
+shift
+
+if [ "$sha" == "0.17.0" ]; then
+  if [ ! -d "$adam_dir" ]; then
+    new_base="adam-${sha}-${scala_version}"
+    original_base="adam-distribution_${scala_version}-${sha}"
+    tar_gz="${original_base}-bin.tar.gz"
+    tar_url="https://repo1.maven.org/maven2/org/bdgenomics/adam/adam-distribution_${scala_version}/0.17.0/${tar_gz}"
+    pushd "${ADAM_HELPERS_DIR}"
+    if [ ! -s "$tar_gz" ]; then
+      wget "$tar_url"
+    fi
+    tar xvzf "$tar_gz"
+    mv "$original_base" "$new_base"
+  fi
+else
+  if [ ! -d "$adam_dir" ]; then
+    git clone "${ADAM_REPO_URL:-git@github.com:bigdatagenomics/adam.git}" "$adam_dir"
+  fi
+
+  pushd "$adam_dir"
+  if ! git checkout "$sha"; then
+    popd
+    rm -rf "$adam_dir"
+    exit 1
+  fi
+
+  if ! "$adam_dir"/bin/compute-adam-classpath.sh &> /dev/null; then
+    echo "Building.."
+    mvn package -DskipTests
+  fi
+fi

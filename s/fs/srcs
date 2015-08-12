@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-find core/src web/src/ batch/src/ -name '*.scala'

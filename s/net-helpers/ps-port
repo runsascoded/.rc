@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for arg in "$@"; do
+  lsof -i :"$arg"
+done
