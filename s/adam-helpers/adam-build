@@ -30,13 +30,14 @@ if [ "$sha" == "0.17.0" ]; then
 else
   if [ ! -d "$adam_dir" ]; then
     git clone "${ADAM_REPO_URL:-git@github.com:bigdatagenomics/adam.git}" "$adam_dir"
-  fi
-
-  pushd "$adam_dir"
-  if ! git checkout "$sha"; then
-    popd
-    rm -rf "$adam_dir"
-    exit 1
+    pushd "$adam_dir"
+    if ! git checkout "$sha"; then
+      popd
+      rm -rf "$adam_dir"
+      exit 1
+    fi
+  else
+    pushd "$adam_dir"
   fi
 
   if ! "$adam_dir"/bin/compute-adam-classpath.sh &> /dev/null; then
