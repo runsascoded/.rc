@@ -80,7 +80,7 @@ alias enw="emacs -nw"
 try_source ".vars-rc"
 try_source ".path-rc"
 
-source_and_path adam-helpers
+source_and_path "$c/adam-helpers"
 source_and_path color-helpers
 source_and_path grep-helpers
 source_and_path js-helpers
