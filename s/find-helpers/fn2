@@ -2,10 +2,5 @@
 
 name="$1"
 shift
-if [ $# -eq 0 ]; then
-  args="."
-else
-  args="$@"
-fi
-find $args -maxdepth 2 -name "*$name*"
+find "${@:-.}" -maxdepth 2 -name "*$name*"
 
