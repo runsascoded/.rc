@@ -3,8 +3,12 @@
 # Grep options
 export USE_LIBPCRE=yes
 alias grp="ggrep"
+
 export GREP_OPTIONS="--color=auto"
-alias pgrp="pcregrep"
+
+alias pcg=pcregrep
+alias pcgo="pcregrep -o"
+alias pgrp=pcregrep
 
 alias gv="grep -v"
 
