@@ -188,3 +188,6 @@ alias le=less
 export GPG_TTY=$(tty)
 
 append_to_path "$HOME/ipfs"
+
+export SLIM_HOME="$c/spree/slim"
+export SPREE_HOME="$c/spree"
