@@ -31,3 +31,14 @@ fi
 if [ -d "$HOME"/apache-maven-3.3.3 ]; then
   export M2_HOME="$HOME"/apache-maven-3.3.3
 fi
+
+get-maven-opt() {
+  opt="$(echo "$MAVEN_OPTS" | perl -pe "s/.*-X${1}([^ ]+).*/\1/")"
+  opt="${opt:--}"
+  echo "$opt"
+}
+
+set-maven-opts() {
+  xmx="$(get-maven-opt "mx")"
+  echo "Xmx: $xmx"
+}

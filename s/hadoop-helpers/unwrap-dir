@@ -20,7 +20,7 @@ for dir in "$@"; do
     continue
   fi
 
-  t="$(tmpfile)"
+  t="$(mktemp)"
   rm -f "$t"
   mv -f "$dir" "$t"
   mv "$t"/part*-00000 "$dir"

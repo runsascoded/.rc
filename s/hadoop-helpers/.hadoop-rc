@@ -1,3 +1,5 @@
 
 alias hrm="h rm"
 alias hrmr="h rm -r"
+alias hmd="h mkdir"
+alias hmdp="h mkdir -p"

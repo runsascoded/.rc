@@ -96,6 +96,7 @@ export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
 export dp="--conf spark.storage.memoryFraction"
 export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
+export sdp="$pll"
 
 export oldsparklogs="/spark/tmp/logs"
 export sparklogs="/spark/tmp/logs/$huser"
@@ -201,7 +202,7 @@ export HADOOP_BAM="$c/hadoop-bam"
 alias gdos="guacamole-demeter-over-ssh"
 
 # For ADAM
-export "MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=256m"
+export "MAVEN_OPTS=-Xmx1024m -XX:MaxPermSize=256m"
 export m2adam="$m2/org/bdgenomics/adam"
 
 export arun="/hpc/users/ahujaa01"
@@ -225,6 +226,7 @@ alias sd1="ssh demeter1"
 alias sD1="ssh -D $DEMETER_PORT demeter1"
 alias sd2="ssh demeter2"
 alias sD2="ssh -D $DEMETER_PORT demeter2"
+alias sd3="ssh dev3"
 alias sM="ssh -D $MINERVA_PORT minerva"
 alias sm="ssh minerva"
 
@@ -245,3 +247,25 @@ export adam_shell_args="--master yarn --deploy-mode client $ne 10 $ec 4 $em 10g 
 
 export d1="demeter-login1.hpc.mssm.edu"
 export d2="demeter-login2.hpc.mssm.edu"
+
+export HDFS_SPARK_JAR="hdfs:///user/willir31/sparks/spark-1.5.0-bin-hadoop2.6/lib/spark-assembly-1.5.0-hadoop2.6.0.jar"
+export PAGEANT_JAR="/hpc/users/willir31/c/pageant/target/pageant-with-dependencies-1.0-SNAPSHOT.jar"
+#export JSON_RELAY_JAR="/hpc/users/willir31/spark-json-relay-1.0.0.jar"
+
+export oas="org.apache.spark"
+export oase="org.apache.spark.examples"
+export SparkPi="org.apache.spark.examples.SparkPi"
+
+alias act="adam-core-test"
+
+toggle-hadoop() {
+  if [ -z "$YARN_CONF_DIR" -a -z "$HADOOP_CONF_DIR" ]; then
+    export YARN_CONF_DIR=/etc/hadoop/conf
+    export HADOOP_CONF_DIR="$YARN_CONF_DIR"
+    echo "Hadoop env enabled"
+  else
+    export YARN_CONF_DIR=
+    export HADOOP_CONF_DIR=
+    echo "Hadoop env disabled"
+  fi
+}
