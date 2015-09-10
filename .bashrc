@@ -180,3 +180,11 @@ export sh="$c/spark-helpers"
 
 alias rmf="rm -f"
 alias rmrf="rm -rf"
+
+alias tx="tar xvzf"
+alias ua=unalias
+alias le=less
+
+export GPG_TTY=$(tty)
+
+append_to_path "$HOME/ipfs"
