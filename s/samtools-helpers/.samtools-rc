@@ -1,0 +1,12 @@
+
+alias st="samtools view"
+alias sth="samtools view -h"
+alias stH="samtools view -H"
+
+export md="MD:Z:[^\s]+"
+
+alias find-mds="pcregrep -o '$md'"
+alias count-mds="pcregrep -o -c '$md'"
+
+alias fmds=find-mds
+alias cmds=count-mds

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 [host=127.0.0.1] <port>" 1>&2
+  exit 1
+fi
+
+if [ $# -gt 1 ]; then
+  host="$1"
+  shift
+else
+  host="127.0.0.1"
+fi
+
+port="$1"
+shift
+
+nc -z "$host" "$port"

@@ -4,10 +4,8 @@ export nh="$s/net-helpers"
 alias lsp="ps-port"
 alias lp="ps-port"
 alias psp="ps-port"
-alias chp="ps-port"
-alias check-port="ps-port"
-
-alias ncz="nc -z"
+alias chp="ncz"
+alias check-port="ncz"
 
 alias my-ip="curl ifconfig\.me/ip"
 

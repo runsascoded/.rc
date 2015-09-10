@@ -95,10 +95,13 @@ export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c/spark-helpers"
 
 source_and_path brew-helpers
+source_and_path comm-helpers
 source_and_path hadoop-helpers
+source_and_path head-tail-helpers
 source_and_path jar-helpers
 source_and_path net-helpers
 source_and_path perl-helpers
+source_and_path samtools-helpers
 source_and_path zinc-helpers
 
 try_source "$s/bash-helpers/.bash-rc"
