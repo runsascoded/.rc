@@ -268,3 +268,5 @@ toggle-hadoop() {
     echo "Hadoop env disabled"
   fi
 }
+
+alias act=adam-core-test
