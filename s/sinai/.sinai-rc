@@ -106,7 +106,7 @@ export mysparklogs="$hhome/spark.logs"
 
 spark_args=
 spark_args="$spark_args --conf spark.eventLog.enabled=true"
-spark_args="$spark_args --conf spark.eventLog.dir=$hdfs:$sparklogs"
+spark_args="$spark_args --conf spark.eventLog.dir=${hsparklogs}"
 spark_args="$spark_args --conf spark.default.parallelism=1000"
 spark_args="$spark_args --conf spark.storage.memoryFraction=0.1"
 spark_args="$spark_args --executor-memory 10g"
@@ -155,10 +155,17 @@ export nr="--normal-reads"
 export tr="--tumor-reads"
 export pa="--partition-accuracy"
 
+if [[ `uname -a` =~ ^Darwin ]]; then
+  export SPARK_LOG_DIR="$HOME/sparklogs"
+else
+  export SPARK_LOG_DIR="$hsparklogs"
+fi
+
+export SPARK_HADOOP_VERSION=2.6
 
 SPARK_HISTORY_OPTS=
 SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.ui.port=18082"
-SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=${hsparklogs}"
+SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=${SPARK_LOG_DIR}"
 SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.retainedApplications=1000"
 export SPARK_HISTORY_OPTS
 
@@ -176,8 +183,8 @@ alias v2a="adam vcf2adam"
 export SPARK="$c/spark"
 export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
-  if [ -d "$HOME/sparks/spark-1.4.1-bin-hadoop2.4" ]; then
-    export SPARK_HOME="$HOME/sparks/spark-1.4.1-bin-hadoop2.4"
+  if [ -d "$HOME/sparks/spark-1.5.0-bin-hadoop2.6" ]; then
+    export SPARK_HOME="$HOME/sparks/spark-1.5.0-bin-hadoop2.6"
   else
     export SPARK_HOME="$SPARK"
   fi
@@ -185,6 +192,7 @@ fi
 
 if [ -d "/etc/hadoop/conf" ]; then
   export YARN_CONF_DIR=/etc/hadoop/conf
+  export HADOOP_CONF_DIR="$YARN_CONF_DIR"
 fi
 
 export PICARD="$c/picard"

@@ -90,7 +90,6 @@ source_and_path py-helpers
 source_and_path rsync-helpers
 source_and_path "$s/sinai"
 
-export SPARK_HADOOP_VERSION=2.4
 export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c/spark-helpers"
 
@@ -177,9 +176,7 @@ alias ydl="youtube-dl"
 # git-helpers
 export DEFAULT_REMOTE=upstream
 
-# spark-helpers
 export sh="$c/spark-helpers"
-export SPARK_LOG_DIR=hdfs://demeter-nn1.demeter.hpc.mssm.edu/spark/tmp/logs/willir31
 
 alias rmf="rm -f"
 alias rmrf="rm -rf"
