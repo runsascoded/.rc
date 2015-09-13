@@ -117,6 +117,8 @@ try_source "$c/z/z.sh"
 try_source "$c/commacd/.commacd.bash"
 prepend_to_path "$c/sejda-1.0.0/bin"
 
+prepend_to_path "$s/slim-helpers"
+
 export dh="$s/diff-helpers"
 export gh="$c/git-helpers"
 export gha="$gh/aliases"

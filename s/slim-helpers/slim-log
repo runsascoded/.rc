@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+slim_log="$HOME/slim.log"
+if [ -d "$slim_log" ]; then
+  cat "$slim_log/$(ls -tr slim.log | tail -n 1)"/out
+else
+  ssh dev3 "s/slim-helpers/slim-log"
+fi
