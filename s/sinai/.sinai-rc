@@ -98,40 +98,15 @@ export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
 export sdp="$pll"
 
-export sparklogs="/spark/tmp/logs"
-export sl="$sparklogs"
-export hsparklogs="${hdfs}${sparklogs}"
-export hsl="$hsparklogs"
-export mysparklogs="$hhome/spark.logs"
-
-spark_args=
-spark_args="$spark_args --conf spark.eventLog.enabled=true"
-spark_args="$spark_args --conf spark.eventLog.dir=${hsparklogs}"
-spark_args="$spark_args --conf spark.default.parallelism=1000"
-spark_args="$spark_args --conf spark.storage.memoryFraction=0.1"
-spark_args="$spark_args --executor-memory 10g"
-spark_args="$spark_args --executor-cores 4"
-spark_args="$spark_args --driver-memory 10g"
-spark_args="$spark_args --num-executors 1000"
-spark_args="$spark_args --master yarn"
-spark_args="$spark_args --deploy-mode cluster"
-spark_djov="-Dyarn.resourcemanager.am.max-attempts=1"
-spark_args="$spark_args --driver-java-options $spark_djov"
-
-sort_shuffle="--conf spark.shuffle.manager=SORT"
-hash_shuffle="--conf spark.shuffle.manager=HASH"
-
-spark_args="$spark_args --conf spark.yarn.executor.memoryOverhead=3072"
-spark_args="$spark_args --conf spark.core.connection.ack.wait.timeout=600"
-spark_args="$spark_args --conf spark.file.transferTo=false"
-spark_args="$spark_args --conf spark.akka.timeout=1000"
-spark_args="$spark_args --conf spark.metrics.conf=metrics.properties"
-spark_args="$spark_args --files=$HOME/metrics.properties"
-spark_args="$spark_args $sort_shuffle"
-export gc_opts="-XX:+PrintGCDetails -XX:+PrintGCTimeStamps"
-export ejo="spark.executor.extraJavaOptions=$gc_opts"
-
-export spark_args
+if [[ `uname -a` =~ ^Darwin ]]; then
+  export sparklogs="$HOME/sparklogs"
+  export sl="$sparklogs"
+else
+  export sl="/spark/tmp/logs"
+  export sparklogs="${hdfs}${sparklogs}"
+  export hsl="$sparklogs"
+fi
+export SPARK_EVENTLOG_DIR="$sparklogs"
 
 if [ -z "$m2" ]; then
   echo "Error: \$m2 not set when setting Maven env vars" >&2
@@ -141,7 +116,7 @@ export m2core="$m2/org/apache/spark/spark-core_2.10"
 export msc="$m2spark/spark-core_2.10"
 export mac="$m2adam/adam-core_2.10"
 
-guac_args="$spark_args"
+guac_args=
 export djo="--driver-java-options"
 log4j_properties=$ints/scripts/guacamole/log4j.properties
 export djov="$spark_djov -Dlog4j.configuration=$log4j_properties"
@@ -155,18 +130,12 @@ export nr="--normal-reads"
 export tr="--tumor-reads"
 export pa="--partition-accuracy"
 
-if [[ `uname -a` =~ ^Darwin ]]; then
-  export SPARK_LOG_DIR="$HOME/sparklogs"
-else
-  export SPARK_LOG_DIR="$hsparklogs"
-fi
-
 export SPARK_HADOOP_VERSION=2.6
 
 SPARK_HISTORY_OPTS=
 SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.ui.port=18082"
-SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=${SPARK_LOG_DIR}"
-SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.retainedApplications=1000"
+SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=${SPARK_EVENTLOG_DIR}"
+SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.retainedApplications=5000"
 export SPARK_HISTORY_OPTS
 
 export ADAM="$c/adam"
