@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-function rrl_r() {
-  new_arg="$(dirname "$1")"
-  if [ "$new_arg" != "$1" ]; then
-    rrl_r "$new_arg"
-    ls -ld "$1"
-  fi
-}
-
-for arg in "$@"; do
-  rrl_r "$(canonicalize "$arg")"
-done
+if which namei &> /dev/null; then
+  for arg in "$@"; do
+    namei -l "$arg"
+  done
+else
+  for arg in "$@"; do
+    arg="$(readlink -m "$arg")"
+    prev=
+    while [ 1 ]; do
+      ls -ld "$arg"
+      prev="$arg"
+      arg="$(dirname "$arg")"
+      if [ "$prev" == "$arg" ]; then
+        break
+      fi
+    done | reverse-stdin | column -t -s' '
+  done
+fi

@@ -29,13 +29,11 @@ else
 fi
 
 prepend_to_path "$s"
-prepend_to_path "$s/arg-helpers"
 prepend_to_path "$s/bash-helpers"
 prepend_to_path "$s/case-helpers"
 prepend_to_path "$s/daemon-scripts"
 prepend_to_path "$s/datetime-helpers"
 prepend_to_path "$s/diff-helpers"
-prepend_to_path "$s/file-helpers"
 prepend_to_path "$s/find-helpers"
 prepend_to_path "$s/graphite-helpers"
 prepend_to_path "$s/grep-helpers"
@@ -71,8 +69,6 @@ if [ -e "/usr/local/Cellar" ]; then
   export hb=/usr/local/Cellar
 fi
 
-export ah="$s/arg-helpers"
-export fh="$s/file-helpers"
 export wh="$s/which-helpers"
 
 alias j="js"
@@ -93,11 +89,5 @@ prepend_to_path "/usr/local/bin"  # For brew
 #append_to_path "$EC2_HOME/bin"
 
 append_to_path "$HOME/Library/Python/2.7/bin"
-
-if which greadlink &> /dev/null; then
-  ln -sf $(which greadlink) $s/file-helpers/rl
-else
-  ln -sf $(which readlink) $s/file-helpers/rl
-fi
 
 alias jsh="jekyll serve -H 0.0.0.0"

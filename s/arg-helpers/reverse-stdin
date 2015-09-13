@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+read -r line
+if [ -z "$line" ]; then
+  exit 0
+fi
+reverse-stdin
+echo "$line"
+

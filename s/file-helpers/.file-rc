@@ -1,0 +1,15 @@
+
+export fh="$(dirname "${BASH_SOURCE[0]}")"
+
+alias rrl="recursive-readlink"
+
+if which greadlink &> /dev/null; then
+  cmd=greadlink
+else
+  cmd=readlink
+fi
+
+full_cmd="$(which "$cmd")"
+alias rl="$cmd -m"
+ln -sf "$full_cmd" "$fh/readlink"
+

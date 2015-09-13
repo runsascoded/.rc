@@ -81,6 +81,7 @@ try_source ".vars-rc"
 try_source ".path-rc"
 
 source_and_path "$c/adam-helpers"
+source_and_path arg-helpers
 source_and_path color-helpers
 source_and_path grep-helpers
 source_and_path js-helpers
@@ -95,6 +96,7 @@ source_and_path "$c/spark-helpers"
 
 source_and_path brew-helpers
 source_and_path comm-helpers
+source_and_path file-helpers
 source_and_path hadoop-helpers
 source_and_path head-tail-helpers
 source_and_path jar-helpers
@@ -113,7 +115,7 @@ try_source ".editor-rc"
 
 try_source "$c/z/z.sh"
 try_source "$c/commacd/.commacd.bash"
-prepend_to_path "$c/sejda-1.0.0/bin/"
+prepend_to_path "$c/sejda-1.0.0/bin"
 
 export dh="$s/diff-helpers"
 export gh="$c/git-helpers"
@@ -191,3 +193,5 @@ append_to_path "$HOME/ipfs"
 
 export SLIM_HOME="$c/spree/slim"
 export SPREE_HOME="$c/spree"
+
+append_to_path "$HOME/macports/bin"
