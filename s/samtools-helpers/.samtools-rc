@@ -1,4 +1,7 @@
 
+alias sv=samtools-view
+alias svh=samtools-view-header
+
 alias st="samtools view"
 alias sth="samtools view -h"
 alias stH="samtools view -H"

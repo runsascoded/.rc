@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+import fileinput
+
+for line in fileinput.input():
+  segments = line.split('\t')
+  if not len(list(filter(lambda ch: ch < '0' or ch > '9', list(segments[1])))):
+    segments[1] = '{0:012b}'.format(int(segments[1]))
+  print('\t'.join(segments))
+

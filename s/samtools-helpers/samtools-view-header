@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ "$1" =~ ^[0-9]+$ ]]; then
+  num="$1"
+  shift
+  samtools view -h "$@" | head -n "$num"
+else
+  samtools view -h "$@" | head
+fi
