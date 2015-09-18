@@ -9,7 +9,11 @@ else
   cmd=readlink
 fi
 
-full_cmd="$(which "$cmd")"
 alias rl="$cmd -m"
-ln -sf "$full_cmd" "$fh/readlink"
+
+if [ ! -e "$fh/readlink" ]; then
+  full_cmd="$(which "$cmd")"
+  ln -sf "$full_cmd" "$fh/readlink"
+fi
+
 

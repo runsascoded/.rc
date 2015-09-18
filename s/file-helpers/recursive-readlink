@@ -2,7 +2,7 @@
 
 if which namei &> /dev/null; then
   for arg in "$@"; do
-    namei -l "$arg"
+    namei -l "$(readlink -m "$arg")"
   done
 else
   for arg in "$@"; do

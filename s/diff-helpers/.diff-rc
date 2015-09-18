@@ -1,5 +1,5 @@
 
-alias hd="head-diff"
+alias hdd="head-diff"
 alias hdq="head-diff -q"
 
 alias dl=diff-less

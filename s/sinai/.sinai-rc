@@ -103,7 +103,7 @@ if [[ `uname -a` =~ ^Darwin ]]; then
   export sl="$sparklogs"
 else
   export sl="/spark/tmp/logs"
-  export sparklogs="${hdfs}${sparklogs}"
+  export sparklogs="${hdfs}${sl}"
   export hsl="$sparklogs"
 fi
 export SPARK_EVENTLOG_DIR="$sparklogs"
@@ -130,7 +130,7 @@ export nr="--normal-reads"
 export tr="--tumor-reads"
 export pa="--partition-accuracy"
 
-export SPARK_HADOOP_VERSION=2.6
+export SPARK_HELPERS_HADOOP_VERSION=2.6
 
 SPARK_HISTORY_OPTS=
 SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.ui.port=18082"
