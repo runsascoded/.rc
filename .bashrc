@@ -197,3 +197,5 @@ export SLIM_HOME="$c/spree/slim"
 export SPREE_HOME="$c/spree"
 
 append_to_path "$HOME/macports/bin"
+
+export GIT_PS1_DESCRIBE_STYLE=branch
