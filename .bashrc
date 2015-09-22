@@ -102,7 +102,7 @@ source_and_path head-tail-helpers
 source_and_path jar-helpers
 source_and_path net-helpers
 source_and_path perl-helpers
-source_and_path samtools-helpers
+source_and_path "$c/samtools-helpers"
 source_and_path zinc-helpers
 
 try_source "$s/bash-helpers/.bash-rc"
