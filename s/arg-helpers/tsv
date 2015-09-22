@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+column -t -s$'\t' "$@"
