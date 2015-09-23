@@ -16,7 +16,7 @@ try:
             if num >= start:
                 if num >= end:
                     break
-                print line,
+                sys.stdout.write(line)
             num += 1
     elif len(remainder) == 1:
         with open(remainder[0], 'r') as fd:
@@ -25,9 +25,9 @@ try:
                 if num >= start:
                     if num >= end:
                         break
-                    print line,
+                    sys.stdout.write(line)
                 num += 1
     else:
-        print '\n'.join(remainder[start:end])
+        print('\n'.join(remainder[start:end]))
 except IOError:
     pass
