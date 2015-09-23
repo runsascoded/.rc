@@ -1,3 +1,5 @@
 
 export ah="$s/arg-helpers"
 alias reverse=reverse-stdin
+
+alias ct="column -t"

@@ -1,3 +1,5 @@
 
 alias cm=comm
 alias cmc=comm-c
+
+alias c3="comm -3"
