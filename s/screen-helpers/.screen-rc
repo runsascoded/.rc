@@ -1,0 +1,4 @@
+
+alias sls="screen -ls"
+alias sr="screen -r"
+alias smds="screen -m -d -S"

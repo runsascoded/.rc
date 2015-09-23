@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <start> [end=N] [files...]" 1>&2
+  exit 1
+fi
+
+if [ $# -gt 2 ]; then
+  cat "${@:3:}" | "$0" "$1" "$2"
+  exit $?
+fi
+
+start="$1"
+shift
+
+if [[ "$start" =~ : ]]; then
+  orig="$start"
+  start="${orig%%:*}"
+  if [ -z "$start" ]; then
+    start=0
+  fi
+  orig="${orig#*:}"
+  end="${orig%%:*}"
+  if [[ "$orig" =~ : ]]; then
+    orig="${orig#*:}"
+    step="${orig#:}"
+    "$0" "$start" "$end" | every-nth-line "$step"
+    exit $?
+  else
+    "$0" "$start" "$end"
+    exit $?
+  fi
+fi
+
+if [ "$start" -lt 0 ]; then
+  start="${start#-}"
+else
+  let start=$start+1
+  start="+${start#-}"
+fi
+
+if [ $# -eq 0 -o -z "$1" ]; then
+  gtail -n "$start"
+  exit $?
+fi
+
+if [ $# -gt 0 ]; then
+  end="$1"
+  shift
+fi
+
+if [ "$end" -gt 0 ]; then
+  let end=$end-$start+1
+fi
+
+gtail -n "$start" | ghead -n "$end"

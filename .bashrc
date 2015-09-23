@@ -89,6 +89,7 @@ source_and_path ls-helpers
 source_and_path maven-helpers
 source_and_path py-helpers
 source_and_path rsync-helpers
+source_and_path screen-helpers
 source_and_path "$s/sinai"
 
 export SPARK_BUILD_ARGS="-Pyarn"
@@ -199,3 +200,6 @@ export SPREE_HOME="$c/spree"
 append_to_path "$HOME/macports/bin"
 
 export GIT_PS1_DESCRIBE_STYLE=branch
+
+export t=$'\t'
+export n=$'\n'

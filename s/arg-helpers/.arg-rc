@@ -3,3 +3,11 @@ export ah="$s/arg-helpers"
 alias reverse=reverse-stdin
 
 alias ct="column -t"
+
+alias colt="col -i \"$t\""
+
+alias jn=joyn
+alias joynn="joyn $'\n'"
+alias jnn="joyn $'\n'"
+
+alias cs=comm-sort

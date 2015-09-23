@@ -2,7 +2,7 @@
 
 slim_log="$HOME/slim.log"
 if [ -d "$slim_log" ]; then
-  grep ERROR "$slim_log/$(ls -tr slim.log | tail -n 1)"/out
+  grep ERROR "$slim_log/$(ls -tr "$slim_log" | tail -n 1)"/out
 else
   ssh dev3 "s/slim-helpers/slim-errors"
 fi
