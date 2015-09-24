@@ -1,4 +1,15 @@
 
 alias sls="screen -ls"
+
 alias sr="screen -r"
+alias srs="screen -r -S"
+
 alias smds="screen -m -d -S"
+
+alias sld="screen -ls | grep Detached | first"
+
+alias srds="screen -D -S"
+
+alias shc="screen-hardcopy"
+
+alias sq="screen-quit"

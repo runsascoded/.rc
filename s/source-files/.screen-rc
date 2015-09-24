@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# `screen` aliases
-alias rscr="screen -r -S"
-alias dscr="screen -D -S"
-
