@@ -16,12 +16,16 @@ if [ ! -e "$fh/readlink" ]; then
   ln -sf "$full_cmd" "$fh/readlink"
 fi
 
-if ! which ghead &> /dev/null; then
-  alias ghead=head
+if which ghead &> /dev/null; then
+  export ghead=ghead
+else
+  export ghead=head
 fi
 
-if ! which gtail &> /dev/null; then
-  alias gtail=tail
+if which gtail &> /dev/null; then
+  export gtail=gtail
+else
+  export gtail=tail
 fi
 
 alias sl=slice-lines

@@ -6,7 +6,7 @@ if [ $# -eq 0 ]; then
 fi
 
 if [ $# -gt 2 ]; then
-  cat "${@:3:}" | "$0" "$1" "$2"
+  cat "${@:3:${#@}}" | "$0" "$1" "$2"
   exit $?
 fi
 
@@ -24,10 +24,10 @@ if [[ "$start" =~ : ]]; then
   if [[ "$orig" =~ : ]]; then
     orig="${orig#*:}"
     step="${orig#:}"
-    "$0" "$start" "$end" | every-nth-line "$step"
+    "$0" "$start" "$end" "$@" | every-nth-line "$step"
     exit $?
   else
-    "$0" "$start" "$end"
+    "$0" "$start" "$end" "$@"
     exit $?
   fi
 fi
@@ -40,7 +40,7 @@ else
 fi
 
 if [ $# -eq 0 -o -z "$1" ]; then
-  gtail -n "$start"
+  $gtail -n "$start"
   exit $?
 fi
 
@@ -53,4 +53,4 @@ if [ "$end" -gt 0 ]; then
   let end=$end-$start+1
 fi
 
-gtail -n "$start" | ghead -n "$end"
+$gtail -n "$start" | $ghead -n "$end"
