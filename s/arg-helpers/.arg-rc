@@ -11,3 +11,5 @@ alias joynn="joyn $'\n'"
 alias jnn="joyn $'\n'"
 
 alias cs=comm-sort
+
+alias ws=collapse-whitespace

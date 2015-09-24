@@ -1,5 +1,10 @@
 
 alias cm=comm
-alias cmc=comm-c
+alias cmc=comm-count
+alias cms=comm-sort
+alias cmcs=comm-count-sort
 
 alias c3="comm -3"
+alias c12="comm -12"
+alias c13="comm -13"
+alias c23="comm -23"

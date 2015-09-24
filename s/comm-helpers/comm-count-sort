@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z "$COMM_COUNT_SORT" ]; then
+  export COMM_COUNT_SORT=1
+  comm-count "$@"
+  unset COMM_COUNT_SORT
+else
+  comm-count "$@"
+fi

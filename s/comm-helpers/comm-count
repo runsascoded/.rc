@@ -10,8 +10,21 @@ finish() {
 }
 trap finish EXIT
 
-cat "$1" > "$t1"
-cat "$2" > "$t2"
+if [ -n "$COMM_COUNT_SORT" ]; then
+  sort_cmd=sort
+else
+  sort_cmd=cat
+fi
+
+if [ -n "$COMM_STRIP_WHITESPACE" ]; then
+  ws_cmd=collapse-whitespace
+else
+  ws_cmd=cat
+fi
+
+cat "$1" | $ws_cmd | $sort_cmd > "$t1"
+cat "$2" | $ws_cmd | $sort_cmd > "$t2"
+
 only_first="$(comm -23 "$t1" "$t2" | wc -l)"
 only_second="$(comm -13 "$t1" "$t2" | wc -l)"
 both="$(comm -12 "$t1" "$t2" | wc -l)"

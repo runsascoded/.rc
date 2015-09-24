@@ -205,3 +205,5 @@ export GIT_PS1_DESCRIBE_STYLE=branch
 
 export t=$'\t'
 export n=$'\n'
+
+export COMM_STRIP_WHITESPACE=1
