@@ -239,3 +239,7 @@ toggle-hadoop() {
 }
 
 alias act=adam-core-test
+
+export x200="/datasets/illumina_platinum/200x"
+export x50="/datasets/illumina_platinum/50x"
+export ps="/demeter/scratch/datasets/illumina_platinum"

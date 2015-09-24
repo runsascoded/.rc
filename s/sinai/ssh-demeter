@@ -2,7 +2,7 @@
 
 if [ $# -gt 0 ]; then
   arg="$1"
-  if [[ "$arg" =~ [0-9]* ]]; then
+  if [[ "$arg" =~ ^[0-9\-]*$ ]]; then
     arg=u"$arg"
   fi
   ssh demeter-csma"$arg"
