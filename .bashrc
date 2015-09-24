@@ -91,6 +91,7 @@ source_and_path maven-helpers
 source_and_path py-helpers
 source_and_path rsync-helpers
 source_and_path screen-helpers
+source_and_path sort-helpers
 source_and_path "$s/sinai"
 
 export SPARK_BUILD_ARGS="-Pyarn"
