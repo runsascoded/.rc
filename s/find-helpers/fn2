@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-name="$1"
-shift
-find "${@:-.}" -maxdepth 2 -name "*$name*"
-

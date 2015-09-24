@@ -83,6 +83,7 @@ try_source ".path-rc"
 source_and_path "$c/adam-helpers"
 source_and_path arg-helpers
 source_and_path color-helpers
+source_and_path find-helpers
 source_and_path grep-helpers
 source_and_path js-helpers
 source_and_path ls-helpers

@@ -8,10 +8,5 @@ num="$1"
 shift
 name="$1"
 shift
-if [ $# -eq 0 ]; then
-  args="."
-else
-  args="$@"
-fi
-find $args -maxdepth "$num" -name "*$name*"
+find "${@:-.}" -name "*$name*" -maxdepth "$num"
 
