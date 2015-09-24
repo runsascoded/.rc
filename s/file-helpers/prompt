@@ -2,10 +2,10 @@
 
 # Prompt a user for a y/n response until they give you a satisfactory answer.
 # Usage: `prompt <prompt> <default=y>`
-# Example: $ prompt "Are you sure? [Y/n] "
+# Example: $ prompt "Are you sure"
 # Example:
 #
-#   if [ $(prompt "Are you sure? [Y/n] ") ]; then
+#   if prompt "Are you sure? [Y/n]"; then
 #       echo "they're sure"
 #   else
 #       echo "they're just not sure"
@@ -13,7 +13,7 @@
 
 
 while true; do
-    echo "$1\c" 1>&2
+    echo -n "$@? [Y/n] " 1>&2
     read line
     if [ "$line" == "" ]; then
         if [ "$2" == "" ]; then
