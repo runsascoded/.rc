@@ -1,0 +1,11 @@
+
+if [ -d "$HOME/.gem/ruby" ]; then
+  for ruby_version in $(ls "$HOME"/.gem/ruby/); do
+    append_to_path "$HOME/.gem/ruby/$ruby_version/bin"
+  done
+  alias giu="gem install --user-install"
+  alias riu="gem install --user-install"
+else
+  debug "No ruby version found: $HOME/.gem/ruby"
+fi
+

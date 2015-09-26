@@ -13,16 +13,9 @@ append_to PYTHONPATH "$s/py"
 # LD_LIBRARY_PATH: move from this file later
 append_to LD_LIBRARY_PATH "$HOME/.local/lib" "$HOME/lib64" "$HOME/lib"
 
-# Graphite things
-export WHISPER="$HOME/.whisper"
-export CARBON="$HOME/.carbon"
-append_to PYTHONPATH "$WHISPER/lib"
-
 alias piu="pip install --user"
 
-# Perl
-append_to PERL5LIB "$HOME/bin"
-
+# Set python2 path
 if [ -d "$HOME/py2" ]; then
   export PYTHON2_HOME="$HOME/py2"
 elif [ -d "/usr/local/Cellar/python/2.7.9/bin" ]; then
@@ -35,6 +28,7 @@ else
   echo "Warning: unable to find a sensible Python2 directory to set \$PYTHON2_HOME" >&2
 fi
 
+# Set python3 path
 if [ -d "$HOME/py3" ]; then
   export PYTHON3_HOME="$HOME/py3"
 elif python --version 2>&1 | grep -q 'Python 3'; then
@@ -69,3 +63,8 @@ alias pmp="python-module-path"
 alias pii="pip install"
 alias pis="pip search"
 alias py=python-eval
+
+alias pyv="python --version"
+
+append_to_path "$HOME/Library/Python/2.7/bin"
+

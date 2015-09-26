@@ -18,33 +18,16 @@ append_to_path "$HOME/local/bin"
 prepend_to_path "$HOME/.local/bin"
 prepend_to_path "$HOME/py3/bin"
 
-if [ -d "$HOME/.gem/ruby" ]; then
-  for ruby_version in $(ls "$HOME"/.gem/ruby/); do
-    append_to_path "$HOME/.gem/ruby/$ruby_version/bin"
-  done
-  alias giu="gem install --user-install"
-  alias riu="gem install --user-install"
-else
-  debug "No ruby version found: $HOME/.gem/ruby"
-fi
-
 prepend_to_path "$s"
-prepend_to_path "$s/bash-helpers"
 prepend_to_path "$s/case-helpers"
 prepend_to_path "$s/daemon-scripts"
 prepend_to_path "$s/datetime-helpers"
-prepend_to_path "$s/diff-helpers"
-prepend_to_path "$s/graphite-helpers"
-prepend_to_path "$s/grep-helpers"
 prepend_to_path "$s/hammerlab"
-prepend_to_path "$s/histogram-helpers"
 prepend_to_path "$s/image-helpers"
 prepend_to_path "$s/intellij-helpers"
 prepend_to_path "$s/java-helpers"
 prepend_to_path "$s/link-helpers"
 prepend_to_path "$s/math-helpers"
-prepend_to_path "$s/mvn"
-prepend_to_path "$s/nav-helpers"
 prepend_to_path "$s/numeric"
 prepend_to_path "$s/py"
 prepend_to_path "$s/returncode-helpers"
@@ -66,9 +49,6 @@ if [ -e "/usr/local/Cellar" ]; then
   export hb=/usr/local/Cellar
 fi
 
-export db="$HOME/Dropbox"
-export gd="$HOME/GoogleDrive"
-
 # Only put `mld` on PATH if `meld` exists!
 if which-exists meld; then
   append_to_path "$s/mld-dir";
@@ -80,7 +60,5 @@ prepend_to_path "/usr/local/bin"  # For brew
 #append_to_path "/usr/local/heroku/bin"  # Added by the Heroku Toolbelt
 #append_to_path "$HOME/play-2.1.0"
 #append_to_path "$EC2_HOME/bin"
-
-append_to_path "$HOME/Library/Python/2.7/bin"
 
 alias jsh="jekyll serve -H 0.0.0.0"

@@ -82,10 +82,12 @@ source_and_path color-helpers
 source_and_path echo-helpers
 source_and_path find-helpers
 source_and_path grep-helpers
+source_and_path histogram-helpers
 source_and_path js-helpers
 source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path maven-helpers
+source_and_path nav-helpers
 source_and_path py-helpers
 source_and_path rsync-helpers
 source_and_path screen-helpers
@@ -102,6 +104,7 @@ source_and_path bash-helpers
 source_and_path brew-helpers
 source_and_path comm-helpers
 source_and_path diff-helpers
+source_and_path dropbox-helpers
 source_and_path file-helpers
 source_and_path hadoop-helpers
 source_and_path head-tail-helpers
@@ -109,6 +112,7 @@ source_and_path jar-helpers
 source_and_path net-helpers
 source_and_path perl-helpers
 source_and_path "$c"/samtools-helpers
+source_and_path ssh-helpers
 source_and_path zinc-helpers
 
 try_source "$s/git-configs/.git-rc"
@@ -153,8 +157,6 @@ alias pgc="ping google.com"
 
 alias uz="unzip-dir"
 
-alias pyv="python --version"
-
 alias kca="killall CloudApp"
 alias mdp="mkdir -p"
 alias d="diff"
@@ -162,12 +164,6 @@ alias d="diff"
 append_to_path "$HOME/Library/Android/sdk/platform-tools"
 append_to_path "$HOME/node_modules/.bin"
 
-# Dropbox
-append_to_path "$c/Dropbox-Uploader"
-alias db="dropbox_uploader.sh"
-alias dbu="dropbox_uploader.sh upload"
-
-alias sal="ssh-add -l"
 alias m=man
 
 alias sejda=sejda-console

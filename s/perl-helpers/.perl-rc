@@ -1,3 +1,5 @@
 
+# Perl
+append_to PERL5LIB "$HOME/bin"
+
 alias pe="perl -pe"
-alias s2t=spaces-to-tabs

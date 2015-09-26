@@ -42,3 +42,4 @@ alias rng=range
 alias hx="hexdump -C"
 alias hxd=hexdump
 
+alias s2t=spaces-to-tabs

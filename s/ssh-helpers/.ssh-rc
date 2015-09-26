@@ -1,0 +1,2 @@
+
+alias sal="ssh-add -l"
