@@ -16,7 +16,6 @@ append_to_path "/usr/local/ncbi/blast/bin"
 append_to_path "$HOME/usr/local/bin"
 append_to_path "$HOME/local/bin"
 prepend_to_path "$HOME/.local/bin"
-prepend_to_path "$HOME/py3/bin"
 
 prepend_to_path "$s"
 prepend_to_path "$s/case-helpers"

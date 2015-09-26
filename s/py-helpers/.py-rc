@@ -9,6 +9,7 @@ prepend_to_path "$HOME"/anaconda/bin
 
 append_to PYTHONPATH "$s"
 append_to PYTHONPATH "$s/py"
+prepend_to_path "$HOME/py3/bin"
 
 # LD_LIBRARY_PATH: move from this file later
 append_to LD_LIBRARY_PATH "$HOME/.local/lib" "$HOME/lib64" "$HOME/lib"

@@ -289,3 +289,4 @@ alias sps=spark-select
 alias spb=spark-build
 alias ads=adam-select
 
+alias dcp=demeter-cp
