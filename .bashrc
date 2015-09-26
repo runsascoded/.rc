@@ -79,9 +79,11 @@ try_source ".vars-rc"
 source_and_path "$c/adam-helpers"
 source_and_path arg-helpers
 source_and_path color-helpers
+source_and_path echo-helpers
 source_and_path find-helpers
 source_and_path grep-helpers
 source_and_path js-helpers
+source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path maven-helpers
 source_and_path py-helpers
@@ -111,7 +113,6 @@ try_source "$s/bash-helpers/.bash-rc"
 try_source "$s/diff-helpers/.diff-rc"
 try_source "$s/git-configs/.git-rc"
 try_source ".brew-rc"
-try_source ".less-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
 

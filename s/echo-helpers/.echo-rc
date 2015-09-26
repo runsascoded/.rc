@@ -1,0 +1,6 @@
+
+alias e="echo"
+alias en="echo -n"
+alias ee="echo -e"
+alias ene="echo -ne"
+alias een="echo -ne"
