@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-append_to_path "/usr/local/bin"  # For brew
-if which-exists brew; then
-  export cellar=$(brew --prefix)/Cellar
-fi
-

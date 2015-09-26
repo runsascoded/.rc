@@ -116,7 +116,6 @@ export gh="$c/git-helpers"
 export gha="$gh/aliases"
 try_source "$gh/.git-rc"
 
-try_source ".brew-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
 
