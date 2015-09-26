@@ -98,6 +98,7 @@ try_source ".path-rc"
 export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c/spark-helpers"
 
+source_and_path bash-helpers
 source_and_path brew-helpers
 source_and_path comm-helpers
 source_and_path file-helpers
@@ -109,7 +110,6 @@ source_and_path perl-helpers
 source_and_path "$c/samtools-helpers"
 source_and_path zinc-helpers
 
-try_source "$s/bash-helpers/.bash-rc"
 try_source "$s/diff-helpers/.diff-rc"
 try_source "$s/git-configs/.git-rc"
 try_source ".brew-rc"
