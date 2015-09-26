@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-file=$1
-
-head -n $(line_number_of_last_import $file) $file
