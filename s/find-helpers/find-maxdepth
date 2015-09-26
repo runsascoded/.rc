@@ -1,12 +1,25 @@
 #!/usr/bin/env bash
 
-if [ $# -lt 2 ]; then
-  err "Usage: $0 <num> <name glob> [other args]"
+set -e
+
+if [ $# -lt 1 ]; then
+  err "Usage: $0 <num> [name glob] [other args]"
 fi
 
 num="$1"
 shift
-name="$1"
-shift
-find "${@:-.}" -name "*$name*" -maxdepth "$num"
+
+root=
+if [ "${1:0:1}" == "-" ]; then
+  name=
+elif [ $# -gt 0 ]; then
+  name="$1"
+  shift
+  if [ $# -gt 0 -a "${1:0:1}" != "-" ]; then
+    root="$1"
+    shift
+  fi
+fi
+
+find "${root:-.}" -maxdepth "$num" -name "*$name*" "$@"
 

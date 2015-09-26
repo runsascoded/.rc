@@ -1,4 +1,10 @@
 
+export wh="$(dirname "${BASH_SOURCE[0]}")"
+
+alias awch=". alias-which"
+alias aw=". alias-which"
+alias a=". alias-which"
+
 alias dw=dirname-which
 alias wd=dirname-which
 

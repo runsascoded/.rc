@@ -3,6 +3,7 @@ alias fn=find-name
 alias fns=find-suffix
 alias fnp=find-prefix
 
+alias fn1="find-maxdepth 1"
 alias fn2="find-maxdepth 2"
 alias fn3="find-maxdepth 3"
 alias fnn=find-maxdepth

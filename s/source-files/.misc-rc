@@ -11,7 +11,13 @@ alias sopen='open -a Sublime\ Text\ 2.app'
 alias tp="htop --sort-key cpu"
 
 alias chomd="chmod"
+
 alias e="echo"
+alias en="echo -n"
+alias ee="echo -e"
+alias ene="echo -ne"
+alias een="echo -ne"
+
 alias dtab="diff /tmp/a /tmp/b"
 alias mtab="meld /tmp/a /tmp/b"
 alias pg="ps aux | grep"

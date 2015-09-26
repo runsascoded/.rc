@@ -39,8 +39,13 @@ else
   start="+${start#-}"
 fi
 
-if [ $# -eq 0 -o -z "$1" ]; then
+if [[ $# == 0 || -z "$1" ]]; then
   $gtail -n "$start"
+  exit $?
+fi
+
+if [[ ! "$1" =~ ^[0-9]+ ]]; then
+  $gtail -n "$start" "$@"
   exit $?
 fi
 

@@ -51,3 +51,25 @@ alias wcc="wc -c"
 
 alias lsgl=ls-grep-link-dest
 alias lsr=ls-readlink
+
+alias chmd=make-executable
+alias me=make-executable
+alias cmd=make-executable
+
+alias ordx="ord -x"
+alias ox="ord -x"
+
+alias cr=chr
+alias cx="chr -x"
+
+alias tk=take
+alias tkr=take-right
+
+alias dls=drop-lines
+alias d1l="tail -n +2"
+alias dl1="tail -n +2"
+
+alias tls=take-lines
+alias tkl=take-lines
+alias t1l="head -n 1"
+alias t1l="head -n 1"

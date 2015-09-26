@@ -48,7 +48,6 @@ prepend_to_path "$s/nav-helpers"
 prepend_to_path "$s/numeric"
 prepend_to_path "$s/py"
 prepend_to_path "$s/returncode-helpers"
-prepend_to_path "$s/which-helpers"
 prepend_to_path "$s/yarn"
 
 append_to_path "$c/bedtools2/bin"
@@ -66,10 +65,6 @@ prepend_to_path "$HOME/apache/bin"
 if [ -e "/usr/local/Cellar" ]; then
   export hb=/usr/local/Cellar
 fi
-
-export wh="$s/which-helpers"
-
-alias j="js"
 
 export db="$HOME/Dropbox"
 export gd="$HOME/GoogleDrive"

@@ -27,5 +27,18 @@ alias dcr=drop-right-chars
 alias sw=starts-with
 alias ew=ends-with
 
+alias sww=starts-with-whitespace
+alias eww=ends-with-whitespace
+
+alias dsww="starts-with-whitespace -v"
+alias swwv="starts-with-whitespace -v"
+alias deww="ends-with-whitespace -v"
+alias ewwv="ends-with-whitespace -v"
+
 alias c=cat
+
+alias rng=range
+
+alias hx="hexdump -C"
+alias hxd=hexdump
 

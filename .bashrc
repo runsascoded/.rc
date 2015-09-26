@@ -72,9 +72,6 @@ source_and_path() {
     done
 }
 
-alias awch=". alias-which"
-alias aw=". alias-which"
-
 alias enw="emacs -nw"
 
 try_source ".vars-rc"
@@ -92,6 +89,7 @@ source_and_path py-helpers
 source_and_path rsync-helpers
 source_and_path screen-helpers
 source_and_path sort-helpers
+source_and_path which-helpers
 source_and_path "$s/sinai"
 
 export SPARK_BUILD_ARGS="-Pyarn"
@@ -190,7 +188,9 @@ alias rmrf="rm -rf"
 
 alias tx="tar xvzf"
 alias ua=unalias
+
 alias le=less
+alias L=less
 
 export GPG_TTY=$(tty)
 
