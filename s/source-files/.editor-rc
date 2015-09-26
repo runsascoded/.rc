@@ -2,9 +2,9 @@
 
 # $EDITOR, $DIFF
 export EDITOR=emacs
-if whch mld; then
+if which-exists mld; then
     export DIFF=mld
-elif whch meld; then
+elif which-exists meld; then
     export DIFF=meld
 fi
 

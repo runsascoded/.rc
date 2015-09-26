@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 f=`mktemp`
-hosts : | parallel -j+0 --eta 'if ssh {} "which hadoop &> /dev/null"; then echo {} y; else echo {} n; fi' 2> /dev/null > "$f"
+hosts : | parallel -j+0 --eta 'if ssh {} "which-exists hadoop"; then echo {} y; else echo {} n; fi' 2> /dev/null > "$f"
 export hhs="$(grep 'y$' "$f" | first | sort)"
 export nhhs="$(grep 'n$' "$f" | first | sort)"
 rm -f "$f"

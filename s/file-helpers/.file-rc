@@ -3,7 +3,7 @@ export fh="$(dirname "${BASH_SOURCE[0]}")"
 
 alias rrl="recursive-readlink"
 
-if which greadlink &> /dev/null; then
+if which-exists greadlink; then
   cmd=greadlink
 else
   cmd=readlink
@@ -16,13 +16,13 @@ if [ ! -e "$fh/readlink" ]; then
   ln -sf "$full_cmd" "$fh/readlink"
 fi
 
-if which ghead &> /dev/null; then
+if which-exists ghead; then
   export ghead=ghead
 else
   export ghead=head
 fi
 
-if which gtail &> /dev/null; then
+if which-exists gtail; then
   export gtail=gtail
 else
   export gtail=tail

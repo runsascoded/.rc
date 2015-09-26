@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if which namei &> /dev/null; then
+if which-exists namei; then
   for arg in "$@"; do
     namei -l "$(readlink -m "$arg")"
   done

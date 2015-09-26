@@ -75,7 +75,6 @@ source_and_path() {
 alias enw="emacs -nw"
 
 try_source ".vars-rc"
-try_source ".path-rc"
 
 source_and_path "$c/adam-helpers"
 source_and_path arg-helpers
@@ -91,6 +90,8 @@ source_and_path screen-helpers
 source_and_path sort-helpers
 source_and_path which-helpers
 source_and_path "$s/sinai"
+
+try_source ".path-rc"
 
 export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c/spark-helpers"

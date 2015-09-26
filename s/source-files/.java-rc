@@ -4,7 +4,7 @@ JAVA_INITD=
 
 prepend_to_path "$HOME/.jenv/bin"
 
-if which jenv &> /dev/null; then
+if which-exists jenv; then
   JAVA_HOME_bak="$JAVA_HOME"
   eval "$(jenv init -)"
   export JAVA_HOME="$JAVA_HOME_bak"

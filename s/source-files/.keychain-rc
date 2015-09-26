@@ -2,7 +2,7 @@
 
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
-which keychain &> /dev/null
+which-exists keychain
 if [ 0 -eq $? ]; then
     keychain "$HOME/.ssh/github_rsa"
     source "$HOME/.keychain/$HOSTNAME-sh"

@@ -70,7 +70,7 @@ export db="$HOME/Dropbox"
 export gd="$HOME/GoogleDrive"
 
 # Only put `mld` on PATH if `meld` exists!
-if whch meld; then
+if which-exists meld; then
   append_to_path "$s/mld-dir";
 fi
 
