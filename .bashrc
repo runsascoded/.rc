@@ -132,7 +132,6 @@ try_source ".locale-rc"
 try_source ".misc-rc"
 try_source ".postgres-rc"
 try_source ".rpi-rc"
-try_source ".source-rc"
 try_source "$s/watchman-helpers/.watchman-rc"
 
 dedupe_path_var PATH PYTHONPATH NODE_PATH
