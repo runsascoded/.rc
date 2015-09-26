@@ -114,6 +114,7 @@ source_and_path perl-helpers
 source_and_path "$c"/samtools-helpers
 source_and_path ssh-helpers
 source_and_path zinc-helpers
+source_and_path zip-helpers
 
 try_source "$s/git-configs/.git-rc"
 export gh="$c/git-helpers"
