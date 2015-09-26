@@ -10,3 +10,5 @@ llru() {
 }
 
 alias cdlru="cd `least-recently-updated`"
+
+alias psl=parse-symlinks

@@ -9,7 +9,7 @@ fi
 
 path="$1"
 if [ -z "$path" ]; then
-   path="."
+   path=.
 fi
 
 l "$path" | tail -n $count

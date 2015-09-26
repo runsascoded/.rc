@@ -1,5 +1,16 @@
 
+export dh="$(dirname "${BASH_SOURCE[0]}")"
+
 alias hdd="head-diff"
 alias hdq="head-diff -q"
 
 alias dl=diff-less
+
+alias dtab="diff /tmp/a /tmp/b"
+alias mtab="meld /tmp/a /tmp/b"
+
+if which-exists mld; then
+    export DIFF=mld
+elif which-exists meld; then
+    export DIFF=meld
+fi

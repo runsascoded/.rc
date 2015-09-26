@@ -76,7 +76,7 @@ alias enw="emacs -nw"
 
 try_source ".vars-rc"
 
-source_and_path "$c/adam-helpers"
+source_and_path "$c"/adam-helpers
 source_and_path arg-helpers
 source_and_path color-helpers
 source_and_path echo-helpers
@@ -91,27 +91,31 @@ source_and_path rsync-helpers
 source_and_path screen-helpers
 source_and_path sort-helpers
 source_and_path which-helpers
-source_and_path "$s/sinai"
+source_and_path "$s"/sinai
 
 try_source ".path-rc"
 
 export SPARK_BUILD_ARGS="-Pyarn"
-source_and_path "$c/spark-helpers"
+source_and_path "$c"/spark-helpers
 
 source_and_path bash-helpers
 source_and_path brew-helpers
 source_and_path comm-helpers
+source_and_path diff-helpers
 source_and_path file-helpers
 source_and_path hadoop-helpers
 source_and_path head-tail-helpers
 source_and_path jar-helpers
 source_and_path net-helpers
 source_and_path perl-helpers
-source_and_path "$c/samtools-helpers"
+source_and_path "$c"/samtools-helpers
 source_and_path zinc-helpers
 
-try_source "$s/diff-helpers/.diff-rc"
 try_source "$s/git-configs/.git-rc"
+export gh="$c/git-helpers"
+export gha="$gh/aliases"
+try_source "$gh/.git-rc"
+
 try_source ".brew-rc"
 try_source ".ec2-rc"
 try_source ".editor-rc"
@@ -122,21 +126,13 @@ prepend_to_path "$c/sejda-1.0.0/bin"
 
 prepend_to_path "$s/slim-helpers"
 
-export dh="$s/diff-helpers"
-export gh="$c/git-helpers"
-export gha="$gh/aliases"
-try_source "$gh/.git-rc"
-
-try_source ".grep-rc"
 try_source ".history-rc"
 try_source ".java-rc"
 try_source ".keychain-rc"
 try_source ".locale-rc"
 try_source ".misc-rc"
-try_source ".nav-rc"
 try_source ".postgres-rc"
 try_source ".rpi-rc"
-try_source ".screen-rc"
 try_source ".source-rc"
 try_source "$s/watchman-helpers/.watchman-rc"
 

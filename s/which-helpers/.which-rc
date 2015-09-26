@@ -32,3 +32,6 @@ alias wrd=which-readlink-dirname
 alias wrld=which-readlink-dirname
 
 alias we=which-exists
+
+alias cdw=". cd-which"
+
