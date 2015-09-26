@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-eval "$@" && echo y || echo n
+eval "$@" &> /dev/null && echo y || echo n
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 for f in "$@"; do
-  echo "$f $(rl -f "$f")"
+  echo "$f $(readlink -f "$f")"
 done

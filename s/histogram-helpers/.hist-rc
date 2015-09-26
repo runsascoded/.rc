@@ -1,0 +1,9 @@
+
+
+alias hfh="hist | first | hist"
+
+alias hh=hist-head
+alias ht=hist-tail
+
+alias histx=hist-xs
+alias hx=hist-xs

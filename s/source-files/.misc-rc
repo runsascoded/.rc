@@ -3,9 +3,6 @@
 # General utilities
 alias bn="basename"
 
-alias y="echo yes"
-alias n="echo no"
-
 alias cdw=". cd-which"
 
 alias sopen='open -a Sublime\ Text\ 2.app'

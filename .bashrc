@@ -207,3 +207,5 @@ export t=$'\t'
 export n=$'\n'
 
 export COMM_STRIP_WHITESPACE=1
+
+alias x=xargs

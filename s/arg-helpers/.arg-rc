@@ -7,9 +7,25 @@ alias ct="column -t"
 alias colt="col -i \"$t\""
 
 alias jn=joyn
+alias jn:="joyn :"
 alias joynn="joyn $'\n'"
 alias jnn="joyn $'\n'"
+alias jn,="joyn ,"
 
 alias cs=comm-sort
 
 alias ws=collapse-whitespace
+
+alias spc="splt ' '"
+alias sp:="splt :"
+
+alias dr=drop-regex
+alias drr=drop-right-regex
+alias dc=drop-chars
+alias dcr=drop-right-chars
+
+alias sw=starts-with
+alias ew=ends-with
+
+alias c=cat
+

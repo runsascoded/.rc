@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Wrapper for `wc -l` when passing files' names in (as opposed to reading from
+# stdin) that strips the filenames from the output.
+
+wc -l "$@" | first

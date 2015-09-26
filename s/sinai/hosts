@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ $# == 1 && "$1" =~ ^[0-9]+$ ]]; then
+  slice-lines ":$1" "$s/sinai/hostnames"
+else
+  slice-lines "$@" "$s/sinai/hostnames"
+fi
+

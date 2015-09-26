@@ -1,15 +1,20 @@
 
 alias sls="screen -ls"
+alias sld=screen-list-detached
 
 alias sr="screen -r"
 alias srs="screen -r -S"
 
 alias smds="screen -m -d -S"
 
-alias sld="screen -ls | grep Detached | first"
-
 alias srds="screen -D -S"
 
-alias shc="screen-hardcopy"
+alias shc=screen-hardcopy
+alias shca=screen-hardcopy-all
 
-alias sq="screen-quit"
+alias sq=screen-quit
+alias sqa=screen-quit-all
+
+alias scs=screens
+
+alias ss="screen -S"

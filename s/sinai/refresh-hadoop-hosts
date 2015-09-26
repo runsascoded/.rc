@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+f=`mktemp`
+hosts : | parallel -j+0 --eta 'if ssh {} "which hadoop &> /dev/null"; then echo {} y; else echo {} n; fi' 2> /dev/null > "$f"
+export hhs="$(grep 'y$' "$f" | first | sort)"
+export nhhs="$(grep 'n$' "$f" | first | sort)"
+rm -f "$f"
+echo "$(echo "$hhs" | splt ' ' | wc -l) hosts with, $(echo "$nhhs" | splt ' ' | wc -l) without"
+
+echo "$hhs" | splt ' ' > "$SINAI_HADOOP_HOSTS_FILE"

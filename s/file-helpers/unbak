@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 for source in "$@"; do
+  source="${source%/}"
   if [ "${source:(-4)}" != ".bak" ]; then
     if [ -e "$source.bak" ]; then
       source="$source.bak"

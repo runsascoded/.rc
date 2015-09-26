@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-col -1 "$@"
+if [ $# -gt 0 ]; then
+  delim="$1"
+  shift
+  col -1 -i "$delim" "$@"
+else
+  col -1 "$@"
+fi

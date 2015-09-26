@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Navigation aliases
-alias c=". ~/s/c"
 alias go="pushd"
 alias cdp="cd $PWD"
 

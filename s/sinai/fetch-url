@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+url="$1"
+basename="$(basename "$url")"
+shortname="${basename%%.*}"
+echo "$shortname: $url"
+screen -mdS "$shortname" bash -c "wget -c $url -O `pwd`/$basename; touch done.$shortname; exec bash"

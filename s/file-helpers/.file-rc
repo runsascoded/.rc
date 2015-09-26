@@ -29,3 +29,25 @@ else
 fi
 
 alias sl=slice-lines
+
+alias dbl=drop-blank-lines
+alias strip-blank-lines=drop-blank-lines
+alias sbl=drop-blank-lines
+
+alias dn=multi-dirname
+
+alias dush="dus -h"
+alias dsh="dus -h"
+
+alias enl=every-nth-line
+alias every-4th-line="every-nth-line 4"
+alias e4l="every-nth-line 4"
+
+alias n="wc -l"
+alias wcl="wc -l"
+alias wl="wc -l"
+alias n1=count-lines
+alias wcc="wc -c"
+
+alias lsgl=ls-grep-link-dest
+alias lsr=ls-readlink

@@ -243,3 +243,49 @@ alias act=adam-core-test
 export x200="/datasets/illumina_platinum/200x"
 export x50="/datasets/illumina_platinum/50x"
 export ps="/demeter/scratch/datasets/illumina_platinum"
+
+alias rhh=". refresh-hadoop-hosts"
+alias hhs=hadoop-hosts
+alias hhj=hadoop-hosts-joined
+
+export SINAI_HADOOP_HOSTS_FILE="$HOME/.hadoop-hosts"
+if [ -f "$SINAI_HADOOP_HOSTS_FILE" ]; then
+  export hhs="$(cat "$SINAI_HADOOP_HOSTS_FILE")"
+fi
+
+asu() {
+  "$ADAM_HOME"/bin/adam-submit "$@"
+}
+
+ash() {
+  "$ADAM_HOME"/bin/adam-shell "$@"
+}
+
+spsu() {
+  "$SPARK_HOME"/bin/spark-submit "$@"
+}
+
+spsh() {
+  "$SPARK_HOME"/bin/spark-shell "$@"
+}
+
+esh() {
+  echo "$SPARK_HOME"
+}
+
+eah() {
+  echo "$ADAM_HOME"
+}
+
+ehd() {
+  echo "$HADOOP_CONF_DIR"
+}
+
+eyd() {
+  echo "$YARN_CONF_DIR"
+}
+
+alias sps=spark-select
+alias spb=spark-build
+alias ads=adam-select
+

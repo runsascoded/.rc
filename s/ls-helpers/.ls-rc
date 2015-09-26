@@ -5,4 +5,8 @@ export LS_COLORS
 
 alias lru=least-recently-updated
 
+llru() {
+  less `least-recently-updated`
+}
+
 alias cdlru="cd `least-recently-updated`"

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+hadoop-hosts "${1:-:}" | prepend "${2:-1}"/ | joyn ,
