@@ -25,4 +25,3 @@ alias sa=screen-attach
 
 alias slg=screen-log
 alias sle=screen-log-env
-alias sled=screen-log-env-detach
