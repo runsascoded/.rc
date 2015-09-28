@@ -5,10 +5,16 @@ export LS_COLORS
 
 alias lru=least-recently-updated
 
-llru() {
+lrul() {
   less `least-recently-updated`
 }
 
 alias cdlru="cd `least-recently-updated`"
 
 alias psl=parse-symlinks
+alias lls=ls-links
+
+alias lrl=l-readlink
+alias rll=l-readlink
+alias lrld="l-readlink -d"
+alias lrd="l-readlink -d"

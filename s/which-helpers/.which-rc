@@ -20,10 +20,10 @@ alias whead=which-head
 alias head-which=which-head
 
 alias wle=which-less
-
 alias wll=which-less
-alias llw=which-less
 alias lw=which-less
+
+alias llw=ll-which
 
 alias wr=which-readlink
 alias wrl=which-readlink

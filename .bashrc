@@ -13,10 +13,19 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-
 debug() {
   if [ ! -z "$VERBOSE" -o ! -z "$DEBUG" ]; then
     echo $@
+  fi
+}
+
+vb() {
+  if [ -n "$VERBOSE" ]; then
+    unset VERBOSE
+    echo "quiet mode enabled"
+  else
+    export VERBOSE=1
+    echo "verbose mode enabled"
   fi
 }
 
@@ -76,6 +85,10 @@ alias enw="emacs -nw"
 
 try_source ".vars-rc"
 
+source_and_path which-helpers
+source_and_path brew-helpers  # which
+try_source ".path-rc"  # which
+
 source_and_path "$c"/adam-helpers
 source_and_path arg-helpers
 source_and_path color-helpers
@@ -88,24 +101,22 @@ source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path maven-helpers
 source_and_path nav-helpers
-source_and_path py-helpers
+source_and_path py-helpers  # brew, path
 source_and_path rsync-helpers
 source_and_path screen-helpers
 source_and_path sort-helpers
-source_and_path which-helpers
-source_and_path "$s"/sinai
 
-try_source ".path-rc"
+append_to_path "$c/yarn-logs-helpers"
+source_and_path "$s"/sinai  # which, yarn-logs-helpers
 
 export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c"/spark-helpers
 
 source_and_path bash-helpers
-source_and_path brew-helpers
 source_and_path comm-helpers
-source_and_path diff-helpers
+source_and_path diff-helpers  # which
 source_and_path dropbox-helpers
-source_and_path file-helpers
+source_and_path file-helpers  # which
 source_and_path hadoop-helpers
 source_and_path head-tail-helpers
 source_and_path jar-helpers
@@ -131,8 +142,8 @@ prepend_to_path "$c/sejda-1.0.0/bin"
 prepend_to_path "$s/slim-helpers"
 
 try_source ".history-rc"
-try_source ".java-rc"
-try_source ".keychain-rc"
+try_source ".java-rc"  # which
+try_source ".keychain-rc"  # which
 try_source ".locale-rc"
 try_source ".misc-rc"
 try_source ".postgres-rc"
@@ -142,12 +153,12 @@ try_source "$s/watchman-helpers/.watchman-rc"
 dedupe_path_var PATH PYTHONPATH NODE_PATH
 
 # added by travis gem
-if [ -f /Users/ryan/.travis/travis.sh ]; then
-  source /Users/ryan/.travis/travis.sh
+if [ -f "$HOME"/.travis/travis.sh ]; then
+  source "$HOME"/.travis/travis.sh
 fi
 
 # OPAM configuration
-. /Users/ryan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. "$HOME"/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export ZEROS_DIR="$HOME/zeros"
 if [ -s /usr/share/dict/words ]; then

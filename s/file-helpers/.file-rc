@@ -50,7 +50,6 @@ alias n1=count-lines
 alias wcc="wc -c"
 
 alias lsgl=ls-grep-link-dest
-alias lsr=ls-readlink
 
 alias chmd=make-executable
 alias me=make-executable

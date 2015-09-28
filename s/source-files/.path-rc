@@ -13,7 +13,6 @@ prepend_to_path "$HOME/sbt-0.13.8/sbt/bin"
 
 append_to_path "/usr/local/ncbi/blast/bin"
 
-append_to_path "$HOME/usr/local/bin"
 append_to_path "$HOME/local/bin"
 prepend_to_path "$HOME/.local/bin"
 
@@ -38,7 +37,6 @@ prepend_to_path "$HOME/.meteor"
 append_to_path "$c/meteor"
 append_to_path "$c/stack_traces"
 append_to_path "$c/streaming-wc-l"
-append_to_path "$c/yarn-logs-helpers"
 
 prepend_to_path "$HOME/meld-1.8.6/bin"
 
@@ -54,10 +52,13 @@ if which-exists meld; then
 fi
 
 append_to_path "$HOME"  # Add $HOME to $PATH
-prepend_to_path "/usr/local/bin"  # For brew
 #append_to_path "$HOME/.rvm/bin"  # Add RVM to PATH for scripting
 #append_to_path "/usr/local/heroku/bin"  # Added by the Heroku Toolbelt
 #append_to_path "$HOME/play-2.1.0"
 #append_to_path "$EC2_HOME/bin"
 
 alias jsh="jekyll serve -H 0.0.0.0"
+
+ep() {
+  echo "$PATH" | splt :
+}
