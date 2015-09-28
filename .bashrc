@@ -103,7 +103,7 @@ source_and_path maven-helpers
 source_and_path nav-helpers
 source_and_path py-helpers  # brew, path
 source_and_path rsync-helpers
-source_and_path screen-helpers
+source_and_path "$c"/screen-helpers
 source_and_path sort-helpers
 
 append_to_path "$c/yarn-logs-helpers"
