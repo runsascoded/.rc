@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+DROP_PERL_CMD=pne drop-right-regex "$@"

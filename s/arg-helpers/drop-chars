@@ -2,4 +2,4 @@
 
 num="$1"
 shift
-pne "s/^.{$num}//" "$@"
+"${DROP_PERL_CMD:-pe}" "s/^.{$num}//" "$@"
