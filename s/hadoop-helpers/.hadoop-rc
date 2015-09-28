@@ -3,3 +3,43 @@ alias hrm="h rm"
 alias hrmr="h rm -r"
 alias hmd="h mkdir"
 alias hmdp="h mkdir -p"
+
+alias hless=hadoop-less
+alias hle=hadoop-less
+
+alias hc=hadoop-cat
+
+alias hbak=hadoop-bak
+
+alias hcpl=hadoop-copyToLocal
+
+alias hdu=hadoop-du
+alias hdush=hadoop-du-s-h
+
+alias hcount="$ints/scripts/hadoop-utils/hcount"
+
+alias hdt=hdfs-friendly-datetime
+
+alias hhead=hadoop-head
+alias hhd=hadoop-head
+
+alias htail=hadoop-tail
+alias htl=hadoop-tail
+
+alias ud=unwrap-dir
+alias hud="$ints"/scripts/hadoop-utils/hadoop-unwrap-dir
+
+alias hlsc="$ints/scripts/hadoop-utils/hadoop-ls-C"
+
+alias hunbak=haddop-unbak
+
+alias hls=hadoop-ls
+
+alias hlsh=hadoop-ls
+alias hlh=hadoop-ls
+
+alias hld="hadoop-ls -d"
+alias hlhd="hadoop-ls -d"
+
+alias hl="hadoop-ls"
+
