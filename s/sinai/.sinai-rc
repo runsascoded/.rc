@@ -96,7 +96,10 @@ export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
 export dp="--conf spark.storage.memoryFraction"
 export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
+export mine="--conf spark.dynamicAllocation.minExecutors"
+export maxe="--conf spark.dynamicAllocation.maxExecutors"
 export sdp="$pll"
+export noui="--conf spark.ui.enabled=false"
 
 if [[ `uname -a` =~ ^Darwin ]]; then
   export sparklogs="$HOME/sparklogs"
@@ -290,3 +293,11 @@ alias spb=spark-build
 alias ads=adam-select
 
 alias dcp=demeter-cp
+
+alias ssc=spark-shell-check
+
+alias ashc=adam-shell-cluster
+alias asuc=adam-submit-cluster
+
+alias spshc=spark-shell-cluster
+alias spsuc=spark-submit-cluster

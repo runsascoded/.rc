@@ -72,3 +72,6 @@ alias tls=take-lines
 alias tkl=take-lines
 alias t1l="head -n 1"
 alias t1l="head -n 1"
+
+alias clr=clear-file
+alias cf=clear-file

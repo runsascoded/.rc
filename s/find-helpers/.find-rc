@@ -9,3 +9,9 @@ alias fn3="find-maxdepth 3"
 alias fnn=find-maxdepth
 
 alias fnd=find-fullname
+
+alias fl="find-maxdepth 1 -type l"
+alias nls="find-maxdepth 1 -type l | wc -l"
+
+alias flr="find . -type l"
+alias nlr="find . -type l | wc -l"

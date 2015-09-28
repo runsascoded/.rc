@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 if [ $# -eq 0 ]; then
   echo "Usage: $0 <start> [end=N] [files...]" 1>&2
   exit 1
@@ -32,6 +34,7 @@ if [[ "$start" =~ : ]]; then
   fi
 fi
 
+orig_start=$start
 if [ "$start" -lt 0 ]; then
   start="${start#-}"
 else
@@ -52,6 +55,11 @@ fi
 if [ $# -gt 0 ]; then
   end="$1"
   shift
+fi
+
+if [ $end -lt $orig_start ]; then
+  echo "End ($end) should be ≥ start ($orig_start)." 1>&2
+  exit 1
 fi
 
 if [ "$end" -gt 0 ]; then

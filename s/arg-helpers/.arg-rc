@@ -22,7 +22,12 @@ alias sp:="splt :"
 alias dr=drop-regex
 alias drr=drop-right-regex
 alias dc=drop-chars
-alias dcr=drop-right-chars
+alias dc1="drop-chars 1"
+alias dc2="drop-chars 2"
+alias dcr=drop-chars-right
+alias drc=drop-chars-right
+alias dcr1="drop-chars-right 1"
+alias dcr2="drop-chars-right 2"
 
 alias sw=starts-with
 alias ew=ends-with
@@ -43,3 +48,6 @@ alias hx="hexdump -C"
 alias hxd=hexdump
 
 alias s2t=spaces-to-tabs
+
+alias bn=basename
+alias bnx=basename-minus-extension

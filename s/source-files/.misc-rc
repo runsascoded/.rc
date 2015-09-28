@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # General utilities
-alias bn="basename"
 
 alias sopen='open -a Sublime\ Text\ 2.app'
 
