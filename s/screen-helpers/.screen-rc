@@ -1,10 +1,13 @@
 
+export ssh="$(dirname "${BASH_SOURCE[0]}")"
+
 alias sls="screen -ls"
 alias sld=screen-list-detached
 
 alias sr="screen -r"
 alias srs="screen -r -S"
 
+alias smd="screen -m -d"
 alias smds="screen -m -d -S"
 
 alias srds="screen -D -S"
@@ -18,3 +21,8 @@ alias sqa=screen-quit-all
 alias scs=screens
 
 alias ss="screen -S"
+alias sa=screen-attach
+
+alias slg=screen-log
+alias sle=screen-log-env
+alias sled=screen-log-env-detach

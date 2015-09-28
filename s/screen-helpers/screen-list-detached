@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-screen -ls "$@" | grep Detached | first
+screen -ls "$@" | grep Detached | first | sort
+

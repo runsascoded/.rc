@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+screen -r `screen-list-detached | head -n 1`

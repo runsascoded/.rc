@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+screenname="$1"
+logfile="$(readlink -f "$1")"
+shift
+
+if [ -e "$logfile" ]; then
+  echo "Error: $logfile already exists" 1>&2
+  exit 1
+fi
+
+screenrc="`mktemp`"
+
+echo "logfile $logfile" > "$screenrc"
+
+screen -c "$screenrc" -L -S "$screenname" "$@"

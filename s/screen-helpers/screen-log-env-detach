@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+screen-log-env "$1" -md "${@:2:$#}"

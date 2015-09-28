@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+screen-log "${@:1:$(($# - 1))}" bash -iIc "${@: -1}"
+
