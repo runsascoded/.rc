@@ -3,12 +3,18 @@
 set -e
 
 screenname="$1"
-logfile="$(readlink -f "$1")"
+
+if [ -z "$SCREEN_LOG_DIR" ]; then
+  logfile="$(readlink -f "$1")"
+else
+  logfile="$SCREEN_LOG_DIR/$1"
+fi
+
 shift
 
 if [ -e "$logfile" ]; then
-  echo "Error: $logfile already exists" 1>&2
-  exit 1
+  echo "Warning: $logfile already exists" 1>&2
+  mv "$logfile" "$logfile".bak
 fi
 
 screenrc="`mktemp`"

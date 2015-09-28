@@ -25,3 +25,6 @@ alias sa=screen-attach
 
 alias slg=screen-log
 alias sle=screen-log-env
+
+export SCREEN_LOG_DIR="$HOME/sld"
+mkdir -p "$SCREEN_LOG_DIR"
