@@ -122,7 +122,9 @@ source_and_path head-tail-helpers
 source_and_path jar-helpers
 source_and_path net-helpers
 source_and_path perl-helpers
+source_and_path ruby-helpers
 source_and_path "$c"/samtools-helpers
+source_and_path slim-helpers
 source_and_path ssh-helpers
 source_and_path zinc-helpers
 source_and_path zip-helpers
@@ -138,8 +140,6 @@ try_source ".editor-rc"
 try_source "$c/z/z.sh"
 try_source "$c/commacd/.commacd.bash"
 prepend_to_path "$c/sejda-1.0.0/bin"
-
-prepend_to_path "$s/slim-helpers"
 
 try_source ".history-rc"
 try_source ".java-rc"  # which

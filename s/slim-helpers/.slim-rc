@@ -1,0 +1,4 @@
+
+export SLIM_LOG="$HOME/slim.log"
+
+alias slf=slim-log-file
