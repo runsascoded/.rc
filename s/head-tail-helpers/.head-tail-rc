@@ -6,3 +6,5 @@ alias hd=head
 alias tl=tail
 
 alias tf=tail-f-with-lines
+
+alias cf="tail -n +1 -F"

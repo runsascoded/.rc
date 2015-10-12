@@ -2,7 +2,9 @@
 export ah="$s/arg-helpers"
 alias reverse=reverse-stdin
 
+
 alias ct="column -t"
+alias ctt="column -t -s$'\t'"
 
 alias colt="col -i \"$t\""
 
@@ -21,6 +23,9 @@ alias sp:="splt :"
 
 alias dr=drop-regex
 alias drr=drop-right-regex
+alias drn=drop-regex-n
+alias drrn=drop-right-regex-n
+
 alias dc=drop-chars
 alias dc1="drop-chars 1"
 alias dc2="drop-chars 2"
@@ -29,14 +34,21 @@ alias drc=drop-chars-right
 alias dcr1="drop-chars-right 1"
 alias dcr2="drop-chars-right 2"
 
+alias dfl=drop-from-last
+
 alias sw=starts-with
-alias ew=ends-with
-
+alias dsw="starts-with -v"
+alias nsw="starts-with -v"
+alias swv="starts-with -v"
 alias sww=starts-with-whitespace
-alias eww=ends-with-whitespace
-
 alias dsww="starts-with-whitespace -v"
 alias swwv="starts-with-whitespace -v"
+
+alias ew=ends-with
+alias dew="ends-with -v"
+alias new="ends-with -v"
+alias ewv="ends-with -v"
+alias eww=ends-with-whitespace
 alias deww="ends-with-whitespace -v"
 alias ewwv="ends-with-whitespace -v"
 
@@ -51,3 +63,7 @@ alias s2t=spaces-to-tabs
 
 alias bn=basename
 alias bnx=basename-minus-extension
+
+alias pp=prepend
+alias ap=append
+alias bp=bipend

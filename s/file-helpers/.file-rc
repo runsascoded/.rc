@@ -44,6 +44,7 @@ alias every-4th-line="every-nth-line 4"
 alias e4l="every-nth-line 4"
 
 alias n="wc -l"
+alias N="wc -l"
 alias wcl="wc -l"
 alias wl="wc -l"
 alias n1=count-lines
@@ -74,4 +75,4 @@ alias t1l="head -n 1"
 alias t1l="head -n 1"
 
 alias clr=clear-file
-alias cf=clear-file
+alias cl=clear-file

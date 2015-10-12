@@ -213,3 +213,5 @@ export n=$'\n'
 export COMM_STRIP_WHITESPACE=1
 
 alias x=xargs
+
+alias plp="parallel -k -j+0 --env PATH"

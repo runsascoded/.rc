@@ -2,4 +2,4 @@
 
 escaped_regex="$(echo "$1" | sed 's_/_\\/_g')"
 shift
-"${DROP_PERL_CMD:-pe}" "s/${escaped_regex}$//" "$@"
+pe "s/${escaped_regex}[^${escaped_regex}]*$/\n/" "$@" | drop-blank-lines

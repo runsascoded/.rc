@@ -96,9 +96,11 @@ export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
 export dp="--conf spark.storage.memoryFraction"
 export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
+export sdp="$pll"
 export mine="--conf spark.dynamicAllocation.minExecutors"
 export maxe="--conf spark.dynamicAllocation.maxExecutors"
-export sdp="$pll"
+export inie="--conf spark.dynamicAllocation.initialExecutors"
+export eto="--conf spark.dynamicAllocation.executorIdleTimeout"
 export noui="--conf spark.ui.enabled=false"
 
 if [[ `uname -a` =~ ^Darwin ]]; then
@@ -301,3 +303,5 @@ alias asuc=adam-submit-cluster
 
 alias spshc=spark-shell-cluster
 alias spsuc=spark-submit-cluster
+
+alias asuc-small="adam-submit-cluster $dm 1g $em 5g $ec 10 $smf=0.8 $noui"

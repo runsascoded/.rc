@@ -29,7 +29,9 @@ alias htl=hadoop-tail
 alias ud=unwrap-dir
 alias hud="$ints"/scripts/hadoop-utils/hadoop-unwrap-dir
 
+alias hlc="$ints/scripts/hadoop-utils/hadoop-ls-C"
 alias hlsc="$ints/scripts/hadoop-utils/hadoop-ls-C"
+alias hlcd="$ints/scripts/hadoop-utils/hadoop-ls-C -d"
 
 alias hunbak=haddop-unbak
 
@@ -43,3 +45,5 @@ alias hlhd="hadoop-ls -d"
 
 alias hl="hadoop-ls"
 
+alias heae=hadoop-exists-and-empty
+alias he=hadoop-exists

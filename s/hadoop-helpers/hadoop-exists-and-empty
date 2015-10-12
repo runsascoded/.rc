@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ $# -gt 0 ]; then
+  h test -e "$1" && h du -s -h "$1" | grep -q '^0'
+else
+  while read -r line; do
+    if hadoop-exists-and-empty "$line"; then
+      echo "$line"
+    fi
+  done
+fi
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ "$1" =~ ^[0-9]+ ]]; then
+  num="$1"
+  shift
+fi
+
+ls-full-t "$@" | tail -n "${num:-10}"

@@ -4,7 +4,11 @@ alias cmc=comm-count
 alias cms=comm-sort
 alias cmcs=comm-count-sort
 
-alias c3="comm-sort -3"
-alias c12="comm-sort -12"
-alias c13="comm-sort -13"
-alias c23="comm-sort -23"
+alias c12="comm-sort -3"
+alias c3="comm-sort -12"
+
+alias c13="comm-sort -2"
+alias c2="comm-sort -13"
+
+alias c23="comm-sort -1"
+alias c1="comm-sort -23"

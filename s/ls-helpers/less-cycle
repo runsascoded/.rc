@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+i=0
+n=5
+while read -r f; do
+  less "$f"
+
+  let i=$i+1
+  if [ $i -eq $n ]; then
+    sleep 2
+    #if ! prompt "Continue"; then
+    #  break;
+    #fi
+    i=0
+  fi
+done

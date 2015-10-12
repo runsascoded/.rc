@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-if [ $# -gt 1 ]; then
-	if isnum $1; then
-		num=$1
-		shift
-		tail -n $num -f "$@"
-	else
-		tail -f "$@"
-	fi
+if [ $# -gt 1 ] && isnum "$1"; then
+  num=$1
+  shift
+  tail -n $num -f "$@"
 else
-	tail -f "$@"
+  tail -f "$@"
 fi
