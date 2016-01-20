@@ -9,3 +9,4 @@ alias check-port="ncz"
 
 alias my-ip="curl ifconfig\.me/ip"
 
+alias psc=ps-cmd

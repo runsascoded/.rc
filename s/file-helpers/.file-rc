@@ -76,3 +76,8 @@ alias t1l="head -n 1"
 
 alias clr=clear-file
 alias cl=clear-file
+
+alias pdn=pwd-dirname
+alias pbn=pwd-basename
+
+alias sbd=sort-by-date

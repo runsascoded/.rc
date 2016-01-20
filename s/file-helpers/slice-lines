@@ -47,7 +47,7 @@ if [[ $# == 0 || -z "$1" ]]; then
   exit $?
 fi
 
-if [[ ! "$1" =~ ^[0-9]+ ]]; then
+if [[ ! "$1" =~ ^-?[0-9]+ ]]; then
   $gtail -n "$start" "$@"
   exit $?
 fi
@@ -57,7 +57,7 @@ if [ $# -gt 0 ]; then
   shift
 fi
 
-if [ $end -lt $orig_start ]; then
+if [ $end -gt 0 -a $end -lt $orig_start ]; then
   echo "End ($end) should be ≥ start ($orig_start)." 1>&2
   exit 1
 fi

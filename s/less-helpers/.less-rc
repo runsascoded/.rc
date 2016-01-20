@@ -15,4 +15,8 @@ export LESS="$LESS -R"
 # don't wrap lines
 export LESS="$LESS -S"
 
+# Exit if output is less than one page.
+#export LESS="$LESS -F"
 
+# Don't clear screen upon exit
+#export LESS="$LESS -X"

@@ -1,4 +1,10 @@
 
 export SLIM_LOG="$HOME/slim.log"
 
-alias slf=slim-log-file
+alias sef="slim-log-dir-file err"
+alias slf="slim-log-dir-file log"
+alias sof="slim-log-dir-file out"
+
+csd() {
+  cd "$(slim-log-dir)"
+}

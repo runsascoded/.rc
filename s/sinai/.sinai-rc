@@ -86,23 +86,6 @@ export hsyn3="$dream/synthetic-challenge-3"
 export hsyn4="$dream/synthetic-challenge-4"
 
 # Spark/ADAM opts
-export em="--executor-memory"
-export ec="--executor-cores"
-export ne="--num-executors"
-export dm="--driver-memory"
-export mf="--conf spark.storage.memoryFraction"
-export smf="--conf spark.shuffle.memoryFraction"
-export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$hdfs:"
-export dp="--conf spark.storage.memoryFraction"
-export mo="--conf spark.yarn.executor.memoryOverhead"
-export pll="--conf spark.default.parallelism"
-export sdp="$pll"
-export mine="--conf spark.dynamicAllocation.minExecutors"
-export maxe="--conf spark.dynamicAllocation.maxExecutors"
-export inie="--conf spark.dynamicAllocation.initialExecutors"
-export eto="--conf spark.dynamicAllocation.executorIdleTimeout"
-export noui="--conf spark.ui.enabled=false"
-
 if [[ `uname -a` =~ ^Darwin ]]; then
   export sparklogs="$HOME/sparklogs"
   export sl="$sparklogs"
@@ -113,13 +96,44 @@ else
 fi
 export SPARK_EVENTLOG_DIR="$sparklogs"
 
+export em="--executor-memory"
+export ec="--executor-cores"
+export ne="--num-executors"
+export dm="--driver-memory"
+export mf="--conf spark.storage.memoryFraction"
+export dp="--conf spark.storage.memoryFraction"
+export smf="--conf spark.shuffle.memoryFraction"
+export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$sparklogs"
+export mo="--conf spark.yarn.executor.memoryOverhead"
+export pll="--conf spark.default.parallelism"
+export sdp="$pll"
+export mef="--conf spark.yarn.max.executor.failures"
+export spec="--conf spark.speculation=true --conf spark.speculation.multiplier=2 --conf spark.speculation.interval"
+export dae="--conf spark.dynamicAllocation.enabled=true --conf spark.shuffle.service.enabled=true"
+export mine="--conf spark.dynamicAllocation.minExecutors"
+export maxe="--conf spark.dynamicAllocation.maxExecutors"
+export inie="--conf spark.dynamicAllocation.initialExecutors"
+export eto="--conf spark.dynamicAllocation.executorIdleTimeout"
+export noui="--conf spark.ui.enabled=false"
+export mxf="--conf spark.task.maxFailures"
+export maxf="--conf spark.task.maxFailures"
+export djo="--conf spark.driver.extraJavaOptions"
+export ejo="--conf spark.executor.extraJavaOptions"
+export kryo="--conf spark.serializer=org.apache.spark.serializer.KryoSerializer --conf spark.kryo.registrator"
+
+export slim="--packages org.hammerlab:spark-json-relay:2.0.1 --conf spark.extraListeners=org.apache.spark.JsonRelay"
+export slim3="$slim --conf spark.slim.host=hammerlab-dev3.hpc.mssm.edu"
+
 if [ -z "$m2" ]; then
   echo "Error: \$m2 not set when setting Maven env vars" >&2
 fi
 export m2spark="$m2/org/apache/spark"
-export m2core="$m2/org/apache/spark/spark-core_2.10"
-export msc="$m2spark/spark-core_2.10"
+export m2sp="$m2/org/apache/spark"
+export m2spc="$m2sp/spark-core_2.10"
+export msc="$m2sp/spark-core_2.10"
 export mac="$m2adam/adam-core_2.10"
+
+export m2p="$m2/org/hammerlab/pageant"
 
 guac_args=
 export djo="--driver-java-options"
@@ -157,8 +171,8 @@ alias v2a="adam vcf2adam"
 export SPARK="$c/spark"
 export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
-  if [ -d "$HOME/sparks/spark-1.5.0-bin-hadoop2.6" ]; then
-    export SPARK_HOME="$HOME/sparks/spark-1.5.0-bin-hadoop2.6"
+  if [ -d "$HOME/sparks/spark-1.6.0-bin-hadoop2.6" ]; then
+    export SPARK_HOME="$HOME/sparks/spark-1.6.0-bin-hadoop2.6"
   else
     export SPARK_HOME="$SPARK"
   fi
@@ -221,7 +235,7 @@ export adam_shell_args="--master yarn --deploy-mode client $ne 10 $ec 4 $em 10g 
 export d1="demeter-login1.hpc.mssm.edu"
 export d2="demeter-login2.hpc.mssm.edu"
 
-export HDFS_SPARK_JAR="hdfs:///user/willir31/sparks/spark-1.5.0-bin-hadoop2.6/lib/spark-assembly-1.5.0-hadoop2.6.0.jar"
+export HDFS_SPARK_JAR="hdfs:///user/willir31/sparks/spark-1.6.0-bin-hadoop2.6/lib/spark-assembly-1.6.0-hadoop2.6.0.jar"
 export PAGEANT_JAR="/hpc/users/willir31/c/pageant/target/pageant-with-dependencies-1.0-SNAPSHOT.jar"
 #export JSON_RELAY_JAR="/hpc/users/willir31/spark-json-relay-1.0.0.jar"
 
@@ -290,8 +304,18 @@ eyd() {
   echo "$YARN_CONF_DIR"
 }
 
+if [ -z "$HADOOP_CONF_DIR" ]; then
+  if [ -d /etc/hadoop/conf ]; then
+    export HADOOP_CONF_DIR=/etc/hadoop/conf
+  elif [ -d "$HOME/etc/hadoop/conf" ]; then
+    export HADOOP_CONF_DIR="$HOME/etc/hadoop/conf"
+  fi
+fi
+
 alias sps=spark-select
 alias spb=spark-build
+alias saj=spark-assembly-jar-path
+
 alias ads=adam-select
 
 alias dcp=demeter-cp
@@ -305,3 +329,7 @@ alias spshc=spark-shell-cluster
 alias spsuc=spark-submit-cluster
 
 alias asuc-small="adam-submit-cluster $dm 1g $em 5g $ec 10 $smf=0.8 $noui"
+
+export SPARK_REPO_URL="$c/spark"
+
+alias hpj=hadoop-put-spark-assembly-jar

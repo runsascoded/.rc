@@ -2,7 +2,7 @@
 
 # PYTHONPATH
 append_to PYTHONPATH "$HOME/c/mongo-python-driver/"
-append_to PYTHONPATH "/Library/Python/Current/site-packages"
+#append_to PYTHONPATH "/Library/Python/Current/site-packages"
 append_to PYTHONPATH "$HOME/Library/Python/Current/site-packages"
 
 prepend_to_path "$HOME"/anaconda/bin
@@ -14,6 +14,7 @@ prepend_to_path "$HOME/py3/bin"
 # LD_LIBRARY_PATH: move from this file later
 append_to LD_LIBRARY_PATH "$HOME/.local/lib" "$HOME/lib64" "$HOME/lib"
 
+alias ve=virtualenv
 alias piu="pip install --user"
 
 # Set python2 path
@@ -42,12 +43,14 @@ set-python() {
   if [ "$1" == "2" ]; then
     if [ -d "$PYTHON2_HOME/bin" ]; then
       prepend_to_path "$PYTHON2_HOME/bin"
+      python --version
     else
       echo "Set \$PYTHON2_HOME to a directory containing a valid python2 installation" >&2
     fi
   elif [ "$1" == "3" ]; then
     if [ -d "$PYTHON3_HOME/bin" ]; then
       prepend_to_path "$PYTHON3_HOME/bin"
+      python --version
     else
       echo "Set \$PYTHON3_HOME to a directory containing a valid python3 installation" >&2
     fi

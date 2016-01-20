@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+source_jar="$(spark-assembly-jar-path)"
+
+dest_jar="$(echo "$source_jar" | take-from-first sparks)"
+
+echo "$source_jar $dest_jar"
+
+h mkdir -p "$(dirname "$dest_jar")"
+h put "$source_jar" "$dest_jar"

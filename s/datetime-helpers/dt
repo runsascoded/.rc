@@ -26,11 +26,24 @@ function convert(args) {
       var log10 = Math.log(seconds) / Math.log(10);
       if (log10 < 10) {
         seconds *= 1000;
+      } else {
+        while (log10 > 13) {
+          seconds /= 1000;
+          log10 -= 3;
+        }
       }
       if (flipFormat)
         return moment(new Date(seconds)).add(num, period).toString();
       return moment(new Date(seconds)).add(num, period).unix();
     } else {
+      var m = arg.match(/^(\d\d)\/\d\d\/\d\d \d\d:\d\d:\d\d/)
+      if (m) {
+        if (parseInt(m[1]) < 70) {
+          arg = '20' + arg;
+        } else {
+          arg = '19' + arg;
+        }
+      }
       if (flipFormat)
         return moment(new Date(arg)).add(num, period).unix();
       return moment(new Date(arg)).add(num, period).toString();
@@ -44,6 +57,11 @@ function toUnix(arg) {
     var log10 = Math.log(num) / Math.log(10);
     if (log10 < 10) {
       num *= 1000;
+    } else {
+      while (log10 > 13) {
+        num /= 1000;
+        log10 -= 3;
+      }
     }
     return moment(new Date(num)).unix();
   } else {

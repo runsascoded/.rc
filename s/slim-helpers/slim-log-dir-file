@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "$(slim-log-dir)"/"$1"
+

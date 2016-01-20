@@ -91,16 +91,19 @@ try_source ".path-rc"  # which
 
 source_and_path "$c"/adam-helpers
 source_and_path arg-helpers
+source_and_path collectd-helpers
 source_and_path color-helpers
 source_and_path echo-helpers
 source_and_path find-helpers
 source_and_path grep-helpers
 source_and_path histogram-helpers
+source_and_path image-helpers
 source_and_path js-helpers
 source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path maven-helpers
 source_and_path nav-helpers
+source_and_path parallel-helpers
 source_and_path py-helpers  # brew, path
 source_and_path rsync-helpers
 source_and_path "$c"/screen-helpers
@@ -112,6 +115,7 @@ source_and_path "$s"/sinai  # which, yarn-logs-helpers
 export SPARK_BUILD_ARGS="-Pyarn"
 source_and_path "$c"/spark-helpers
 
+source_and_path audio-helpers
 source_and_path bash-helpers
 source_and_path comm-helpers
 source_and_path diff-helpers  # which
@@ -214,4 +218,52 @@ export COMM_STRIP_WHITESPACE=1
 
 alias x=xargs
 
-alias plp="parallel -k -j+0 --env PATH"
+export GOPATH="$c/go"
+prepend_to_path "$GOPATH/bin"
+export go="$GOPATH"
+
+export dbs="$db/spark"
+export a57="$dbs/application_1444948191538_0457"
+export e57="$a57/events.json"
+export d57="$a57/driver"
+
+export a58="$dbs/application_1444948191538_0458"
+export e58="$a58/events.json"
+export d58="$a58/driver"
+
+export a59="$dbs/application_1444948191538_0459"
+export e59="$a59/events.json"
+export d59="$a59/driver"
+
+export a63="$dbs/application_1444948191538_0463"
+export e63="$a63/events.json"
+export d63="$a63/driver"
+
+export a64="$dbs/application_1444948191538_0464"
+export e64="$a64/events.json"
+export d64="$a64/driver"
+
+export a65="$dbs/application_1444948191538_0465"
+export e65="$a65/events.json"
+export d65="$a65/driver"
+
+
+PATH="/Users/ryan/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/Users/ryan/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/ryan/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/ryan/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/ryan/perl5"; export PERL_MM_OPT;
+
+export music="$HOME/Music"
+export mu="$music"
+export im="$music/iTunes/iTunes Media"
+export imu="$im/Music"
+export ima="$im/Audiobooks"
+
+set-now() {
+  export now=`unow`
+}
+
+if [ -d "$gd" ]; then
+  export pcf="$gd/hammerlab/tc-prostate-challenge"
+fi

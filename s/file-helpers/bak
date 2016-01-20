@@ -2,6 +2,7 @@
 
 for arg in "$@"
 do
+    arg="${arg%/}"
     if [ -e "$arg.bak" ]; then
         echo "Removing $arg.bak"
         rm -rf "$arg.bak"

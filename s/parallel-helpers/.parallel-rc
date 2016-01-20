@@ -1,0 +1,6 @@
+
+alias plp="parallel -k -j+0 --env PATH"
+
+alias p="parallel -k -j+0 --env PATH"
+
+#alias loop="for f in"

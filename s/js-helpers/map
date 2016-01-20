@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
-while read -r line; do
-  if [[ ! "$line" =~ ^[0-9]*\.?[0-9]*$ ]]; then
-    line="\"$line\""
-  fi
-  cmd="var _ = $line; $@"
-  node -p -e "$cmd" #"$line $@"
+tmpfile="$(mktemp)"
+cat - > "$tmpfile"
+while read -r f < "$tmpfile"; do
+  eval "$@"
 done
+
+#echo "$@"
+#xargs -I{} sh -c "$@"
+
+#while read -r line; do
+#  if [[ ! "$line" =~ ^[0-9]*\.?[0-9]*$ ]]; then
+#    line="\"$line\""
+#  fi
+#  cmd="var _ = $line; $@"
+#  node -p -e "$cmd" #"$line $@"
+#done

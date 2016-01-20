@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+convert "$@" -print '%w %h\n' /dev/null

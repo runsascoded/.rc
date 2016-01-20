@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+launchctl stop homebrew.mxcl.influxdb
+launchctl start homebrew.mxcl.influxdb

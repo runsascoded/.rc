@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+perl -pe 'use POSIX qw(strftime); s/^(\d{10})\d{3}/strftime "%F %H:%M:%S", localtime($1)/e' "$@"

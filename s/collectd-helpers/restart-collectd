@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo launchctl stop homebrew.mxcl.collectd
+sudo launchctl start homebrew.mxcl.collectd

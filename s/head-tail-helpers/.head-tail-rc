@@ -1,6 +1,11 @@
 
 alias h1="head -n 1"
+alias h2="head -n 2"
+alias h3="head -n 3"
+
 alias t1="tail -n 1"
+alias t2="tail -n 2"
+alias t3="tail -n 3"
 
 alias hd=head
 alias tl=tail

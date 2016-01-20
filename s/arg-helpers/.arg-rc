@@ -2,6 +2,7 @@
 export ah="$s/arg-helpers"
 alias reverse=reverse-stdin
 
+alias bne=basename-minus-extension
 
 alias ct="column -t"
 alias ctt="column -t -s$'\t'"
@@ -57,6 +58,7 @@ alias c=cat
 alias rng=range
 
 alias hx="hexdump -C"
+alias hxn="hexdump -C -n"
 alias hxd=hexdump
 
 alias s2t=spaces-to-tabs
@@ -67,3 +69,19 @@ alias bnx=basename-minus-extension
 alias pp=prepend
 alias ap=append
 alias bp=bipend
+
+alias sml="sum -l"
+
+alias tff=take-from-first
+alias tkff=take-from-first
+alias tkfl=take-from-last
+
+alias spls="splt ' '"
+
+alias thr=to-human-readable
+alias hr=to-human-readable
+alias hr2="to-human-readable --field=2"
+
+alias fhr=from-human-readable
+alias fhr2="from-human-readable --field=2"
+

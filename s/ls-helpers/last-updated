@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-ls -t "$@" | head -n 1
+if [ $# -eq 0 ]; then
+  ls -t "$@" | head -n 1
+else
+  dir="${@: -1}"
+  echo "${dir%/}/$(ls -t "$@" | head -n 1)"
+fi

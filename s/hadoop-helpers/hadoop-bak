@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-args="$(hls -d "$@" | grep -v '^Found ' | col -1)"
+args="$(h ls -d "$@" | grep -v '^Found ' | col -1)"
 
 OLD_IFS="$IFS"
 IFS=$'\n'

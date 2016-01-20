@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
-for arg in "$@"; do
+handle_arg() {
+  arg="$1"
+  if ! [[ "$arg" =~ ^0x ]]; then
+    arg="0x$arg"
+  fi
   js "parseInt($arg).toString()"
-done
+}
+
+if [ $# -eq 0 ]; then
+  while read -r arg; do
+    handle_arg "$arg"
+  done
+else
+  for arg in "$@"; do
+    handle_arg "$arg"
+  done
+fi

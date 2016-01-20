@@ -1,0 +1,5 @@
+
+alias dims=image-dimensions
+alias dim=image-dimensions
+
+export ih="$s/image-helpers"

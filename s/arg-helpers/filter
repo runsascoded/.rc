@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-dir="$(dirname "${BASH_SOURCE[0]}")"
-node "$dir"/filter.js "$@"
+map "if $@; then echo {}; fi"
+
+#dir="$(dirname "${BASH_SOURCE[0]}")"
+#node "$dir"/filter.js "$@"
 
 

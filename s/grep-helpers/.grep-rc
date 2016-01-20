@@ -6,9 +6,13 @@ alias grp="ggrep"
 
 export GREP_OPTIONS="--color=auto"
 
+alias p=pcregrep
 alias pcg=pcregrep
-alias pcgo="pcregrep -o"
 alias pgrp=pcregrep
+
+alias po="pcregrep -o"
+alias pgo="pcregrep -o"
+alias pcgo="pcregrep -o"
 
 alias gv="grep -v"
 
@@ -17,3 +21,6 @@ alias dgs="dict-grep-subsequence"
 
 alias grn="grep -n"
 alias grni="grep -ni"
+
+alias gm1="grep -m 1"
+

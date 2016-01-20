@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+dir="$(find "${@:-.}" -maxdepth 1 -type d -print0 | sed -z 's_^\./__;/^\.$/d' | xargs -0 stat -c "%Z %n" | sort -nk1 | tail -n 1 | awk '{ print $2 }')"
+echo "$dir"

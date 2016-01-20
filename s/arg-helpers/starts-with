@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
-needle="$1"
+arg="$1"
 shift
-grep "$@" "^$needle"
+grep "^$arg" "$@"
+
+#if [ $# -gt 1 ]; then
+#  grep "^${@:(($#-1))}" "${@:1: (($#-1))}"
+#else
+
+#fi

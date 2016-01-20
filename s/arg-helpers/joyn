@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 if [ $# -eq 0 ]; then
-	echo 'Delimiter required'
-	exit 1
+  xargs "$0" " "
+  #delim=" "
+	#echo 'Delimiter required'
+	exit $?
 elif [ $# -eq 1 ]; then
 	xargs "$0" "$1"
-	exit 0
+	exit $?
 fi
 
 joined=
