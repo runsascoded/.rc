@@ -33,6 +33,10 @@ alias sl=slice-lines
 alias dbl=drop-blank-lines
 alias strip-blank-lines=drop-blank-lines
 alias sbl=drop-blank-lines
+alias kbl=drop-blank-lines
+alias kel=drop-blank-lines
+alias del=drop-blank-lines
+alias sel=drop-blank-lines
 
 alias dn=multi-dirname
 

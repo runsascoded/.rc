@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -Dartifact=$1:jar

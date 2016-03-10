@@ -1,2 +1,4 @@
 
 alias uzd=unzip-dir
+alias uz="unzip-dir"
+

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+print-tree() {
+  dir="$(dirname "$1")"
+  if [ "$dir" != "$1" -a "$dir" != "." ]; then
+    print-tree "$dir"
+  fi
+  echo "$1"
+}
+
+for arg in "$@"; do
+  print-tree "${arg%/}"
+done

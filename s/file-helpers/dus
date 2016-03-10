@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sort_opts=
-du_opts="-s"
+du_opts="-sb"
 while getopts "rhb" opt; do
   case $opt in
     r)

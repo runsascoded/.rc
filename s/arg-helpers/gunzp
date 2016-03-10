@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+f="$1"
+shift
+if ! [[ "$f" =~ \.gz$ ]]; then
+  echo "Bad path: $f doesn't end with \".gz\"" 1>&2
+  exit 1
+fi
+
+if [ $# -gt 0 ]; then
+  dest="$1"
+  shift
+else
+  dest="${f%.gz}"
+fi
+
+if [ -f "$dest" ]; then
+  echo "$dest already exists; no-op'ing"
+  exit 0
+fi
+
+gunzip -c "$f" > "$dest"

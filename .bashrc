@@ -41,9 +41,6 @@ export s="$HOME/s"
 export S="$s"
 export SRCDIR="$s"
 
-export dl="$HOME/Downloads"
-export DL="$dl"
-
 export SOURCEME_DIR="$s/source-files"
 try_source() {
     for arg in "$@"; do
@@ -81,189 +78,99 @@ source_and_path() {
     done
 }
 
-alias enw="emacs -nw"
-
 try_source ".vars-rc"
 
 source_and_path which-helpers
+
 source_and_path brew-helpers  # which
-try_source ".path-rc"  # which
+source_and_path path-helpers  # which
+source_and_path py-helpers    # brew, path
+
+append_to_path "$c/yarn-logs-helpers"
+source_and_path "$s"/sinai  # which, yarn-logs-helpers
+
+source_and_path diff-helpers  # which
+source_and_path file-helpers  # which
+source_and_path jar-helpers   # which
+source_and_path osx-helpers   # which
+
+export SPARK_BUILD_ARGS="-Pyarn"
+source_and_path "$c"/spark-helpers
+export sh="$c/spark-helpers"
 
 source_and_path "$c"/adam-helpers
+source_and_path "$c"/samtools-helpers
+source_and_path "$c"/screen-helpers
+
 source_and_path arg-helpers
+source_and_path audio-helpers
+source_and_path bash-helpers
 source_and_path collectd-helpers
 source_and_path color-helpers
+source_and_path comm-helpers
+source_and_path datetime-helpers
+source_and_path dict-helpers
+source_and_path dropbox-helpers
 source_and_path echo-helpers
+source_and_path emacs-helpers
 source_and_path find-helpers
+source_and_path go-helpers
 source_and_path grep-helpers
+source_and_path hadoop-helpers
+source_and_path head-tail-helpers
 source_and_path histogram-helpers
 source_and_path image-helpers
+source_and_path influx-helpers
 source_and_path js-helpers
 source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path maven-helpers
 source_and_path nav-helpers
-source_and_path parallel-helpers
-source_and_path py-helpers  # brew, path
-source_and_path rsync-helpers
-source_and_path "$c"/screen-helpers
-source_and_path sort-helpers
-
-append_to_path "$c/yarn-logs-helpers"
-source_and_path "$s"/sinai  # which, yarn-logs-helpers
-
-export SPARK_BUILD_ARGS="-Pyarn"
-source_and_path "$c"/spark-helpers
-
-source_and_path audio-helpers
-source_and_path bash-helpers
-source_and_path comm-helpers
-source_and_path diff-helpers  # which
-source_and_path dropbox-helpers
-source_and_path file-helpers  # which
-source_and_path hadoop-helpers
-source_and_path head-tail-helpers
-source_and_path jar-helpers
 source_and_path net-helpers
+source_and_path objid-helpers
+source_and_path ocaml-helpers
+source_and_path parallel-helpers
 source_and_path perl-helpers
+source_and_path postgres-helpers
+source_and_path rsync-helpers
 source_and_path ruby-helpers
-source_and_path "$c"/samtools-helpers
 source_and_path slim-helpers
+source_and_path sort-helpers
 source_and_path ssh-helpers
+source_and_path travis-helpers
+source_and_path watchman-helpers
 source_and_path zinc-helpers
 source_and_path zip-helpers
+
 
 try_source "$s/git-configs/.git-rc"
 export gh="$c/git-helpers"
 export gha="$gh/aliases"
 try_source "$gh/.git-rc"
 
-try_source ".ec2-rc"
-try_source ".editor-rc"
-
 try_source "$c/z/z.sh"
 try_source "$c/commacd/.commacd.bash"
-prepend_to_path "$c/sejda-1.0.0/bin"
 
+try_source ".ec2-rc"
 try_source ".history-rc"
-try_source ".java-rc"  # which
-try_source ".keychain-rc"  # which
 try_source ".locale-rc"
-try_source ".misc-rc"
-try_source ".postgres-rc"
 try_source ".rpi-rc"
-try_source "$s/watchman-helpers/.watchman-rc"
-
-dedupe_path_var PATH PYTHONPATH NODE_PATH
-
-# added by travis gem
-if [ -f "$HOME"/.travis/travis.sh ]; then
-  source "$HOME"/.travis/travis.sh
-fi
-
-# OPAM configuration
-. "$HOME"/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-export ZEROS_DIR="$HOME/zeros"
-if [ -s /usr/share/dict/words ]; then
-  export dict=/usr/share/dict/words
-fi
-
-alias pgc="ping google.com"
-
-alias uz="unzip-dir"
-
-alias kca="killall CloudApp"
-alias mdp="mkdir -p"
-alias d="diff"
-
-append_to_path "$HOME/Library/Android/sdk/platform-tools"
-append_to_path "$HOME/node_modules/.bin"
-
-alias m=man
-
-alias sejda=sejda-console
-alias ydl="youtube-dl"
-
 
 # git-helpers
 export DEFAULT_REMOTE=upstream
 
-export sh="$c/spark-helpers"
-
-alias rmf="rm -f"
-alias rmrf="rm -rf"
-
-alias tx="tar xvzf"
-alias ua=unalias
-
-alias le=less
-alias L=less
-
-export GPG_TTY=$(tty)
-
 append_to_path "$HOME/ipfs"
-
-export SLIM_HOME="$c/spree/slim"
-export SPREE_HOME="$c/spree"
-
-append_to_path "$HOME/macports/bin"
 
 export GIT_PS1_DESCRIBE_STYLE=branch
 
-export t=$'\t'
-export n=$'\n'
+export YAAFE_PATH="/Users/ryan/yaafelib/yaafe_extensions"
+#append_to PYTHONPATH /Users/ryan/yaafelib
+append_to PYTHONPATH "$HOME"
+#append_to PATH "$YAAFE_PATH"
 
-export COMM_STRIP_WHITESPACE=1
+export smr=src/main/resources
+export sms=src/main/scala
+export str=src/test/resources
+export sts=src/test/scala
 
-alias x=xargs
-
-export GOPATH="$c/go"
-prepend_to_path "$GOPATH/bin"
-export go="$GOPATH"
-
-export dbs="$db/spark"
-export a57="$dbs/application_1444948191538_0457"
-export e57="$a57/events.json"
-export d57="$a57/driver"
-
-export a58="$dbs/application_1444948191538_0458"
-export e58="$a58/events.json"
-export d58="$a58/driver"
-
-export a59="$dbs/application_1444948191538_0459"
-export e59="$a59/events.json"
-export d59="$a59/driver"
-
-export a63="$dbs/application_1444948191538_0463"
-export e63="$a63/events.json"
-export d63="$a63/driver"
-
-export a64="$dbs/application_1444948191538_0464"
-export e64="$a64/events.json"
-export d64="$a64/driver"
-
-export a65="$dbs/application_1444948191538_0465"
-export e65="$a65/events.json"
-export d65="$a65/driver"
-
-
-PATH="/Users/ryan/perl5/bin${PATH+:}${PATH}"; export PATH;
-PERL5LIB="/Users/ryan/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/ryan/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/ryan/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/ryan/perl5"; export PERL_MM_OPT;
-
-export music="$HOME/Music"
-export mu="$music"
-export im="$music/iTunes/iTunes Media"
-export imu="$im/Music"
-export ima="$im/Audiobooks"
-
-set-now() {
-  export now=`unow`
-}
-
-if [ -d "$gd" ]; then
-  export pcf="$gd/hammerlab/tc-prostate-challenge"
-fi
+dedupe_path_var PATH PYTHONPATH NODE_PATH

@@ -3,7 +3,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/color-theme/")
 
-(add-to-list 'load-path "~/.emacs.d/")
+;(add-to-list 'load-path "~/.emacs.d/")
 
 (defun force-revert ()
   (interactive)
@@ -144,3 +144,46 @@ by using nxml's indentation rules."
         (backward-char) (insert "\n"))
       (indent-region begin end))
     (message "Ah, much better!"))
+
+(defun ryan/set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell.
+
+This is particularly useful under Mac OSX, where GUI apps are not started from a shell.
+
+from http://stackoverflow.com/questions/8606954/path-and-exec-path-set-but-emacs-does-not-find-executable"
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(ryan/set-exec-path-from-shell-PATH)
+
+;; Add opam emacs directory to the load-path
+(setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+(add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+;; Load merlin-mode
+(require 'merlin)
+;; Start merlin on ocaml files
+(add-hook 'tuareg-mode-hook 'merlin-mode t)
+(add-hook 'caml-mode-hook 'merlin-mode t)
+;; Enable auto-complete
+(setq merlin-use-auto-complete-mode 't)
+;; Use opam switch to lookup ocamlmerlin binary
+(setq merlin-command 'opam)
+
+(setq merlin-ac-setup 't)
+
+; Make company aware of merlin
+(with-eval-after-load 'company
+ (add-to-list 'company-backends 'merlin-company-backend))
+; Enable company on merlin managed buffers
+(add-hook 'merlin-mode-hook 'company-mode)
+; Or enable it globally:
+; (add-hook 'after-init-hook 'global-company-mode)
+
+(add-to-list 'load-path "/Users/ryan/.opam/4.02.1/share/emacs/site-lisp")
+(require 'ocp-indent)
+
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+f="$1"
+shift
+
+if [ $# -gt 0 ]; then
+  dest="$1"
+  shift
+else
+  dest="$f.gz"
+fi
+
+if [ -f "$dest" ]; then
+  echo "$dest already exists; no-op'ing"
+  exit 0
+fi
+
+gzip -c "$f" > "$dest"

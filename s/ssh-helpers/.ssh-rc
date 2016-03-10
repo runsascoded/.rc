@@ -1,2 +1,5 @@
 
 alias sal="ssh-add -l"
+
+export GPG_TTY=$(tty)
+

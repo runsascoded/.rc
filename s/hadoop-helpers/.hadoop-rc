@@ -48,4 +48,6 @@ alias hl="hadoop-ls"
 alias heae=hadoop-exists-and-empty
 alias he=hadoop-exists
 
-prepend_to_path "$HOME/hadoop-2.6.0/bin"
+#prepend_to_path "$HOME/hadoop-2.6.0/bin"
+
+alias fhd=format-hadoop-du

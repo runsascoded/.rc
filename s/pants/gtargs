@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-./pants get-targets --files="$(gfiles)"

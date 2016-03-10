@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+while read -r line1; do
+    read -r line2
+    dt1="${line1%%,*}"
+    dt2="${line2%%,*}"
+    u1=`date --date="$dt1" +%s`
+    u2=`date --date="$dt2" +%s`
+    #echo "dt1: $dt1, dt2: $dt2, u1: $u1, u2: $u2"
+    let d=$u2-$u1
+    echo "$d $line1"
+done
+

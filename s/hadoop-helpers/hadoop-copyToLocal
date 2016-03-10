@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$HOSTNAME" == demeter* ]]; then
+if [[ "$HOSTNAME" == demeter* || "$HOSTNAME" == *.mssm.edu ]]; then
   h copyToLocal "$@"
 else
   src="$1"

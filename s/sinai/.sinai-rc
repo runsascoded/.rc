@@ -91,6 +91,7 @@ if [[ `uname -a` =~ ^Darwin ]]; then
   export sl="$sparklogs"
 else
   export sl="/spark/tmp/logs"
+  export sel="/user/spark/applicationHistory"
   export sparklogs="${hdfs}${sl}"
   export hsl="$sparklogs"
 fi
@@ -263,6 +264,8 @@ export x200="/datasets/illumina_platinum/200x"
 export x50="/datasets/illumina_platinum/50x"
 export ps="/demeter/scratch/datasets/illumina_platinum"
 
+export e46="$x50/ERR194146"
+
 alias rhh=". refresh-hadoop-hosts"
 alias hhs=hadoop-hosts
 alias hhj=hadoop-hosts-joined
@@ -333,3 +336,49 @@ alias asuc-small="adam-submit-cluster $dm 1g $em 5g $ec 10 $smf=0.8 $noui"
 export SPARK_REPO_URL="$c/spark"
 
 alias hpj=hadoop-put-spark-assembly-jar
+
+export pt189="/demeter/scratch/datasets/pt189"
+export p189="$pt189"
+export h189=""
+
+export d100k="$data/training/chr20/100k"
+export n100k="$d100k/normal.bam"
+export t100k="$d100k/tumor.bam"
+
+export pdr="/hpc/users/rubina07/pgv-dry-run"
+
+export b=pt189/PT189_11_13_RNA.accepted_hits.sort.coord.bam.backups
+export b3="$b/30844797232"
+
+alias ekht=executor-killed-host-and-time
+
+if [ -d "$gd" ]; then
+  export pcf="$gd/hammerlab/tc-prostate-challenge"
+fi
+
+export dbs="$db/spark"
+export a57="$dbs/application_1444948191538_0457"
+export e57="$a57/events.json"
+export d57="$a57/driver"
+
+export a58="$dbs/application_1444948191538_0458"
+export e58="$a58/events.json"
+export d58="$a58/driver"
+
+export a59="$dbs/application_1444948191538_0459"
+export e59="$a59/events.json"
+export d59="$a59/driver"
+
+export a63="$dbs/application_1444948191538_0463"
+export e63="$a63/events.json"
+export d63="$a63/driver"
+
+export a64="$dbs/application_1444948191538_0464"
+export e64="$a64/events.json"
+export d64="$a64/driver"
+
+export a65="$dbs/application_1444948191538_0465"
+export e65="$a65/events.json"
+export d65="$a65/driver"
+
+export AWS_HL_ACCESS="AKIAJXVAH2UO5T2M47VQ"

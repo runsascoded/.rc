@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-export BUILD_NUMBER=$(date +%y%m%d%H%M%S)
-echo "BUILD NUMBER: $BUILD_NUMBER"
-time ./pants compile -u -x --mongo-hosts=localhost --mongo-port=27001 --mongo-db=pants --mongo-collection=timings $@
-echo "$BUILD_NUMBER" > /tmp/bn
-

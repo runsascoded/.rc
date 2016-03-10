@@ -5,6 +5,8 @@ alias hdd="head-diff"
 alias hdq="head-diff -q"
 
 alias dl=diff-less
+alias dq="diff -q"
+alias d=diff
 
 alias dtab="diff /tmp/a /tmp/b"
 alias mtab="meld /tmp/a /tmp/b"

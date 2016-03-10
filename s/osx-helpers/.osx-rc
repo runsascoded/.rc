@@ -1,0 +1,37 @@
+
+alias sopen='open -a Sublime\ Text\ 2.app'
+
+alias es="emerge --search"
+alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
+alias clean_derived="rm -rf ~/Library/Developer/Xcode/DerivedData/"
+
+### START-Keychain ###
+# Let  re-use ssh-agent and/or gpg-agent between logins
+which-exists keychain
+if [ 0 -eq $? ]; then
+    keychain "$HOME/.ssh/github_rsa"
+    source "$HOME/.keychain/$HOSTNAME-sh"
+fi
+### End-Keychain ###
+
+alias kca="killall CloudApp"
+
+append_to_path "$HOME/macports/bin"
+
+alias ydl="youtube-dl"
+
+export music="$HOME/Music"
+export mu="$music"
+export im="$music/iTunes/iTunes Media"
+export imu="$im/Music"
+export ima="$im/Audiobooks"
+
+alias ovlc="open -a /Applications/VLC.app"
+
+export CHROMECAST_MAC="D0:E7:82:55:CD:86"
+
+append_to_path "$HOME/Library/Android/sdk/platform-tools"
+
+export dl="$HOME/Downloads"
+export DL="$dl"
+

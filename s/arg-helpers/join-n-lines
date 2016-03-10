@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+n="$1"
+shift
+
+i=0
+cur=
+while read -r line; do
+  if [ $i -eq 0 ]; then
+    cur="$line"
+  else
+    cur="$cur $line"
+  fi
+  let i=$i+1
+  if [ $i -eq $n ]; then
+    echo "$cur"
+    cur=
+    i=0
+  fi
+done
+
+if [ $i -gt 0 ]; then
+  echo "$cur"
+fi

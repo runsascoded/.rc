@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-install_pants dev
-
-#cd /Users/ryan/c/benjy-commons
-#PANTS_DEV=1 ./pants src/python/twitter/pants/ && scp dist/pants.pex build-5:~/pants.pex && ssh dev-ryan "cd foursquare.web && ln -sf /home/ryan/pants.pex build/pants.pex"
-

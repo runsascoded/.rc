@@ -19,7 +19,6 @@ prepend_to_path "$HOME/.local/bin"
 prepend_to_path "$s"
 prepend_to_path "$s/case-helpers"
 prepend_to_path "$s/daemon-scripts"
-prepend_to_path "$s/datetime-helpers"
 prepend_to_path "$s/hammerlab"
 prepend_to_path "$s/intellij-helpers"
 prepend_to_path "$s/java-helpers"
@@ -51,13 +50,9 @@ if which-exists meld; then
 fi
 
 append_to_path "$HOME"  # Add $HOME to $PATH
-#append_to_path "$HOME/.rvm/bin"  # Add RVM to PATH for scripting
-#append_to_path "/usr/local/heroku/bin"  # Added by the Heroku Toolbelt
-#append_to_path "$HOME/play-2.1.0"
-#append_to_path "$EC2_HOME/bin"
-
-alias jsh="jekyll serve -H 0.0.0.0"
 
 ep() {
   echo "$PATH" | splt :
 }
+
+prepend_to "C_INCLUDE_PATH" "/usr/local/include"

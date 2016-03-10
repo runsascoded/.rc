@@ -32,8 +32,10 @@ alias dc1="drop-chars 1"
 alias dc2="drop-chars 2"
 alias dcr=drop-chars-right
 alias drc=drop-chars-right
-alias dcr1="drop-chars-right 1"
-alias dcr2="drop-chars-right 2"
+alias dcrn="drop-chars-right-n"
+alias dcr1="drop-chars-right-n 1"
+alias dcr2="drop-chars-right-n 2"
+alias dcr3="drop-chars-right-n 3"
 
 alias dfl=drop-from-last
 
@@ -84,4 +86,38 @@ alias hr2="to-human-readable --field=2"
 
 alias fhr=from-human-readable
 alias fhr2="from-human-readable --field=2"
+
+alias jnl=join-n-lines
+
+alias tat=two-at-a-time-tabs
+alias taat=two-at-a-time-tabs
+alias taats=two-at-a-time-spaces
+
+alias mdp="mkdir -p"
+alias m=man
+
+alias rmf="rm -f"
+alias rmrf="rm -rf"
+
+alias tx="tar xvzf"
+alias ua=unalias
+
+alias x=xargs
+
+alias dfh="df -h"
+alias cfgh="./configure --prefix=$HOME && make && make install"
+
+alias trl="tree -L"
+alias tr1="tree -L 1"
+alias tr2="tree -L 2"
+alias tr3="tree -L 3"
+alias tr4="tree -L 4"
+
+alias pbp=pbpaste
+alias pbc=pbcopy
+
+alias chomd=chmod
+
+export t=$'\t'
+export n=$'\n'
 

@@ -7,3 +7,5 @@ alias j=js
 
 export jsh="$s/js-helpers"
 
+append_to_path "$HOME/node_modules/.bin"
+

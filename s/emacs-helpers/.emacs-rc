@@ -2,3 +2,4 @@
 
 # $EDITOR, $DIFF
 export EDITOR=emacs
+alias enw="emacs -nw"

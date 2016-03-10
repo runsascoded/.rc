@@ -15,3 +15,6 @@ for arg in "$@"; do
 
   ffmpeg -i "$in" -filter:a "atempo=1.5" -vn "$out"
 done
+
+
+# bitrate: -ab

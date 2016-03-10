@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sort -hk "${1:-1}" "$@"

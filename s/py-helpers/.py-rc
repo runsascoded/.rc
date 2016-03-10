@@ -6,6 +6,7 @@ append_to PYTHONPATH "$HOME/c/mongo-python-driver/"
 append_to PYTHONPATH "$HOME/Library/Python/Current/site-packages"
 
 prepend_to_path "$HOME"/anaconda/bin
+prepend_to_path "$HOME"/anaconda3/bin
 
 append_to PYTHONPATH "$s"
 append_to PYTHONPATH "$s/py"
