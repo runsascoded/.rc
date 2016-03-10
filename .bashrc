@@ -87,7 +87,8 @@ source_and_path path-helpers  # which
 source_and_path py-helpers    # brew, path
 
 append_to_path "$c/yarn-logs-helpers"
-source_and_path "$s"/sinai  # which, yarn-logs-helpers
+source_and_path maven-helpers
+source_and_path "$s"/sinai  # which, yarn-logs-helpers, maven
 
 source_and_path diff-helpers  # which
 source_and_path file-helpers  # which
@@ -124,7 +125,6 @@ source_and_path influx-helpers
 source_and_path js-helpers
 source_and_path less-helpers
 source_and_path ls-helpers
-source_and_path maven-helpers
 source_and_path nav-helpers
 source_and_path net-helpers
 source_and_path objid-helpers
