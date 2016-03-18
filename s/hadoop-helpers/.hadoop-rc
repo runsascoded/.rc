@@ -48,6 +48,15 @@ alias hl="hadoop-ls"
 alias heae=hadoop-exists-and-empty
 alias he=hadoop-exists
 
-#prepend_to_path "$HOME/hadoop-2.6.0/bin"
+if ! which hadoop &> /dev/null; then
+  prepend_to_path "$HOME/hadoop-2.6.0/bin"
+fi
 
 alias fhd=format-hadoop-du
+
+alias hfp=hadoop-fullpath
+alias hrl=hadoop-fullpath
+
+alias hdp=hadoop-dir-perms
+alias hdt=hadoop-dir-perms
+alias hlf=hadoop-dir-perms

@@ -2,13 +2,24 @@
 alias h1="head -n 1"
 alias h2="head -n 2"
 alias h3="head -n 3"
+alias h4="head -n 4"
+alias h5="head -n 5"
+alias h6="head -n 6"
+alias hdn="head -n"
 
 alias t1="tail -n 1"
 alias t2="tail -n 2"
 alias t3="tail -n 3"
+alias t4="tail -n 4"
+alias t5="tail -n 5"
+alias t6="tail -n 6"
+alias tn="tail -n"
 
 alias hd=head
 alias tl=tail
+alias tl1="tail -n 1"
+alias tl2="tail -n 2"
+alias tl3="tail -n 3"
 
 alias tf=tail-f-with-lines
 

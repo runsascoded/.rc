@@ -43,6 +43,7 @@ export hdfs="hdfs://demeter-nn1.demeter.hpc.mssm.edu"
 export Hhome="${hdfs}${hhome}"
 export Hh="${hdfs}${hh}"
 export HH="$Hh"
+export hn="/hdfs/user/willir31"
 
 export hdata="${hh}/data"
 export Hdata="${hdfs}${hdata}"
@@ -90,7 +91,8 @@ if [[ `uname -a` =~ ^Darwin ]]; then
   export sparklogs="$HOME/sparklogs"
   export sl="$sparklogs"
 else
-  export sl="/spark/tmp/logs"
+  #export sl="/spark/tmp/logs"
+  export sl="/user/spark/applicationHistory"
   export sel="/user/spark/applicationHistory"
   export sparklogs="${hdfs}${sl}"
   export hsl="$sparklogs"
@@ -339,7 +341,7 @@ alias hpj=hadoop-put-spark-assembly-jar
 
 export pt189="/demeter/scratch/datasets/pt189"
 export p189="$pt189"
-export h189=""
+export h189="/datasets/pt189"
 
 export d100k="$data/training/chr20/100k"
 export n100k="$d100k/normal.bam"
@@ -382,3 +384,5 @@ export e65="$a65/events.json"
 export d65="$a65/driver"
 
 export AWS_HL_ACCESS="AKIAJXVAH2UO5T2M47VQ"
+
+export ga=data/ipinivo/GA4534

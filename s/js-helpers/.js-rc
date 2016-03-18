@@ -9,3 +9,8 @@ export jsh="$s/js-helpers"
 
 append_to_path "$HOME/node_modules/.bin"
 
+if which brew &> /dev/null; then
+  export NVM_DIR=~/.nvm
+  . $(brew --prefix nvm)/nvm.sh
+fi
+

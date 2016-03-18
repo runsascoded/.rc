@@ -9,12 +9,12 @@ else
   shift
 
   echo "Copying $src from HDFS to demeter.."
-  tmpdir="$(ssh demeter "d=\"\$(mktemp -d)\"; hadoop fs -copyToLocal $src \"\$d\"/; echo \$d")"
+  tmpdir="$(ssh demeter1 "d=\"\$(mktemp -d)\"; hadoop fs -copyToLocal $src \"\$d\"/; echo \$d")"
 
   finally() {
     echo "Cleaning up.."
     if [ -n "$tmpdir" ]; then
-      ssh demeter "rm -rf $tmpdir"
+      ssh demeter1 "rm -rf $tmpdir"
       echo "Removed demeter:$tmpdir"
     fi
   }
@@ -27,7 +27,7 @@ else
   else
     args=$@
   fi
-  scp -r demeter:"$tmpdir/*" "$args"
+  scp -r demeter1:"$tmpdir/*" "$args"
   echo "Copied from demeter"
 
 fi

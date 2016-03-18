@@ -55,7 +55,11 @@
 (global-set-key "\M-S" 'query-replace)
 (global-set-key "\M-r" 'reload-emacs-file)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
+(global-set-key "\M-c" 'clipboard-kill-ring-save)
 (global-set-key "\C-l" 'goto-line)
+(global-set-key "\M-l" 'goto-line)
+(global-set-key "\M-v" 'yank)
+
 ;; (global-set-key "\C-f" 'scroll-down)
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") 'end-of-buffer)

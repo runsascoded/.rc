@@ -3,13 +3,7 @@ export fh="$(dirname "${BASH_SOURCE[0]}")"
 
 alias rrl="recursive-readlink"
 
-if which-exists greadlink; then
-  cmd=greadlink
-else
-  cmd=readlink
-fi
-
-alias rl="$cmd -m"
+alias rl="readlink -m"
 
 if [ ! -e "$fh/readlink" ]; then
   full_cmd="$(which "$cmd")"
@@ -85,3 +79,6 @@ alias pdn=pwd-dirname
 alias pbn=pwd-basename
 
 alias sbd=sort-by-date
+alias dp=dir-perms
+alias dtr=dir-tree
+alias drt=dir-tree

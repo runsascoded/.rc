@@ -3,3 +3,6 @@ export GOPATH="$c/go"
 prepend_to_path "$GOPATH/bin"
 export go="$GOPATH"
 
+if [ -s "$HOME/.gvm/scripts/gvm" ]; then
+  source "$HOME/.gvm/scripts/gvm"
+fi

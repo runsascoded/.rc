@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+arg="$(hadoop-fullpath "$1")"
+shift
+
+dir-tree "$arg" | xargs hadoop fs -ls -d | column -t
+
