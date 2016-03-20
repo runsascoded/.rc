@@ -386,3 +386,27 @@ export d65="$a65/driver"
 export AWS_HL_ACCESS="AKIAJXVAH2UO5T2M47VQ"
 
 export ga=data/ipinivo/GA4534
+
+alias k=ketrew
+export kc="$HOME/.ketrew/configuration.ml"
+alias ki="ketrew init"
+alias kpc="ketrew pc"
+alias kss="ketrew start-server --configuration-profile daemon"
+
+export dk="$hh/data/kits"
+
+export di="$hh/data/ipinivo"
+
+export dr="/hpc/users/rubina07/pgv-dry-run"
+export drd="$dr/DNA"
+export drn="$drd/Normal"
+export drt="$drd/Tumor"
+export xt="$drt/SureSelect_XT"
+export qxt="$drt/SureSelect_QXT"
+
+export hdr="/user/willir31/pgv-dry-run"
+export hdrd="$hdr/DNA"
+export hdrn="$hdrd/Normal"
+export hdrt="$hdrd/Tumor"
+export hxt="$hdrt/SureSelect_XT"
+export hqxt="$hdrt/SureSelect_QXT"

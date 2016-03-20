@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
+if [ $# -gt 1 ]; then
+  fn="${@:(($#))}"
+  args="${@:1:(($#-1))}"
+  cat "$fn" | "$0" "$args"
+  exit $?
+fi
+
 arg="$1"
+shift
 if ! [[ "$arg" =~ ^[0-9]+$ ]]; then
   if [[ "$arg" =~ ^[0-9]+%[0-9]+$ ]]; then
     num="${arg##*%}"
@@ -19,10 +27,5 @@ if [ $offset -eq $num ]; then
   offset=0
 fi
 
-shift
-if [ $# -gt 0 ]; then
-  cat "$1" | "$0" "$num"
-else
-  awk "NR%$num==$offset"
-fi
+awk "NR%$num==$offset"
 

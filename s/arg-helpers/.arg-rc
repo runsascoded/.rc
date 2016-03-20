@@ -14,6 +14,7 @@ alias jn:="joyn :"
 alias joynn="joyn $'\n'"
 alias jnn="joyn $'\n'"
 alias jn,="joyn ,"
+alias j,="joyn ,"
 
 alias cs=comm-sort
 
@@ -36,8 +37,6 @@ alias dcrn="drop-chars-right-n"
 alias dcr1="drop-chars-right-n 1"
 alias dcr2="drop-chars-right-n 2"
 alias dcr3="drop-chars-right-n 3"
-
-alias dfl=drop-from-last
 
 alias sw=starts-with
 alias dsw="starts-with -v"
@@ -74,10 +73,6 @@ alias bp=bipend
 
 alias sml="sum -l"
 
-alias tff=take-from-first
-alias tkff=take-from-first
-alias tkfl=take-from-last
-
 alias spls="splt ' '"
 
 alias thr=to-human-readable
@@ -93,13 +88,22 @@ alias tat=two-at-a-time-tabs
 alias taat=two-at-a-time-tabs
 alias taats=two-at-a-time-spaces
 
+alias md="mkdir -p"
+alias mkd="mkdir -p"
 alias mdp="mkdir -p"
+
+alias mdc=mkdir-p-cd
+
 alias m=man
 
 alias rmf="rm -f"
 alias rmrf="rm -rf"
 
-alias tx="tar xvzf"
+alias tx="tar xf"
+alias txf="tar xf"
+alias tv="tar xvf"
+alias tvf="tar xvf"
+
 alias ua=unalias
 
 alias x=xargs
@@ -107,12 +111,22 @@ alias x0="xargs -0"
 
 alias dfh="df -h"
 alias cfgh="./configure --prefix=$HOME && make && make install"
+alias cmi="./configure --prefix=$HOME && make && make install"
+alias tcmi=tar-extract-configure-make-install
 
 alias trl="tree -L"
 alias tr1="tree -L 1"
 alias tr2="tree -L 2"
 alias tr3="tree -L 3"
 alias tr4="tree -L 4"
+alias tr5="tree -L 5"
+
+alias tp1="tree -L 1 -pugsh --filelimit 50"
+alias tp2="tree -L 2 -pugsh --filelimit 50"
+alias tp3="tree -L 3 -pugsh --filelimit 50"
+alias tp4="tree -L 4 -pugsh --filelimit 50"
+alias tp5="tree -L 5 -pugsh --filelimit 50"
+alias tpr="tree -R -pugsh --filelimit 50"
 
 alias pbp=pbpaste
 alias pbc=pbcopy
@@ -125,3 +139,45 @@ export n=$'\n'
 alias nl="tr '\n' '\0'"
 alias ntl="tr '\n' '\0'"
 alias null-terminated-lines="tr '\n' '\0'"
+
+alias c,="col -i,"
+alias f,="first -i,"
+alias s,="second -i,"
+
+alias el=exec-lines
+alias er=escape-regex
+
+alias tff=take-from-first
+alias tkff=take-from-first
+
+alias dul=drop-until-last
+alias tfl=take-from-last
+alias tkfl=take-from-last
+
+alias dtl=drop-to-last
+alias tpl=take-past-last
+
+alias dfl=drop-from-last
+alias tul=take-until-last
+
+alias dpl=drop-past-last
+alias ttl=take-to-last
+
+alias de=drop-extension
+alias dx=drop-extension
+alias dxn=drop-extension
+
+alias xn=extension
+alias exn=extension
+alias xtn=extension
+
+alias dfl.="drop-from-last ."
+
+export dn=/dev/null
+
+append_to PKG_CONFIG_PATH "$HOME/lib" "$HOME/lib64"
+
+alias wg=wget
+
+alias ilf=interleave-files
+alias zf=zip-files

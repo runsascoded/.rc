@@ -60,3 +60,9 @@ alias hrl=hadoop-fullpath
 alias hdp=hadoop-dir-perms
 alias hdt=hadoop-dir-perms
 alias hlf=hadoop-dir-perms
+
+alias hcn=hadoop-n
+
+alias hll=hadoop-ls-less
+alias hln=hadoop-ls-n
+alias hlr=hadoop-ls-r

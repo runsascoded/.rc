@@ -1,0 +1,9 @@
+#!/usr/bin/env
+
+tar="$1"
+shift
+
+tar xf "$tar"
+cd-last-updated
+
+./configure --prefix="$SHOME" "$@" && make && make install

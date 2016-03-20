@@ -2,4 +2,4 @@
 
 arg="$(echo "$1" | escape-regex)"
 shift
-pe "s/^.*?($arg)/\1/" "$@"
+pe "s/^.*($arg)/\1/" "$@"

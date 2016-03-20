@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-escaped_regex="$(echo "$1" | sed 's_/_\\/_g')"
+arg="$(echo "$1" | escape-regex)"
 shift
-pe "s/${escaped_regex}[^${escaped_regex}]*$/\n/" "$@" | drop-blank-lines
+pe "s/(.*)${arg}.*/\1/" "$@"

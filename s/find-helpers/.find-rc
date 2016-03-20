@@ -15,3 +15,7 @@ alias nls="find-maxdepth 1 -type l | wc -l"
 
 alias flr="find . -type l"
 alias nlr="find . -type l | wc -l"
+
+alias ff=find-files
+alias ff.="find-files ."
+alias fd=find-dirs

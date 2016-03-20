@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+while read -r line; do
+  # Danger! Not robust to args with spaces in them!
+  echo "$line"
+  $line
+done

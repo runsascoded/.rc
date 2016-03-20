@@ -14,7 +14,7 @@ alias cdlu=". cd-last-updated"
 alias cdl=". cd-last-updated"
 
 alias tlu="tail-f-last-updated"
-alias tfl="tail-f-last-updated"
+alias tflu="tail-f-last-updated"
 
 alias psl=parse-symlinks
 alias lls=ls-links

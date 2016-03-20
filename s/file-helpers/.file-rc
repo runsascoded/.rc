@@ -66,6 +66,8 @@ alias tkr=take-right
 alias dls=drop-lines
 alias d1l="tail -n +2"
 alias dl1="tail -n +2"
+alias d1="tail -n +2"
+alias d2="tail -n +3"
 
 alias tls=take-lines
 alias tkl=take-lines
