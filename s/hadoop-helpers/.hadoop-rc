@@ -66,3 +66,5 @@ alias hcn=hadoop-n
 alias hll=hadoop-ls-less
 alias hln=hadoop-ls-n
 alias hlr=hadoop-ls-r
+
+alias hsw=hadoop-swap

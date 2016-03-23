@@ -9,12 +9,13 @@ alias ctt="column -t -s$'\t'"
 
 alias colt="col -i \"$t\""
 
-alias jn=joyn
-alias jn:="joyn :"
-alias joynn="joyn $'\n'"
-alias jnn="joyn $'\n'"
-alias jn,="joyn ,"
+alias j=joyn
+alias jn="joyn $'\n'"
+alias j:="joyn :"
 alias j,="joyn ,"
+alias jns="joyn ' '"
+alias jnb="joyn ''"
+alias jb="joyn ''"
 
 alias cs=comm-sort
 
@@ -130,13 +131,18 @@ alias tpr="tree -R -pugsh --filelimit 50"
 
 alias pbp=pbpaste
 alias pbc=pbcopy
+alias pbpn="pbpaste | wc -l"
+alias pn="pbpaste | wc -l"
+alias pbpl="pbpaste | len"
+alias pbl="pbpaste | len"
+alias ppl="pbpaste | len"
 
 alias chomd=chmod
 
 export t=$'\t'
 export n=$'\n'
 
-alias nl="tr '\n' '\0'"
+alias nl0="tr '\n' '\0'"
 alias ntl="tr '\n' '\0'"
 alias null-terminated-lines="tr '\n' '\0'"
 
@@ -181,3 +187,25 @@ alias wg=wget
 
 alias ilf=interleave-files
 alias zf=zip-files
+alias zfs=zip-files
+alias zfn="zip-files '\n'"
+
+alias pt="paste -d' ' - -"
+alias zs="paste -d' ' - -"
+alias pts="paste -d' ' - -"
+alias ptn="paste -d'\n' - -"
+
+alias pt3="paste -d' ' - - -"
+alias zs3="paste -d' ' - - -"
+
+alias t=tee
+alias ta="tee -a"
+
+alias eb="echo ''"
+alias ebl="echo ''"
+
+alias cw=count-words
+alias ca=count
+
+alias hsum="from-human-readable | sum | to-human-readable"
+alias hs="from-human-readable | sum | to-human-readable"

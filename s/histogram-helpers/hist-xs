@@ -1,11 +1,53 @@
 #!/usr/bin/python
 
+import argparse
 import fileinput
 import re
+import sys
 
-max_width = 80
-max_count = None
+parser = argparse.ArgumentParser()
+parser.add_argument(
+  "-k",
+  "--key",
+  dest="key",
+  action="store_true",
+  default=False,
+  help="Sort the output by the 'key'."
+)
+parser.add_argument(
+  "-m",
+  "--max-count",
+  dest="max_count",
+  type=int,
+  default=None,
+  help="Override the maximum count from the default (the first line's value)."
+)
 
+parser.add_argument(
+  "-w",
+  "--max-width",
+  dest="max_width",
+  type=int,
+  default=80,
+  help="Override the maximum width."
+)
+
+parser.add_argument(
+  "-r",
+  "--reverse",
+  dest="reverse",
+  action="store_true",
+  default=False,
+  help="Reverse the output"
+)
+
+opts, unparsed = parser.parse_known_args(sys.argv)
+
+max_width = opts.max_width
+max_count = opts.max_count if opts.max_count else None #None if len(sys.argv) == 1 else int(sys.argv[1])
+
+sys.argv = unparsed
+lines = []
 for line in fileinput.input():
   segments = re.split(r'\s', line.strip())
   if len(segments) != 2:
@@ -14,7 +56,22 @@ for line in fileinput.input():
   count, id = (int(segments[0]), segments[1])
   if max_count == None:
     max_count = count
+  elif max_count < count:
+    raise AssertionError("Input should be sorted in decreasing order of values (first column)")
 
-  print '%s:\t%s' % (id, 'X'*(count * max_width / max_count))
+  num_xs = count * max_width / max_count
+  if opts.key or not opts.reverse:
+    lines.append([id, count, num_xs])
+  else:
+    print('%s:\t%d\t%s' % (id, count, 'X'*num_xs))
+
+if opts.key or not opts.reverse:
+  if opts.key:
+    lines = sorted(lines, key=lambda l: l[0], reverse=opts.reverse)
+  elif not opts.reverse:
+    print("reversing")
+    lines.reverse()
+  for line in lines:
+    print('%s:\t%d\t%s' % (line[0], line[1], 'X'*line[2]))
 
 

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ $# -eq 2 ]; then
+  t="$(mktemp)"
+  finish() {
+    rm -f "$t"
+  }
+  trap finish EXIT
+  mv "$1" "$t"
+  mv "$2" "$1"
+  mv "$t" "$2"
+else
+  awk '{ print $2,$1 }' "$@"
+fi

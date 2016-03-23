@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+human_readable=
+while getopts "h" opt; do
+  case $opt in
+    h)
+      human_readable=1
+    ;;
+  esac
+done
+
+shift $((OPTIND-1))
+if [ $# -eq 0 ]; then
+  xargs "$0" -h
+else
+  if [ "$human_readable" ]; then
+    du -b "$@" | first | sum | to-human-readable
+  else
+    du -b "$@" | first | sum
+  fi
+fi

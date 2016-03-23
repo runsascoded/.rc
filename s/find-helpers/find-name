@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-echo "find-name: $@"
 name="$1"
 shift
-find "${@:-.}" -name "*$name*"
+find "${@:-.}" -name "*$name*" | pe 's/^\.\///'
 

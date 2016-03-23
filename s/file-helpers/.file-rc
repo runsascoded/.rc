@@ -36,6 +36,11 @@ alias dn=multi-dirname
 
 alias dush="dus -h"
 alias dsh="dus -h"
+alias db="du -b"
+alias dub="du -b"
+
+alias ts="total-size -h"
+alias tsr=total-size
 
 alias enl=every-nth-line
 alias every-4th-line="every-nth-line 4"
@@ -84,3 +89,7 @@ alias sbd=sort-by-date
 alias dp=dir-perms
 alias dtr=dir-tree
 alias drt=dir-tree
+
+alias es=excise-substring
+alias ks=excise-substring
+alias rms=excise-substring

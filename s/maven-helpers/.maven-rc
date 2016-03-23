@@ -10,6 +10,7 @@ alias mvnct="mvn clean test"
 alias mvndt="mvn dependency:tree"
 alias mvnsc="mvn scala:cc"
 alias mvntc="mvn test-compile"
+alias mvi="mvn install -DskipTests"
 alias mvni="mvn install $nt"
 alias mvnil="mvn install $nt -Plocal"
 alias mvnl=maven-install-local-sha

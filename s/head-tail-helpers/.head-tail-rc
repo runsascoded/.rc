@@ -7,6 +7,14 @@ alias h5="head -n 5"
 alias h6="head -n 6"
 alias hdn="head -n"
 
+alias 1="head -n 1"
+alias 2="head -n 2"
+alias 3="head -n 3"
+alias 4="head -n 4"
+alias 5="head -n 5"
+alias 6="head -n 6"
+
+
 alias t1="tail -n 1"
 alias t2="tail -n 2"
 alias t3="tail -n 3"
@@ -24,3 +32,10 @@ alias tl3="tail -n 3"
 alias tf=tail-f-with-lines
 
 alias cf="tail -n +1 -F"
+
+alias hat=head-and-tail
+alias ht1="head-and-tail 1"
+alias ht2="head-and-tail 2"
+alias ht3="head-and-tail 3"
+alias ht4="head-and-tail 4"
+alias ht5="head-and-tail 5"

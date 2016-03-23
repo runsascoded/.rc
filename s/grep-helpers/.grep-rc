@@ -25,3 +25,6 @@ alias grni="grep -ni"
 
 alias gm1="grep -m 1"
 
+alias gp=grep
+alias ge=grep
+

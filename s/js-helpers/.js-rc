@@ -3,8 +3,6 @@
 # Node
 append_to NODE_PATH .
 
-alias j=js
-
 export jsh="$s/js-helpers"
 
 append_to_path "$HOME/node_modules/.bin"

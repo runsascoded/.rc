@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+DD=False  # DD is "double dash"
+ARGS=()
+i=1
+for ARG in "$@"; do
+  shift
+  echo "Adding: $ARG"
+  #ARGS+=("$ARG")
+  ARGS[$i]="$ARG"
+  let i=$i+1
+done
+
+AS=("${ARGS[@]}")
+
+echo "$(count "$ARGS")" "$(count $ARGS)" "$(count "${ARGS[@]}")" "${#ARGS[@]}"
+for arg in "$ARGS"; do
+  echo "$arg"
+done
+echo ''
+
+echo "$(count "$AS")" "$(count $AS)" "$(count "${AS[@]}")" "${#AS[@]}"
+for arg in "$AS"; do
+  echo "$arg"
+done
+echo ''

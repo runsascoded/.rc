@@ -1,23 +1,32 @@
 #!/usr/bin/env bash
 
 if [ $# -eq 0 ]; then
-  xargs "$0" " "
-  #delim=" "
-	#echo 'Delimiter required'
-	exit $?
+  delim=" "
 elif [ $# -eq 1 ]; then
-	xargs "$0" "$1"
+  delim="$1"
+  shift
+elif [ $# -eq 2 ]; then
+	cat "$2" | "$0" "$1"
 	exit $?
+elif [ $# -gt 2 ]; then
+  echo "Usage: $0 <delim=' '> [filen]" 1>&2
+  exit 1
 fi
 
-joined=
-delim="$1"
-shift
+#joined=
+past_first=
 
-for arg in "$@"; do
-	if [ "$joined" ]; then
-		joined="${joined}${delim}"
+while read -r arg; do
+#for arg in "$@"; do
+	if [ "$past_first" ]; then
+	  echo -n "$delim"
+		#joined="${joined}${delim}"
+	else
+	  past_first=1
 	fi
-	joined="${joined}$arg"
+	echo -n "$arg"
+	#joined="${joined}$arg"
 done
-echo "$joined"
+#echo "$joined"
+echo ''
+

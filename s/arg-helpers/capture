@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 needle="$1"
-group="$2"
+shift
 
-pne "s/.*?${needle}(${group}).*/\1/p"
+group="$1"
+shift
+
+pne "s/.*?${needle}(${group}).*/\1/p" "$@"

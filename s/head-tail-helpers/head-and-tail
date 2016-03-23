@@ -1,17 +1,42 @@
 #!/usr/bin/env bash
 
-#awk_arg=10
-arg=
-if [ $# -eq 1 ]; then
-  if isnum $1; then
-    arg="-n $1"
-    #awk_arg=$1
-    shift
-  fi
+if isnum $1; then
+  num="$1"
+  shift
+else
+  num=10
+fi
+
+hat-file() {
+  head "$1"
+  echo ''
+  tail "$1"
+}
+
+if [ $# -eq 0 ]; then
+  t="$(tmpfile)"
+
+  finish() {
+    if [ -e "$t" ]; then
+      rm -f "$t"
+    fi
+  }
+  trap finish EXIT
+
+  cat - > "$t"
+  hat-file "$t"
+elif [ $# -eq 1 ]; then
+  hat-file "$1"
+else
+  for arg in "$@"; do
+    echo "===== $arg ====="
+    hat-file "$arg"
+    echo ''
+  done
 fi
 
 # awesome: http://stackoverflow.com/questions/8624669/unix-head-and-tail-of-file#comment30444236_8624829
-{ tee >( ( head $arg; echo '' ) >&2; cat >/dev/null ) | tail $arg; } 2>&1
+#{ tee >( ( head $arg; echo '' ) >&2; cat >/dev/null ) | tail $arg; } 2>&1
 
 # also neat: http://stackoverflow.com/a/8624857
 #awk -v offset=$awk_arg '{ if (NR <= offset) print; else { a[NR] = $0; delete a[NR-offset] } } END { for (i=NR-offset+1; i<=NR; i++) print a[i] }' $@

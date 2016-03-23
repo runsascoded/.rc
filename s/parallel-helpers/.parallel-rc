@@ -2,5 +2,6 @@
 alias plp="parallel -k -j+0 --env PATH"
 
 alias p="parallel -k -j+0 --env PATH"
+alias pc="parallel -k -j+0 --env PATH --colsep ' '"
 
 #alias loop="for f in"

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+h mv "$1" "$1.bak"
+h mv "$2" "$1"
+h mv "$1.bak" "$2"

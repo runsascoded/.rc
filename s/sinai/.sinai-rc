@@ -410,3 +410,5 @@ export hdrn="$hdrd/Normal"
 export hdrt="$hdrd/Tumor"
 export hxt="$hdrt/SureSelect_XT"
 export hqxt="$hdrt/SureSelect_QXT"
+
+export ADAM_REPO_URL="$c/adam"

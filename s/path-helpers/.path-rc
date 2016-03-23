@@ -17,7 +17,6 @@ append_to_path "$HOME/local/bin"
 prepend_to_path "$HOME/.local/bin"
 
 prepend_to_path "$s"
-prepend_to_path "$s/case-helpers"
 prepend_to_path "$s/daemon-scripts"
 prepend_to_path "$s/hammerlab"
 prepend_to_path "$s/intellij-helpers"

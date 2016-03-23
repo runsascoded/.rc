@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-paste -d '\n' "$@"
+if [ $# -gt 2 ]; then
+  sep="$1"
+  shift
+else
+  sep=' '
+fi
+paste -d"$sep" "$@"

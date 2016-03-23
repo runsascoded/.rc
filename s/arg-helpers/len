@@ -3,4 +3,4 @@
 import fileinput
 
 for line in fileinput.input():
-  print (len(line)-1)
+  print(len(line) - (1 if line[len(line)-1] == '\n' else 0))

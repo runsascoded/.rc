@@ -106,6 +106,7 @@ source_and_path "$c"/screen-helpers
 source_and_path arg-helpers
 source_and_path audio-helpers
 source_and_path bash-helpers
+source_and_path case-helpers
 source_and_path collectd-helpers
 source_and_path color-helpers
 source_and_path comm-helpers

@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 
 reverse=
-while [[ $# > 1 ]]; do
-  arg="$1"
-  shift
-
-  case "$arg" in
-    -r)
-    reverse="-r"
+num=
+second=1
+while getopts "rsn" opt; do
+  case $opt in
+    r)
+      reverse="-r"
     ;;
-    *)
-      break
+    s)
+      # sort output by second column
+      second=2
+    ;;
+    n)
+      second=2
+      num="-n"
     ;;
   esac
 done
 
-sort | uniq -c | sort $reverse -nk 1 "$@"
+shift $((OPTIND-1))
+sort | uniq -c | sort $reverse $num -k $second "$@"
