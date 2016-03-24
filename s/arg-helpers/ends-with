@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
-#grep "${@:(($#-1))}\$" "${@:1: (($#-1))}"
 arg="$1"
 shift
-grep "$arg\$" "$@"
+
+v_arg=
+if [ "$arg" == "-v" ]; then
+  v_arg="-v"
+  arg="$1"
+  shift
+fi
+
+grep $v_arg "$arg\$" "$@"
 

@@ -29,3 +29,8 @@ alias lcy=less-cycle
 alias lft=ls-full-t
 alias lftt=ls-full-t-last-n
 
+alias l20="lt 20"
+alias l30="lt 30"
+alias l40="lt 40"
+alias l50="lt 50"
+alias l100="lt 100"

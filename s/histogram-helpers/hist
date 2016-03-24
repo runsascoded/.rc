@@ -2,7 +2,7 @@
 
 reverse=
 num=
-second=1
+sort_col=1
 while getopts "rsn" opt; do
   case $opt in
     r)
@@ -10,14 +10,17 @@ while getopts "rsn" opt; do
     ;;
     s)
       # sort output by second column
-      second=2
+      sort_col=2
     ;;
     n)
-      second=2
+      sort_col=2
       num="-n"
     ;;
   esac
 done
 
+if [ $sort_col -eq 1 ]; then
+ num="-n"
+fi
 shift $((OPTIND-1))
-sort | uniq -c | sort $reverse $num -k $second "$@"
+sort | uniq -c | sort $reverse $num -k $sort_col "$@"
