@@ -1,11 +1,15 @@
 
-alias h1="head -n 1"
-alias h2="head -n 2"
-alias h3="head -n 3"
-alias h4="head -n 4"
-alias h5="head -n 5"
-alias h6="head -n 6"
-alias hdn="head -n"
+defn h1 "head -n 1"
+defn h2 "head -n 2"
+defn h3 "head -n 3"
+defn h4 "head -n 4"
+defn h5 "head -n 5"
+defn h6 "head -n 6"
+defn h10 head
+defn h20 "head -n 20"
+defn h50 "head -n 50"
+defn h100 "head -n 100"
+defn hdn "head -n"
 
 alias 1="head -n 1"
 alias 2="head -n 2"
@@ -13,29 +17,36 @@ alias 3="head -n 3"
 alias 4="head -n 4"
 alias 5="head -n 5"
 alias 6="head -n 6"
+alias 10=head
+alias 20="head -n 20"
+alias 50="head -n 50"
+alias 100="head -n 100"
 
+defn t1 "tail -n 1"
+defn t2 "tail -n 2"
+defn t3 "tail -n 3"
+defn t4 "tail -n 4"
+defn t5 "tail -n 5"
+defn t6 "tail -n 6"
+defn t10 tail
+defn t20 "tail -n 20"
+defn t50 "tail -n 50"
+defn t100 "tail -n 100"
+defn tn "tail -n"
 
-alias t1="tail -n 1"
-alias t2="tail -n 2"
-alias t3="tail -n 3"
-alias t4="tail -n 4"
-alias t5="tail -n 5"
-alias t6="tail -n 6"
-alias tn="tail -n"
+defn hd head
+defn tl tail
+defn tl1 "tail -n 1"
+defn tl2 "tail -n 2"
+defn tl3 "tail -n 3"
 
-alias hd=head
-alias tl=tail
-alias tl1="tail -n 1"
-alias tl2="tail -n 2"
-alias tl3="tail -n 3"
+defn tf tail-f-with-lines
 
-alias tf=tail-f-with-lines
+defn cf "tail -n +1 -F"
 
-alias cf="tail -n +1 -F"
-
-alias hat=head-and-tail
-alias ht1="head-and-tail 1"
-alias ht2="head-and-tail 2"
-alias ht3="head-and-tail 3"
-alias ht4="head-and-tail 4"
-alias ht5="head-and-tail 5"
+defn hat head-and-tail
+defn ht1 "head-and-tail 1"
+defn ht2 "head-and-tail 2"
+defn ht3 "head-and-tail 3"
+defn ht4 "head-and-tail 4"
+defn ht5 "head-and-tail 5"

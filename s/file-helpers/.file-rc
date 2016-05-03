@@ -22,74 +22,69 @@ else
   export gtail=tail
 fi
 
-alias sl=slice-lines
+defn sl slice-lines
 
-alias dbl=drop-blank-lines
-alias strip-blank-lines=drop-blank-lines
-alias sbl=drop-blank-lines
-alias kbl=drop-blank-lines
-alias kel=drop-blank-lines
-alias del=drop-blank-lines
-alias sel=drop-blank-lines
+defn dll drop-last-lines
+defn kll drop-last-lines
 
-alias dn=multi-dirname
+defn dn multi-dirname
 
-alias dush="dus -h"
-alias dsh="dus -h"
-alias db="du -b"
-alias dub="du -b"
+defn dush dus -h
+defn dsh dus -h
+defn db du -b
+defn dub du -b
 
-alias ts="total-size -h"
-alias tsr=total-size
+defn ts total-size -h
+defn tsr total-size
 
-alias enl=every-nth-line
-alias every-4th-line="every-nth-line 4"
-alias e4l="every-nth-line 4"
+defn enl every-nth-line
+defn e4l every-nth-line 4
 
-alias n="wc -l"
-alias N="wc -l"
-alias wcl="wc -l"
-alias wl="wc -l"
-alias n1=count-lines
-alias wcc="wc -c"
+defn n wc -l
+defn N wc -l
+defn wcl wc -l
+defn wl wc -l
+defn n1 count-lines
+defn wcc wc -c
 
-alias lsgl=ls-grep-link-dest
+defn lsgl ls-grep-link-dest
 
-alias chmd=make-executable
-alias me=make-executable
-alias cmd=make-executable
+defn chmd make-executable
+defn me make-executable
+defn cmd make-executable
 
-alias ordx="ord -x"
-alias ox="ord -x"
+defn ordx ord -x
+defn ox ord -x
 
-alias cr=chr
-alias cx="chr -x"
+defn cr chr
+defn cx chr -x
 
-alias tk=take
-alias tkr=take-right
+defn tk take
+defn tkr take-right
 
-alias dls=drop-lines
-alias d1l="tail -n +2"
-alias dl1="tail -n +2"
-alias d1="tail -n +2"
-alias d2="tail -n +3"
+defn dls drop-lines
+defn d1l tail -n +2
+defn dl1 tail -n +2
+defn dl2 tail -n +3
+defn d1 tail -n +2
+defn d2 tail -n +3
 
-alias tls=take-lines
-alias tkl=take-lines
-alias t1l="head -n 1"
-alias t1l="head -n 1"
+defn tls take-lines
+defn tkl take-lines
+defn t1l head -n 1
+defn t1l head -n 1
 
-alias clr=clear-file
-alias cl=clear-file
+defn clr clear-file
+defn cl clear-file
 
-alias pdn=pwd-dirname
-alias pbn=pwd-basename
+defn pdn pwd-dirname
+defn pbn pwd-basename
 
-alias sbd=sort-by-date
-alias dp=dir-perms
-alias dtr=dir-tree
-alias drt=dir-tree
+defn sbd sort-by-date
+defn dp dir-perms
+defn dtr dir-tree
+defn drt dir-tree
 
-alias es=excise-substring
-alias ks=excise-substring
-alias rms=excise-substring
+defn es excise-substring
+defn ks excise-substring
+defn rms excise-substring

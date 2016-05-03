@@ -1,70 +1,70 @@
 
-alias hrm="h rm"
-alias hrmr="h rm -r"
-alias hmd="h mkdir"
-alias hmdp="h mkdir -p"
+defn hrm h rm
+defn hrmr h rm -r
+defn hmd h mkdir
+defn hmdp h mkdir -p
 
-alias hless=hadoop-less
-alias hle=hadoop-less
+defn hless hadoop-less
+defn hle hadoop-less
 
-alias hc=hadoop-cat
+defn hc hadoop-cat
 
-alias hbak=hadoop-bak
+defn hbak hadoop-bak
 
-alias hcpl=hadoop-copyToLocal
+defn hcpl hadoop-copyToLocal
 
-alias hdu=hadoop-du
-alias hdush=hadoop-du-s-h
+defn hdu hadoop-du
+defn hdush hadoop-du-s-h
 
-alias hcount="$ints/scripts/hadoop-utils/hcount"
+defn hcount $ints/scripts/hadoop-utils/hcount
 
-alias hdt=hdfs-friendly-datetime
+defn hdt hdfs-friendly-datetime
 
-alias hhead=hadoop-head
-alias hhd=hadoop-head
+defn hhead hadoop-head
+defn hhd hadoop-head
 
-alias htail=hadoop-tail
-alias htl=hadoop-tail
+defn htail hadoop-tail
+defn htl hadoop-tail
 
-alias ud=unwrap-dir
-alias hud="$ints"/scripts/hadoop-utils/hadoop-unwrap-dir
+defn ud unwrap-dir
+defn hud $ints"/scripts/hadoop-utils/hadoop-unwrap-dir
 
-alias hlc="$ints/scripts/hadoop-utils/hadoop-ls-C"
-alias hlsc="$ints/scripts/hadoop-utils/hadoop-ls-C"
-alias hlcd="$ints/scripts/hadoop-utils/hadoop-ls-C -d"
+defn hlc $ints/scripts/hadoop-utils/hadoop-ls-C"
+defn hlsc $ints/scripts/hadoop-utils/hadoop-ls-C"
+defn hlcd $ints/scripts/hadoop-utils/hadoop-ls-C -d"
 
-alias hunbak=haddop-unbak
+defn hunbak haddop-unbak
 
-alias hls=hadoop-ls
+defn hls hadoop-ls
 
-alias hlsh=hadoop-ls
-alias hlh=hadoop-ls
+defn hlsh hadoop-ls
+defn hlh hadoop-ls
 
-alias hld="hadoop-ls -d"
-alias hlhd="hadoop-ls -d"
+defn hld hadoop-ls -d
+defn hlhd hadoop-ls -d
 
-alias hl="hadoop-ls"
+defn hl hadoop-ls
 
-alias heae=hadoop-exists-and-empty
-alias he=hadoop-exists
+defn heae hadoop-exists-and-empty
+defn he hadoop-exists
 
 if ! which hadoop &> /dev/null; then
   prepend_to_path "$HOME/hadoop-2.6.0/bin"
 fi
 
-alias fhd=format-hadoop-du
+defn fhd format-hadoop-du
 
-alias hfp=hadoop-fullpath
-alias hrl=hadoop-fullpath
+defn hfp hadoop-fullpath
+defn hrl hadoop-fullpath
 
-alias hdp=hadoop-dir-perms
-alias hdt=hadoop-dir-perms
-alias hlf=hadoop-dir-perms
+defn hdp hadoop-dir-perms
+defn hdt hadoop-dir-perms
+defn hlf hadoop-dir-perms
 
-alias hcn=hadoop-n
+defn hcn hadoop-n
 
-alias hll=hadoop-ls-less
-alias hln=hadoop-ls-n
-alias hlr=hadoop-ls-r
+defn hll hadoop-ls-less
+defn hln hadoop-ls-n
+defn hlr hadoop-ls-r
 
-alias hsw=hadoop-swap
+defn hsw hadoop-swap

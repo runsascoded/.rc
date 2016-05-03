@@ -8,13 +8,15 @@ else
 fi
 
 hat-file() {
-  head "$1"
-  echo ''
-  tail "$1"
+  head -n$num "$1"
+  if [ $num -gt 1 ]; then
+    echo ''
+  fi
+  tail -n$num "$1"
 }
 
 if [ $# -eq 0 ]; then
-  t="$(tmpfile)"
+  t="$(mktemp)"
 
   finish() {
     if [ -e "$t" ]; then
