@@ -9,6 +9,8 @@ alias mka=mk-alias
 
 # Sourcing
 alias resource="unalias resource; source ~/.bashrc"
+
 alias rsrc="source ~/.bashrc"
 alias src="source ~/.bashrc"
 alias rs="source ~/.bashrc"
+alias rsrs="source ~/.bashrc"

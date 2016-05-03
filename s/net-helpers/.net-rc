@@ -1,21 +1,19 @@
 
 export nh="$s/net-helpers"
 
-alias lsp="ps-port"
-alias lp="ps-port"
-alias psp="ps-port"
-alias chp="ncz"
-alias check-port="ncz"
+alias lsp=ps-port
+alias lp=ps-port
+alias psp=ps-port
+alias chp=ncz
+alias check-port=ncz
 
 alias my-ip="curl ifconfig\.me/ip"
 
 alias psc=ps-cmd
 alias pgc="ping google.com"
 
-alias pg="ps aux | grep"
-alias pgi="ps aux | grep -i"
+alias psg="ps aux | grep"
+alias psgi="ps aux | grep -i"
 
 alias tp="htop --sort-key cpu"
 export UNAME="$(uname)"
-
-alias jsh="jekyll serve -H 0.0.0.0"

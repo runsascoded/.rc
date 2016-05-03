@@ -2,16 +2,14 @@
 
 # Grep options
 export USE_LIBPCRE=yes
-alias grp="ggrep"
 
 export GREP_OPTIONS="--color=auto"
 
-alias pcg=pcregrep
-alias pgrp=pcregrep
-
-alias po="pcregrep -o"
+alias pg=pcregrep
+alias pgi="pcregrep -i"
+defn po pcregrep -o
 alias pgo="pcregrep -o"
-alias pcgo="pcregrep -o"
+alias por="pcregrep -or"
 
 alias gv="grep -v"
 alias v="grep -v"
@@ -23,8 +21,34 @@ alias gro="grep -o"
 alias grn="grep -n"
 alias grni="grep -ni"
 
-alias gm1="grep -m 1"
+alias gm1="grep -m1"
+alias g1="grep -m1"
+alias gr1="grep -rm1"
+alias grl="grep -rl"
 
-alias gp=grep
-alias ge=grep
+alias r=grep
+alias ro="grep -o"
+alias rr="grep -r"
+alias rro="grep -ro"
+alias rc="grep -c"
+alias rrc="grep-rc"
+alias rn="grep -n"
+alias rrn="grep -rn"
+alias rv="grep -v"
+alias ri="grep -i"
+alias rni="grep -ni"
+
+alias r1="grep -m1"
+alias r2="grep -m2"
+alias r3="grep -m3"
+alias r4="grep -m4"
+alias r5="grep -m5"
+alias r10="grep -m10"
+
+alias ro1="grep -om1"
+alias ro2="grep -om2"
+alias ro3="grep -om3"
+alias ro4="grep -om4"
+alias ro5="grep -om5"
+alias ro10="grep -om10"
 

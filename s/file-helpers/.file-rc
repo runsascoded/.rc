@@ -1,9 +1,9 @@
 
 export fh="$(dirname "${BASH_SOURCE[0]}")"
 
-alias rrl="recursive-readlink"
+defn rrl recursive-readlink
 
-alias rl="readlink -m"
+defn rl readlink -m
 
 if [ ! -e "$fh/readlink" ]; then
   full_cmd="$(which "$cmd")"

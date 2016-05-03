@@ -3,14 +3,17 @@
 if [ $# -eq 0 ]; then
 	echo 'Delimiter required'
 	exit 1
-elif [ $# -eq 1 ]; then
-	xargs "$0" "$1"
-	exit 0
 fi
 
 delim="$1"
 shift
-haystack="$@"
-echo "$haystack" | tr "$delim" '\n'
 
-
+if [ ${#delim} -eq 1 ]; then
+  if [ $# -gt 0 ]; then
+    cat "$@" | tr "$delim" '\n'
+  else
+    tr "$delim" '\n'
+  fi
+else
+  pe "s/$delim/\n/gs" "$@"
+fi
