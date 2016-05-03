@@ -78,6 +78,7 @@ source_and_path() {
     done
 }
 
+
 try_source ".vars-rc"
 
 source_and_path which-helpers
@@ -142,7 +143,6 @@ source_and_path travis-helpers
 source_and_path watchman-helpers
 source_and_path zinc-helpers
 source_and_path zip-helpers
-
 
 try_source "$s/git-configs/.git-rc"
 export gh="$c/git-helpers"
