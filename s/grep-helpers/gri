@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-grep -iIr $1 $2 | grep -v '~'

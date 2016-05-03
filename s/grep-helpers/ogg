@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-grp=grep
-if command -v ggrep &> /dev/null; then
-  grp=ggrep
-fi
-
-$grp --color=never -o "$@"
