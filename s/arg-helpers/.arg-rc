@@ -13,6 +13,9 @@ alias j=joyn
 alias jn="joyn $'\n'"
 alias j:="joyn :"
 alias j,="joyn ,"
+alias j,s="joyn ', '"
+alias j,n="joyn ','$'\n'"
+alias js,="joyn ', '"
 alias jns="joyn ' '"
 alias jnb="joyn ''"
 alias jb="joyn ''"
@@ -23,6 +26,10 @@ alias ws=collapse-whitespace
 
 alias spc="splt ' '"
 alias sp:="splt :"
+alias s:="splt :"
+alias sp,="splt ,"
+alias s,="splt ,"
+alias tk,="splt , | trim | kbl"
 
 alias dr=drop-regex
 alias drr=drop-right-regex
@@ -87,11 +94,16 @@ alias jnl=join-n-lines
 
 alias tat=two-at-a-time-tabs
 alias taat=two-at-a-time-tabs
+
+alias tts=two-at-a-time-spaces
 alias taats=two-at-a-time-spaces
 
 alias md="mkdir -p"
 alias mkd="mkdir -p"
 alias mdp="mkdir -p"
+alias mp="mkdir -p"
+
+alias mpd=mkdir-p-dirname
 
 alias mdc=mkdir-p-cd
 
@@ -131,6 +143,10 @@ alias tpr="tree -R -pugsh --filelimit 50"
 
 alias pbp=pbpaste
 alias pbc=pbcopy
+alias pbL="pbpaste | less"
+alias cy=pbcopy
+alias copy=pbcopy
+
 alias pbpn="pbpaste | wc -l"
 alias pn="pbpaste | wc -l"
 alias pbpl="pbpaste | len"
@@ -209,3 +225,18 @@ alias ca=count
 
 alias hsum="from-human-readable | sum | to-human-readable"
 alias hs="from-human-readable | sum | to-human-readable"
+
+1c() {
+  first "$@"
+}
+
+defn dbl kill-blank-lines
+defn sbl kill-blank-lines
+defn kbl kill-blank-lines
+defn kel kill-blank-lines
+defn del kill-blank-lines
+defn sel kill-blank-lines
+
+defn kl kill-lines
+
+defn cls count-leading-spaces
