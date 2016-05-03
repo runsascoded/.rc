@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ "$1" == '-u' ]; then
+  shift
+  git ls-files "$@" | xargs file | grep text | first -i: | xargs pie 's/⇒/=>/g;s/→/->/g;s/←/<-/g'
+else
+  git ls-files "$@" | xargs file | grep text | first -i: | xargs pie 's/=>/⇒/g;s/->/→/g;s/<-/←/g'
+fi

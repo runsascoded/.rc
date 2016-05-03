@@ -20,6 +20,7 @@ append_to_path "$HOME/macports/bin"
 alias ydl="youtube-dl"
 
 export music="$HOME/Music"
+export m="$music"
 export mu="$music"
 export im="$music/iTunes/iTunes Media"
 export imu="$im/Music"
@@ -33,4 +34,5 @@ append_to_path "$HOME/Library/Android/sdk/platform-tools"
 
 export dl="$HOME/Downloads"
 export DL="$dl"
+export d="$dl"
 

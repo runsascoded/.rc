@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+first="$1"
+shift
+grep -rc "$first" "${@:-.}" | grep -v ':0$'

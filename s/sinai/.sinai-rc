@@ -25,7 +25,7 @@ export ints="$c/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
 export YARN_HELPERS_DROP_HOST_SUFFIX_FROM=".demeter.hpc.mssm.edu_"
-export YARN_HELPERS_DRIVER_GREP_NEEDLE="Guacamole starting."
+export YARN_LOGS_USER=hdfs
 export ylh="$c/yarn-logs-helpers"
 export yarn_aliases_dir="$s"/yarn
 try_source "$ylh/.yarn-logs-helpers.sourceme"
@@ -33,7 +33,6 @@ try_source "$ylh/.yarn-logs-helpers.sourceme"
 try_source "$ints/environment/paths.sourceme"
 
 export its="$ints/scripts"
-alias mvnt="mvn-test"
 
 # Sinai Hadoop/Demeter paths
 export huser="willir31"
@@ -90,6 +89,7 @@ export hsyn4="$dream/synthetic-challenge-4"
 if [[ `uname -a` =~ ^Darwin ]]; then
   export sparklogs="$HOME/sparklogs"
   export sl="$sparklogs"
+  export SPARK_LOG_DIR="$sl"
 else
   #export sl="/spark/tmp/logs"
   export sl="/user/spark/applicationHistory"
@@ -103,9 +103,8 @@ export em="--executor-memory"
 export ec="--executor-cores"
 export ne="--num-executors"
 export dm="--driver-memory"
-export mf="--conf spark.storage.memoryFraction"
-export dp="--conf spark.storage.memoryFraction"
-export smf="--conf spark.shuffle.memoryFraction"
+export mf="--conf spark.memory.fraction"
+export smf="--conf spark.memory.storageFraction"
 export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$sparklogs"
 export mo="--conf spark.yarn.executor.memoryOverhead"
 export pll="--conf spark.default.parallelism"
@@ -209,13 +208,14 @@ debug ".sinai-rc" done
 
 export DEMETER_PORT=6000
 export MINERVA_PORT=6001
+export DEMETER2_PORT=6002
 
 alias sd=". ssh-demeter"
 alias sD="ssh -D $DEMETER_PORT demeter"
 alias sd1="ssh demeter1"
 alias sD1="ssh -D $DEMETER_PORT demeter1"
 alias sd2="ssh demeter2"
-alias sD2="ssh -D $DEMETER_PORT demeter2"
+alias sD2="ssh -D $DEMETER2_PORT demeter2"
 alias sd3="ssh dev3"
 alias sM="ssh -D $MINERVA_PORT minerva"
 alias sm="ssh minerva"
@@ -232,8 +232,6 @@ alias gcdm="gcd minerva"
 
 export r1="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L1/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L1.PT189_Right_Ovary_L1.clean.dedup.recal.bam"
 export r2="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L2/Processed/NGS.2_7_2b.WES/results/PT189_Right_Ovary_L2.PT189_Right_Ovary_L2.clean.dedup.recal.bam"
-
-export adam_shell_args="--master yarn --deploy-mode client $ne 10 $ec 4 $em 10g $dm 10g $mf=0.05 --conf spark.shuffle.memoryFraction=0.4 --conf spark.akka.timeout=100000 --conf spark.shuffle.service.enabled=true --conf spark.shuffle.manager=SORT $mo=1024 --conf spark.file.transferTo=false"
 
 export d1="demeter-login1.hpc.mssm.edu"
 export d2="demeter-login2.hpc.mssm.edu"
@@ -349,9 +347,6 @@ export t100k="$d100k/tumor.bam"
 
 export pdr="/hpc/users/rubina07/pgv-dry-run"
 
-export b=pt189/PT189_11_13_RNA.accepted_hits.sort.coord.bam.backups
-export b3="$b/30844797232"
-
 alias ekht=executor-killed-host-and-time
 
 if [ -d "$gd" ]; then
@@ -412,3 +407,12 @@ export hxt="$hdrt/SureSelect_XT"
 export hqxt="$hdrt/SureSelect_QXT"
 
 export ADAM_REPO_URL="$c/adam"
+
+export ohg="org/hammerlab/guacamole"
+export sohg="$sms/$ohg"
+export tohg="$smt/$ohg"
+
+export ohp="org/hammerlab/pageant"
+
+export PICARD_JAR=$c/picard-tools-2.2.4/picard.jar
+export GATK_JAR=$c/GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar

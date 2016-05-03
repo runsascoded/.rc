@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+functions="$1"
+shift
+parallel -k -j+0 --env PATH,"$functions" "$@"

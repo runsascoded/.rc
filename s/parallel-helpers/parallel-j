@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+j="$1"
+shift
+parallel -k -j"$j" --env PATH "$@"

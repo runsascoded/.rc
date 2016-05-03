@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
-export_assign() {
+alias ef="export -f"
+
+define-function() {
+  name="$1"
+  shift
+  eval "$name() { $@ \"\$@\"; }"
+  export -f "$name"
+}
+alias defn=define-function
+
+export-assign() {
   key="$1"
   val="$2"
   eval "export $key=$val"
 }
+alias ea=export-assign
 
 append_to() {
   var="$1"
@@ -19,7 +30,7 @@ append_to() {
         new_val="$cur_val:$arg"
       fi
 
-      export_assign "$var" "$new_val"
+      export-assign "$var" "$new_val"
 
     else
       debug "Not appending '$arg' to '\$$var'; '$arg' not a directory"
@@ -40,7 +51,7 @@ prepend_to() {
         new_val="$arg:$cur_val"
       fi
 
-      export_assign "$var" "$new_val"
+      export-assign "$var" "$new_val"
     else
       debug "Not prepending '$arg' to '\$$var'; '$arg' not a directory"
     fi
@@ -59,7 +70,7 @@ remove_from_var() {
   var="$1"
   shift
   for arg in "$@"; do
-    export_assign "$var" "$(echo "$(eval "echo \$$var")" | splt : | grep -v "$arg" | joyn :)"
+    export-assign "$var" "$(echo "$(eval "echo \$$var")" | splt : | grep -v "$arg" | joyn :)"
   done
 }
 
@@ -72,7 +83,7 @@ remove_from() {
 
   echo "Removing from \$$var:"
   comm -23 <(echo "$cur_val" | splt : | sort) <(echo "$new_val" | sort) | indent
-  export_assign "$var" "$(echo "$new_val" | joyn :)"
+  export-assign "$var" "$(echo "$new_val" | joyn :)"
 }
 
 remove_from_path() {
@@ -97,7 +108,7 @@ dedupe_path_var() {
       debug "Before \$$var: $var_contents"
       val="$(echo $path_segments | dedupe | joyn :)"
       if [ "$val" ]; then
-        export_assign "$var" "$val"
+        export-assign "$var" "$val"
       fi
       debug "After \$$var: $(eval "echo \"\$$var\"")"
     fi
