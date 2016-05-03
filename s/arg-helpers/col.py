@@ -75,36 +75,32 @@ def parse_col(arg):
 cols = [parse_col(c) for c in unknown[0].split(',')]
 sys.argv = unknown[0:]
 
-try:
-    for line in fileinput.input():
-        l = re.split('(%s)' % args.input_delimiter, line.strip())
+from signal import signal, SIGPIPE, SIG_DFL
+signal(SIGPIPE, SIG_DFL)
 
-        offset = 0
+for line in fileinput.input():
+    l = re.split('(%s)' % args.input_delimiter, line.strip())
 
-        # print "line: %s, cols: %s" % (l, cols)
+    offset = 0
 
-        first = True
-        for col in cols:
+    first = True
+    for col in cols:
 
-            if args.keep_original_range_spacing:
-                slice = l[
-                        (None if col[0] == None else col[0] + offset):(None if col[1] == None else col[1] + offset)
-                ]
-                joiner = ''
-            else:
-                slice = l[
-                        (None if col[0] == None else col[0]):(None if col[1] == None else col[1]):2
-                ]
-                joiner = output_delimiter
+        if args.keep_original_range_spacing:
+            slice = l[
+                    (None if col[0] == None else col[0] + offset):(None if col[1] == None else col[1] + offset)
+            ]
+            joiner = ''
+        else:
+            slice = l[
+                    (None if col[0] == None else col[0]):(None if col[1] == None else col[1]):2
+            ]
+            joiner = output_delimiter
 
-            # print slice
+        if not first:
+            sys.stdout.write(output_delimiter)
 
-            if not first:
-                sys.stdout.write(output_delimiter)
+        first = False
 
-            first = False
-
-            sys.stdout.write(joiner.join(slice).strip())
-        print('')
-except IOError:
-    pass
+        sys.stdout.write(joiner.join(slice).strip())
+    print('')
