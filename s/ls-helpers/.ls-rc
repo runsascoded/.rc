@@ -3,34 +3,75 @@
 LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
 
-alias lu=last-updated
-alias lru=last-updated
-alias lud=last-updated-dir
+defn lu last-updated
+defn lru last-updated
+defn lud last-updated-dir
 
-alias lul=last-updated-less
-alias lrul=last-updated-less
+defn lul last-updated-less
+defn lrul last-updated-less
 
-alias cdlu=". cd-last-updated"
-alias cdl=". cd-last-updated"
+defn cdlu . cd-last-updated
+defn cdl . cd-last-updated
 
-alias tlu="tail-f-last-updated"
-alias tflu="tail-f-last-updated"
+defn tlu tail-f-last-updated
+defn tflu tail-f-last-updated
 
-alias psl=parse-symlinks
-alias lls=ls-links
+defn psl parse-symlinks
+defn lls ls-links
 
-alias lrl=l-readlink
-alias rll=l-readlink
-alias lrld="l-readlink -d"
-alias lrd="l-readlink -d"
+defn l ls -lthrA --color=auto
 
-alias lcy=less-cycle
+defn ls-readlink l -L
 
-alias lft=ls-full-t
-alias lftt=ls-full-t-last-n
+defn la l -a
+defn lad l -ad
+defn lads l -adS
+defn ladt l -adt
+defn lat l -at
+defn lc l --color=never
 
-alias l20="lt 20"
-alias l30="lt 30"
-alias l40="lt 40"
-alias l50="lt 50"
-alias l100="lt 100"
+defn ldh l -dh
+defn lhd l -hd
+
+defn lhs l -hS
+
+defn lh l -hSr
+defn lhsr l -hSr
+
+defn lht ls-h-tail
+
+defn lhtr l -htr
+
+defn lr l -r
+
+if alias ll &> /dev/null; then
+  unalias ll
+fi
+defn ll ls -lhA --color=auto
+defn lld l -d
+
+defn lltt ls-l-tail
+
+defn s l -S
+defn lts l -tS
+defn ltr l -tr
+defn lth l -htr
+defn lt ls-tail
+defn lst ls-S-tail
+
+defn lrl ls-readlink
+defn rll ls-readlink
+defn lrld ls-readlink -d
+defn lrd ls-readlink -d
+
+defn lcy less-cycle
+
+defn lft ls-full-t
+defn lftt ls-full-t-last-n
+
+defn l20 lt 20
+defn l30 lt 30
+defn l40 lt 40
+defn l50 lt 50
+defn l100 lt 100
+

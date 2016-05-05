@@ -7,9 +7,4 @@ else
    shift
 fi
 
-path="$1"
-if [ -z "$path" ]; then
-   path=.
-fi
-
-l "$path" | tail -n $count
+l "$@" | tail -n $count

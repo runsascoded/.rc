@@ -28,6 +28,12 @@ defn dll drop-last-lines
 defn kll drop-last-lines
 
 defn dn multi-dirname
+ldn() {
+  l "$(dn "$@")"
+}
+cdn() {
+  cd "$(dn "$@")"
+}
 
 defn dush dus -h
 defn dsh dus -h
