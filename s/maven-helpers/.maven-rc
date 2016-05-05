@@ -20,6 +20,9 @@ alias mvnct="mvn clean test"
 alias mvndt="mvn dependency:tree"
 alias mvdt="mvn dependency:tree"
 alias mdt="mvn dependency:tree"
+alias mdtl="mvn dependency:tree | less"
+alias mdtv="mvn dependency:tree -Dverbose"
+alias mdtvl="mvn dependency:tree -Dverbose | less"
 
 alias mvnsc="mvn scala:cc"
 
