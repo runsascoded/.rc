@@ -60,16 +60,16 @@ set-python() {
   fi
 }
 
-alias sp=set-python
-alias pci="python-check-import"
-alias ppp="print-python-path"
-alias pmp="python-module-path"
+defn sp set-python
+defn pci python-check-import
+defn ppp print-python-path
+defn pmp python-module-path
 
-alias pii="pip install"
-alias pis="pip search"
-alias py=python-eval
+defn pii pip install
+defn pis pip search
+defn py python-eval
 
-alias pyv="python --version"
+defn pyv python --version
 
 append_to_path "$HOME/Library/Python/2.7/bin"
 
