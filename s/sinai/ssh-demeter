@@ -3,10 +3,17 @@
 if [ $# -gt 0 ]; then
   arg="$1"
   shift
-  if [[ "$arg" =~ ^[0-9\-]*$ ]]; then
+  if [ "$arg" == "mgmt" -o "$arg" == "mgmt1" ]; then
+    arg="mgmt1"
+  elif [[ "$arg" =~ ^[0-9\-]*$ ]]; then
     arg=u"$arg"
   fi
-  ssh demeter-csma"$arg" "$@"
+
+  if [[ "$arg" =~ ^[uz][0-9\-]*$ ]]; then
+    arg="csma$arg"
+  fi
+
+  ssh demeter-"$arg" "$@"
 else
   ssh demeter
 fi

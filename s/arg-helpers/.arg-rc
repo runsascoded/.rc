@@ -228,3 +228,5 @@ defn sel kill-blank-lines
 defn kl kill-lines
 
 defn cls count-leading-spaces
+
+defn una uname -a

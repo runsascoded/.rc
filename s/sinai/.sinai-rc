@@ -18,9 +18,6 @@ export chr20="$data/training/chr20"
 export set3="$data/set3"
 export set4="$data/set4"
 
-export guac="$c/guacamole"
-export GUAC="$guac"
-
 export ints="$c/internal-tools"
 export INTERNAL_TOOLS="$ints"
 
@@ -275,21 +272,29 @@ if [ -f "$SINAI_HADOOP_HOSTS_FILE" ]; then
   export hhs="$(cat "$SINAI_HADOOP_HOSTS_FILE")"
 fi
 
-asu() {
+adam-submit() {
   "$ADAM_HOME"/bin/adam-submit "$@"
 }
 
-ash() {
+defn asu adam-submit
+
+adam-shell() {
   "$ADAM_HOME"/bin/adam-shell "$@"
 }
 
-spsu() {
+defn ash adam-shell
+
+spark-submit() {
   "$SPARK_HOME"/bin/spark-submit "$@"
 }
 
-spsh() {
+defn spsu spark-submit
+
+spark-shell() {
   "$SPARK_HOME"/bin/spark-shell "$@"
 }
+
+defn spsh spark-shell
 
 esh() {
   echo "$SPARK_HOME"
@@ -409,6 +414,7 @@ export hqxt="$hdrt/SureSelect_QXT"
 export ADAM_REPO_URL="$c/adam"
 
 export ohg="org/hammerlab/guacamole"
+export ohgd="org.hammerlab.guacamole"
 export sohg="$sms/$ohg"
 export tohg="$smt/$ohg"
 
@@ -416,3 +422,25 @@ export ohp="org/hammerlab/pageant"
 
 export PICARD_JAR=$c/picard-tools-2.2.4/picard.jar
 export GATK_JAR=$c/GenomeAnalysisTK-3.5/GenomeAnalysisTK.jar
+
+export kryo="--conf spark.serializer=org.apache.spark.serializer.KryoSerializer"
+export kryor="--conf spark.serializer=org.apache.spark.serializer.KryoSerializer --conf spark.kryo.registrator"
+export kryorq="--conf spark.serializer=org.apache.spark.serializer.KryoSerializer --conf spark.kryo.registrationRequired=true --conf spark.kryo.registrator"
+export reg="--conf spark.kryo.registrator"
+
+export cluster="--deploy-mode cluster"
+export client="--deploy-mode client"
+
+export noretry="--conf spark.yarn.maxAppAttempts=1"
+
+export guava="$M/com/google/guava/guava"
+export guava11="$guava/11.0.2/guava-11.0.2.jar"
+export guava1102="$guava/11.0.2/guava-11.0.2.jar"
+export guava14="$guava/14.0.1/guava-14.0.1.jar"
+export guava1401="$guava/14.0.1/guava-14.0.1.jar"
+export guava16="$guava/16.0.1/guava-16.0.1.jar"
+export guava1601="$guava/16.0.1/guava-16.0.1.jar"
+export guava18="$guava/18.0/guava-18.0.jar"
+
+export guac="$M/org/hammerlab/guacamole/guacamole/0.0.1-SNAPSHOT/guacamole-0.0.1-SNAPSHOT.jar"
+export guacs="$M/org/hammerlab/guacamole/guacamole/0.0.1-shaded/guacamole-0.0.1-shaded.jar"
