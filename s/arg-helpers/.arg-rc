@@ -141,18 +141,6 @@ alias tp4="tree -L 4 -pugsh --filelimit 50"
 alias tp5="tree -L 5 -pugsh --filelimit 50"
 alias tpr="tree -R -pugsh --filelimit 50"
 
-alias pbp=pbpaste
-alias pbc=pbcopy
-alias pbL="pbpaste | less"
-alias cy=pbcopy
-alias copy=pbcopy
-
-alias pbpn="pbpaste | wc -l"
-alias pn="pbpaste | wc -l"
-alias pbpl="pbpaste | len"
-alias pbl="pbpaste | len"
-alias ppl="pbpaste | len"
-
 alias chomd=chmod
 
 export t=$'\t'

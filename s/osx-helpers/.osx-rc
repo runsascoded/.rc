@@ -17,7 +17,7 @@ alias kca="killall CloudApp"
 
 append_to_path "$HOME/macports/bin"
 
-alias ydl="youtube-dl"
+alias ydl=youtube-dl
 
 export music="$HOME/Music"
 export m="$music"
@@ -28,7 +28,7 @@ export ima="$im/Audiobooks"
 
 alias ovlc="open -a /Applications/VLC.app"
 
-export CHROMECAST_MAC="D0:E7:82:55:CD:86"
+export CHROMECAST_MAC=D0:E7:82:55:CD:86
 
 append_to_path "$HOME/Library/Android/sdk/platform-tools"
 
@@ -36,3 +36,21 @@ export dl="$HOME/Downloads"
 export DL="$dl"
 export d="$dl"
 
+alias pb=pbpaste
+alias pbp=pbpaste
+alias pbc=pbcopy
+alias pbL="pbpaste | less"
+alias cy=pbcopy
+alias copy=pbcopy
+
+alias pbpn="pbpaste | wc -l"
+alias pn="pbpaste | wc -l"
+alias pbpl="pbpaste | len"
+alias pbl="pbpaste | len"
+alias ppl="pbpaste | len"
+
+is_osx() {
+  uname -a | grep -iq "Darwin"
+}
+
+defn osx is_osx
