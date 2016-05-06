@@ -1,4 +1,6 @@
 
+defn h hfs
+
 defn hrm h rm
 defn hrmr h rm -r
 defn hmd h mkdir
