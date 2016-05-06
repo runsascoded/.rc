@@ -3,52 +3,55 @@
 # Grep options
 export USE_LIBPCRE=yes
 
-export GREP_OPTIONS="--color=auto"
+#export GREP_OPTIONS="--color=auto"
 
-alias pg=pcregrep
-alias pgi="pcregrep -i"
+unalias grep &> /dev/null
+grep="$(which grep)"
+ggrep="$(which ggrep 2> /dev/null)"
+
+if [ -n "$ggrep" ]; then
+  defn grep $ggrep --color=auto
+else
+  defn grep "$grep" --color=auto
+fi
+
+defn pg pcregrep
+defn pgi pcregrep -i
 defn po pcregrep -o
-alias pgo="pcregrep -o"
-alias por="pcregrep -or"
+defn pgo pcregrep -o
+defn por pcregrep -or
 
-alias gv="grep -v"
-alias v="grep -v"
+defn gv grep -v
+defn v grep -v
 
-alias dg="dict-grep"
-alias dgs="dict-grep-subsequence"
+defn dg dict-grep
+defn dgs dict-grep-subsequence
 
-alias gro="grep -o"
-alias grn="grep -n"
-alias grni="grep -ni"
+defn r grep
+defn rl grep -l
+defn rrl grep -rl
+defn ro grep -o
+defn rr grep -r
+defn rro grep -ro
+defn rc grep -c
+defn rrc grep-rc
+defn rn grep -n
+defn rrn grep -rn
+defn rv grep -v
+defn ri grep -i
+defn rni grep -ni
 
-alias gm1="grep -m1"
-alias g1="grep -m1"
-alias gr1="grep -rm1"
-alias grl="grep -rl"
+defn r1 grep -m1
+defn r2 grep -m2
+defn r3 grep -m3
+defn r4 grep -m4
+defn r5 grep -m5
+defn r10 grep -m10
 
-alias r=grep
-alias ro="grep -o"
-alias rr="grep -r"
-alias rro="grep -ro"
-alias rc="grep -c"
-alias rrc="grep-rc"
-alias rn="grep -n"
-alias rrn="grep -rn"
-alias rv="grep -v"
-alias ri="grep -i"
-alias rni="grep -ni"
-
-alias r1="grep -m1"
-alias r2="grep -m2"
-alias r3="grep -m3"
-alias r4="grep -m4"
-alias r5="grep -m5"
-alias r10="grep -m10"
-
-alias ro1="grep -om1"
-alias ro2="grep -om2"
-alias ro3="grep -om3"
-alias ro4="grep -om4"
-alias ro5="grep -om5"
-alias ro10="grep -om10"
+defn ro1 grep -om1
+defn ro2 grep -om2
+defn ro3 grep -om3
+defn ro4 grep -om4
+defn ro5 grep -om5
+defn ro10 grep -om10
 
