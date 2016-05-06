@@ -21,8 +21,6 @@ defn lls ls-links
 
 defn l ls -lthrA --color=auto
 
-defn ls-readlink l -L
-
 defn la l -a
 defn lad l -ad
 defn lads l -adS
@@ -59,10 +57,11 @@ defn lth l -htr
 defn lt ls-tail
 defn lst ls-S-tail
 
-defn lrl ls-readlink
-defn rll ls-readlink
-defn lrld ls-readlink -d
-defn lrd ls-readlink -d
+defn lL l -L
+defn lrl l -L
+defn rll l -L
+defn lrld l -dL
+defn lrd l -dL
 
 defn lcy less-cycle
 

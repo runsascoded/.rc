@@ -1,9 +1,16 @@
 
 export fh="$(dirname "${BASH_SOURCE[0]}")"
 
-defn rrl recursive-readlink
+defn canonicalize realpath -s
+defn cz canonicalize
+defn czl realpath
 
-defn rl readlink -m
+defn ul readlink
+defn ulm readlink -m
+defn ule readlink -e
+
+# namei for OSX: brew install mkdryden/homebrew-misc/namei
+defn ni namei
 
 if [ ! -e "$fh/readlink" ]; then
   full_cmd="$(which "$cmd")"
