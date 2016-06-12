@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+arg="$1"
+shift
+pe "s/$arg//g" "$@"

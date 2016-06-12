@@ -5,41 +5,44 @@
 #export nt="-Dmaven.test.skip -DskipTests"
 export nt="-DskipTests"
 
-alias mvp="mvn package $nt"
-alias mvnp="mvn package $nt"
-alias mvncp="mvn clean package $nt"
+defn mvp mvn package $nt
+defn mvnp mvn package $nt
+defn mvncp mvn clean package $nt
 
-alias mvnc="mvn compile"
-alias mc="mvn compile"
+defn mvnc mvn compile
+unalias mc &> /dev/null
+defn mc mvn compile
 
-alias mcl="mvn clean"
+defn mcl mvn clean
 
-alias mvncc="mvn clean compile"
-alias mvnct="mvn clean test"
+defn mvncc mvn clean compile
+defn mvnct mvn clean test
 
-alias mvndt="mvn dependency:tree"
-alias mvdt="mvn dependency:tree"
-alias mdt="mvn dependency:tree"
+defn mvndt mvn dependency:tree
+defn mvdt mvn dependency:tree
+defn mdt mvn dependency:tree
 alias mdtl="mvn dependency:tree | less"
-alias mdtv="mvn dependency:tree -Dverbose"
+defn mdtv mvn dependency:tree -Dverbose
 alias mdtvl="mvn dependency:tree -Dverbose | less"
+defn mtv mvn dependency:tree -Dverbose
+alias mtvl="mvn dependency:tree -Dverbose | less"
 
-alias mvnsc="mvn scala:cc"
+defn mvnsc mvn scala:cc
 
-alias mvntc="mvn test-compile"
-alias mtc="mvn test-compile"
+defn mvntc mvn test-compile
+defn mtc mvn test-compile
 
-alias mvnt=mvn-test
-alias mt=mvn-test
+defn mvnt mvn-test
+defn mt mvn-test
 
-alias mi="mvn install $nt"
-alias mvi="mvn install $nt"
-alias mvni="mvn install $nt"
-alias mvnil="mvn install $nt -Plocal"
-alias mvnl=maven-install-local-sha
-alias mvnci="mvn clean install $nt"
+defn mi mvn install $nt
+defn mvi mvn install $nt
+defn mvni mvn install $nt
+defn mvnil mvn install $nt -Plocal
+defn mvnl maven-install-local-sha
+defn mvnci mvn clean install $nt
 
-alias mvs=maven-version-set
+defn mvs maven-version-set
 
 export m2="$HOME/.m2/repository"
 export M="$m2"

@@ -15,8 +15,8 @@ defn hbak hadoop-bak
 
 defn hcpl hadoop-copyToLocal
 
-defn hdu hadoop-du
-defn hdush hadoop-du-s-h
+defn hdu h du
+defn hdush h du -s -h
 
 defn hcount $ints/scripts/hadoop-utils/hcount
 
@@ -25,8 +25,8 @@ defn hdt hdfs-friendly-datetime
 defn hhead hadoop-head
 defn hhd hadoop-head
 
-defn htail hadoop-tail
-defn htl hadoop-tail
+defn htail h tail
+defn htl h tail
 
 defn ud unwrap-dir
 defn hud $ints"/scripts/hadoop-utils/hadoop-unwrap-dir
@@ -37,15 +37,15 @@ defn hlcd $ints/scripts/hadoop-utils/hadoop-ls-C -d"
 
 defn hunbak haddop-unbak
 
-defn hls hadoop-ls
+defn hls h ls -h
 
-defn hlsh hadoop-ls
-defn hlh hadoop-ls
+defn hlsh h ls -h
+defn hlh h ls -h
 
-defn hld hadoop-ls -d
-defn hlhd hadoop-ls -d
+defn hld h ls -h -d
+defn hlhd h ls -h -d
 
-defn hl hadoop-ls
+defn hl h ls -h
 
 defn heae hadoop-exists-and-empty
 defn he hadoop-exists
@@ -67,6 +67,8 @@ defn hcn hadoop-n
 
 defn hll hadoop-ls-less
 defn hln hadoop-ls-n
-defn hlr hadoop-ls-r
+defn hlr h ls -h -R
 
 defn hsw hadoop-swap
+
+defn hbn hadoop-block-nodes

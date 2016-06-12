@@ -1,4 +1,4 @@
 
-alias tuc=upper
-alias tu=upper
-alias tlc=lower
+defn tuc upper
+defn uc upper
+defn tlc lower

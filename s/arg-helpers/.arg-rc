@@ -83,65 +83,70 @@ alias sml="sum -l"
 
 alias spls="splt ' '"
 
-alias thr=to-human-readable
-alias hr=to-human-readable
-alias hr2="to-human-readable --field=2"
+defn thr to-human-readable
+defn thr2 to-human-readable --field=2
+defn thr3 to-human-readable --field=3
 
-alias fhr=from-human-readable
-alias fhr2="from-human-readable --field=2"
+defn hr to-human-readable
+defn hr2 to-human-readable --field=2
+defn hr3 to-human-readable --field=3
 
-alias jnl=join-n-lines
+defn fhr from-human-readable
+defn fhr2 from-human-readable --field=2
+defn fhr3 from-human-readable --field=3
 
-alias tat=two-at-a-time-tabs
-alias taat=two-at-a-time-tabs
+defn jnl join-n-lines
 
-alias tts=two-at-a-time-spaces
-alias taats=two-at-a-time-spaces
+defn tat two-at-a-time-tabs
+defn taat two-at-a-time-tabs
 
-alias md="mkdir -p"
-alias mkd="mkdir -p"
-alias mdp="mkdir -p"
-alias mp="mkdir -p"
+defn tts two-at-a-time-spaces
+defn taats two-at-a-time-spaces
 
-alias mpd=mkdir-p-dirname
+defn md mkdir -p
+defn mkd mkdir -p
+defn mdp mkdir -p
+defn mp mkdir -p
 
-alias mdc=mkdir-p-cd
+defn mpd mkdir-p-dirname
 
-alias m=man
+defn mdc mkdir-p-cd
 
-alias rmf="rm -f"
-alias rmrf="rm -rf"
+defn m man
 
-alias tx="tar xf"
-alias txf="tar xf"
-alias tv="tar xvf"
-alias tvf="tar xvf"
+defn rmf rm -f
+defn rmrf rm -rf
 
-alias ua=unalias
+defn tx tar xf
+defn txf tar xf
+defn tv tar xvf
+defn tvf tar xvf
 
-alias x=xargs
-alias x0="xargs -0"
+defn ua unalias
 
-alias dfh="df -h"
+defn x xargs
+defn x0 xargs -0
+
+defn dfh df -h
 alias cfgh="./configure --prefix=$HOME && make && make install"
 alias cmi="./configure --prefix=$HOME && make && make install"
-alias tcmi=tar-extract-configure-make-install
+defn tcmi tar-extract-configure-make-install
 
-alias trl="tree -L"
-alias tr1="tree -L 1"
-alias tr2="tree -L 2"
-alias tr3="tree -L 3"
-alias tr4="tree -L 4"
-alias tr5="tree -L 5"
+defn trl tree -L
+defn tr1 tree -L 1
+defn tr2 tree -L 2
+defn tr3 tree -L 3
+defn tr4 tree -L 4
+defn tr5 tree -L 5
 
-alias tp1="tree -L 1 -pugsh --filelimit 50"
-alias tp2="tree -L 2 -pugsh --filelimit 50"
-alias tp3="tree -L 3 -pugsh --filelimit 50"
-alias tp4="tree -L 4 -pugsh --filelimit 50"
-alias tp5="tree -L 5 -pugsh --filelimit 50"
-alias tpr="tree -R -pugsh --filelimit 50"
+defn tp1 tree -L 1 -pugsh --filelimit 50
+defn tp2 tree -L 2 -pugsh --filelimit 50
+defn tp3 tree -L 3 -pugsh --filelimit 50
+defn tp4 tree -L 4 -pugsh --filelimit 50
+defn tp5 tree -L 5 -pugsh --filelimit 50
+defn tpr tree -R -pugsh --filelimit 50
 
-alias chomd=chmod
+defn chomd chmod
 
 export t=$'\t'
 export n=$'\n'
@@ -230,3 +235,13 @@ defn kl kill-lines
 defn cls count-leading-spaces
 
 defn una uname -a
+
+defn cn cat-n
+
+defn kc kill-char
+defn kcs kill-char
+defn kq kill-char '\"'
+defn kqs kill-char '\"'
+
+defn prn parse-number
+defn psn parse-number

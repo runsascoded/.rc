@@ -23,3 +23,6 @@ alias hkr="hist-hist-xs -kr"
 
 alias hv="hist-hist-xs"
 alias hvr="hist-hist-xs -r"
+
+defn cdt count-distinct
+defn dtn count-distinct

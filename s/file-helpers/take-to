@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+arg="$(echo "$1" | escape-regex)"
+shift
+pe "s/(.*?${arg}).*/\1/" "$@"

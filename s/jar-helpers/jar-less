@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#jar xf $1 $2 && less $2
 jar tf "$@" | less
 
 

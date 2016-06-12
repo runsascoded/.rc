@@ -15,3 +15,31 @@ rsync-only-n() {
   rsync-only "$arg" -n "$@"
 }
 defn rson rsync-only-n
+
+rsync-paths() {
+  args=()
+  flags=()
+
+  from="${@:(($#-1)):1}"
+  to="${@:$#}"
+
+  for arg in "${@:1:(($# - 2))}"; do
+    if [ "${arg::1}" != '-' ]; then
+
+      for path in $(dir-tree "$arg"); do
+        args+=("--include=$path")
+      done
+
+      args+=("--include=$arg/**")
+    else
+      flags+=("$arg")
+    fi
+
+  done
+  echo rsync -avzh "${flags[@]}" "${args[@]}" --exclude='*' "$from" "$to"
+  rsync -avzh "${flags[@]}" "${args[@]}" --exclude='*' "$from" "$to"
+}
+defn rsp rsync-paths
+defn rsn rsync-paths -n
+
+defn epd explode-parent-dirs

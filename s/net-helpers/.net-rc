@@ -17,3 +17,6 @@ alias psgi="ps aux | grep -i"
 
 alias tp="htop --sort-key cpu"
 export UNAME="$(uname)"
+
+defn ith ip-to-hostname
+defn pi parse-ip

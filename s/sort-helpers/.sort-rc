@@ -1,24 +1,32 @@
 
-alias sip=sort-in-place
-alias sort-i=sort-in-place
+defn sip sort-in-place
 
 if which gsort &> /dev/null; then
-  alias sort=gsort
+  defn sort gsort
 fi
 
-alias shk=sort-h-k
-alias sk="sort -k"
-alias sk2="sort -k2"
-alias sk3="sort -k3"
-alias sn="sort -n"
-alias snr="sort -nr"
-alias srn="sort -rn"
-alias snk="sort -nk"
-alias snk2="sort -nk2"
-alias snk3="sort -nk3"
-alias snk4="sort -nk4"
-alias snk5="sort -nk5"
-alias snk6="sort -nk6"
-alias snk7="sort -nk7"
-alias shr="sort -hr"
-alias srh="sort -hr"
+defn sk sort -k
+defn sk2 sort -k2
+defn sk3 sort -k3
+defn sk4 sort -k4
+defn sn sort -n
+defn snr sort -nr
+defn srn sort -rn
+defn snk sort -nk
+defn snk2 sort -nk2
+defn snk3 sort -nk3
+defn snk4 sort -nk4
+defn snk5 sort -nk5
+defn snk6 sort -nk6
+defn snk7 sort -nk7
+defn shr sort -hr
+defn srh sort -rh
+defn snh sort -nh
+defn shn sort -hn
+
+defn sh1 sort -h
+defn shk sort -hk
+defn shk1 sort -hk 1
+defn shk2 sort -hk 2
+defn shk3 sort -hk 3
+defn shk4 sort -hk 4

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+args=()
+for arg in "$@"; do
+  args+=("-e")
+  args+=("$arg")
+done
+
+grep -v "${args[@]}"
+

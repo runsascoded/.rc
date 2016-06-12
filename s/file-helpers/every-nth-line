@@ -22,10 +22,4 @@ else
   offset=0
 fi
 
-let offset=$offset+1
-if [ $offset -eq $num ]; then
-  offset=0
-fi
-
 awk "NR%$num==$offset"
-

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+hdfs fsck "$@" -files -blocks -locations 2>/dev/null | \
+  grep DatanodeInfoWithStorage | \
+  pcregrep -o '\d{2,3}\.\d{2,3}\.\d{2,3}\.\d{2,3}' | \
+  ends-with -v "$NN" | \
+  ip-to-hostname | \
+  hist

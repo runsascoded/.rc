@@ -101,3 +101,10 @@ defn drt dir-tree
 defn es excise-substring
 defn ks excise-substring
 defn rms excise-substring
+
+defn tt take-to
+defn ttf take-to
+defn tu take-until
+defn tuf take-until
+defn dpf take-to
+defn dff take-until

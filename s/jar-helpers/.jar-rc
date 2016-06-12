@@ -1,6 +1,11 @@
 
 export jh="$s/jar-helpers"
 
-alias jl=jar-less
-alias jg=jar-grep
-alias jgi="jar-grep -i"
+defn jl jar-less
+defn jg jar-grep
+defn jgi jar-grep -i
+
+defn jxf jar tf
+defn jlf jar tf
+defn jlc jar tf
+defn jf jar tf

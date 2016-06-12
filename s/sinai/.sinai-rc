@@ -273,24 +273,28 @@ if [ -f "$SINAI_HADOOP_HOSTS_FILE" ]; then
 fi
 
 adam-submit() {
+  msp 2
   "$ADAM_HOME"/bin/adam-submit "$@"
 }
 
 defn asu adam-submit
 
 adam-shell() {
+  msp 2
   "$ADAM_HOME"/bin/adam-shell "$@"
 }
 
 defn ash adam-shell
 
 spark-submit() {
+  msp 2
   "$SPARK_HOME"/bin/spark-submit "$@"
 }
 
 defn spsu spark-submit
 
 spark-shell() {
+  msp 2
   "$SPARK_HOME"/bin/spark-shell "$@"
 }
 
@@ -428,8 +432,9 @@ export kryor="--conf spark.serializer=org.apache.spark.serializer.KryoSerializer
 export kryorq="--conf spark.serializer=org.apache.spark.serializer.KryoSerializer --conf spark.kryo.registrationRequired=true --conf spark.kryo.registrator"
 export reg="--conf spark.kryo.registrator"
 
-export cluster="--deploy-mode cluster"
-export client="--deploy-mode client"
+export yarn="--master yarn"
+export cluster="$yarn --deploy-mode cluster"
+export client="$yarn --deploy-mode client"
 
 export noretry="--conf spark.yarn.maxAppAttempts=1"
 
@@ -444,3 +449,17 @@ export guava18="$guava/18.0/guava-18.0.jar"
 
 export guac="$M/org/hammerlab/guacamole/guacamole/0.0.1-SNAPSHOT/guacamole-0.0.1-SNAPSHOT.jar"
 export guacs="$M/org/hammerlab/guacamole/guacamole/0.0.1-shaded/guacamole-0.0.1-shaded.jar"
+
+export NN="172.29.46.12"
+
+ah() {
+  cat "$s/sinai/good-hosts"
+}
+
+bh() {
+  cat "$s/sinai/bad-hosts"
+}
+
+export b1="/datasets/ovarian/ega-tim/EGAZ00001018597_2014_ICGC_IcgcOvarian_AOCS034_1DNA_7PrimaryTumour_ICGCDBPC20130205009_IlluminaIGNOutsourcing_NoCapture_Bwa_HiSeq.jpearson.header_fixed.bam"
+export b2="/datasets/ovarian/ega-tim/EGAZ00001018680_2014_ICGC_IcgcOvarian_AOCS034_1DNA_1NormalBlood_ICGCDBPC20130205008_IlluminaIGNOutsourcing_NoCapture_Bwa_HiSeq.jpearson.header_fixed.bam"
+export b3="/datasets/ovarian/ega-tim/EGAZ00001018766_2014_ICGC_IcgcOvarian_AOCS034_1DNA_12Ascites_ICGCDBPC20130205007_IlluminaIGNOutsourcing_NoCapture_Bwa_HiSeq.jpearson.bam"

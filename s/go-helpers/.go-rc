@@ -1,8 +1,13 @@
 
+if [ -s "$HOME/.gvm/scripts/gvm" ]; then
+  source "$HOME/.gvm/scripts/gvm"
+fi
+
 export GOPATH="$c/go"
 prepend_to_path "$GOPATH/bin"
 export go="$GOPATH"
 
-if [ -s "$HOME/.gvm/scripts/gvm" ]; then
-  source "$HOME/.gvm/scripts/gvm"
+if [ -d "$HOME/go" ]; then
+  export GOROOT="$HOME/go"
+  append_to_path "$GOROOT/bin"
 fi

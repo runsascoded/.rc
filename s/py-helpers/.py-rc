@@ -17,6 +17,7 @@ append_to LD_LIBRARY_PATH "$HOME/.local/lib" "$HOME/lib64" "$HOME/lib"
 
 alias ve=virtualenv
 alias piu="pip install --user"
+alias piuu="pip install --user --upgrade"
 
 # Set python2 path
 if [ -d "$HOME/py2" ]; then
@@ -40,7 +41,7 @@ else
   echo "Warning: unable to find a sensible Python3 directory to set \$PYTHON3_HOME" >&2
 fi
 
-set-python() {
+set_python() {
   if [ "$1" == "2" ]; then
     if [ -d "$PYTHON2_HOME/bin" ]; then
       prepend_to_path "$PYTHON2_HOME/bin"
@@ -56,11 +57,11 @@ set-python() {
       echo "Set \$PYTHON3_HOME to a directory containing a valid python3 installation" >&2
     fi
   else
-    echo "Usage: set-python [2|3]" >&2
+    echo "Usage: $0 [2|3]" >&2
   fi
 }
 
-defn sp set-python
+defn sp set_python
 defn pci python-check-import
 defn ppp print-python-path
 defn pmp python-module-path
@@ -70,6 +71,21 @@ defn pis pip search
 defn py python-eval
 
 defn pyv python --version
+
+python_major_version() {
+  python --version 2>&1 | grep -o '^Python [0-9]' | grep -o '[0-9]'
+}
+defn pymv python_major_version
+
+maybe_set_python() {
+  set_to="$1"
+  if [ "$set_to" != "2" -a "$set_to" != "3" ]; then
+    echo "Usage: $0 [2|3]" >&2
+  elif [ "$(python_major_version)" != "$set_to" ]; then
+    set_python "$set_to"
+  fi
+}
+defn msp maybe_set_python
 
 append_to_path "$HOME/Library/Python/2.7/bin"
 
