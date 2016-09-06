@@ -23,7 +23,9 @@ export C="$c"
 export GITHUBUSER="ryan-williams"
 export GITHUB_USER="ryan-williams"
 
-export s="$HOME/s"
+export REPO="$(dirname "${BASH_SOURCE[0]}")"
+
+export s="$REPO"
 export S="$s"
 export SRCDIR="$s"
 
