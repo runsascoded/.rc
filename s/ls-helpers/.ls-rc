@@ -40,7 +40,7 @@ defn lht ls-h-tail
 
 defn lhtr l -htr
 
-defn lr l -r
+defn lr l -R
 
 if alias ll &> /dev/null; then
   unalias ll

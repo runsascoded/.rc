@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 0 ]; then
+  for arg in "$@"; do
+    xmllint --format "$arg"
+  done
+else
+  xmllint --format -
+fi

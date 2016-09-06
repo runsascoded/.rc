@@ -5,10 +5,18 @@ alias fs=find-suffix
 alias fnp=find-prefix
 alias fp=find-prefix
 
-alias fn1="find-maxdepth 1"
-alias fn2="find-maxdepth 2"
-alias fn3="find-maxdepth 3"
-alias fnn=find-maxdepth
+alias fn1="find-maxdepth-name 1"
+alias fn2="find-maxdepth-name 2"
+alias fn3="find-maxdepth-name 3"
+alias fnn=find-maxdepth-name
+
+alias f1="find-maxdepth 1"
+alias f2="find-maxdepth 2"
+alias f3="find-maxdepth 3"
+
+alias ff1="find-files-maxdepth 1"
+alias ff2="find-files-maxdepth 2"
+alias ff3="find-files-maxdepth 3"
 
 alias fnd=find-fullname
 

@@ -27,7 +27,7 @@ alias mdtvl="mvn dependency:tree -Dverbose | less"
 defn mtv mvn dependency:tree -Dverbose
 alias mtvl="mvn dependency:tree -Dverbose | less"
 
-defn mvnsc mvn scala:cc
+defn mdg maven-dependency-grep
 
 defn mvntc mvn test-compile
 defn mtc mvn test-compile
@@ -69,3 +69,5 @@ set-maven-opts() {
   xmx="$(get-maven-opt "mx")"
   echo "Xmx: $xmx"
 }
+
+ea tc target/scala-*/test-classes

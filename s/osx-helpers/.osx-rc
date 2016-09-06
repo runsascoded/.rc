@@ -28,6 +28,8 @@ export ima="$im/Audiobooks"
 
 alias ovlc="open -a /Applications/VLC.app"
 
+defn chrome open -a "\"/Applications/Google Chrome.app\""
+
 export CHROMECAST_MAC=D0:E7:82:55:CD:86
 
 append_to_path "$HOME/Library/Android/sdk/platform-tools"

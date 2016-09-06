@@ -23,10 +23,11 @@ prepend_to_path "$s/intellij-helpers"
 prepend_to_path "$s/java-helpers"
 prepend_to_path "$s/link-helpers"
 prepend_to_path "$s/math-helpers"
-prepend_to_path "$s/numeric"
 prepend_to_path "$s/py"
 prepend_to_path "$s/returncode-helpers"
 prepend_to_path "$s/yarn"
+
+append_to_path "$HOME/ucsc"
 
 append_to_path "$c/bedtools2/bin"
 append_to_path "$HOME/mongo/bin"

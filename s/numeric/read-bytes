@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if isnum "$1"; then
+  arg="$1"
+  shift
+  hexdump -e "$arg/1 \"%02x\n\"" "$@" | rev | joyn ''
+  echo ''
+elif [[ "$1" =~ ^[0-9]+/[0-9]+ ]]; then
+  arg="$1"
+  shift
+  hexdump -e "\"% 7_ad  \" $arg \"%08x \" \"\n\"" "$@"
+else
+  hexdump -e '"% 7_ad  " 8/4 "%08x " "  " 8/4 "%08x " "\n"' "$@"
+fi

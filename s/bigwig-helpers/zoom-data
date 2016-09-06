@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+offset="$1"
+shift
+
+hexdump -s$offset -n32 -e '/4 "%d:" /4 "%d-" /4 "%d" /4 "(%d) " 4/4 "%.0f " "\n"' "$@"

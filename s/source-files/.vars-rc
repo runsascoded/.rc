@@ -12,8 +12,8 @@ alias defn=define-function
 
 export-assign() {
   key="$1"
-  val="$2"
-  eval "export $key=$val"
+  shift
+  eval "export $key=\"$@\""
 }
 alias ea=export-assign
 

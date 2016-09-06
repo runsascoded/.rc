@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+offset="$1"
+shift
+
+cols="$(hexdump -s"$offset" -n20 -e '5/4 "%d "' "$@")"
+
+chrom_id="$(echo "$cols" | awk '{ print $1 }')"
+start="$(echo "$cols" | awk '{ print $2 }')"
+end="$(echo "$cols" | awk '{ print $3 }')"
+step="$(echo "$cols" | awk '{ print $4 }')"
+span="$(echo "$cols" | awk '{ print $5 }')"
+
+let type_offset=$offset+20
+
+type_int="$(hexdump -s"$type_offset" -n1 -e '1/1 "%d"' "$@")"
+if [ "$type_int" == "1" ]; then
+  type=fixed
+elif [ "$type_int" == "2" ]; then
+  type=variable
+elif [ "$type_int" == "3" ]; then
+  type=bedgraph
+else
+  echo "Bad type: $type_int" 1>&2
+  exit 1
+fi
+
+let item_offset=$type_offset+2
+num_items="$(hexdump -s"$item_offset" -n2 -e '1/2 "%d"' "$@")"
+
+echo -e "chrom-id:\t$chrom_id
+start:\t$start
+end:\t$end
+step:\t$step
+span:\t$span
+type:\t$type
+items:\t$num_items" | column -t

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+num_blocks="$1"
+shift
+start="$1"
+shift
+
+let num_bytes="$(echo "$num_blocks*8")"
+echo "$num_bytes bytes"
+
+hexdump -n"$num_bytes" -s"$start" -e '"% 7_ad\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" /4 "% 8d:" /4 "%0.f\t" "\n"' "$@"
+

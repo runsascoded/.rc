@@ -1,0 +1,8 @@
+
+defn px prettyprint-xml
+defn ppx prettyprint-xml
+
+defn pxl prettyprint-xml-less
+
+defn pxi prettyprint-xml-in-place
+defn pix prettyprint-xml-in-place

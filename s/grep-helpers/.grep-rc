@@ -7,13 +7,13 @@ export USE_LIBPCRE=yes
 
 unalias grep &> /dev/null
 grep="$(which grep)"
-ggrep="$(which ggrep 2> /dev/null)"
+#ggrep="$(which ggrep 2> /dev/null)"
 
-if [ -n "$ggrep" ]; then
-  defn grep $ggrep --color=auto
-else
+#if [ -n "$ggrep" ]; then
+#  defn grep $ggrep --color=auto
+#else
   defn grep "$grep" --color=auto
-fi
+#fi
 
 defn pg pcregrep
 defn pgi pcregrep -i
@@ -40,6 +40,8 @@ defn rrn grep -rn
 defn rv grep -v
 defn ri grep -i
 defn rni grep -ni
+defn rvc grep -vc
+defn rcv grep -cv
 
 defn r1 grep -m1
 defn r2 grep -m2

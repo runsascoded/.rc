@@ -75,7 +75,6 @@ source_and_path py-helpers    # brew, path
 
 append_to_path "$c/yarn-logs-helpers"
 source_and_path maven-helpers
-source_and_path "$s"/sinai  # which, yarn-logs-helpers, maven
 
 source_and_path diff-helpers  # which
 source_and_path file-helpers  # which
@@ -90,7 +89,9 @@ source_and_path "$c"/adam-helpers
 source_and_path "$c"/samtools-helpers
 source_and_path "$c"/screen-helpers
 
+
 source_and_path arg-helpers
+source_and_path bigwig-helpers
 source_and_path audio-helpers
 source_and_path bash-helpers
 source_and_path case-helpers
@@ -115,6 +116,7 @@ source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path nav-helpers
 source_and_path net-helpers
+source_and_path numeric
 source_and_path objid-helpers
 source_and_path ocaml-helpers
 source_and_path parallel-helpers
@@ -127,8 +129,11 @@ source_and_path sort-helpers
 source_and_path ssh-helpers
 source_and_path travis-helpers
 source_and_path watchman-helpers
+source_and_path xml-helpers
 source_and_path zinc-helpers
 source_and_path zip-helpers
+
+source_and_path "$s"/sinai  # which, yarn-logs-helpers, maven
 
 try_source "$s/git-configs/.git-rc"
 export gh="$c/git-helpers"

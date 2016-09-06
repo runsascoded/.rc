@@ -4,8 +4,11 @@ export jh="$s/jar-helpers"
 defn jl jar-less
 defn jg jar-grep
 defn jgi jar-grep -i
+defn jgc jar-grep -c
 
 defn jxf jar tf
 defn jlf jar tf
 defn jlc jar tf
 defn jf jar tf
+defn jt jar tf
+defn jtf jar tf

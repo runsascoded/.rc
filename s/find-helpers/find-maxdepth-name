@@ -3,7 +3,7 @@
 set -e
 
 usage() {
-  err "Usage: $0 <num> [name glob] [other args]"
+  err "Usage: $0 <num> <name> [other args]"
 }
 
 if [ $# -lt 1 ]; then
@@ -16,5 +16,8 @@ if [[ ! "$num" =~ [0-9]* ]]; then
   usage
 fi
 
-find "$@" -maxdepth "$num"
+name="$1"
+shift
+
+find "$@" -maxdepth "$num" -name "*$name*"
 

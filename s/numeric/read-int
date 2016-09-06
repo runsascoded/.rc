@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+offset="$1"
+shift
+
+hexdump -s$offset -n4 -e '/4 "%d\n"' "$@"

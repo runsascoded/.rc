@@ -1,0 +1,264 @@
+#!/usr/bin/env bash
+
+set -e
+
+#x=2
+#y=3
+#
+#foo() {
+#  local x=4
+#  let x=$x+1
+#  local y
+#  let y=$x+1
+#  echo $x $y
+#}
+#
+#foo
+#echo $x $y
+#exit 0
+
+file="$1"
+shift
+
+offset=0
+
+source "$(dirname "${BASH_SOURCE[0]}")/.helpers-rc"
+
+# Header
+
+hex magic
+if [ "$magic" == "8789f2eb" ]; then
+  ee "BigBed Magic:\t$magic"
+elif [ "$magic" == "888ffc26" ]; then
+  ee "BigWig Magic:\t$magic"
+else
+  echo "Bad magic: $magic" 1>&2
+  exit 1
+fi
+
+short version
+ee "Version:\t$version"
+
+short zoom_levels
+ee "Zoom levels:\t$zoom_levels"
+
+long chrom_tree_offset
+ee "Chrom Tree:\t$chrom_tree_offset"
+
+long data_offset
+ee "Data Offset:\t$data_offset"
+
+long index_offset
+ee "Index Offset:\t$index_offset"
+
+offset=44
+long total_summary_offset
+if [ $total_summary_offset -gt 0 ]; then
+  ee "Total Summary:\t$total_summary_offset"
+fi
+
+int uncompress_buf_size
+if [ $uncompress_buf_size -gt 0 ]; then
+  ee "Decompress Buf:\t$uncompress_buf_size"
+else
+  ee "Not Compressed"
+fi
+
+ee ''
+
+# R-tree index
+
+#r_tree_node() {
+#  local node_offset="$1"
+#  local prev_offset="$offset"
+#  offset="$node_offset"
+#  local indent_level="$2"
+#  local next_indent_level
+#  let next_indent_level=$indent_level+1
+#
+#  byte is_leaf
+#  byte reserved
+#  short count
+#
+#  #ee "r-tree node: $node_offset, $indent_level, $next_indent_level"
+#
+#  if [ $is_leaf -eq 1 ]; then
+#    ei $indent_level "Leaf node:\toffset $node_offset, $count items"
+#  elif [ $is_leaf -eq 0 ]; then
+#    ei $indent_level "Non-leaf node:\toffset $node_offset, $count items"
+#  else
+#    echo "Bad is_leaf value $is_leaf at $node_offset" 1>&2
+#    exit 4
+#  fi
+#
+#  local item_idx=0
+#  while [ $item_idx -lt $count ]; do
+#    item_offset=$offset
+#    int start_ix
+#    int start_base
+#    int end_ix
+#    int end_base
+#    long data_offset
+#
+#    if [ $start_ix -eq $end_ix ]; then
+#      let base_diff=$end_base-$start_base
+#    else
+#      base_diff="NaN"
+#    fi
+#
+#    if [ $is_leaf -eq 1 ]; then
+#      long data_size
+#      indent $next_indent_level
+#      printf '% 4d:% 10d: %d:% 10d - %d:% 10d (% 7s) % 10d % 5d\n' "$item_idx" "$item_offset" "$start_ix" "$start_base" "$end_ix" "$end_base" "$base_diff" "$data_offset" "$data_size"
+#    else
+#      indent $next_indent_level
+#      printf '% 4d:% 10d: %d:% 10d - %d:% 10d (% 7s) % 10d\n' "$item_idx" "$item_offset" "$start_ix" "$start_base" "$end_ix" "$end_base" "$base_diff" "$data_offset"
+#      r_tree_node "$data_offset" "$next_indent_level"
+#    fi
+#
+#    let item_idx=$item_idx+1
+#  done
+#  offset="$prev_offset"
+#}
+
+r_tree() {
+  offset="$1"
+  local indent_level="$2"
+  let next_indent_level=$indent_level+1
+
+  hex magic
+  if [ "$magic" != "2468ace0" ]; then
+    echo "Bad r-tree index magic at $1: $magic" 1>&2
+    exit 3
+  fi
+
+  ei $indent_level "Index:"
+  ei $next_indent_level "Offset:\t$1"
+  int items_per_node
+  ei $next_indent_level "Items per node:\t$items_per_node"
+  long num_blocks
+  ei $next_indent_level "Num blocks:\t$num_blocks"
+  int start_ix
+  int start_base
+  int end_ix
+  int end_base
+  if [ $start_ix -eq $end_ix ]; then
+    let base_diff=$end_base-$start_base
+  else
+    base_diff="NaN"
+  fi
+  ei $next_indent_level "Range:\t$start_ix:$start_base - $end_ix:$end_base ($base_diff)"
+  long data_end_offset
+  if [ "$1" != "$data_end_offset" ]; then
+    echo "Warning: data-end position $data_end_offset != index-start position $1" 1>&2
+  fi
+  int data_block_items
+  ei $next_indent_level "Items per data-block:\t$data_block_items"
+  int reserved
+
+  r-tree-node "$offset" "$next_indent_level" "$file"
+}
+
+# Zoom-Level Headers
+
+zoom_idx=0
+offset=64
+while [ $zoom_idx -lt $zoom_levels ]; do
+  int reduction_level
+  int reserved
+  long zoom_data_offset
+  long zoom_index_offset
+  ee "Zoom Level:\t$zoom_idx"
+  ei 1 "Reduction Level:\t$reduction_level"
+  ei 1 "Data Offset:\t$zoom_data_offset"
+  ei 1 "Index Offset:\t$zoom_index_offset"
+  prev_offset="$offset"
+  r_tree "$zoom_index_offset" 1
+  offset="$prev_offset"
+  let zoom_idx=$zoom_idx+1
+done
+
+# "Total Summary"
+
+if [ $total_summary_offset -gt 0 ]; then
+  offset=$total_summary_offset
+  long bases_covered
+  float min_val
+  float max_val
+  float sum_data
+  float sum_sqs
+  ee ""
+  ee "Total Summary:"
+  ee "Bases Covered:\t$bases_covered" 1
+  ee "Min Value:\t$min_val" 1
+  ee "Max Value:\t$max_val" 1
+  ee "Sum Data:\t$sum_data" 1
+  ee "Sum Squares:\t$sum_sqs" 1
+fi
+
+# Chromosome/Contig B+-tree
+
+offset=$chrom_tree_offset
+
+hex magic
+if [ "$magic" != "78ca8c91" ]; then
+  echo "Bad chrom tree magic: $magic" 1>&2
+  exit 2
+fi
+
+# B+-tree header
+int block_size
+int key_size
+int val_size
+long item_count
+long reserved
+
+# B+-tree node
+byte is_leaf
+byte reserved
+short count
+
+ee ""
+ee "Chrom Tree:"
+ei 1 "Offset:\t$chrom_tree_offset"
+ei 1 "Magic:\t$magic"
+ei 1 "Items per node:\t$block_size"
+ei 1 "Key size:\t$key_size"
+ei 1 "Val size:\t$val_size"
+ei 1 "Total contigs:\t$item_count"
+
+chrom_tree_node() {
+  local node_offset=$1
+
+  local indent_level="${2:-1}"
+  let next_indent_level=$indent_level+1
+
+  offset=$node_offset
+  if [ $is_leaf -gt 0 ]; then
+    ei $indent_level "Leaf node:\t$count items, offset: $node_offset"
+    item_idx=0
+    while [ $item_idx -lt $count ]; do
+      str key $key_size
+      int chrom_id
+      int chrom_size
+      ei $next_indent_level "$key:\t$chrom_id\t$chrom_size"
+      let item_idx=$item_idx+1
+    done
+  else
+    ei $indent_level "Non-leaf node:\t$count items, offset: $node_offset"
+    local item_idx=0
+    while [ $item_idx -lt $count ]; do
+      str key $key_size
+      long child_offset
+      ei $next_indent_level "$key:\t$child_offset"
+      # TODO: recurse on child node.
+      let item_idx=$item_idx+1
+    done
+  fi
+}
+
+chrom_tree_node $offset
+
+ee ''
+
+r_tree "$index_offset" 0

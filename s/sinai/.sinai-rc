@@ -104,6 +104,8 @@ export mf="--conf spark.memory.fraction"
 export smf="--conf spark.memory.storageFraction"
 export el="--conf spark.eventLog.enabled=true --conf spark.eventLog.dir=$sparklogs"
 export mo="--conf spark.yarn.executor.memoryOverhead"
+export emo="--conf spark.yarn.executor.memoryOverhead"
+export dmo="--conf spark.yarn.driver.memoryOverhead"
 export pll="--conf spark.default.parallelism"
 export sdp="$pll"
 export mef="--conf spark.yarn.max.executor.failures"
@@ -133,6 +135,7 @@ export msc="$m2sp/spark-core_2.10"
 export mac="$m2adam/adam-core_2.10"
 
 export m2p="$m2/org/hammerlab/pageant"
+export m2g="$m2/org/hammerlab/guacamole"
 
 guac_args=
 export djo="--driver-java-options"
@@ -170,8 +173,8 @@ alias v2a="adam vcf2adam"
 export SPARK="$c/spark"
 export spark="$SPARK"
 if [ -z "$SPARK_HOME" ]; then
-  if [ -d "$HOME/sparks/spark-1.6.0-bin-hadoop2.6" ]; then
-    export SPARK_HOME="$HOME/sparks/spark-1.6.0-bin-hadoop2.6"
+  if [ -d "$HOME/sparks/spark-1.6.1-bin-hadoop2.6" ]; then
+    export SPARK_HOME="$HOME/sparks/spark-1.6.1-bin-hadoop2.6"
   else
     export SPARK_HOME="$SPARK"
   fi
@@ -194,7 +197,7 @@ export m2adam="$m2/org/bdgenomics/adam"
 export arun="/hpc/users/ahujaa01"
 export harun="/user/ahujaa01"
 
-export hg19="/hpc/users/ahujaa01/reference_genomes/Homo_sapiens_assembly19.fasta"
+export hg19="/hpc/users/ahujaa01/reference_genomes/hg19-reference/ucsc.hg19.fasta"
 export hhg19="$hrefs/hg19.fasta"
 
 export harundata="/user/ahujaa01/dream/synsets"
@@ -233,7 +236,7 @@ export r2="/datasets/martignetti_ovarian//189/Illumina_DNA/PT189_Right_Ovary_L2/
 export d1="demeter-login1.hpc.mssm.edu"
 export d2="demeter-login2.hpc.mssm.edu"
 
-export HDFS_SPARK_JAR="hdfs:///user/willir31/sparks/spark-1.6.0-bin-hadoop2.6/lib/spark-assembly-1.6.0-hadoop2.6.0.jar"
+export HDFS_SPARK_JAR="hdfs:///user/willir31/sparks/spark-1.6.1-bin-hadoop2.6/lib/spark-assembly-1.6.1-hadoop2.6.0.jar"
 export PAGEANT_JAR="/hpc/users/willir31/c/pageant/target/pageant-with-dependencies-1.0-SNAPSHOT.jar"
 #export JSON_RELAY_JAR="/hpc/users/willir31/spark-json-relay-1.0.0.jar"
 
@@ -463,3 +466,37 @@ bh() {
 export b1="/datasets/ovarian/ega-tim/EGAZ00001018597_2014_ICGC_IcgcOvarian_AOCS034_1DNA_7PrimaryTumour_ICGCDBPC20130205009_IlluminaIGNOutsourcing_NoCapture_Bwa_HiSeq.jpearson.header_fixed.bam"
 export b2="/datasets/ovarian/ega-tim/EGAZ00001018680_2014_ICGC_IcgcOvarian_AOCS034_1DNA_1NormalBlood_ICGCDBPC20130205008_IlluminaIGNOutsourcing_NoCapture_Bwa_HiSeq.jpearson.header_fixed.bam"
 export b3="/datasets/ovarian/ega-tim/EGAZ00001018766_2014_ICGC_IcgcOvarian_AOCS034_1DNA_12Ascites_ICGCDBPC20130205007_IlluminaIGNOutsourcing_NoCapture_Bwa_HiSeq.jpearson.bam"
+
+ea br src/test/resources/cancer-wgs1/recurrence.bam
+ea bn src/test/resources/cancer-wgs1/normal.bam
+ea bp src/test/resources/cancer-wgs1/primary.bam
+
+ea guac_target "$HOME/c/guacamole/target"
+ea guac_version 0.0.1-SNAPSHOT
+ea guac_deps_jar "$guac_target/guacamole-deps-only-$guac_version.jar"
+ea guac_jar "$guac_target/guacamole-$guac_version.jar"
+
+ea guac_jars "--jars $guac_jar,$guac_deps_jar"
+
+ea contigs "$( (seq 22; echo X) | pp chr | j, | dfl ,)"
+
+guac_main="--class org.hammerlab.guacamole.Main --jars $guac_deps_jar $guac_jar"
+
+ea sn "--conf spark.app.name"
+ea sid "--conf spark.app.id"
+
+ea guac_kryo "--conf spark.kryo.registrator=org.hammerlab.guacamole.kryo.Registrar"
+alias guac-shell-cluster="spark-shell-cluster $guac_kryo $sn=guac-shell $guac_jars"
+alias guac-shell-local="spark-shell-local $guac_kryo $sn=guac-shell $guac_jars"
+
+#alias guac-submit-local="spark-submit-local $guac_kryo $guac_jars"
+
+ea cn /datasets/mskcc/bladder/bams/41f31e9f603545c1bf8c7bed970707da.bam
+ea ct /datasets/mskcc/bladder/bams/a77139d21e2241048b2fdcefb8c9c55c.bam
+
+ea GUACAMOLE_HOME "$HOME/c/guacamole"
+ea GUAC_HOME "$GUACAMOLE_HOME"
+ea GUAC_JARS "--guacamole-jar $GUAC_HOME/target/guacamole-0.0.1-SNAPSHOT.jar --guacamole-dependencies-jar $GUAC_HOME/target/guacamole-deps-only-0.0.1-SNAPSHOT.jar"
+
+ea GUAC2_HOME "$HOME/c/guac2"
+ea GUAC2_JARS "--guacamole-jar $GUAC2_HOME/target/guacamole-0.0.1-SNAPSHOT.jar --guacamole-dependencies-jar $GUAC2_HOME/target/guacamole-deps-only-0.0.1-SNAPSHOT.jar"

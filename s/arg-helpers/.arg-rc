@@ -39,12 +39,17 @@ alias drrn=drop-right-regex-n
 alias dc=drop-chars
 alias dc1="drop-chars 1"
 alias dc2="drop-chars 2"
+alias dc3="drop-chars 3"
+alias dc4="drop-chars 4"
+alias dc5="drop-chars 5"
 alias dcr=drop-chars-right
 alias drc=drop-chars-right
 alias dcrn="drop-chars-right-n"
 alias dcr1="drop-chars-right-n 1"
 alias dcr2="drop-chars-right-n 2"
 alias dcr3="drop-chars-right-n 3"
+alias dcr4="drop-chars-right-n 4"
+alias dcr5="drop-chars-right-n 5"
 
 alias sw=starts-with
 alias dsw="starts-with -v"
@@ -190,7 +195,7 @@ alias dfl.="drop-from-last ."
 
 export dn=/dev/null
 
-append_to PKG_CONFIG_PATH "$HOME/lib" "$HOME/lib64"
+append_to PKG_CONFIG_PATH "$HOME/lib" "$HOME/lib64" "$HOME/anaconda/lib"
 
 alias wg=wget
 

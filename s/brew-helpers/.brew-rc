@@ -10,7 +10,7 @@ if [ -s "$HOME/.brew" ]; then
   source "$HOME/.brew"
 fi
 
-prepend_to_path "/usr/local/bin"  # For brew
+prepend_to_path "/usr/local/bin" "/usr/local/sbin"  # For brew
 if which-exists brew; then
   export cellar=$(brew --prefix)/Cellar
 fi

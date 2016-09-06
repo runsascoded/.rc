@@ -7,7 +7,7 @@ if [ "$1" == "-v" ]; then
 fi
 
 if [ $# -eq 0 ]; then
-  xargs "$0" "$verbose" "$@"
+  exit 1
 else
   all_nums=0
   for arg in "$@"; do

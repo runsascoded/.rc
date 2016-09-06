@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+t="$(mktemp)"
+finish() {
+  rm -f "$t"
+}
+trap finish EXIT
+
+for arg in "$@"; do
+  xmllint --format "$arg" > "$t"
+  cp "$t" "$arg"
+done
