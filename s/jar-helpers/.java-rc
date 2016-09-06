@@ -9,11 +9,10 @@ if which-exists jenv; then
   eval "$(jenv init -)"
   export JAVA_HOME="$JAVA_HOME_bak"
 else
-  echo "Couldn't find jenv.." >&2
+  echo "Warning: couldn't find jenv.." >&2
 fi
 
 # Set up JAVA_HOME, jenv
-# rm this temporarily; trying to use jenv instead...
 export java_home_cmd="/usr/libexec/java_home"
 if [ -x "$java_home_cmd" ]; then
 

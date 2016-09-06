@@ -13,8 +13,18 @@ defn ule readlink -e
 defn ni namei
 
 if [ ! -e "$fh/readlink" ]; then
-  full_cmd="$(which "$cmd")"
-  ln -sf "$full_cmd" "$fh/readlink"
+  if which greadlink &> /dev/null; then
+    cmd="greadlink"
+  elif which readlink &> /dev/null; then
+    cmd="readlink"
+  else
+    echo "Warning: no readlink or greadlink found" 1>&2
+  fi
+
+  if [ -n "$cmd" ]; then
+    full_cmd="$(which "$cmd")"
+    ln -sf "$full_cmd" "$fh/readlink"
+  fi
 fi
 
 if which-exists ghead; then

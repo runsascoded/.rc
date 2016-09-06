@@ -9,7 +9,7 @@ if [ -d "$sinai/data" ]; then
 elif [ -d "$HOME/data" ]; then
   export data="$HOME/data"
 else
-  err "Couldn't find \$data directory at $sinai/data or $HOME/data"
+  echo "Warning: couldn't find \$data directory at $sinai/data or $HOME/data" 1>&2
 fi
 
 export DATA="$data"
