@@ -69,6 +69,8 @@ source_and_path() {
 
 try_source ".vars-rc"
 
+source_and_path "$c/demeter-kickstart/scripts"
+
 source_and_path which-helpers
 
 source_and_path brew-helpers  # which

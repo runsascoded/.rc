@@ -7,6 +7,9 @@ alias psp=ps-port
 alias chp=ncz
 alias check-port=ncz
 
+alias ifa="ifconfig -a"
+alias ifal="ifconfig -a | less"
+
 alias my-ip="curl ifconfig\.me/ip"
 
 alias psc=ps-cmd

@@ -12,6 +12,7 @@ defn mvncp mvn clean package $nt
 defn mvnc mvn compile
 unalias mc &> /dev/null
 defn mc mvn compile
+defn mvc mvn compile
 
 defn mcl mvn clean
 

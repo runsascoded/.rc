@@ -15,4 +15,4 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-source "$HOME"/s/.bashrc
+source "$(dirname "${BASH_SOURCE[0]}")"/s/.bashrc
