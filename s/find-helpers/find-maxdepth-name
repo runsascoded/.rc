@@ -19,5 +19,5 @@ fi
 name="$1"
 shift
 
-find "$@" -maxdepth "$num" -name "*$name*"
+find "${@:-.}" -maxdepth "$num" -name "*$name*"
 

@@ -20,6 +20,7 @@ defn pgi pcregrep -i
 defn po pcregrep -o
 defn pgo pcregrep -o
 defn por pcregrep -or
+defn pro pcregrep -or
 
 defn gv grep -v
 defn v grep -v
@@ -43,6 +44,9 @@ defn rni grep -ni
 defn rvc grep -vc
 defn rcv grep -cv
 
+defn rbn grep -n --binary-files text
+defn rnb grep -n --binary-files text
+
 defn r1 grep -m1
 defn r2 grep -m2
 defn r3 grep -m3
@@ -59,3 +63,6 @@ defn ro10 grep -om10
 
 defn re grep-e
 defn rve grep-v-e
+defn rce grep-e -c
+defn rec grep-e -c
+defn rvce grep-e -c -v

@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
-arg="$1"
-shift
-
 v_arg=
-if [ "$arg" == "-v" ]; then
+if [ "$1" == "-v" ]; then
   v_arg="-v"
-  arg="$1"
   shift
 fi
 
-grep $v_arg "$arg\$" "$@"
+args=()
+if [ $# -eq 1 ]; then
+  args+=("$1\$")
+else
+  for arg in "$@"; do
+    args+=("-e")
+    args+=("$arg\$")
+  done
+fi
 
+grep $v_arg "${args[@]}"

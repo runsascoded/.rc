@@ -3,4 +3,4 @@
 regex="$1"
 shift
 
-sed "/$regex/d" "$@"
+sed "/^$regex\$/d" "$@"

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+while [ 1 ]; do
+  mvn package -DskipTests > pkg 2>/dev/null
+  pushd ../magic-rdds >/dev/null
+
+  if mvn -X properties:test > last 2>/dev/null; then
+    echo "Success!"
+    exit 0
+  fi
+
+  class="$(r ClassNotFoundException last | last | tr . /)"
+  if [ -z "$class" ]; then
+    echo "Error: empty class" >&2
+    exit 1
+  fi
+
+  popd >/dev/null
+  echo "$class" | bipend '                    <include>' '**</include>' > line
+  echo "$(date): $(cat line)"
+  insert_line '</includes>' "$(cat line)" pom.xml
+done

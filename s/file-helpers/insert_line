@@ -1,17 +1,32 @@
 #!/usr/bin/env bash
 
-set -x
+set -e
 
-if [ ! "$file" -o ! "$regex" ]; then
-  err "Set \$file and \$regex env vars"
+if [ $# -lt 3 ]; then
+  echo "Usage: $0 <regex> <new_line> <file>" >&2
   exit 1
 fi
 
-outfile="$file.bak"
+regex="$1"
+shift
+new_line="$1"
+shift
+file="$1"
+shift
+
+outfile="$(mktemp)"
+
+finish() {
+  if [ -e "$outfile" ]; then
+    rm -f "$outfile"
+  fi
+}
+trap finish EXIT
+
 line_num="$(pcregrep -n "$regex" "$file" | head -n 1 | cut -d: -f 1)"
 let prev_num=$line_num-1
 head -n $prev_num "$file" > "$outfile"
-echo "$extra_line" >> "$outfile"
+echo "$new_line" >> "$outfile"
 tail -n +$line_num "$file" >> "$outfile"
 
 mv "$outfile" "$file"

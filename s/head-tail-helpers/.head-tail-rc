@@ -1,15 +1,15 @@
 
-defn h1 head -n 1
-defn h2 head -n 2
-defn h3 head -n 3
-defn h4 head -n 4
-defn h5 head -n 5
-defn h6 head -n 6
-defn h7 head -n 7
-defn h10 head
-defn h20 head -n 20
-defn h50 head -n 50
-defn h100 head -n 100
+defn hd1 head -n 1
+defn hd2 head -n 2
+defn hd3 head -n 3
+defn hd4 head -n 4
+defn hd5 head -n 5
+defn hd6 head -n 6
+defn hd7 head -n 7
+defn hd10 head
+defn hd20 head -n 20
+defn hd50 head -n 50
+defn hd100 head -n 100
 defn hdn head -n
 
 alias 1="head -n 1"

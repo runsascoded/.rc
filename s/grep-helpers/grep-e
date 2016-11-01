@@ -2,8 +2,12 @@
 
 args=()
 for arg in "$@"; do
-  args+=("-e")
-  args+=("$arg")
+  if [[ "$arg" =~ ^- ]]; then
+    args+=("$arg")
+  else
+    args+=("-e")
+    args+=("$arg")
+  fi
 done
 
 grep "${args[@]}"

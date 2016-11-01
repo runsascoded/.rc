@@ -4,9 +4,7 @@
 
 export sinai="$HOME/sinai"
 
-if [ -d "$sinai/data" ]; then
-  export data="$sinai/data"
-elif [ -d "$HOME/data" ]; then
+if [ -d "$HOME/data" ]; then
   export data="$HOME/data"
 else
   echo "Warning: couldn't find \$data directory at $sinai/data or $HOME/data" 1>&2
@@ -197,8 +195,9 @@ export m2adam="$m2/org/bdgenomics/adam"
 export arun="/hpc/users/ahujaa01"
 export harun="/user/ahujaa01"
 
-export hg19="/hpc/users/ahujaa01/reference_genomes/hg19-reference/ucsc.hg19.fasta"
-export hhg19="$hrefs/hg19.fasta"
+#export hg19="/hpc/users/ahujaa01/reference_genomes/hg19-reference/ucsc.hg19.fasta"
+ea hg19 "$refs/hg19.fasta"
+ea hhg19 "$hrefs/hg19.fasta"
 
 export harundata="/user/ahujaa01/dream/synsets"
 export tumor3="/user/ahujaa01/dream/synsets/synthetic.challenge.set3.tumor.withMDTags.chr2.bam"
@@ -500,3 +499,14 @@ ea GUAC_JARS "--guacamole-jar $GUAC_HOME/target/guacamole-0.0.1-SNAPSHOT.jar --g
 
 ea GUAC2_HOME "$HOME/c/guac2"
 ea GUAC2_JARS "--guacamole-jar $GUAC2_HOME/target/guacamole-0.0.1-SNAPSHOT.jar --guacamole-dependencies-jar $GUAC2_HOME/target/guacamole-deps-only-0.0.1-SNAPSHOT.jar"
+
+ea g target/guacamole-0.0.1-SNAPSHOT.jar
+ea gd target/guacamole-deps-0.0.1-SNAPSHOT.jar
+ea ga target/guacamole-assembly-0.0.1-SNAPSHOT.jar
+
+ea db data/baylor
+ea dbn data/baylor/TCRBOA2-N-WEX.bam
+ea dbt data/baylor/TCRBOA2-T-WEX.bam
+
+ea n2 /datasets/dream/data/synthetic-challenge-2/synthetic.challenge.set2.normal.withMDTags.bam
+ea t2 /datasets/dream/data/synthetic-challenge-2/synthetic.challenge.set2.tumor.withMDTags.bam

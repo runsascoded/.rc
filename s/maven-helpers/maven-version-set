@@ -2,8 +2,9 @@
 
 if [ $# -gt 0 ]; then
   version="$1"
+  shift
 else
   version="$(gn sha)"
 fi
-mvn versions:set -DgenerateBackupPoms=false -DnewVersion="$version"
+mvn versions:set -DgenerateBackupPoms=false -DnewVersion="$version" "$@"
 

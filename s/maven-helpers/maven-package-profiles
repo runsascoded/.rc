@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+profiles="$1"
+shift
+
+mvn package -DskipTests -P"$profiles" "$@"

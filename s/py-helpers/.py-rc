@@ -34,8 +34,11 @@ fi
 
 set_python() {
   if [ "$1" == "2" ]; then
+    unalias python
+    unalias pip
     if [ -d "$PYTHON2_HOME/bin" ]; then
       prepend_to_path "$PYTHON2_HOME/bin"
+      echo "New version:"
       python --version
     else
       echo "Set \$PYTHON2_HOME to a directory containing a valid python2 installation" >&2

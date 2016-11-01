@@ -111,7 +111,7 @@ defn taats two-at-a-time-spaces
 defn md mkdir -p
 defn mkd mkdir -p
 defn mdp mkdir -p
-defn mp mkdir -p
+defn mdn mkdir-dirname
 
 defn mpd mkdir-p-dirname
 
@@ -169,6 +169,9 @@ alias er=escape-regex
 
 alias tff=take-from-first
 alias tkff=take-from-first
+
+alias tpf=take-past-first
+alias dtf=take-past-first  # aka. drop-to-first
 
 alias dul=drop-until-last
 alias tfl=take-from-last
@@ -236,6 +239,8 @@ defn del kill-blank-lines
 defn sel kill-blank-lines
 
 defn kl kill-lines
+defn kli kill-lines-in-place
+defn kfl kill-full-lines
 
 defn cls count-leading-spaces
 
@@ -250,3 +255,5 @@ defn kqs kill-char '\"'
 
 defn prn parse-number
 defn psn parse-number
+
+defn cpr cp -r

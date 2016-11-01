@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+last="${@:$#}"
+
+tmp="$(mktemp)"
+finish() {
+  rm -f "$tmp"
+}
+trap finish EXIT
+
+kill-lines "$@" > "$tmp"
+mv "$tmp" "$last"

@@ -118,3 +118,11 @@ defn tu take-until
 defn tuf take-until
 defn dpf take-to
 defn dff take-until
+
+defn last_modified_time stat -c %Y
+defn lmt stat -c %Y
+
+defn ub unbak
+
+defn exists apply-test -e
+defn dne apply-test '!' -e

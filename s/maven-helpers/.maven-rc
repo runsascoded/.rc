@@ -2,9 +2,13 @@
 
 # Maven aliases and env vars
 
+export mh="$(dirname "${BASH_SOURCE[0]}")"
+
 #export nt="-Dmaven.test.skip -DskipTests"
 export nt="-DskipTests"
 
+defn mp mvn package $nt
+defn mpp maven-package-profiles
 defn mvp mvn package $nt
 defn mvnp mvn package $nt
 defn mvncp mvn clean package $nt
@@ -29,6 +33,8 @@ defn mtv mvn dependency:tree -Dverbose
 alias mtvl="mvn dependency:tree -Dverbose | less"
 
 defn mdg maven-dependency-grep
+
+defn mvd mvn deploy -Prelease -DskipTests
 
 defn mvntc mvn test-compile
 defn mtc mvn test-compile
@@ -72,3 +78,5 @@ set-maven-opts() {
 }
 
 ea tc target/scala-*/test-classes
+
+defn mep mvn help:effective-pom
