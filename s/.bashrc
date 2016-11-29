@@ -133,6 +133,7 @@ source_and_path sort-helpers
 source_and_path ssh-helpers
 source_and_path travis-helpers
 source_and_path watchman-helpers
+source_and_path whitespace-helpers
 source_and_path xml-helpers
 source_and_path zinc-helpers
 source_and_path zip-helpers

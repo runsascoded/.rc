@@ -2,3 +2,8 @@
 alias uzd=unzip-dir
 alias uz="unzip-dir"
 
+defn tx tar xf
+defn txf tar xf
+defn tv tar xvf
+defn tvf tar xvf
+

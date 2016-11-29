@@ -14,3 +14,22 @@ alias rsrc="source ~/.bashrc"
 alias src="source ~/.bashrc"
 alias rs="source ~/.bashrc"
 alias rsrs="source ~/.bashrc"
+
+export dn=/dev/null
+
+append_to PKG_CONFIG_PATH "$HOME/lib" "$HOME/lib64" "$HOME/anaconda/lib"
+
+defn rmf rm -f
+defn rmrf rm -rf
+
+defn ua unalias
+
+defn dfh df -h
+alias cfgh="./configure --prefix=$HOME && make && make install"
+alias cmi="./configure --prefix=$HOME && make && make install"
+defn tcmi tar-extract-configure-make-install
+
+defn m man
+
+alias c=cat
+

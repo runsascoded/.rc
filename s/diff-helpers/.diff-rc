@@ -16,3 +16,8 @@ if which-exists mld; then
 elif which-exists meld; then
     export DIFF=meld
 fi
+
+# Only put `mld` on PATH if `meld` exists!
+if which-exists meld; then
+  append_to_path "$s/mld-dir";
+fi

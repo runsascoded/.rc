@@ -19,8 +19,6 @@ alias jns="joyn ' '"
 alias jnb="joyn ''"
 alias jb="joyn ''"
 
-alias ws=collapse-whitespace
-
 alias spc="splt ' '"
 alias sp:="splt :"
 alias s:="splt :"
@@ -53,30 +51,15 @@ alias sw=starts-with
 alias dsw="starts-with -v"
 alias nsw="starts-with -v"
 alias swv="starts-with -v"
-alias sww=starts-with-whitespace
-alias dsww="starts-with-whitespace -v"
-alias swwv="starts-with-whitespace -v"
 
 alias ew=ends-with
 alias dew="ends-with -v"
 alias new="ends-with -v"
 alias ewv="ends-with -v"
-alias eww=ends-with-whitespace
-alias deww="ends-with-whitespace -v"
-alias ewwv="ends-with-whitespace -v"
-
-alias c=cat
-
-alias s2t=spaces-to-tabs
-
-alias bn=basename
-alias bnx=basename-minus-extension
 
 alias pp=prepend
 alias ap=append
 alias bp=bipend
-
-alias sml="sum -l"
 
 alias spls="splt ' '"
 
@@ -88,25 +71,8 @@ defn taat two-at-a-time-tabs
 defn tts two-at-a-time-spaces
 defn taats two-at-a-time-spaces
 
-defn m man
-
-defn rmf rm -f
-defn rmrf rm -rf
-
-defn tx tar xf
-defn txf tar xf
-defn tv tar xvf
-defn tvf tar xvf
-
-defn ua unalias
-
 defn x xargs
 defn x0 xargs -0
-
-defn dfh df -h
-alias cfgh="./configure --prefix=$HOME && make && make install"
-alias cmi="./configure --prefix=$HOME && make && make install"
-defn tcmi tar-extract-configure-make-install
 
 defn trl tree -L
 defn tr1 tree -L 1
@@ -123,13 +89,6 @@ defn tp5 tree -L 5 -pugsh --filelimit 50
 defn tpr tree -R -pugsh --filelimit 50
 
 defn chomd chmod
-
-export t=$'\t'
-export n=$'\n'
-
-alias nl0="tr '\n' '\0'"
-alias ntl="tr '\n' '\0'"
-alias null-terminated-lines="tr '\n' '\0'"
 
 alias c,="col -i,"
 alias f,="first -i,"
@@ -159,10 +118,6 @@ alias ttl=take-to-last
 
 alias dfl.="drop-from-last ."
 
-export dn=/dev/null
-
-append_to PKG_CONFIG_PATH "$HOME/lib" "$HOME/lib64" "$HOME/anaconda/lib"
-
 alias ilf=interleave-files
 alias za=zip-args
 alias zas=zip-args
@@ -178,9 +133,6 @@ alias zs3="paste -d' ' - - -"
 
 alias t=tee
 alias ta="tee -a"
-
-alias eb="echo ''"
-alias ebl="echo ''"
 
 alias cw=count-words
 alias ca=count
@@ -199,8 +151,6 @@ defn sel kill-blank-lines
 defn kl kill-lines
 defn kli kill-lines-in-place
 defn kfl kill-full-lines
-
-defn cls count-leading-spaces
 
 defn una uname -a
 

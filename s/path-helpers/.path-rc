@@ -40,11 +40,6 @@ if [ -e "/usr/local/Cellar" ]; then
   export hb=/usr/local/Cellar
 fi
 
-# Only put `mld` on PATH if `meld` exists!
-if which-exists meld; then
-  append_to_path "$s/mld-dir";
-fi
-
 append_to_path "$HOME"  # Add $HOME to $PATH
 
 ep() {
@@ -55,15 +50,6 @@ prepend_to "C_INCLUDE_PATH" "/usr/local/include"
 
 alias bne=basename-minus-extension
 
-defn md mkdir -p
-defn mkd mkdir -p
-defn mdp mkdir -p
-defn mdn mkdir-dirname
-
-defn mpd mkdir-p-dirname
-
-defn mdc mkdir-p-cd
-
 alias de=drop-extension
 alias dx=drop-extension
 alias dxn=drop-extension
@@ -71,4 +57,7 @@ alias dxn=drop-extension
 alias xn=extension
 alias exn=extension
 alias xtn=extension
+
+alias bn=basename
+alias bnx=basename-minus-extension
 

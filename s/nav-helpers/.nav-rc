@@ -14,3 +14,12 @@ alias P="pushd"
 alias b="popd"
 
 alias mcd=multi-cd
+
+defn md mkdir -p
+defn mkd mkdir -p
+defn mdp mkdir -p
+defn mdn mkdir-dirname
+
+defn mpd mkdir-p-dirname
+
+defn mdc mkdir-p-cd
