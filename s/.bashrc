@@ -93,6 +93,7 @@ source_and_path "$c"/adam-helpers
 source_and_path "$c"/samtools-helpers
 source_and_path "$c"/screen-helpers
 
+source_and_path sbt-helpers
 
 source_and_path arg-helpers
 source_and_path bigwig-helpers

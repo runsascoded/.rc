@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+group="$1"
+shift
+artifact="$1"
+shift
+version="$1"
+shift
+
+sbt "$@" "what-depends-on $group $artifact $version"

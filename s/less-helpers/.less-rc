@@ -21,6 +21,5 @@ export LESS="$LESS -S"
 # Don't clear screen upon exit
 #export LESS="$LESS -X"
 
-alias le=less
-alias L=less
-
+alias le=smart-less
+alias L=smart-less

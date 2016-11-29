@@ -8,7 +8,7 @@ fi
 delim="$1"
 shift
 
-if [ ${#delim} -eq 1 ]; then
+if [ ${#delim} -eq 1 -o "$delim" == '\t' ]; then
   if [ $# -gt 0 ]; then
     cat "$@" | tr "$delim" '\n'
   else

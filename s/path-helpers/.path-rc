@@ -11,6 +11,8 @@ prepend_to_path "$HOME/node/bin"
 prepend_to_path "$HOME/sbin"
 prepend_to_path "$HOME/sbt-0.13.8/sbt/bin"
 
+append_to_path "$c/sbt-parent/scripts"
+
 append_to_path "/usr/local/ncbi/blast/bin"
 
 append_to_path "$HOME/local/bin"

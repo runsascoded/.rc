@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
 v_arg=
-if [ "$arg" == "-v" ]; then
-  v_arg="-v"
-  shift
+if [ $# -gt 0 ]; then
+  arg="$1"
+  if [ "$arg" == "-v" ]; then
+    v_arg="-v"
+    shift
+  fi
 fi
 
 args=()

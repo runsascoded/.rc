@@ -1,0 +1,14 @@
+
+alias st=sbt-test
+alias sc="sbt compile"
+alias spr="sbt +publishSigned sonatypeRelease"
+alias spm="sbt +publishM2"
+alias stpm="sbt ++2.10.6 publishM2"
+alias sepm="sbt ++2.11.8 publishM2"
+alias spl="sbt +publishLocal"
+
+alias sdg=sbt-dependency-grep
+alias sas="sbt assembly"
+alias sbas="sbt +assembly"
+alias stas="sbt ++2.10.6 assembly"
+alias seas="sbt ++2.11.8 assembly"

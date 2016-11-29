@@ -40,6 +40,8 @@ defn rn grep -n
 defn rrn grep -rn
 defn rv grep -v
 defn ri grep -i
+defn rri grep -ri
+defn rir grep -ri
 defn rni grep -ni
 defn rvc grep -vc
 defn rcv grep -cv

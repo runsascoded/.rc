@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+  sbt test
+else
+  test="$1"
+  shift
+  sbt "test-only *$test*"
+fi

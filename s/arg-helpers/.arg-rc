@@ -29,6 +29,7 @@ alias sp:="splt :"
 alias s:="splt :"
 alias sp,="splt ,"
 alias s,="splt ,"
+alias pl="splt /"
 alias tk,="splt , | trim | kbl"
 
 alias dr=drop-regex

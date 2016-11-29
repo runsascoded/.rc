@@ -56,3 +56,6 @@ is_osx() {
 }
 
 defn osx is_osx
+
+defn shf defaults write com.apple.finder AppleShowAllFiles YES
+

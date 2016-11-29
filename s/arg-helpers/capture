@@ -3,7 +3,11 @@
 needle="$1"
 shift
 
-group="$1"
-shift
+if [ $# -gt 0 ]; then
+  group="$1"
+  shift
 
-pne "s/.*?${needle}(${group}).*/\1/p" "$@"
+  pne "s/.*?${needle}(${group}).*/\1/p" "$@"
+else
+  pne "s/.*?(${needle}).*/\1/p" "$@"
+fi
