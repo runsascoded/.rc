@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-while [ 1 ]; do
-  range 10 | joyn ' '
-  range 10 20 | joyn ' ' 1>&2
-  sleep 1
-done

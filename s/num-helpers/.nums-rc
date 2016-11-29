@@ -30,3 +30,9 @@ defn psn parse-number
 
 alias sml="sum -l"
 
+defn ordx ord -x
+defn ox ord -x
+
+defn cr chr
+defn cx chr -x
+

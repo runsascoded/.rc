@@ -53,3 +53,27 @@ defn ht2 head-and-tail 2
 defn ht3 head-and-tail 3
 defn ht4 head-and-tail 4
 defn ht5 head-and-tail 5
+
+if which-exists ghead; then
+  export ghead=ghead
+else
+  export ghead=head
+fi
+
+if which-exists gtail; then
+  export gtail=gtail
+else
+  export gtail=tail
+fi
+
+defn dls drop-lines
+defn d1l tail -n +2
+defn dl1 tail -n +2
+defn dl2 tail -n +3
+defn d1 tail -n +2
+defn d2 tail -n +3
+
+defn tls take-lines
+defn tkl take-lines
+defn t1l head -n 1
+defn t1l head -n 1

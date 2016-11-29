@@ -99,12 +99,12 @@ source_and_path audio-helpers
 source_and_path bash-helpers
 source_and_path case-helpers
 source_and_path collectd-helpers
+source_and_path col-helpers
 source_and_path color-helpers
 source_and_path comm-helpers
 source_and_path datetime-helpers
 source_and_path dict-helpers
 source_and_path dropbox-helpers
-source_and_path echo-helpers
 source_and_path emacs-helpers
 source_and_path find-helpers
 source_and_path go-helpers
@@ -116,6 +116,7 @@ source_and_path image-helpers
 source_and_path influx-helpers
 source_and_path js-helpers
 source_and_path less-helpers
+source_and_path line-helpers
 source_and_path ls-helpers
 source_and_path nav-helpers
 source_and_path net-helpers
@@ -124,10 +125,13 @@ source_and_path objid-helpers
 source_and_path ocaml-helpers
 source_and_path parallel-helpers
 source_and_path perl-helpers
+source_and_path perms-helpers
 source_and_path postgres-helpers
+source_and_path returncode-helpers
 source_and_path rsync-helpers
 source_and_path ruby-helpers
 source_and_path sbt-helpers
+source_and_path size-helpers
 source_and_path slim-helpers
 source_and_path sort-helpers
 source_and_path ssh-helpers

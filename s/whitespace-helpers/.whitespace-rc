@@ -21,5 +21,11 @@ alias null-terminated-lines="tr '\n' '\0'"
 alias eb="echo ''"
 alias ebl="echo ''"
 
+defn e echo
+defn ee echo -e
+defn en echo -n
+defn ene echo -ne
+defn een echo -ne
+
 defn cls count-leading-spaces
 

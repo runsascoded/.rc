@@ -19,10 +19,7 @@ prepend_to_path "$HOME/.local/bin"
 
 prepend_to_path "$s"
 prepend_to_path "$s/intellij-helpers"
-prepend_to_path "$s/link-helpers"
 prepend_to_path "$s/py"
-prepend_to_path "$s/returncode-helpers"
-prepend_to_path "$s/yarn"
 
 append_to_path "$HOME/ucsc"
 
@@ -60,4 +57,35 @@ alias xtn=extension
 
 alias bn=basename
 alias bnx=basename-minus-extension
+
+defn canonicalize realpath -s
+defn cz canonicalize
+defn czl realpath
+
+defn ul readlink
+defn ulm readlink -m
+defn ule readlink -e
+
+defn dn multi-dirname
+ldn() {
+  l "$(dn "$@")"
+}
+
+if [ ! -e "$fh/readlink" ]; then
+  if which greadlink &> /dev/null; then
+    cmd="greadlink"
+  elif which readlink &> /dev/null; then
+    cmd="readlink"
+  else
+    echo "Warning: no readlink or greadlink found" 1>&2
+  fi
+
+  if [ -n "$cmd" ]; then
+    full_cmd="$(which "$cmd")"
+    ln -sf "$full_cmd" "$fh/readlink"
+  fi
+fi
+
+defn pdn pwd-dirname
+defn pbn pwd-basename
 

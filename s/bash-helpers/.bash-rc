@@ -33,3 +33,5 @@ defn m man
 
 alias c=cat
 
+defn cpr cp -r
+

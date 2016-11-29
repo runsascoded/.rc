@@ -23,3 +23,8 @@ defn mdn mkdir-dirname
 defn mpd mkdir-p-dirname
 
 defn mdc mkdir-p-cd
+
+defn cdn() {
+  cd "$(dn "$@")"
+}
+

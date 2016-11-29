@@ -1,0 +1,24 @@
+
+alias ct="column -t"
+alias ctt="column -t -s$'\t'"
+
+alias colt="col -i \"$t\""
+
+alias spc="splt ' '"
+alias sp:="splt :"
+alias s:="splt :"
+alias sp,="splt ,"
+alias s,="splt ,"
+alias pl="splt /"
+alias tk,="splt , | trim | kbl"
+
+alias spls="splt ' '"
+
+alias c,="col -i,"
+alias f,="first -i,"
+alias s,="second -i,"
+
+1c() {
+  first "$@"
+}
+

@@ -74,3 +74,22 @@ defn l40 lt 40
 defn l50 lt 50
 defn l100 lt 100
 
+defn trl tree -L
+defn tr1 tree -L 1
+defn tr2 tree -L 2
+defn tr3 tree -L 3
+defn tr4 tree -L 4
+defn tr5 tree -L 5
+
+defn tp1 tree -L 1 -pugsh --filelimit 50
+defn tp2 tree -L 2 -pugsh --filelimit 50
+defn tp3 tree -L 3 -pugsh --filelimit 50
+defn tp4 tree -L 4 -pugsh --filelimit 50
+defn tp5 tree -L 5 -pugsh --filelimit 50
+defn tpr tree -R -pugsh --filelimit 50
+
+defn lsgl ls-grep-link-dest
+
+defn dtr dir-tree
+defn drt dir-tree
+

@@ -3,30 +3,6 @@ export ah="$s/arg-helpers"
 
 alias reverse=reverse-stdin
 
-alias ct="column -t"
-alias ctt="column -t -s$'\t'"
-
-alias colt="col -i \"$t\""
-
-alias j=joyn
-alias jn="joyn $'\n'"
-alias j:="joyn :"
-alias j,="joyn ,"
-alias j,s="joyn ', '"
-alias j,n="joyn ','$'\n'"
-alias js,="joyn ', '"
-alias jns="joyn ' '"
-alias jnb="joyn ''"
-alias jb="joyn ''"
-
-alias spc="splt ' '"
-alias sp:="splt :"
-alias s:="splt :"
-alias sp,="splt ,"
-alias s,="splt ,"
-alias pl="splt /"
-alias tk,="splt , | trim | kbl"
-
 alias dr=drop-regex
 alias drr=drop-right-regex
 alias drn=drop-regex-n
@@ -61,10 +37,6 @@ alias pp=prepend
 alias ap=append
 alias bp=bipend
 
-alias spls="splt ' '"
-
-defn jnl join-n-lines
-
 defn tat two-at-a-time-tabs
 defn taat two-at-a-time-tabs
 
@@ -74,27 +46,6 @@ defn taats two-at-a-time-spaces
 defn x xargs
 defn x0 xargs -0
 
-defn trl tree -L
-defn tr1 tree -L 1
-defn tr2 tree -L 2
-defn tr3 tree -L 3
-defn tr4 tree -L 4
-defn tr5 tree -L 5
-
-defn tp1 tree -L 1 -pugsh --filelimit 50
-defn tp2 tree -L 2 -pugsh --filelimit 50
-defn tp3 tree -L 3 -pugsh --filelimit 50
-defn tp4 tree -L 4 -pugsh --filelimit 50
-defn tp5 tree -L 5 -pugsh --filelimit 50
-defn tpr tree -R -pugsh --filelimit 50
-
-defn chomd chmod
-
-alias c,="col -i,"
-alias f,="first -i,"
-alias s,="second -i,"
-
-alias el=exec-lines
 alias er=escape-regex
 
 alias tff=take-from-first
@@ -118,11 +69,6 @@ alias ttl=take-to-last
 
 alias dfl.="drop-from-last ."
 
-alias ilf=interleave-files
-alias za=zip-args
-alias zas=zip-args
-alias zan="zip-args '\n'"
-
 alias pt="paste -d' ' - -"
 alias zs="paste -d' ' - -"
 alias pts="paste -d' ' - -"
@@ -137,21 +83,6 @@ alias ta="tee -a"
 alias cw=count-words
 alias ca=count
 
-1c() {
-  first "$@"
-}
-
-defn dbl kill-blank-lines
-defn sbl kill-blank-lines
-defn kbl kill-blank-lines
-defn kel kill-blank-lines
-defn del kill-blank-lines
-defn sel kill-blank-lines
-
-defn kl kill-lines
-defn kli kill-lines-in-place
-defn kfl kill-full-lines
-
 defn una uname -a
 
 defn cn cat-n
@@ -161,4 +92,15 @@ defn kcs kill-char
 defn kq kill-char '\"'
 defn kqs kill-char '\"'
 
-defn cpr cp -r
+defn exists apply-test -e
+defn dne apply-test '!' -e
+
+defn tk take
+defn tkr take-right
+
+defn tt take-to
+defn ttf take-to
+defn tu take-until
+defn tuf take-until
+defn dpf take-to
+defn dff take-until

@@ -30,3 +30,5 @@ defn shk1 sort -hk 1
 defn shk2 sort -hk 2
 defn shk3 sort -hk 3
 defn shk4 sort -hk 4
+
+defn sbd sort-by-date

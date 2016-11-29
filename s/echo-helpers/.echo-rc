@@ -1,6 +1,0 @@
-
-defn e echo
-defn ee echo -e
-defn en echo -n
-defn ene echo -ne
-defn een echo -ne

@@ -1,0 +1,47 @@
+
+alias j=joyn
+alias jn="joyn $'\n'"
+alias j:="joyn :"
+alias j,="joyn ,"
+alias j,s="joyn ', '"
+alias j,n="joyn ','$'\n'"
+alias js,="joyn ', '"
+alias jns="joyn ' '"
+alias jnb="joyn ''"
+alias jb="joyn ''"
+
+defn jnl join-n-lines
+
+alias el=exec-lines
+
+alias iln=interleave-lines
+alias za=zip-args
+alias zas=zip-args
+alias zan="zip-args '\n'"
+
+defn dbl kill-blank-lines
+defn sbl kill-blank-lines
+defn kbl kill-blank-lines
+defn kel kill-blank-lines
+defn del kill-blank-lines
+defn sel kill-blank-lines
+
+defn kl kill-lines
+defn kli kill-lines-in-place
+defn kfl kill-full-lines
+
+defn sl slice-lines
+
+defn dll drop-last-lines
+defn kll drop-last-lines
+
+defn enl every-nth-line
+defn e4l every-nth-line 4
+
+defn n wc -l
+defn N wc -l
+defn wcl wc -l
+defn wl wc -l
+defn n1 count-lines
+defn wcc wc -c
+

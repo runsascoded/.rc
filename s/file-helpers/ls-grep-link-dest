@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-needle="$1"
-shift
-ls-readlink "$@" | grep "$needle" | first
