@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-killall synergys
-sleep 1
-synergys $SYNERGY_OPTS -c /etc/synergy.conf

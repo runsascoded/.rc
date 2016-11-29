@@ -59,3 +59,8 @@ defn osx is_osx
 
 defn shf defaults write com.apple.finder AppleShowAllFiles YES
 
+# Postgres paths
+export PGDIR=/Applications/Postgres.app/Contents/MacOS
+export PGHOME=$PGDIR/bin
+#export PGDATA=$HOME/Library/Application\ Support/Postgres/var/
+export PGDATA=/usr/local/postgres9.3.1/data

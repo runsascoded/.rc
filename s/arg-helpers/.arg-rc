@@ -1,8 +1,7 @@
 
 export ah="$s/arg-helpers"
-alias reverse=reverse-stdin
 
-alias bne=basename-minus-extension
+alias reverse=reverse-stdin
 
 alias ct="column -t"
 alias ctt="column -t -s$'\t'"
@@ -19,8 +18,6 @@ alias js,="joyn ', '"
 alias jns="joyn ' '"
 alias jnb="joyn ''"
 alias jb="joyn ''"
-
-alias cs=comm-sort
 
 alias ws=collapse-whitespace
 
@@ -70,12 +67,6 @@ alias ewwv="ends-with-whitespace -v"
 
 alias c=cat
 
-alias rng=range
-
-alias hx="hexdump -C"
-alias hxn="hexdump -C -n"
-alias hxd=hexdump
-
 alias s2t=spaces-to-tabs
 
 alias bn=basename
@@ -89,18 +80,6 @@ alias sml="sum -l"
 
 alias spls="splt ' '"
 
-defn thr to-human-readable
-defn thr2 to-human-readable --field=2
-defn thr3 to-human-readable --field=3
-
-defn hr to-human-readable
-defn hr2 to-human-readable --field=2
-defn hr3 to-human-readable --field=3
-
-defn fhr from-human-readable
-defn fhr2 from-human-readable --field=2
-defn fhr3 from-human-readable --field=3
-
 defn jnl join-n-lines
 
 defn tat two-at-a-time-tabs
@@ -108,15 +87,6 @@ defn taat two-at-a-time-tabs
 
 defn tts two-at-a-time-spaces
 defn taats two-at-a-time-spaces
-
-defn md mkdir -p
-defn mkd mkdir -p
-defn mdp mkdir -p
-defn mdn mkdir-dirname
-
-defn mpd mkdir-p-dirname
-
-defn mdc mkdir-p-cd
 
 defn m man
 
@@ -187,26 +157,16 @@ alias tul=take-until-last
 alias dpl=drop-past-last
 alias ttl=take-to-last
 
-alias de=drop-extension
-alias dx=drop-extension
-alias dxn=drop-extension
-
-alias xn=extension
-alias exn=extension
-alias xtn=extension
-
 alias dfl.="drop-from-last ."
 
 export dn=/dev/null
 
 append_to PKG_CONFIG_PATH "$HOME/lib" "$HOME/lib64" "$HOME/anaconda/lib"
 
-alias wg=wget
-
 alias ilf=interleave-files
-alias zf=zip-files
-alias zfs=zip-files
-alias zfn="zip-files '\n'"
+alias za=zip-args
+alias zas=zip-args
+alias zan="zip-args '\n'"
 
 alias pt="paste -d' ' - -"
 alias zs="paste -d' ' - -"
@@ -224,9 +184,6 @@ alias ebl="echo ''"
 
 alias cw=count-words
 alias ca=count
-
-alias hsum="from-human-readable | sum | to-human-readable"
-alias hs="from-human-readable | sum | to-human-readable"
 
 1c() {
   first "$@"
@@ -253,8 +210,5 @@ defn kc kill-char
 defn kcs kill-char
 defn kq kill-char '\"'
 defn kqs kill-char '\"'
-
-defn prn parse-number
-defn psn parse-number
 
 defn cpr cp -r

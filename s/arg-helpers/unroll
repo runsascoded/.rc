@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Append args 1: to arg 0.
+
 filename="$1"
 shift
 echo -n '' > "$filename"

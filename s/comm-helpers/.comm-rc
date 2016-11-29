@@ -13,4 +13,6 @@ alias c2="comm-sort -13"
 alias c23="comm-sort -1"
 alias c1="comm-sort -23"
 
+alias cs=comm-sort
+
 export COMM_STRIP_WHITESPACE=1

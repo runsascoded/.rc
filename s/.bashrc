@@ -93,8 +93,6 @@ source_and_path "$c"/adam-helpers
 source_and_path "$c"/samtools-helpers
 source_and_path "$c"/screen-helpers
 
-source_and_path sbt-helpers
-
 source_and_path arg-helpers
 source_and_path bigwig-helpers
 source_and_path audio-helpers
@@ -121,7 +119,7 @@ source_and_path less-helpers
 source_and_path ls-helpers
 source_and_path nav-helpers
 source_and_path net-helpers
-source_and_path numeric
+source_and_path num-helpers
 source_and_path objid-helpers
 source_and_path ocaml-helpers
 source_and_path parallel-helpers
@@ -129,6 +127,7 @@ source_and_path perl-helpers
 source_and_path postgres-helpers
 source_and_path rsync-helpers
 source_and_path ruby-helpers
+source_and_path sbt-helpers
 source_and_path slim-helpers
 source_and_path sort-helpers
 source_and_path ssh-helpers

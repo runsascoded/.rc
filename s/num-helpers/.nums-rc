@@ -1,0 +1,30 @@
+
+nums() {
+  pe 's/[^0-9\n]+/ /g' "$@" | trim
+}
+export -f nums
+
+alias rng=range
+
+alias hx="hexdump -C"
+alias hxn="hexdump -C -n"
+alias hxd=hexdump
+
+defn thr to-human-readable
+defn thr2 to-human-readable --field=2
+defn thr3 to-human-readable --field=3
+
+defn hr to-human-readable
+defn hr2 to-human-readable --field=2
+defn hr3 to-human-readable --field=3
+
+defn fhr from-human-readable
+defn fhr2 from-human-readable --field=2
+defn fhr3 from-human-readable --field=3
+
+alias hsum="from-human-readable | sum | to-human-readable"
+alias hs="from-human-readable | sum | to-human-readable"
+
+defn prn parse-number
+defn psn parse-number
+

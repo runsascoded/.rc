@@ -23,3 +23,5 @@ export UNAME="$(uname)"
 
 defn ith ip-to-hostname
 defn pi parse-ip
+
+alias wg=wget
