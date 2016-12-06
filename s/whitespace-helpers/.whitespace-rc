@@ -1,5 +1,5 @@
 
-alias ws=collapse-whitespace
+alias ws=strip-whitespace
 
 alias sww=starts-with-whitespace
 alias dsww="starts-with-whitespace -v"

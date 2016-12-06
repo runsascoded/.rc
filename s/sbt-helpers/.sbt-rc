@@ -1,13 +1,30 @@
 
+alias s=sbt
+
+alias si=sbt-inspect
+
 alias st=sbt-test
+
 alias sc="sbt compile"
-alias spr="sbt +publishSigned sonatypeRelease"
+alias stc="sbt test:compile"
+
+alias ssw=sbt-show
+
+alias spbr="sbt +publishSigned sonatypeRelease"
+alias spr="sbt publishSigned sonatypeRelease"
+alias ssr="sbt sonatypeRelease"
+alias ssd="sbt sonatypeDrop"
+
+alias sdt="sbt dependencyTree"
+
 alias spm="sbt +publishM2"
 alias stpm="sbt ++2.10.6 publishM2"
 alias sepm="sbt ++2.11.8 publishM2"
+
 alias spl="sbt +publishLocal"
 
 alias sdg=sbt-dependency-grep
+
 alias sas="sbt assembly"
 alias sbas="sbt +assembly"
 alias stas="sbt ++2.10.6 assembly"

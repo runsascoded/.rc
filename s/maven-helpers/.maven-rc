@@ -52,6 +52,7 @@ defn mvnci mvn clean install $nt
 defn mvs maven-version-set
 
 export m2="$HOME/.m2/repository"
+export m2a="$m2/org/apache"
 export M="$m2"
 
 if [ -z "$JAVA_HOME" -a -d "$HOME"/java8 ]; then

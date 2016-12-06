@@ -1,5 +1,4 @@
 
-
 alias hfh="hist | first | hist"
 
 alias hh=hist-head
@@ -26,3 +25,5 @@ alias hvr="hist-hist-xs -r"
 
 defn cdt count-distinct
 defn dtn count-distinct
+
+defn sbk sum-by-key

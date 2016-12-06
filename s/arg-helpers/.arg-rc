@@ -104,3 +104,5 @@ defn tu take-until
 defn tuf take-until
 defn dpf take-to
 defn dff take-until
+
+alias cpt=capture

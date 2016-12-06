@@ -114,3 +114,11 @@ dedupe_path_var() {
     fi
   done
 }
+
+strip_file_prefixes() {
+  args=()
+  for arg in "$@"; do
+    args+=("${arg#file:}")
+  done
+}
+export -f strip_file_prefixes

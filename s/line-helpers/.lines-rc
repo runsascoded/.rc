@@ -38,7 +38,6 @@ defn kll drop-last-lines
 defn enl every-nth-line
 defn e4l every-nth-line 4
 
-defn n wc -l
 defn N wc -l
 defn wcl wc -l
 defn wl wc -l

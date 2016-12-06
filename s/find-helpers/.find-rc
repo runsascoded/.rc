@@ -1,4 +1,8 @@
 
+if which gfind &> /dev/null; then
+  defn find gfind
+fi
+
 alias fn=find-name
 alias fns=find-suffix
 alias fs=find-suffix

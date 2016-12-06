@@ -1,12 +1,14 @@
 
 export jh="$s/jar-helpers"
 
-defn jc jar-grep -c
+defn jc jar-cat
 defn jd jar-diff
 defn jl jar-less
+defn jm jar-manifest
 defn jln jar-count
 defn jg jar-grep
 defn jgc jar-grep -c
+defn jgq jar-grep -q
 defn jgi jar-grep -i
 defn jgl jar-grep-less
 defn jgli jar-grep-less -i

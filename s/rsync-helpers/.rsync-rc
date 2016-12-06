@@ -41,5 +41,11 @@ rsync-paths() {
 }
 defn rsp rsync-paths
 defn rsn rsync-paths -n
+defn rspr rsync-paths --remove-source-files
 
 defn epd explode-parent-dirs
+
+alias rsc="rsync -avzh"
+alias rsr="rsync -avzh --remove-source-files"
+alias rsrc="rsync -avzh --remove-source-files"
+alias rscn="rsync -avzhn"

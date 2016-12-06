@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+strip_file_prefixes "$@"
+ls -lthrA --color=auto "${args[@]}"

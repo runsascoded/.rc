@@ -5,5 +5,11 @@ if [ $# -eq 0 ]; then
 else
   test="$1"
   shift
-  sbt "test-only *$test*"
+  if [ $# -eq 0 ]; then
+    sbt "$@" "test-only *$test*"
+  else
+    name="$1"
+    shift
+    sbt "$@" "test-only *$test* -- -z $name"
+  fi
 fi

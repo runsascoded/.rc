@@ -9,6 +9,7 @@ append_to_path "/sw/bin"
 prepend_to_path "$HOME/bin"
 prepend_to_path "$HOME/node/bin"
 prepend_to_path "$HOME/sbin"
+prepend_to_path "$HOME/sbt-0.13.8/sbt/bin"
 
 append_to_path "$c/sbt-parent/scripts"
 
@@ -89,3 +90,4 @@ fi
 defn pdn pwd-dirname
 defn pbn pwd-basename
 
+alias pcs=path-cols

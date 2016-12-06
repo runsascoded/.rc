@@ -1,6 +1,7 @@
 
 alias ct="column -t"
 alias ctt="column -t -s$'\t'"
+alias ct,="column -t -s,"
 
 alias colt="col -i \"$t\""
 
@@ -22,3 +23,20 @@ alias s,="second -i,"
   first "$@"
 }
 
+2c() {
+  second "$@"
+}
+
+3c() {
+  col 2 "$@"
+}
+
+4c() {
+  col 3 "$@"
+}
+
+alias cl0="col 0"
+alias cl1="col 1"
+alias cl2="col 2"
+alias cl3="col 3"
+alias cl4="col 4"

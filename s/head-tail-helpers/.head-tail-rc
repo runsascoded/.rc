@@ -31,7 +31,10 @@ defn t4 tail -n 4
 defn t5 tail -n 5
 defn t6 tail -n 6
 defn t7 tail -n 7
+defn t8 tail -n 8
+defn t9 tail -n 9
 defn t10 tail
+defn t11 tail -n 11
 defn t20 tail -n 20
 defn t50 tail -n 50
 defn t100 tail -n 100

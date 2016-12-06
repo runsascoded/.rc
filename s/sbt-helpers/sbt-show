@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+prop="$1"
+shift
+
+sbt "show $prop $@"

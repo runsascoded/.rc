@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import fileinput
+import re
+import sys
+
+sums = {}
+for line in fileinput.input(sys.argv[1:]):
+	pieces = re.match('\s*(\d+)\s*(.*)', line)
+	count = int(pieces.group(1))
+	key = pieces.group(2)
+	if not key in sums:
+		sums[key] = 0
+	sums[key] += count
+
+out = (
+	sorted(
+		sums.items(),
+		key=lambda t: t[1]
+	)
+)
+
+max_width = 0
+if out:
+	max_width = len(str(out[-1][1]))
+
+print(
+	'\n'.join(
+		'%s%d\t%s' % (' ' * (max_width - len(str(count))), count, key) for (key, count) in out
+	)
+)
+

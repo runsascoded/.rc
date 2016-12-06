@@ -74,7 +74,6 @@ source_and_path "$c/demeter-kickstart/scripts"
 source_and_path which-helpers
 
 source_and_path brew-helpers  # which
-source_and_path path-helpers  # which
 source_and_path py-helpers    # brew, path
 
 append_to_path "$c/yarn-logs-helpers"
@@ -82,6 +81,7 @@ source_and_path maven-helpers
 
 source_and_path diff-helpers  # which
 source_and_path file-helpers  # which
+source_and_path path-helpers  # which
 source_and_path jar-helpers   # which
 source_and_path osx-helpers   # which
 

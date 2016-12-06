@@ -24,7 +24,7 @@ defn mpd mkdir-p-dirname
 
 defn mdc mkdir-p-cd
 
-defn cdn() {
+cdn() {
   cd "$(dn "$@")"
 }
 

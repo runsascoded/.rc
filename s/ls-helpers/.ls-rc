@@ -19,7 +19,8 @@ defn tflu tail-f-last-updated
 defn psl parse-symlinks
 defn lls ls-links
 
-defn l ls -lthrA --color=auto
+
+defn l smart-ls
 
 defn la l -a
 defn lad l -ad
@@ -50,7 +51,6 @@ defn lld l -d
 
 defn lltt ls-l-tail
 
-defn s l -S
 defn lts l -tS
 defn ltr l -tr
 defn lth l -htr
@@ -65,6 +65,7 @@ defn lrd l -dL
 
 defn lcy less-cycle
 
+defn lf ls-full-t
 defn lft ls-full-t
 defn lftt ls-full-t-last-n
 

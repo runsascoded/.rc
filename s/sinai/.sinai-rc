@@ -132,8 +132,9 @@ export m2spc="$m2sp/spark-core_2.10"
 export msc="$m2sp/spark-core_2.10"
 export mac="$m2adam/adam-core_2.10"
 
-export m2p="$m2/org/hammerlab/pageant"
-export m2g="$m2/org/hammerlab/guacamole"
+export m2h="$m2/org/hammerlab"
+export m2p="$m2h/pageant"
+export m2g="$m2h/guacamole"
 
 guac_args=
 export djo="--driver-java-options"
@@ -410,6 +411,10 @@ export drt="$drd/Tumor"
 export xt="$drt/SureSelect_XT"
 export qxt="$drt/SureSelect_QXT"
 
+export ssv2="$dk/sureselect-v2.bed"
+export ssv4="$dk/sureselect-v4.bed"
+export ssv5="$dk/sureselect-v5.bed"
+
 export hdr="/user/willir31/pgv-dry-run"
 export hdrd="$hdr/DNA"
 export hdrn="$hdrd/Normal"
@@ -423,6 +428,8 @@ export ohg="org/hammerlab/guacamole"
 export ohgd="org.hammerlab.guacamole"
 export sohg="$sms/$ohg"
 export tohg="$smt/$ohg"
+export soh="$sms/org/hammerlab"
+export toh="$sts/org/hammerlab"
 
 export ohp="org/hammerlab/pageant"
 

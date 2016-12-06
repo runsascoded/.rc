@@ -17,7 +17,7 @@ else
 fi
 
 if [ -n "$COMM_STRIP_WHITESPACE" ]; then
-  ws_cmd=collapse-whitespace
+  ws_cmd=strip-whitespace
 else
   ws_cmd=cat
 fi
