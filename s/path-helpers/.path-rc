@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export ph="$(dirname "${BASH_SOURCE[0]}")"
+
 # PATH initialization
 #append_to_path "/opt/google/depot_tools"
 append_to_path "/usr/sbin"
@@ -56,7 +58,7 @@ alias xn=extension
 alias exn=extension
 alias xtn=extension
 
-alias bn=basename
+alias bn=rich-basename
 alias bnx=basename-minus-extension
 
 defn cz canonicalize

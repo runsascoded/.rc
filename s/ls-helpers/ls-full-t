@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-find "${@:-.}" -maxdepth 1 -printf '%T@ %p\n' | sort -nk 1 | last

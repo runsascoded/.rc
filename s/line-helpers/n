@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Cheat and make this its own executable file so that xargs will accept it :(
-
-wc -l "$@"

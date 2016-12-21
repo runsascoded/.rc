@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-regex="$1"
-shift
-
-sed "/^$regex\$/d" "$@"

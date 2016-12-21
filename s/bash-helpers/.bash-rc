@@ -36,3 +36,4 @@ alias cv="cat -v"
 
 defn cpr cp -r
 
+alias fom=factor-out-helpers-module

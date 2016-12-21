@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-delim="$1"
-shift
-pe "s/\n/$delim/" "$@"

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if [ $# -gt 2 ]; then
-  sep="$1"
-  shift
-else
-  sep=' '
-fi
-paste -d"$sep" "$@"

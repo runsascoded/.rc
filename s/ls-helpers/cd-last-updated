@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-dir="$(last-updated-dir "$@")"
-echo "$dir"
-cd "$dir"

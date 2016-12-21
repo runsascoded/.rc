@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-pe 's/([\d\.]+) ([BKMGTP])/\1\2/g' | column -t

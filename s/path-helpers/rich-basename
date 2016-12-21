@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# `basename` wrapper that optionally takes arguments from stdin
+
+if [ $# -eq 0 ]; then
+	xargs "$0"
+else
+	basename "$@"
+fi

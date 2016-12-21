@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-for arg in "$@"; do
-  if ! [[ "$arg" =~ ^/ ]]; then
-    arg="$hh/$arg"
-  fi
-  echo "$arg"
-done
