@@ -1,8 +1,0 @@
-
-defn chomd chmod
-
-defn chmd make-executable
-defn me make-executable
-defn cmd make-executable
-
-defn dp dir-perms

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if [ $# -eq 0 ]; then
-  err "Usage: $0 <watched directory> [trigger name]"
-elif [ $# -eq 1 ]; then
-  watchman watch-del "$1"
-else
-  watchman trigger-del "$@"
-fi

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-if [ $# -gt 1 ]; then
-  err "Usage: $0 foo.zip" >&2
-fi
-
-unzip "$1" -d "${1%.zip}"

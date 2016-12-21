@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-openssl dgst -binary -sha1 "$@" | openssl base64

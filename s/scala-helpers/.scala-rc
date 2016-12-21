@@ -1,6 +1,0 @@
-
-prepend_to_path "$HOME/scala-2.10.5/bin"
-prepend_to_path "$HOME/scala-2.10.6/bin"
-prepend_to_path "$HOME/scala-2.11.8/bin"
-
-alias sz=start-zinc

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-for arg in "$@"; do
-  dir-tree "$(readlink -m "$arg")" | xargs ls -ld
-done | column -t

@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-awk -F/ '{print; while(/\//) { $0=gensub("(.*)/[^/]*", "\\1", "g"); print}}'
-
