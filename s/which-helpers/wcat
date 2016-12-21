@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-w=$(which $@)
-if [ $? -ne 0 ]; then
-  echo "Not found"
-  exit 1
-fi
-cat "$w"

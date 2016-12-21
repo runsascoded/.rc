@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-needle=$1
-shift
-
-grep "$needle" $@ | perl -ne 'print if s/([^:]+):.*/\1/' | hist -r

@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-strip_file_prefixes "$@"
-jar tf "${args[@]}" | grep -v '/$' | sort | tr -d '\r'

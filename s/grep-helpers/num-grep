@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-num="$1"
-shift
-pcregrep "([^0-9]|^)$num([^0-9]|$)" "$@"

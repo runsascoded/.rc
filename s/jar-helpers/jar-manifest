@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-jar-extract-file META-INF/MANIFEST.MF "$@" | tr -d '\r'

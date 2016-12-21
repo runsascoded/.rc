@@ -1,8 +1,0 @@
-
-set-now() {
-  export now=`unow`
-}
-
-defn last_modified_time stat -c %Y
-defn lmt stat -c %Y
-

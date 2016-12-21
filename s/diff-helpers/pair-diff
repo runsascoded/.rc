@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-first_file="${@: -2:1}"
-second_file="${@: -1}"
-
-args=${@:1:$((${#@} - 2))}
-
-diff <($args "$first_file") <($args "$second_file")

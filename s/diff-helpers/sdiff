@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-diff <(cut -f 1 $1) <(cut -f 1 $2)
-

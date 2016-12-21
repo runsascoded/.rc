@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# Wrapper for realpath -s that can also take inputs from stdin.
-
-if [ $# -eq 0 ]; then
-	xargs "$0"
-else
-	realpath -s "$@"
-fi

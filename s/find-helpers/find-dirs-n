@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-num="$1"
-shift
-find-dirs "${@:-.}" -maxdepth "$num"

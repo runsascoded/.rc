@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-pe 's/^( *).*/\1/' "$@" | len

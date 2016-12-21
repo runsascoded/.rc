@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-perl -lne 'print if lstat && -f _' "$@"

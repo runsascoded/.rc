@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-cat "$dict" | grep "$@" | awk '{ print length(), $0 | "sort -n" }'
-
