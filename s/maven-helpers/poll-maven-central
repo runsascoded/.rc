@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Poll Maven Central to determine when an uploaded artifact has been picked up.
+
+if [ $# -lt 3 ]; then
+	echo "Usage: $0 <group> <artifact> <version> [poll-interval seconds]" >&2
+	exit 1
+fi
+
+org="$1"
+shift
+artifact="$1"
+shift
+version="$1"
+shift
+
+if [ $# -gt 0 ]; then
+	interval="$1"
+	shift
+else
+	interval=30
+fi
+
+org_path="$(echo "$org" | sed 's/\./\//g')"
+
+artifact_url="https://repo1.maven.org/maven2/${org_path}/${artifact}"
+
+response_code() {
+	curl -I "$1" 2>/dev/null | head -n 1 | awk -F' ' '{ print $2 }'
+}
+
+if [ "$(response_code "$artifact_url")" == "404" ]; then
+	echo "Warning: artifact URL not found: $artifact_url" >&2
+fi
+
+sleep 1
+
+url="${artifact_url}/${version}/"
+
+echo "Polling $url every $interval seconds…"
+
+while [ 1 ]; do
+	code="$(response_code "$url")"
+	echo "$(date):	Response code: $code"
+	if [ "$code" != "404" ]; then
+		break
+	fi
+	sleep "$interval"
+done

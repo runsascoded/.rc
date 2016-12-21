@@ -81,3 +81,5 @@ set-maven-opts() {
 ea tc target/scala-*/test-classes
 
 defn mep mvn help:effective-pom
+
+alias pmc=poll-maven-central

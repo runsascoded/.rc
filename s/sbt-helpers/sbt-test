@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
+if [ "${1:0:2}" == "++" ]; then
+	scalaVer="$1"
+	shift
+fi
+
 if [ $# -eq 0 ]; then
-  sbt test
+  sbt test $scalaVer
 else
   test="$1"
   shift
   if [ $# -eq 0 ]; then
-    sbt "$@" "test-only *$test*"
+    sbt $scalaVer "$@" "test-only *$test*"
   else
     name="$1"
     shift
-    sbt "$@" "test-only *$test* -- -z $name"
+    sbt $scalaVer "$@" "test-only *$test* -- -z $name"
   fi
 fi

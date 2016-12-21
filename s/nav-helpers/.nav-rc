@@ -28,3 +28,4 @@ cdn() {
   cd "$(dn "$@")"
 }
 
+alias cdr=cd-run
