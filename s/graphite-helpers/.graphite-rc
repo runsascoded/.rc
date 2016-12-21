@@ -1,6 +1,0 @@
-
-# Graphite things
-export WHISPER="$HOME/.whisper"
-export CARBON="$HOME/.carbon"
-append_to PYTHONPATH "$WHISPER/lib"
-

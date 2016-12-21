@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-nslookup "$@" | pne 's/.*name = (.*?)\.?$/\1/'
-

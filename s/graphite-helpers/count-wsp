@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-find-wsp "$@" | wc -l

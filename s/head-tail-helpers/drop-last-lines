@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-let num=$1+1
-tail -n +$num "$@"
-

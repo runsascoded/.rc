@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [ $# -eq 0 ]; then
-  xargs "$0" "$@"
-else
-  stat -c '%Z %n' "$@" | sort -nk1 | col 1:
-fi

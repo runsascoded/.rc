@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-mvn versions:set -DgenerateBackupPoms=false -DnewVersion=$(gn sha) && mvn install -DskipTests -Plocal "$@"
