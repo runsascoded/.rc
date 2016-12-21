@@ -107,6 +107,7 @@ source_and_path dict-helpers
 source_and_path dropbox-helpers
 source_and_path emacs-helpers
 source_and_path find-helpers
+source_and_path gcloud-helpers
 source_and_path go-helpers
 source_and_path grep-helpers
 source_and_path hadoop-helpers
