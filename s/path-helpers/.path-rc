@@ -59,7 +59,6 @@ alias xtn=extension
 alias bn=basename
 alias bnx=basename-minus-extension
 
-defn canonicalize realpath -s
 defn cz canonicalize
 defn czl realpath
 

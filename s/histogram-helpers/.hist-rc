@@ -3,10 +3,12 @@ alias hfh="hist | first | hist"
 
 alias hh=hist-head
 alias ht=hist-tail
+alias htt=hist-tail
 
 alias histx=hist-xs
 
 alias hs=hist
+alias hst=hist
 alias hss="hist -s"
 alias hsn="hist -n"
 alias hsr="hist -r"
