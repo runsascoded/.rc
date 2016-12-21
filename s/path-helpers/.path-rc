@@ -72,7 +72,10 @@ ldn() {
   l "$(dn "$@")"
 }
 
-if [ ! -e "$fh/readlink" ]; then
+cur_dir="$(dirname "${BASH_SOURCE[0]}")"
+readlink_path="$cur_dir/readlink"
+
+if [ ! -e "$readlink_path" ]; then
   if which greadlink &> /dev/null; then
     cmd="greadlink"
   elif which readlink &> /dev/null; then
@@ -83,7 +86,8 @@ if [ ! -e "$fh/readlink" ]; then
 
   if [ -n "$cmd" ]; then
     full_cmd="$(which "$cmd")"
-    ln -sf "$full_cmd" "$fh/readlink"
+    echo "Making readlinkg symlink: $readlink_path -> $full_cmd"
+    ln -sf "$full_cmd" "$readlink_path"
   fi
 fi
 
