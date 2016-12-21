@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-escaped_regex="$(echo "$1" | sed 's_/_\\/_g')"
-shift
-"${DROP_PERL_CMD:-pe}" "s/${escaped_regex}$//" "$@"

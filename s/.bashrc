@@ -54,6 +54,10 @@ source_and_path() {
           debug "Adding $s/$dir to \$PATH and sourcing rc files..."
           prepend_to_path "$s/$dir"
           try_source "$s/$dir"/.*-rc
+        elif [ -d "$c/$dir" ]; then
+          debug "Adding $c/$dir to \$PATH and sourcing rc files..."
+          prepend_to_path "$c/$dir"
+          try_source "$c/$dir"/.*-rc
         elif [ -s "$arg" ]; then
             debug "Sourcing: $arg"
             source "$arg"

@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-prepend "$1" "$@" | append "$2"

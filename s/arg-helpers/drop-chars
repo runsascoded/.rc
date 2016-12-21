@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-num="$1"
-shift
-"${DROP_PERL_CMD:-pe}" "s/^.{$num}//" "$@"
