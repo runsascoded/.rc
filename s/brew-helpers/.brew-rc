@@ -4,6 +4,12 @@ alias bi="brew install"
 alias bud="brew update"
 alias bug="brew upgrade"
 alias bl="brew list"
+alias bri="brew reinstall"
+
+buri() {
+	brew uninstall "$@"
+	brew reinstall "$@"
+}
 
 if [ -s "$HOME/.brew" ]; then
   # exports brew Github token
