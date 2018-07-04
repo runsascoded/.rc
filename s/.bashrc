@@ -71,7 +71,7 @@ source_and_path() {
 }
 
 
-try_source ".vars-rc"
+try_source "$c/bash-helpers/vars/.vars-rc"
 
 source_and_path "$c/demeter-kickstart/scripts"
 
@@ -98,9 +98,9 @@ source_and_path "$c"/samtools-helpers
 source_and_path "$c"/screen-helpers
 
 source_and_path arg-helpers
+source_and_path bash-helpers
 source_and_path bigwig-helpers
 source_and_path audio-helpers
-source_and_path bash-helpers
 source_and_path case-helpers
 source_and_path collectd-helpers
 source_and_path col-helpers
@@ -136,6 +136,7 @@ source_and_path returncode-helpers
 source_and_path rsync-helpers
 source_and_path ruby-helpers
 source_and_path sbt-helpers
+source_and_path scala-helpers
 source_and_path size-helpers
 source_and_path slim-helpers
 source_and_path sort-helpers
@@ -185,3 +186,5 @@ ea LFS_ADMINUSER foo
 ea LFS_ADMINPASS bar
 ea LFS_SCHEME http
 ea LFS_HOST http
+
+. $c/tgmi/.tagomi-rc
