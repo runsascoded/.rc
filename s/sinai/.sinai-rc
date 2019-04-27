@@ -403,12 +403,6 @@ export AWS_HL_ACCESS="AKIAJXVAH2UO5T2M47VQ"
 
 export ga=data/ipinivo/GA4534
 
-alias k=ketrew
-export kc="$HOME/.ketrew/configuration.ml"
-alias ki="ketrew init"
-alias kpc="ketrew pc"
-alias kss="ketrew start-server --configuration-profile daemon"
-
 export dk="$hh/data/kits"
 
 export di="$hh/data/ipinivo"

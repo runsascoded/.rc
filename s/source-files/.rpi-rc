@@ -11,3 +11,38 @@ if [ $? -eq 0 ]; then
 fi
 
 #sudo apt-get install python-dateutil
+
+rpzs() {
+	for i in `seq 5`; do
+		echo rpz$i
+	done
+}
+rpis() {
+	rpzs
+	echo rpi rpi2 | spc
+}
+
+smap() {
+	cat | p "echo {}; ssh {} \"$@\"; echo ''"
+}
+
+rpzmap() {
+	rpzs | smap "$@"
+}
+
+rpmap() {
+	rpis | smap "$@"
+}
+
+update_temps() {
+	if [ $# -eq 0 ]; then
+		args="$(rpis)"
+	else
+		args="$@"
+	fi
+	if [ ! -e read.py ]; then
+		echo "Couldn't find read.py; run from sensors git clone" 1>&2
+		return 1
+	fi
+	echo "$args" | spc | p 'scp read.py {}: && ssh {} "sudo service temps restart" && echo {}'
+}

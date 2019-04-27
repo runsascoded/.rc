@@ -1,0 +1,23 @@
+bams() {
+  file="$1"
+  if [ -z "$file" -o -z ]
+  shift
+  if [ $# -gt 0 ]; then
+    drop="$1"
+    shift
+  else
+    drop=0
+  fi
+  i=0
+  n="$(wc -l "$file" | awk '{ print $1 }')"
+  for bam in $(cat "$file"); do 
+    out="${bam%.bam}.coverage"
+    if ! gsutil ls "$out" &> /dev/null; then 
+      echo "$i/$n running: $bam"
+      spark-submit --jars "$gcn" --class "$cvm" "$cvj" $args -i "$bed" -o "$out" "$bam"
+    else
+      echo "$i/$n skipping: $bam"
+    fi
+    let i=$i+1
+  done
+}

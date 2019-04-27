@@ -108,11 +108,13 @@ source_and_path color-helpers
 source_and_path comm-helpers
 source_and_path datetime-helpers
 source_and_path dict-helpers
+source_and_path docker-helpers
 source_and_path dropbox-helpers
 source_and_path emacs-helpers
 source_and_path find-helpers
 source_and_path gcloud-helpers
 source_and_path go-helpers
+source_and_path gradle-helpers
 source_and_path grep-helpers
 source_and_path hadoop-helpers
 source_and_path head-tail-helpers
@@ -120,6 +122,7 @@ source_and_path histogram-helpers
 source_and_path image-helpers
 source_and_path influx-helpers
 source_and_path js-helpers
+source_and_path kubectl-helpers
 source_and_path less-helpers
 source_and_path line-helpers
 source_and_path ls-helpers
