@@ -1,2 +1,0 @@
-resolvers += Resolver.mavenLocal
-

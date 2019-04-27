@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# History setup
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
-shopt -s histappend
-#export PROMPT_COMMAND="history -a"
-alias hn="history -n"
-

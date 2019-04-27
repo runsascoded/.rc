@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-echo "# IntelliJ files" >> .gitignore
-echo ".idea" >> .gitignore
-echo "*.iml" >> .gitignore
