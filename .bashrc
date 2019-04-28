@@ -29,6 +29,9 @@ vb() {
   fi
 }
 
+# Uncomment to log info about files being sourced, etc.
+# VERBOSE=1
+
 export REPO="$(dirname "${BASH_SOURCE[0]}")"
 
 try_source() {
@@ -44,18 +47,36 @@ try_source() {
 
 load_helpers() {
     for module in "$@"; do
-        if [ -d "$module" ]; then
-          debug "Adding $module to \$PATH and sourcing rc files..."
-          try_source "$module"/.*-rc
-          prepend_to_path "$module"
+        dir="$HOME/c/${module}-helpers"
+        if [ -d "$dir" ]; then
+          debug "Adding $dir to \$PATH and sourcing rc files..."
+          try_source "$dir"/.*-rc
+          prepend_to_path "$dir"
+          ssh_config="$dir/.ssh/config"
+          if [ -s "$ssh_config" ]; then
+            debug "Adding ssh config: $ssh_config"
+            echo "Include $ssh_config" >> "$HOME/.ssh/config"
+          fi
+          gitignore="$dir/global.gitignore"
+          if [ -s "$gitignore" ]; then
+            debug "Adding global git ignore file: $gitignore"
+            git_add_global_ignore_file "$gitignore"
+          fi
+          gitconfig="$dir/.gitconfig"
+          if [ -s "$gitconfig" ]; then
+            debug "Adding global git config file: $gitconfig"
+            git_add_global_config_file "$gitconfig"
+          fi
         else
-          debug "Couldn't source nonexistent file: '$arg'"
+          debug "Couldn't source nonexistent file: '$dir'"
         fi
     done
 }
 
-
 load_helpers bash  # load this module first; it provides `prepend_to_path` above!
+load_helpers path
+
+load_helpers git  # this module should stand alone / be import-able outside of this repo
 
 load_helpers which
 load_helpers brew  # which
@@ -74,7 +95,7 @@ load_helpers \
 	datetime dict docker dropbox \
 	emacs \
 	find \
-	gcloud git go gradle grep \
+	gcloud go gradle grep \
 	hadoop head-tail histogram \
 	image influx \
 	js \
