@@ -1,6 +1,0 @@
-#!/usr/bin/python
-
-import operator
-from filter import run_with_operator
-
-run_with_operator(operator.ne)
