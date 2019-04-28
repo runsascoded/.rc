@@ -1,7 +1,0 @@
-[user]
-	name = Ryan Williams
-	email = ryan.blake.williams@gmail.com
-[branch "master"]
-	rebase = true
-[branch]
-	autosetuprebase = always

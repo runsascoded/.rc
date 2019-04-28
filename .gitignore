@@ -1,18 +1,12 @@
 *
-!install
 !.bash_profile
 !.bashrc
 !.emacs
-!.foursquare-repl
 !.git-completion.bash
 !.git-helpers
 !.gitcomplete
 !.gitignore
-!.rpi_bashrc
 !.screenrc
-!.ssh
-!.ssh/id_rsa.pub
-!.ssh/github_rsa.pub
 !.tmux.conf
 !s
 !s/**/*
@@ -22,4 +16,3 @@
 *#
 .#*
 *.pyc
-s/yarn

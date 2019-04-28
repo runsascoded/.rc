@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-alias gfr="git fetch --tags ryan"
-
-git config --global --unset-all include.path
-git config --global --remove-section include 2> /dev/null
-git config --global --add include.path "$s"/git-configs/.gitconfig
-
-export GLOBAL_GIT_IGNORE_PATH="$HOME/global.gitignore"
