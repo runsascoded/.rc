@@ -1,7 +1,0 @@
-
-export db="$HOME/Dropbox"
-export gd="$HOME/GoogleDrive"
-
-append_to_path "$c/Dropbox-Uploader"
-alias dbu="dropbox_uploader.sh upload"
-
