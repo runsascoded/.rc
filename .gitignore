@@ -1,17 +1,8 @@
 *
 !.bash_profile
 !.bashrc
-!.emacs
-!.git-completion.bash
-!.git-helpers
 !.gitcomplete
 !.gitignore
-!.screenrc
-!.tmux.conf
-!s
-!s/**/*
-!slate
-!slate/**/*
 *~
 *#
 .#*
