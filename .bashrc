@@ -47,25 +47,30 @@ try_source() {
 
 load_helpers() {
     for module in "$@"; do
-        dir="$HOME/c/${module}-helpers"
+        local dir="$REPO/$module"
         if [ -d "$dir" ]; then
           debug "Adding $dir to \$PATH and sourcing rc files..."
           try_source "$dir"/.*-rc
           prepend_to_path "$dir"
           ssh_config="$dir/.ssh/config"
           if [ -s "$ssh_config" ]; then
-            debug "Adding ssh config: $ssh_config"
-            echo "Include $ssh_config" >> "$HOME/.ssh/config"
+            local line="Include $ssh_config"
+            if grep -q "$line" "$HOME/.ssh/config"; then
+              debug "SSH config already Included: $ssh_config"
+            else
+              debug "Adding ssh config: $ssh_config"
+              echo "Include $ssh_config" >> "$HOME/.ssh/config"
+            fi
           fi
           gitignore="$dir/global.gitignore"
           if [ -s "$gitignore" ]; then
             debug "Adding global git ignore file: $gitignore"
-            git_add_global_ignore_file "$gitignore"
+            git add-global-ignore-file "$gitignore"
           fi
           gitconfig="$dir/.gitconfig"
           if [ -s "$gitconfig" ]; then
             debug "Adding global git config file: $gitconfig"
-            git_add_global_config_file "$gitconfig"
+            git-add-global-file include.path "$gitconfig"
           fi
         else
           debug "Couldn't source nonexistent file: '$dir'"
@@ -80,7 +85,6 @@ load_helpers git  # this module should stand alone / be import-able outside of t
 
 load_helpers which
 load_helpers brew  # which
-load_helpers py  # brew, path
 
 # which
 load_helpers diff file path jar osx
@@ -110,6 +114,8 @@ load_helpers \
 	watchman whitespace \
 	xml \
 	zinc zip
+
+load_helpers py  # brew, path; also make sure pyenv is first on path
 
 export gh="$REPO/git-helpers"
 export gha="$gh/aliases"

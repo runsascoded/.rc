@@ -1,0 +1,171 @@
+[submodule "adam"]
+	path = adam
+	url = git@github.com:ryan-williams/adam-helpers
+[submodule "arg"]
+	path = arg
+	url = git@github.com:ryan-williams/arg-helpers
+[submodule "audio"]
+	path = audio
+	url = git@github.com:ryan-williams/audio-helpers
+[submodule "bash"]
+	path = bash
+	url = git@github.com:ryan-williams/bash-helpers
+[submodule "bigwig"]
+	path = bigwig
+	url = git@github.com:ryan-williams/bigwig-helpers
+[submodule "case"]
+	path = case
+	url = git@github.com:ryan-williams/case-helpers
+[submodule "col"]
+	path = col
+	url = git@github.com:ryan-williams/col-helpers
+[submodule "color"]
+	path = color
+	url = git@github.com:ryan-williams/color-helpers
+[submodule "comm"]
+	path = comm
+	url = git@github.com:ryan-williams/comm-helpers
+[submodule "datetime"]
+	path = datetime
+	url = git@github.com:ryan-williams/datetime-helpers
+[submodule "diff"]
+	path = diff
+	url = git@github.com:ryan-williams/diff-helpers
+[submodule "docker"]
+	path = docker
+	url = git@github.com:ryan-williams/docker-helpers
+[submodule "emacs"]
+	path = emacs
+	url = git@github.com:ryan-williams/emacs-helpers
+[submodule "file"]
+	path = file
+	url = git@github.com:ryan-williams/file-helpers
+[submodule "find"]
+	path = find
+	url = git@github.com:ryan-williams/find-helpers
+[submodule "gcloud"]
+	path = gcloud
+	url = git@github.com:ryan-williams/gcloud-helpers
+[submodule "git"]
+	path = git
+	url = git@github.com:ryan-williams/git-helpers
+[submodule "gradle"]
+	path = gradle
+	url = git@github.com:ryan-williams/gradle-helpers
+[submodule "graphite"]
+	path = graphite
+	url = git@github.com:ryan-williams/graphite-helpers
+[submodule "grep"]
+	path = grep
+	url = git@github.com:ryan-williams/grep-helpers
+[submodule "hadoop"]
+	path = hadoop
+	url = git@github.com:ryan-williams/hadoop-helpers
+[submodule "head-tail"]
+	path = head-tail
+	url = git@github.com:ryan-williams/head-tail-helpers
+[submodule "histogram"]
+	path = histogram
+	url = git@github.com:ryan-williams/histogram-helpers
+[submodule "image"]
+	path = image
+	url = git@github.com:ryan-williams/image-helpers
+[submodule "jar"]
+	path = jar
+	url = git@github.com:ryan-williams/jar-helpers
+[submodule "js"]
+	path = js
+	url = git@github.com:ryan-williams/js-helpers
+[submodule "kubectl"]
+	path = kubectl
+	url = git@github.com:ryan-williams/kubectl-helpers
+[submodule "less"]
+	path = less
+	url = git@github.com:ryan-williams/less-helpers
+[submodule "line"]
+	path = line
+	url = git@github.com:ryan-williams/line-helpers
+[submodule "ls"]
+	path = ls
+	url = git@github.com:ryan-williams/ls-helpers
+[submodule "maven"]
+	path = maven
+	url = git@github.com:ryan-williams/maven-helpers
+[submodule "net"]
+	path = net
+	url = git@github.com:ryan-williams/net-helpers
+[submodule "num"]
+	path = num
+	url = git@github.com:ryan-williams/num-helpers
+[submodule "ocaml"]
+	path = ocaml
+	url = git@github.com:ryan-williams/ocaml-helpers
+[submodule "osx"]
+	path = osx
+	url = git@github.com:ryan-williams/osx-helpers
+[submodule "parallel"]
+	path = parallel
+	url = git@github.com:ryan-williams/parallel-helpers
+[submodule "path"]
+	path = path
+	url = git@github.com:ryan-williams/path-helpers
+[submodule "perl"]
+	path = perl
+	url = git@github.com:ryan-williams/perl-helpers
+[submodule "perms"]
+	path = perms
+	url = git@github.com:ryan-williams/perms-helpers
+[submodule "py"]
+	path = py
+	url = git@github.com:ryan-williams/py-helpers
+[submodule "returncode"]
+	path = returncode
+	url = git@github.com:ryan-williams/returncode-helpers
+[submodule "rsync"]
+	path = rsync
+	url = git@github.com:ryan-williams/rsync-helpers
+[submodule "ruby"]
+	path = ruby
+	url = git@github.com:ryan-williams/ruby-helpers
+[submodule "samtools"]
+	path = samtools
+	url = git@github.com:ryan-williams/samtools-helpers
+[submodule "sbt"]
+	path = sbt
+	url = git@github.com:ryan-williams/sbt-helpers
+[submodule "scala"]
+	path = scala
+	url = git@github.com:ryan-williams/scala-helpers
+[submodule "screen"]
+	path = screen
+	url = git@github.com:ryan-williams/screen-helpers
+[submodule "size"]
+	path = size
+	url = git@github.com:ryan-williams/size-helpers
+[submodule "sort"]
+	path = sort
+	url = git@github.com:ryan-williams/sort-helpers
+[submodule "spark"]
+	path = spark
+	url = git@github.com:ryan-williams/spark-helpers
+[submodule "ssh"]
+	path = ssh
+	url = git@github.com:ryan-williams/ssh-helpers
+[submodule "watchman"]
+	path = watchman
+	url = git@github.com:ryan-williams/watchman-helpers
+[submodule "which"]
+	path = which
+	url = git@github.com:ryan-williams/which-helpers
+[submodule "whitespace"]
+	path = whitespace
+	url = git@github.com:ryan-williams/whitespace-helpers
+[submodule "xml"]
+	path = xml
+	url = git@github.com:ryan-williams/xml-helpers
+[submodule "zip"]
+	path = zip
+	url = git@github.com:ryan-williams/zip-helpers
+[submodule "nav"]
+	path = nav
+	url = git@github.com:ryan-williams/nav-helpers.git
