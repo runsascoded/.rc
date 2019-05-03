@@ -45,9 +45,10 @@ try_source() {
     done
 }
 
+export MODULES="$REPO"
 load_helpers() {
     for module in "$@"; do
-        local dir="$REPO/$module"
+        local dir="$MODULES/$module"
         if [ -d "$dir" ]; then
           debug "Adding $dir to \$PATH and sourcing rc files..."
           try_source "$dir"/.*-rc
