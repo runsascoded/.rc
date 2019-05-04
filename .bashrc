@@ -66,7 +66,7 @@ load_helpers() {
           gitignore="$dir/global.gitignore"
           if [ -s "$gitignore" ]; then
             debug "Adding global git ignore file: $gitignore"
-            git add-global-ignore-file "$gitignore"
+            git add-global-ignore "$gitignore"
           fi
           gitconfig="$dir/.gitconfig"
           if [ -s "$gitconfig" ]; then
