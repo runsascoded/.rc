@@ -1,4 +1,4 @@
-bootstrap
+dotfiles
 =========
 
-scripts 'n things
+Bash aliases and helper scripts
