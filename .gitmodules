@@ -169,6 +169,6 @@
 [submodule "nav"]
 	path = nav
 	url = git@github.com:ryan-williams/nav-helpers.git
-[submodule "slate"]
-	path = slate
-	url = git@github.com:ryan-williams/slate-files.git
+[submodule "hammerspoon"]
+	path = hammerspoon
+	url = git@github.com:ryan-williams/hammerspoon-files.git
