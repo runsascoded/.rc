@@ -53,14 +53,19 @@ load_helpers() {
           debug "Adding $dir to \$PATH and sourcing rc files..."
           try_source "$dir"/.*-rc
           prepend_to_path "$dir"
-          ssh_config="$dir/.ssh/config"
+          local ssh_config="$dir/.ssh/config"
           if [ -s "$ssh_config" ]; then
             local line="Include $ssh_config"
-            if grep -q "$line" "$HOME/.ssh/config"; then
+            local ssh_dir="$HOME/.ssh"
+            if [ ! -e "$ssh_dir" ]; then
+              mkdir -p "$ssh_dir"
+            fi
+            ssh_config="$ssh_dir/config"
+            if grep -q "$line" "$ssh_config"; then
               debug "SSH config already Included: $ssh_config"
             else
               debug "Adding ssh config: $ssh_config"
-              echo "Include $ssh_config" >> "$HOME/.ssh/config"
+              echo "Include $ssh_config" >> "$ssh_config"
             fi
           fi
           gitignore="$dir/global.gitignore"
