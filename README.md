@@ -10,8 +10,9 @@ Bash aliases and helper scripts
 ```bash
 git init
 git remote add upstream git@github.com:ryan-williams/dotfiles.git
-git fetch upstream
+git fetch upstream --recurse-submodules
 git checkout master
+git submodule update --init --recursive
 source .dotfiles-rc
 ```
 
