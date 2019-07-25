@@ -60,12 +60,12 @@ load_helpers() {
             if [ ! -e "$ssh_dir" ]; then
               mkdir -p "$ssh_dir"
             fi
-            ssh_config="$ssh_dir/config"
-            if grep -q "$line" "$ssh_config"; then
+            local root_ssh_config="$ssh_dir/config"
+            if grep -q "$line" "$root_ssh_config"; then
               debug "SSH config already Included: $ssh_config"
             else
               debug "Adding ssh config: $ssh_config"
-              echo "Include $ssh_config" >> "$ssh_config"
+              echo "Include $ssh_config" >> "$root_ssh_config"
             fi
           fi
           gitignore="$dir/global.gitignore"
