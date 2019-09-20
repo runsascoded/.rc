@@ -83,6 +83,7 @@ load_helpers() {
         fi
     done
 }
+export -f load_helpers
 
 load_helpers bash  # load this module first; it provides `prepend_to_path` above!
 load_helpers path
