@@ -94,7 +94,11 @@ load_helpers which
 load_helpers brew  # which
 
 # which
-load_helpers diff file path jar osx
+load_helpers diff file path jar
+
+if [[ "$(uname -a)" =~ ^Darwin* ]]; then
+  load_helpers osx
+fi
 
 load_helpers maven
 load_helpers sinai  # which, maven
