@@ -12,44 +12,12 @@ This downloads [`clone-and-source.sh`](https://github.com/ryan-williams/git-help
 
 ## Install dependencies (optional)
 
-A few submodules require additional setup steps (but can be ignored if unused):
+A few submodules require additional setup steps or dependencies to be installed (but can be ignored if unused):
 
 - [python](./py)
-- [hammerspoon](./hammerspoon)
-
-Similarly these modules need certain dependencies to be installed, for some functionality to work:
 - [java](./jar): install [jenv](https://www.jenv.be/)
 - [parallel](./parallel): install [GNU Parallel](https://www.gnu.org/software/parallel/)
-- [ruby](./ruby): install [rbenv](https://github.com/rbenv/rbenv)
 - [js](./js): install [nvm](https://github.com/nvm-sh/nvm)
 
-### OSX
-
-On OSX, these brew packages should cover most or all of the above:
-
-```bash
-brew install \
-    autoconf \
-    coreutils \
-    gettext \
-    git \
-    grep \
-    htop \
-    jenv \
-    mysql \
-    ncurses \
-    nvm \
-    openssl \
-    parallel \
-    pcre \
-    pcre2 \
-    pkg-config \
-    pyenv \
-    pyenv-virtualenv \
-    rbenv \
-    readline \
-    ruby-build \
-    sqlite \
-    xz \
-    zlib
-```
+### Additional modules / branches
+[The `all` branch](https://github.com/ryan-williams/dotfiles/tree/all) has some additional modules that aren't frequently used or as portable, and so are omitted from this default `master` branch.
