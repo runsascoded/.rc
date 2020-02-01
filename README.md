@@ -53,3 +53,6 @@ brew install \
     xz \
     zlib
 ```
+
+## Reduced branch
+[The `reduced` branch](https://github.com/ryan-williams/dotfiles/tree/reduced) has a few less-commonly-used and less-portable modules removed, and may be more appropriate for some environments.
