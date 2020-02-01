@@ -1,6 +1,3 @@
-[submodule "adam"]
-	path = adam
-	url = git@github.com:ryan-williams/adam-helpers
 [submodule "arg"]
 	path = arg
 	url = git@github.com:ryan-williams/arg-helpers
@@ -10,9 +7,6 @@
 [submodule "bash"]
 	path = bash
 	url = git@github.com:ryan-williams/bash-helpers
-[submodule "bigwig"]
-	path = bigwig
-	url = git@github.com:ryan-williams/bigwig-helpers
 [submodule "case"]
 	path = case
 	url = git@github.com:ryan-williams/case-helpers
@@ -43,24 +37,15 @@
 [submodule "find"]
 	path = find
 	url = git@github.com:ryan-williams/find-helpers
-[submodule "gcloud"]
-	path = gcloud
-	url = git@github.com:ryan-williams/gcloud-helpers
 [submodule "git"]
 	path = git
 	url = git@github.com:ryan-williams/git-helpers
 [submodule "gradle"]
 	path = gradle
 	url = git@github.com:ryan-williams/gradle-helpers
-[submodule "graphite"]
-	path = graphite
-	url = git@github.com:ryan-williams/graphite-helpers
 [submodule "grep"]
 	path = grep
 	url = git@github.com:ryan-williams/grep-helpers
-[submodule "hadoop"]
-	path = hadoop
-	url = git@github.com:ryan-williams/hadoop-helpers
 [submodule "head-tail"]
 	path = head-tail
 	url = git@github.com:ryan-williams/head-tail-helpers
@@ -76,9 +61,6 @@
 [submodule "js"]
 	path = js
 	url = git@github.com:ryan-williams/js-helpers
-[submodule "kubectl"]
-	path = kubectl
-	url = git@github.com:ryan-williams/kubectl-helpers
 [submodule "less"]
 	path = less
 	url = git@github.com:ryan-williams/less-helpers
@@ -88,21 +70,12 @@
 [submodule "ls"]
 	path = ls
 	url = git@github.com:ryan-williams/ls-helpers
-[submodule "maven"]
-	path = maven
-	url = git@github.com:ryan-williams/maven-helpers
 [submodule "net"]
 	path = net
 	url = git@github.com:ryan-williams/net-helpers
 [submodule "num"]
 	path = num
 	url = git@github.com:ryan-williams/num-helpers
-[submodule "ocaml"]
-	path = ocaml
-	url = git@github.com:ryan-williams/ocaml-helpers
-[submodule "osx"]
-	path = osx
-	url = git@github.com:ryan-williams/osx-helpers
 [submodule "parallel"]
 	path = parallel
 	url = git@github.com:ryan-williams/parallel-helpers
@@ -124,18 +97,6 @@
 [submodule "rsync"]
 	path = rsync
 	url = git@github.com:ryan-williams/rsync-helpers
-[submodule "ruby"]
-	path = ruby
-	url = git@github.com:ryan-williams/ruby-helpers
-[submodule "samtools"]
-	path = samtools
-	url = git@github.com:ryan-williams/samtools-helpers
-[submodule "sbt"]
-	path = sbt
-	url = git@github.com:ryan-williams/sbt-helpers
-[submodule "scala"]
-	path = scala
-	url = git@github.com:ryan-williams/scala-helpers
 [submodule "screen"]
 	path = screen
 	url = git@github.com:ryan-williams/screen-helpers
@@ -145,15 +106,9 @@
 [submodule "sort"]
 	path = sort
 	url = git@github.com:ryan-williams/sort-helpers
-[submodule "spark"]
-	path = spark
-	url = git@github.com:ryan-williams/spark-helpers
 [submodule "ssh"]
 	path = ssh
 	url = git@github.com:ryan-williams/ssh-helpers
-[submodule "watchman"]
-	path = watchman
-	url = git@github.com:ryan-williams/watchman-helpers
 [submodule "which"]
 	path = which
 	url = git@github.com:ryan-williams/which-helpers
@@ -169,6 +124,3 @@
 [submodule "nav"]
 	path = nav
 	url = git@github.com:ryan-williams/nav-helpers.git
-[submodule "hammerspoon"]
-	path = hammerspoon
-	url = git@github.com:ryan-williams/hammerspoon-files.git
