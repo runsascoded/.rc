@@ -32,7 +32,7 @@ vb() {
 # Uncomment to log info about files being sourced, etc.
 # VERBOSE=1
 
-export REPO="$(dirname "${BASH_SOURCE[0]}")"
+export REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 try_source() {
     for arg in "$@"; do
