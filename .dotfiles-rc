@@ -109,7 +109,7 @@ load_helpers \
 	"case" col color comm \
 	datetime dict docker dropbox \
 	emacs \
-	find \
+	ffmpeg find \
 	gcloud go gradle grep \
 	hadoop head-tail histogram \
 	image influx \

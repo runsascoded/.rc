@@ -172,3 +172,6 @@
 [submodule "hammerspoon"]
 	path = hammerspoon
 	url = https://github.com/ryan-williams/hammerspoon-files.git
+[submodule "ffmpeg"]
+	path = ffmpeg
+	url = git@github.com:ryan-williams/ffmpeg-helpers.git
