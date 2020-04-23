@@ -5,10 +5,10 @@ Bash aliases and helper scripts
 
 ## Quickstart
 ```bash
-. <(curl -L https://j.mp/_rc) ryan-williams/dotfiles
+. <(curl -L https://j.mp/_rc) runsascoded/.rc
 ```
 
-This downloads [`clone-and-source.sh`](https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh), and runs it on this GitHub repo (`ryan-williams/dotfiles`), cloning it into `dotfiles/` and appending `source dotfiles/.*rc` to your `.bashrc`.
+This downloads [`clone-and-source.sh`](https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh), and runs it on this GitHub repo (`runsascoded/.rc`), cloning it into `dotfiles/` and appending `source dotfiles/.*rc` to your `.bashrc`.
 
 ## Install dependencies (optional)
 
