@@ -1,9 +1,6 @@
 [submodule "arg"]
 	path = arg
 	url = https://github.com/ryan-williams/arg-helpers.git
-[submodule "audio"]
-	path = audio
-	url = https://github.com/ryan-williams/audio-helpers.git
 [submodule "bash"]
 	path = bash
 	url = https://github.com/ryan-williams/bash-helpers.git
@@ -37,18 +34,9 @@
 [submodule "find"]
 	path = find
 	url = https://github.com/ryan-williams/find-helpers.git
-[submodule "gcloud"]
-	path = gcloud
-	url = https://github.com/ryan-williams/gcloud-helpers.git
 [submodule "git"]
 	path = git
 	url = https://github.com/ryan-williams/git-helpers.git
-[submodule "gradle"]
-	path = gradle
-	url = https://github.com/ryan-williams/gradle-helpers.git
-[submodule "graphite"]
-	path = graphite
-	url = https://github.com/ryan-williams/graphite-helpers.git
 [submodule "grep"]
 	path = grep
 	url = https://github.com/ryan-williams/grep-helpers.git
@@ -58,9 +46,6 @@
 [submodule "histogram"]
 	path = histogram
 	url = https://github.com/ryan-williams/histogram-helpers.git
-[submodule "image"]
-	path = image
-	url = https://github.com/ryan-williams/image-helpers.git
 [submodule "jar"]
 	path = jar
 	url = https://github.com/ryan-williams/jar-helpers.git
@@ -79,21 +64,12 @@
 [submodule "ls"]
 	path = ls
 	url = https://github.com/ryan-williams/ls-helpers.git
-[submodule "maven"]
-	path = maven
-	url = https://github.com/ryan-williams/maven-helpers.git
 [submodule "net"]
 	path = net
 	url = https://github.com/ryan-williams/net-helpers.git
 [submodule "num"]
 	path = num
 	url = https://github.com/ryan-williams/num-helpers.git
-[submodule "ocaml"]
-	path = ocaml
-	url = https://github.com/ryan-williams/ocaml-helpers.git
-[submodule "osx"]
-	path = osx
-	url = https://github.com/ryan-williams/osx-helpers.git
 [submodule "parallel"]
 	path = parallel
 	url = https://github.com/ryan-williams/parallel-helpers.git
@@ -115,15 +91,6 @@
 [submodule "rsync"]
 	path = rsync
 	url = https://github.com/ryan-williams/rsync-helpers.git
-[submodule "ruby"]
-	path = ruby
-	url = https://github.com/ryan-williams/ruby-helpers.git
-[submodule "sbt"]
-	path = sbt
-	url = https://github.com/ryan-williams/sbt-helpers.git
-[submodule "scala"]
-	path = scala
-	url = https://github.com/ryan-williams/scala-helpers.git
 [submodule "screen"]
 	path = screen
 	url = https://github.com/ryan-williams/screen-helpers.git
@@ -133,15 +100,9 @@
 [submodule "sort"]
 	path = sort
 	url = https://github.com/ryan-williams/sort-helpers.git
-[submodule "spark"]
-	path = spark
-	url = https://github.com/ryan-williams/spark-helpers.git
 [submodule "ssh"]
 	path = ssh
 	url = https://github.com/ryan-williams/ssh-helpers.git
-[submodule "watchman"]
-	path = watchman
-	url = https://github.com/ryan-williams/watchman-helpers.git
 [submodule "which"]
 	path = which
 	url = https://github.com/ryan-williams/which-helpers.git
@@ -157,9 +118,3 @@
 [submodule "nav"]
 	path = nav
 	url = https://github.com/ryan-williams/nav-helpers.git
-[submodule "hammerspoon"]
-	path = hammerspoon
-	url = https://github.com/ryan-williams/hammerspoon-files.git
-[submodule "ffmpeg"]
-	path = ffmpeg
-	url = https://github.com/ryan-williams/ffmpeg-helpers.git
