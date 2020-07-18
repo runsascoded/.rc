@@ -32,7 +32,7 @@ vb() {
 # Uncomment to log info about files being sourced, etc.
 # VERBOSE=1
 
-export REPO="$(dirname "${BASH_SOURCE[0]}")"
+export REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 try_source() {
     for arg in "$@"; do
@@ -104,31 +104,30 @@ load_helpers maven
 load_helpers sinai  # which, maven
 
 load_helpers \
-	adam arg audio \
-	bash bigwig \
+	arg audio \
+	bash \
 	"case" col color comm \
-	datetime dict docker dropbox \
+	datetime dict docker \
 	emacs \
-	find \
+	ffmpeg find \
 	gcloud go gradle grep \
-	hadoop head-tail histogram \
+	head-tail histogram \
 	image influx \
 	js \
 	kubectl \
 	less line ls \
 	nav net num \
-	objid ocaml \
+	ocaml \
 	parallel perl perms postgres \
 	returncode rsync ruby \
-	samtools sbt scala screen size slim spark sort ssh \
-	travis \
+	screen size sort ssh \
 	watchman whitespace \
 	xml \
-	zinc zip
+	zip
 
 load_helpers py  # brew, path; also make sure pyenv is first on path
 
-export gh="$REPO/git-helpers"
+export gh="$REPO/git"
 export gha="$gh/aliases"
 
 dedupe_path_var PATH PYTHONPATH NODE_PATH
