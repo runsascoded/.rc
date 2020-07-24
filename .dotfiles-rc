@@ -104,7 +104,7 @@ load_helpers maven
 load_helpers sinai  # which, maven
 
 load_helpers \
-	arg audio \
+	arg audio aws \
 	bash \
 	"case" col color comm \
 	datetime dict docker \
@@ -115,7 +115,7 @@ load_helpers \
 	image influx \
 	js \
 	kubectl \
-	less line ls \
+	less line linux ls \
 	nav net num \
 	ocaml \
 	parallel perl perms postgres \
