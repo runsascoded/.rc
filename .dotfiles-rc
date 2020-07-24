@@ -91,37 +91,29 @@ load_helpers path
 load_helpers git  # this module should stand alone / be import-able outside of this repo
 
 load_helpers which
-load_helpers brew  # which
 
 # which
 load_helpers diff file path jar
 
-if [[ "$(uname -a)" =~ ^Darwin* ]]; then
-  load_helpers osx
-fi
-
-load_helpers maven
 load_helpers sinai  # which, maven
 
 load_helpers \
-	arg audio \
+	arg aws \
 	bash \
 	"case" col color comm \
 	datetime dict docker \
 	emacs \
-	ffmpeg find \
-	gcloud go gradle grep \
+	find \
+	go grep \
 	head-tail histogram \
-	image influx \
 	js \
 	kubectl \
-	less line ls \
+	less line linux ls \
 	nav net num \
-	ocaml \
-	parallel perl perms postgres \
-	returncode rsync ruby \
+	parallel perl perms \
+	returncode rsync \
 	screen size sort ssh \
-	watchman whitespace \
+	whitespace \
 	xml \
 	zip
 
