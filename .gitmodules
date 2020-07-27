@@ -120,7 +120,7 @@
 	url = https://github.com/ryan-williams/nav-helpers.git
 [submodule "aws"]
 	path = aws
-	url = git@github.com:ryan-williams/aws-helpers.git
+	url = https://github.com/ryan-williams/aws-helpers.git
 [submodule "linux"]
 	path = linux
-	url = git@github.com:ryan-williams/linux-helpers.git
+	url = https://github.com/ryan-williams/linux-helpers.git
