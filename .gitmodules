@@ -43,9 +43,6 @@
 [submodule "git"]
 	path = git
 	url = https://github.com/ryan-williams/git-helpers.git
-[submodule "gradle"]
-	path = gradle
-	url = https://github.com/ryan-williams/gradle-helpers.git
 [submodule "graphite"]
 	path = graphite
 	url = https://github.com/ryan-williams/graphite-helpers.git
