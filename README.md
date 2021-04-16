@@ -8,7 +8,7 @@ Bash aliases and helper scripts
 . <(curl -L https://j.mp/_rc) runsascoded/.rc
 ```
 
-This downloads [`clone-and-source.sh`](https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh), and runs it on this GitHub repo (`runsascoded/.rc`), cloning it into `dotfiles/` and appending `source dotfiles/.*rc` to your `.bashrc`.
+This downloads [`clone-and-source.sh`](https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh) and runs it on this GitHub repo (`runsascoded/.rc`), cloning it into `.rc/` and appending `source .rc/.*rc` to your `.bashrc`.
 
 ## Install dependencies (optional)
 
