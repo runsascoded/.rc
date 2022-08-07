@@ -119,7 +119,7 @@ load_helpers \
 	nav net num \
 	ocaml \
 	parallel perl perms postgres \
-	returncode rsync ruby \
+	rsync ruby \
 	screen size sort ssh \
 	watchman whitespace \
 	xml \
