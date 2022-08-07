@@ -112,7 +112,6 @@ load_helpers \
 	js \
 	less line linux ls \
 	nav net num \
-	ocaml \
 	parallel perl perms postgres \
 	rsync ruby \
 	screen size sort ssh \

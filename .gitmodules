@@ -70,9 +70,6 @@
 [submodule "num"]
 	path = num
 	url = https://github.com/ryan-williams/num-helpers.git
-[submodule "ocaml"]
-	path = ocaml
-	url = https://github.com/ryan-williams/ocaml-helpers.git
 [submodule "osx"]
 	path = osx
 	url = https://github.com/ryan-williams/osx-helpers.git
