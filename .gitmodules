@@ -1,9 +1,6 @@
 [submodule "arg"]
 	path = arg
 	url = https://github.com/ryan-williams/arg-helpers.git
-[submodule "audio"]
-	path = audio
-	url = https://github.com/ryan-williams/audio-helpers.git
 [submodule "bash"]
 	path = bash
 	url = https://github.com/ryan-williams/bash-helpers.git
@@ -56,7 +53,7 @@
 	path = histogram
 	url = https://github.com/ryan-williams/histogram-helpers.git
 [submodule "image"]
-	path = image
+	path = av
 	url = https://github.com/ryan-williams/image-helpers.git
 [submodule "jar"]
 	path = jar
@@ -145,9 +142,6 @@
 [submodule "hammerspoon"]
 	path = hammerspoon
 	url = https://github.com/ryan-williams/hammerspoon-files.git
-[submodule "ffmpeg"]
-	path = ffmpeg
-	url = https://github.com/ryan-williams/ffmpeg-helpers.git
 [submodule "aws"]
 	path = aws
 	url = https://github.com/ryan-williams/aws-helpers.git

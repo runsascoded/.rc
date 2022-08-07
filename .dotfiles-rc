@@ -104,15 +104,15 @@ load_helpers maven
 load_helpers sinai  # which, maven
 
 load_helpers \
-	arg audio aws \
+	arg av aws \
 	bash \
 	"case" col color comm \
 	datetime dict docker \
 	emacs \
-	ffmpeg find \
+	find \
 	gcloud go gradle grep \
 	head-tail histogram \
-	image influx \
+	influx \
 	js \
 	kubectl \
 	less line linux ls \
