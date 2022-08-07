@@ -115,12 +115,6 @@
 [submodule "ruby"]
 	path = ruby
 	url = https://github.com/ryan-williams/ruby-helpers.git
-[submodule "sbt"]
-	path = sbt
-	url = https://github.com/ryan-williams/sbt-helpers.git
-[submodule "scala"]
-	path = scala
-	url = https://github.com/ryan-williams/scala-helpers.git
 [submodule "screen"]
 	path = screen
 	url = https://github.com/ryan-williams/screen-helpers.git
@@ -130,9 +124,6 @@
 [submodule "sort"]
 	path = sort
 	url = https://github.com/ryan-williams/sort-helpers.git
-[submodule "spark"]
-	path = spark
-	url = https://github.com/ryan-williams/spark-helpers.git
 [submodule "ssh"]
 	path = ssh
 	url = https://github.com/ryan-williams/ssh-helpers.git
