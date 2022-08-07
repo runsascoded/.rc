@@ -100,9 +100,6 @@ if [[ "$(uname -a)" =~ ^Darwin* ]]; then
   load_helpers osx
 fi
 
-load_helpers maven
-load_helpers sinai  # which, maven
-
 load_helpers \
 	arg av aws \
 	bash \
@@ -110,7 +107,7 @@ load_helpers \
 	datetime docker \
 	emacs \
 	find \
-	gcloud go gradle grep \
+	go grep \
 	head-tail histogram \
 	js \
 	less line linux ls \

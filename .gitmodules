@@ -34,15 +34,9 @@
 [submodule "find"]
 	path = find
 	url = https://github.com/ryan-williams/find-helpers.git
-[submodule "gcloud"]
-	path = gcloud
-	url = https://github.com/ryan-williams/gcloud-helpers.git
 [submodule "git"]
 	path = git
 	url = https://github.com/ryan-williams/git-helpers.git
-[submodule "graphite"]
-	path = graphite
-	url = https://github.com/ryan-williams/graphite-helpers.git
 [submodule "grep"]
 	path = grep
 	url = https://github.com/ryan-williams/grep-helpers.git
@@ -70,9 +64,6 @@
 [submodule "ls"]
 	path = ls
 	url = https://github.com/ryan-williams/ls-helpers.git
-[submodule "maven"]
-	path = maven
-	url = https://github.com/ryan-williams/maven-helpers.git
 [submodule "net"]
 	path = net
 	url = https://github.com/ryan-williams/net-helpers.git
