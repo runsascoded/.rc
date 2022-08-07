@@ -52,9 +52,6 @@
 [submodule "js"]
 	path = js
 	url = https://github.com/ryan-williams/js-helpers.git
-[submodule "kubectl"]
-	path = kubectl
-	url = https://github.com/ryan-williams/kubectl-helpers.git
 [submodule "less"]
 	path = less
 	url = https://github.com/ryan-williams/less-helpers.git
@@ -85,9 +82,6 @@
 [submodule "py"]
 	path = py
 	url = https://github.com/ryan-williams/py-helpers.git
-[submodule "returncode"]
-	path = returncode
-	url = https://github.com/ryan-williams/returncode-helpers.git
 [submodule "rsync"]
 	path = rsync
 	url = https://github.com/ryan-williams/rsync-helpers.git
@@ -124,3 +118,6 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/ryan-williams/linux-helpers.git
+[submodule "sql"]
+	path = sql
+	url = https://github.com/ryan-williams/sql-helpers.git

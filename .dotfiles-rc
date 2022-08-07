@@ -95,24 +95,21 @@ load_helpers which
 # which
 load_helpers diff file path jar
 
-load_helpers sinai  # which, maven
-
 load_helpers \
-	arg aws \
+	arg av aws \
 	bash \
 	"case" col color comm \
-	datetime dict docker \
+	datetime docker \
 	emacs \
 	find \
 	go grep \
 	head-tail histogram \
 	js \
-	kubectl \
 	less line linux ls \
 	nav net num \
 	parallel perl perms \
-	returncode rsync \
-	screen size sort ssh \
+	rsync \
+	screen size sort ssh sql \
 	whitespace \
 	xml \
 	zip
