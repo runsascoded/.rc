@@ -61,9 +61,6 @@
 [submodule "js"]
 	path = js
 	url = https://github.com/ryan-williams/js-helpers.git
-[submodule "kubectl"]
-	path = kubectl
-	url = https://github.com/ryan-williams/kubectl-helpers.git
 [submodule "less"]
 	path = less
 	url = https://github.com/ryan-williams/less-helpers.git

@@ -107,14 +107,12 @@ load_helpers \
 	arg av aws \
 	bash \
 	"case" col color comm \
-	datetime dict docker \
+	datetime docker \
 	emacs \
 	find \
 	gcloud go gradle grep \
 	head-tail histogram \
-	influx \
 	js \
-	kubectl \
 	less line linux ls \
 	nav net num \
 	ocaml \
