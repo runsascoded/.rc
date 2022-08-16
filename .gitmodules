@@ -1,6 +1,9 @@
 [submodule "arg"]
 	path = arg
 	url = https://github.com/ryan-williams/arg-helpers.git
+[submodule "av"]
+	path = av
+	url = https://github.com/ryan-williams/av-helpers.git
 [submodule "bash"]
 	path = bash
 	url = https://github.com/ryan-williams/bash-helpers.git
@@ -46,9 +49,6 @@
 [submodule "histogram"]
 	path = histogram
 	url = https://github.com/ryan-williams/histogram-helpers.git
-[submodule "image"]
-	path = av
-	url = https://github.com/ryan-williams/image-helpers.git
 [submodule "jar"]
 	path = jar
 	url = https://github.com/ryan-williams/jar-helpers.git
