@@ -119,4 +119,6 @@ load_helpers py  # brew, path; also make sure pyenv is first on path
 export gh="$REPO/git"
 export gha="$gh/aliases"
 
+export PATH="$PATH:$HOME/.cargo/bin"
+
 dedupe_path_var PATH PYTHONPATH NODE_PATH
