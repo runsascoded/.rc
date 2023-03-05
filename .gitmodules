@@ -124,3 +124,6 @@
 [submodule "sql"]
 	path = sql
 	url = https://github.com/ryan-williams/sql-helpers.git
+[submodule "watchman"]
+	path = watchman
+	url = https://github.com/ryan-williams/watchman-helpers.git
