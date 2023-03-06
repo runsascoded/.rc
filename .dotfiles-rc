@@ -121,4 +121,4 @@ export gha="$gh/aliases"
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
-dedupe_path_var PATH PYTHONPATH NODE_PATH
+dedupe_path_var PATH PYTHONPATH
