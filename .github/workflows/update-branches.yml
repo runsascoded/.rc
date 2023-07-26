@@ -1,0 +1,12 @@
+name: Update meta-branches
+on:
+  push: { branches: [ main ] }
+  workflow_dispatch:
+jobs:
+  update:
+    name: Update meta-branches
+    runs-on: ubuntu-latest
+    steps:
+      - run: git clone --bare --depth=1 ${{ github.repositoryUrl }}
+      - run: pip install git+https://github.com/runsascoded/utz@py
+      - run: git meta-branch-update -v
