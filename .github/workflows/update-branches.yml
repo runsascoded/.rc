@@ -1,0 +1,20 @@
+name: Update meta-branches
+on:
+  push: { branches: [ all, server ] }
+  workflow_dispatch:
+jobs:
+  update:
+    name: Update meta-branches
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git clone --bare --depth=1 -b ${{ github.ref_name }} https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY .
+          git log -1 --format=%H
+      - run: pip install GitPython mistune
+      - run: pip install --no-build-isolation git+https://github.com/runsascoded/utz@gmb
+      - name: Configure Git author info
+        run: |
+          git config --global user.name "$(git log -1 --format=%cn)"
+          git config --global user.email "$(git log -1 --format=%ce)"
+      - run: git config --global push.autoSetupRemote true
+      - run: git meta-branch-update -v
