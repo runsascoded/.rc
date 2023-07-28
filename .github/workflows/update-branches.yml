@@ -1,6 +1,6 @@
 name: Update meta-branches
 on:
-  push: { branches: [ all, server ] }
+  push: { branches: [ all ] }
   workflow_dispatch:
 jobs:
   update:
@@ -18,3 +18,6 @@ jobs:
           git config --global user.email "$(git log -1 --format=%ce)"
       - run: git config --global push.autoSetupRemote true
       - run: git meta-branch-update -v
+      - run: gh api --method POST /repos/runsascoded/.rc/merges -fbase=server -fhead=all '-fcommit_message=Merge `all` into `server`'
+        env:
+          GH_TOKEN: ${{ github.token }}
