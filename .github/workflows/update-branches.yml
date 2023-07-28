@@ -1,6 +1,6 @@
 name: Update meta-branches
 on:
-  push: { branches: [ all, server ] }
+  push: { branches: [ all ] }
   workflow_dispatch:
 jobs:
   update:
