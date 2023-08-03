@@ -1,22 +1,17 @@
-name: Update meta-branches
+name: Update submodules
 on:
   push: { branches: [ all ] }
   workflow_dispatch:
 jobs:
   update:
-    name: Update meta-branches
+    name: Update submodules
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          git clone --bare --depth=1 -b ${{ github.ref_name }} https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY .
-          git log -1 --format=%H
-      - run: pip install utz
-      - name: Configure Git author info
-        run: |
-          git config --global user.name "$(git log -1 --format=%cn)"
-          git config --global user.email "$(git log -1 --format=%ce)"
-      - run: git config --global push.autoSetupRemote true
-      - run: git meta-branch-update -v
-      - run: gh api --method POST /repos/runsascoded/.rc/merges -fbase=server -fhead=all '-fcommit_message=Merge `all` into `server`'
+      - uses: runsascoded/git-update-submodules@main
+        with:
+          branch: ${{ github.ref_name }}
+          token: ${{ github.token }}
+      - run: gh api -XPOST /repos/$GITHUB_REPOSITORY/merges -fbase=server -fhead=all '-fcommit_message=Merge `all` into `server`'
+        if: github.ref_name == 'all'
         env:
           GH_TOKEN: ${{ github.token }}
