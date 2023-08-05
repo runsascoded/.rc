@@ -7,11 +7,14 @@ jobs:
     name: Update submodules
     runs-on: ubuntu-latest
     steps:
-      - uses: runsascoded/git-update-submodules@main
+      - name: Update submodules
+        uses: runsascoded/update-submodules@v1
+        id: update
         with:
           branch: ${{ github.ref_name }}
           token: ${{ github.token }}
-      - run: gh api -XPOST /repos/$GITHUB_REPOSITORY/merges -fbase=server -fhead=all '-fcommit_message=Merge `all` into `server`'
-        if: github.ref_name == 'all'
+      - name: "Merge `all` into `server`"
+        run: gh api -XPOST /repos/$GITHUB_REPOSITORY/merges -fbase=server -fhead=all '-fcommit_message=Merge `all` into `server`'
+        if: github.ref_name == 'all' && steps.update.outputs.commit
         env:
           GH_TOKEN: ${{ github.token }}
