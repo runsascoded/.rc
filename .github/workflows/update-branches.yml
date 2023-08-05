@@ -7,8 +7,8 @@ jobs:
     name: Update submodules
     runs-on: ubuntu-latest
     steps:
-      - name: "Update submodules"
-        uses: runsascoded/git-update-submodules@main
+      - name: Update submodules
+        uses: runsascoded/update-submodules@v1
         id: update
         with:
           branch: ${{ github.ref_name }}
