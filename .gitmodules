@@ -118,6 +118,9 @@
 [submodule "ssh"]
 	path = ssh
 	url = https://github.com/ryan-williams/ssh-helpers.git
+[submodule "watchman"]
+	path = watchman
+	url = https://github.com/ryan-williams/watchman-helpers.git
 [submodule "which"]
 	path = which
 	url = https://github.com/ryan-williams/which-helpers.git
