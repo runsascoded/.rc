@@ -127,3 +127,6 @@
 [submodule "watchman"]
 	path = watchman
 	url = https://github.com/ryan-williams/watchman-helpers.git
+[submodule "rust"]
+	path = rust
+	url = https://github.com/ryan-williams/rust-helpers.git
