@@ -136,3 +136,6 @@
 [submodule "sql"]
 	path = sql
 	url = https://github.com/ryan-williams/sql-helpers.git
+[submodule "rust"]
+	path = rust
+	url = https://github.com/ryan-williams/rust-helpers.git
