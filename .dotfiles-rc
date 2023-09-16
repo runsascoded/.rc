@@ -108,7 +108,7 @@ load_helpers \
 	less line linux ls \
 	nav net num \
 	parallel perl perms \
-	rsync \
+	rsync rust \
 	screen size sort ssh sql \
 	whitespace \
 	xml \

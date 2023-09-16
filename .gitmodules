@@ -121,12 +121,12 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/ryan-williams/linux-helpers.git
+[submodule "rust"]
+	path = rust
+	url = https://github.com/ryan-williams/rust-helpers.git
 [submodule "sql"]
 	path = sql
 	url = https://github.com/ryan-williams/sql-helpers.git
 [submodule "watchman"]
 	path = watchman
 	url = https://github.com/ryan-williams/watchman-helpers.git
-[submodule "rust"]
-	path = rust
-	url = https://github.com/ryan-williams/rust-helpers.git
