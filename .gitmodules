@@ -4,6 +4,9 @@
 [submodule "av"]
 	path = av
 	url = https://github.com/ryan-williams/av-helpers.git
+[submodule "aws"]
+	path = aws
+	url = https://github.com/ryan-williams/aws-helpers.git
 [submodule "bash"]
 	path = bash
 	url = https://github.com/ryan-williams/bash-helpers.git
@@ -43,6 +46,9 @@
 [submodule "grep"]
 	path = grep
 	url = https://github.com/ryan-williams/grep-helpers.git
+[submodule "hammerspoon"]
+	path = hammerspoon
+	url = https://github.com/ryan-williams/hammerspoon-files.git
 [submodule "head-tail"]
 	path = head-tail
 	url = https://github.com/ryan-williams/head-tail-helpers.git
@@ -61,9 +67,15 @@
 [submodule "line"]
 	path = line
 	url = https://github.com/ryan-williams/line-helpers.git
+[submodule "linux"]
+	path = linux
+	url = https://github.com/ryan-williams/linux-helpers.git
 [submodule "ls"]
 	path = ls
 	url = https://github.com/ryan-williams/ls-helpers.git
+[submodule "nav"]
+	path = nav
+	url = https://github.com/ryan-williams/nav-helpers.git
 [submodule "net"]
 	path = net
 	url = https://github.com/ryan-williams/net-helpers.git
@@ -94,6 +106,9 @@
 [submodule "ruby"]
 	path = ruby
 	url = https://github.com/ryan-williams/ruby-helpers.git
+[submodule "rust"]
+	path = rust
+	url = https://github.com/ryan-williams/rust-helpers.git
 [submodule "screen"]
 	path = screen
 	url = https://github.com/ryan-williams/screen-helpers.git
@@ -103,6 +118,9 @@
 [submodule "sort"]
 	path = sort
 	url = https://github.com/ryan-williams/sort-helpers.git
+[submodule "sql"]
+	path = sql
+	url = https://github.com/ryan-williams/sql-helpers.git
 [submodule "ssh"]
 	path = ssh
 	url = https://github.com/ryan-williams/ssh-helpers.git
@@ -121,21 +139,3 @@
 [submodule "zip"]
 	path = zip
 	url = https://github.com/ryan-williams/zip-helpers.git
-[submodule "nav"]
-	path = nav
-	url = https://github.com/ryan-williams/nav-helpers.git
-[submodule "hammerspoon"]
-	path = hammerspoon
-	url = https://github.com/ryan-williams/hammerspoon-files.git
-[submodule "aws"]
-	path = aws
-	url = https://github.com/ryan-williams/aws-helpers.git
-[submodule "linux"]
-	path = linux
-	url = https://github.com/ryan-williams/linux-helpers.git
-[submodule "sql"]
-	path = sql
-	url = https://github.com/ryan-williams/sql-helpers.git
-[submodule "rust"]
-	path = rust
-	url = https://github.com/ryan-williams/rust-helpers.git
