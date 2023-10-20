@@ -46,9 +46,6 @@
 [submodule "grep"]
 	path = grep
 	url = https://github.com/ryan-williams/grep-helpers.git
-[submodule "hammerspoon"]
-	path = hammerspoon
-	url = https://github.com/ryan-williams/hammerspoon-files.git
 [submodule "head-tail"]
 	path = head-tail
 	url = https://github.com/ryan-williams/head-tail-helpers.git
