@@ -10,6 +10,19 @@ Bash aliases and helper scripts
 
 This downloads [`clone-and-source.sh`](https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh) and runs it on this GitHub repo (`runsascoded/.rc`), cloning it into `.rc/` and appending `source .rc/.*rc` to your `.bashrc`.
 
+[The `server` branch][server] is default, and excludes a few modules:
+```bash
+submodules() {
+    git ls-tree "$@" | grep commit | awk '{print $4}'
+}
+comm -3 <(submodules server) <(submodules all)
+#	hammerspoon
+#	osx
+#	ruby
+```
+
+[The `all` branch][all] includes all modules.
+
 ## Install dependencies (optional)
 
 A few submodules require additional setup steps (but can be ignored if unused):
@@ -54,5 +67,5 @@ brew install \
     zlib
 ```
 
-## Reduced branch
-[The `reduced` branch](https://github.com/ryan-williams/dotfiles/tree/reduced) has a few less-commonly-used and less-portable modules removed, and may be more appropriate for some environments.
+[server]: https://github.com/runsascoded/.rc/tree/server
+[all]: https://github.com/runsascoded/.rc/tree/all
