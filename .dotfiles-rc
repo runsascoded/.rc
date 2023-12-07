@@ -14,7 +14,7 @@ if [[ $- != *i* ]] ; then
 fi
 
 debug() {
-  if [ ! -z "$VERBOSE" -o ! -z "$DEBUG" ]; then
+  if [ -n "$VERBOSE" ] || [ -n "$DEBUG" ]; then
     echo $@
   fi
 }
