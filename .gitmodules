@@ -40,6 +40,9 @@
 [submodule "find"]
 	path = find
 	url = https://github.com/ryan-williams/find-helpers.git
+[submodule "geo"]
+	path = geo
+	url = https://github.com/ryan-williams/geo-helpers
 [submodule "git"]
 	path = git
 	url = https://github.com/ryan-williams/git-helpers.git
@@ -139,6 +142,3 @@
 [submodule "zip"]
 	path = zip
 	url = https://github.com/ryan-williams/zip-helpers.git
-[submodule "geo"]
-	path = geo
-	url = https://github.com/ryan-williams/geo-helpers
