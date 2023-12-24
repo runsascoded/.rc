@@ -102,7 +102,7 @@ load_helpers \
 	datetime docker \
 	emacs \
 	find \
-	go grep \
+	geo go grep \
 	head-tail histogram \
 	js \
 	less line linux ls \

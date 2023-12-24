@@ -130,3 +130,6 @@
 [submodule "zip"]
 	path = zip
 	url = https://github.com/ryan-williams/zip-helpers.git
+[submodule "geo"]
+	path = geo
+	url = https://github.com/ryan-williams/geo-helpers
