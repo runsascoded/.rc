@@ -38,16 +38,16 @@ if [ "$cur" != "gh-all" ]; then
     echo "Expected to be on gh-all branch" >&2
     exit 1
 fi
-git push gh
+git push "$@" gh
 
 checkout_and_merge gh-server gh-all
-git push gh
+git push "$@" gh
 
 git checkout gl-all
 git merge --no-edit gh-all
-git push gl
+git push "$@" gl
 
 checkout_and_merge gl-server gl-all
-git push gl
+git push "$@" gl
 
 git checkout gh-all
