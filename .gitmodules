@@ -103,6 +103,9 @@
 [submodule "py"]
 	path = py
 	url = https://github.com/ryan-williams/py-helpers.git
+[submodule "R"]
+	path = R
+	url = https://github.com/ryan-williams/R-helpers.git
 [submodule "rsync"]
 	path = rsync
 	url = https://github.com/ryan-williams/rsync-helpers.git
