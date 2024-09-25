@@ -24,6 +24,22 @@ base="$(git log -1 --format=%h gh/all)"
 head="$(git log -1 --format=%h gh-all)"
 refs="$base..$head"
 
+no_push=
+if [ "$1" == -n ]; then
+  no_push=1
+elif [ $# -gt 0 ]; then
+  echo "Usage: $0 [-n]" >&2
+  exit 1
+fi
+
+push() {
+  if [ -z "$no_push" ]; then
+    git push "$@"
+  else
+    echo "Would push: git push $@" >&2
+  fi
+}
+
 checkout_and_cherrypick() {
     git checkout "$1"
     if ! git cherry-pick --no-edit "$refs"; then
@@ -42,16 +58,16 @@ checkout_and_cherrypick() {
     fi
 }
 
-git push "$@" gh
+push "$@" gh
 
 checkout_and_cherrypick gh-server
-git push "$@" gh
+push "$@" gh
 
 git checkout gl-all
 git cherry-pick --no-edit "$refs"
-git push "$@" gl
+push "$@" gl
 
 checkout_and_cherrypick gl-server
-git push "$@" gl
+push "$@" gl
 
 git checkout gh-all
