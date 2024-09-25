@@ -5,19 +5,19 @@
 # Github `all` branch). Then this script:
 #
 # 1. Pushes `gh-all` (to `gh/all`)
-# 2. Checks out `gh-server`, merges `gh-all`, pushes (to `gh/server`)
-# 3. Checks out `gl-all`, merges `gh-all`, pushes (to `gl/all`)
-# 4. Checks out `gl-server`, merges `gl-all`, pushes (to `gl/server`)
+# 2. Checks out `gh-server`, cherry-picks `gh-all`, pushes (to `gh/server`)
+# 3. Checks out `gl-all`, cherry-picks `gh-all`, pushes (to `gl/all`)
+# 4. Checks out `gl-server`, cherry-picks `gl-all`, pushes (to `gl/server`)
 #
-# The merges in steps 2. and 4. generate conflicts when changes are made to submodules in
+# The cherry-picks in steps 2. and 4. generate conflicts when changes are made to submodules in
 # $all ∖setminus server$. Such conflicts are trivially resolved by re-`rm`ing the submodules
 # from the `*-server` branches, so this script does that as well.
 
 set -ex
 
-checkout_and_merge() {
+checkout_and_cherrypick() {
     git checkout "$1"
-    if ! git merge --no-edit "$2"; then
+    if ! git cherry-pick --no-edit "$2"; then
         du=`git diff --name-only --diff-filter=DU`
         if [ -n "$du" ]; then
             cmd=(git rm -r --cached $du)
@@ -40,14 +40,14 @@ if [ "$cur" != "gh-all" ]; then
 fi
 git push "$@" gh
 
-checkout_and_merge gh-server gh-all
+checkout_and_cherrypick gh-server gh-all
 git push "$@" gh
 
 git checkout gl-all
-git merge --no-edit gh-all
+git cherry-pick --no-edit gh-all
 git push "$@" gl
 
-checkout_and_merge gl-server gl-all
+checkout_and_cherrypick gl-server gl-all
 git push "$@" gl
 
 git checkout gh-all
