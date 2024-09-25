@@ -15,9 +15,18 @@
 
 set -ex
 
+cur="$(git current-branch)"
+if [ "$cur" != "gh-all" ]; then
+    echo "Expected to be on gh-all branch" >&2
+    exit 1
+fi
+base="$(git log -1 --format=%h gh/all)"
+head="$(git log -1 --format=%h gh-all)"
+refs="$base..$head"
+
 checkout_and_cherrypick() {
     git checkout "$1"
-    if ! git cherry-pick --no-edit "$2"; then
+    if ! git cherry-pick --no-edit "$refs"; then
         du=`git diff --name-only --diff-filter=DU`
         if [ -n "$du" ]; then
             cmd=(git rm -r --cached $du)
@@ -33,21 +42,16 @@ checkout_and_cherrypick() {
     fi
 }
 
-cur="$(git current-branch)"
-if [ "$cur" != "gh-all" ]; then
-    echo "Expected to be on gh-all branch" >&2
-    exit 1
-fi
 git push "$@" gh
 
-checkout_and_cherrypick gh-server gh-all
+checkout_and_cherrypick gh-server
 git push "$@" gh
 
 git checkout gl-all
-git cherry-pick --no-edit gh-all
+git cherry-pick --no-edit "$refs"
 git push "$@" gl
 
-checkout_and_cherrypick gl-server gl-all
+checkout_and_cherrypick gl-server
 git push "$@" gl
 
 git checkout gh-all
