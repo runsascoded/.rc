@@ -40,9 +40,17 @@ push() {
   fi
 }
 
+cherry_pick() {
+  if [ "$base" == "$head" ]; then
+    echo "No new commits to cherry-pick" >&2
+    return 0
+  fi
+  git cherry-pick --no-edit "$refs"
+}
+
 checkout_and_cherrypick() {
     git checkout "$1"
-    if ! git cherry-pick --no-edit "$refs"; then
+    if ! cherry_pick; then
         du=`git diff --name-only --diff-filter=DU`
         if [ -n "$du" ]; then
             cmd=(git rm -r --cached $du)
@@ -64,7 +72,7 @@ checkout_and_cherrypick gh-server
 push "$@" gh
 
 git checkout gl-all
-git cherry-pick --no-edit "$refs"
+cherry_pick
 push "$@" gl
 
 checkout_and_cherrypick gl-server
