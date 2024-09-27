@@ -36,7 +36,7 @@ push() {
   if [ -z "$no_push" ]; then
     git push "$@"
   else
-    echo "Would push: git push $@" >&2
+    echo "Would push: git push $*" >&2
   fi
 }
 
@@ -51,15 +51,16 @@ cherry_pick() {
 checkout_and_cherrypick() {
     git checkout "$1"
     if ! cherry_pick; then
-        du=`git diff --name-only --diff-filter=DU`
-        if [ -n "$du" ]; then
-            cmd=(git rm -r --cached $du)
+        IFS=$'\n' read -r -d '' -a du < <(git diff --name-only --diff-filter=DU)
+        if [ ${#du[@]} -gt 0 ]; then
+            cmd=(git rm -r --cached "${du[@]}")
             echo "Deleting modified non-server modules: ${cmd[*]}" >&2
             "${cmd[@]}"
         fi
-        uu=`git diff --name-only --diff-filter=UU`
-        if [ -n "$uu" ]; then
-            echo "Found conflicting files: $uu" >&2
+        IFS=$'\n' read -r -d '' -a uu < <(git diff --name-only --diff-filter=UU)
+        if [ ${#uu[@]} -gt 0 ]; then
+            echo "Found conflicting files:" >&2
+            echo "${uu[@]}" >&2
             exit 1
         fi
         git commit --no-edit
