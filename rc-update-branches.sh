@@ -50,6 +50,8 @@ cherry_pick() {
 
 checkout_and_cherrypick() {
     git checkout "$1"
+    git fetch
+    git rebase
     if ! cherry_pick; then
         IFS=$'\n' read -r -d '' -a du < <(git diff --name-only --diff-filter=DU)
         if [ ${#du[@]} -gt 0 ]; then
@@ -72,8 +74,7 @@ push "$@" gh
 checkout_and_cherrypick gh-server
 push "$@" gh
 
-git checkout gl-all
-cherry_pick
+checkout_and_cherrypick gl-all
 push "$@" gl
 
 checkout_and_cherrypick gl-server
