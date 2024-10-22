@@ -86,39 +86,7 @@ load_helpers() {
 export -f load_helpers
 
 load_helpers bash  # load this module first; it provides `prepend_to_path` above!
-load_helpers path
 
-load_helpers git  # this module should stand alone / be import-able outside of this repo
-
-load_helpers which
-
-# which
-load_helpers diff file path jar
-
-load_helpers \
-	arg av aws \
-	bash \
-	"case" col color comm \
-	datetime docker \
-	emacs \
-	find \
-	geo go grep \
-	head-tail histogram \
-	js \
-	less line linux ls \
-	nav net num \
-	parallel perl perms \
-	R rsync rust \
-	screen size sort ssh sql \
-	whitespace \
-	xml \
-	zip
-
-load_helpers py  # brew, path; also make sure pyenv is first on path
-
-export gh="$REPO/git"
-export gha="$gh/aliases"
-
-export PATH="$PATH:$HOME/.cargo/bin"
+load_helpers color git which
 
 dedupe_path_var PATH PYTHONPATH
