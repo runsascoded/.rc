@@ -97,7 +97,6 @@ load_helpers diff file path jar
 
 load_helpers \
 	arg av aws \
-	bash \
 	"case" col color comm \
 	datetime docker \
 	emacs \
