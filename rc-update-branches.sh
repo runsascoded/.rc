@@ -20,24 +20,31 @@ if [ "$cur" != "gh-all" ]; then
     echo "Expected to be on gh-all branch" >&2
     exit 1
 fi
-base="$(git log -1 --format=%h gh/all)"
+args=()
+base=
+push_args=()
+push_only=
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -b) shift; base="$1" ;;
+    -n) push_args+=(-n) ;;
+    -p) push_only=1 ;;
+    *) args+=("$1") ;;
+  esac
+  shift
+done
+set -- "${args[@]}"
+if [ $# -eq 0 ]; then
+  set gh-server gl-all gl-server
+fi
+if [ -z "$base" ]; then
+  base="$(git log -1 --format=%h gh/all)"
+fi
 head="$(git log -1 --format=%h gh-all)"
 refs="$base..$head"
 
-no_push=
-if [ "$1" == -n ]; then
-  no_push=1
-elif [ $# -gt 0 ]; then
-  echo "Usage: $0 [-n]" >&2
-  exit 1
-fi
-
 push() {
-  if [ -z "$no_push" ]; then
-    git push "$@"
-  else
-    echo "Would push: git push $*" >&2
-  fi
+  git push "${push_args[@]}"
 }
 
 cherry_pick() {
@@ -53,31 +60,35 @@ checkout_and_cherrypick() {
     git fetch
     git rebase
     if ! cherry_pick; then
-        IFS=$'\n' read -r -d '' -a du < <(git diff --name-only --diff-filter=DU)
-        if [ ${#du[@]} -gt 0 ]; then
-            cmd=(git rm -r --cached "${du[@]}")
-            echo "Deleting modified non-server modules: ${cmd[*]}" >&2
-            "${cmd[@]}"
+      while [ -f .git/CHERRY_PICK_HEAD ]; do
+        if IFS=$'\n' read -r -a du < <(git diff --name-only --diff-filter=DU); then
+          cmd=(git rm -r --cached "${du[@]}")
+          echo "Deleting modified non-server modules: ${cmd[*]}" >&2
+          "${cmd[@]}"
         fi
-        IFS=$'\n' read -r -d '' -a uu < <(git diff --name-only --diff-filter=UU)
-        if [ ${#uu[@]} -gt 0 ]; then
-            echo "Found conflicting files:" >&2
-            echo "${uu[@]}" >&2
-            exit 1
+        if IFS=$'\n' read -r -a uu < <(git diff --name-only --diff-filter=UU); then
+          echo "Found conflicting files:" >&2
+          echo "${uu[@]}" >&2
+          exit 1
         fi
         git commit --no-edit
+        if ! [ -f .git/CHERRY_PICK_HEAD ]; then
+          break
+        fi
+        git cherry-pick --continue
+      done
     fi
 }
 
-push "$@" gh
+push
 
-checkout_and_cherrypick gh-server
-push "$@" gh
-
-checkout_and_cherrypick gl-all
-push "$@" gl
-
-checkout_and_cherrypick gl-server
-push "$@" gl
+for arg in "$@"; do
+  if [ -z "$push_only" ]; then
+    checkout_and_cherrypick "$arg"
+  else
+    git checkout "$arg"
+  fi
+  push
+done
 
 git checkout gh-all
