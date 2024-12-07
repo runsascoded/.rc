@@ -22,12 +22,12 @@ if [ "$cur" != "gh-all" ]; then
 fi
 args=()
 base=
-push_args=()
+skip_push=
 push_only=
 while [ $# -gt 0 ]; do
   case "$1" in
     -b) shift; base="$1" ;;
-    -n) push_args+=(-n) ;;
+    -n) skip_push=1 ;;
     -p) push_only=1 ;;
     *) args+=("$1") ;;
   esac
@@ -39,12 +39,20 @@ if [ $# -eq 0 ]; then
 fi
 if [ -z "$base" ]; then
   base="$(git log -1 --format=%h gh/all)"
+else
+  # Dereference refs (e.g. HEAD~2)
+  base="$(git log -1 --format=%h "$base")"
 fi
 head="$(git log -1 --format=%h gh-all)"
 refs="$base..$head"
+echo "\$refs: $refs" >&2
 
 push() {
-  git push "${push_args[@]}"
+  if [ -n "$skip_push" ]; then
+    echo "$(git symbolic-ref -q --short HEAD): skipping push" >&2
+  else
+    git push
+  fi
 }
 
 cherry_pick() {
@@ -61,21 +69,29 @@ checkout_and_cherrypick() {
     git rebase
     if ! cherry_pick; then
       while [ -f .git/CHERRY_PICK_HEAD ]; do
-        if IFS=$'\n' read -r -a du < <(git diff --name-only --diff-filter=DU); then
+        du=()
+        while IFS= read -r line; do
+            du+=("$line")
+        done < <(git diff --name-only --diff-filter=DU)
+        if [ ${#du[@]} -gt 0 ]; then
           cmd=(git rm -r --cached "${du[@]}")
           echo "Deleting modified non-server modules: ${cmd[*]}" >&2
           "${cmd[@]}"
         fi
-        if IFS=$'\n' read -r -a uu < <(git diff --name-only --diff-filter=UU); then
+        uu=()
+        while IFS= read -r line; do
+            uu+=("$line")
+        done < <(git diff --name-only --diff-filter=UU)
+        if [ ${#uu[@]} -gt 0 ]; then
           echo "Found conflicting files:" >&2
           echo "${uu[@]}" >&2
           exit 1
         fi
-        git commit --no-edit
-        if ! [ -f .git/CHERRY_PICK_HEAD ]; then
-          break
+        if ! git commit --no-edit; then
+          git cherry-pick --skip
+        else
+          git cherry-pick --continue || 1
         fi
-        git cherry-pick --continue
       done
     fi
 }
