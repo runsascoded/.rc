@@ -104,7 +104,7 @@ load_helpers \
 	js \
 	less line linux ls \
 	nav net num \
-	parallel perl perms postgres \
+	parallel parquet perl perms postgres \
 	R rsync ruby rust \
 	screen size sort ssh sql \
 	watchman whitespace \

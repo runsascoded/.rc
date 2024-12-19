@@ -91,6 +91,9 @@
 [submodule "parallel"]
 	path = parallel
 	url = https://github.com/ryan-williams/parallel-helpers.git
+[submodule "parquet"]
+	path = parquet
+	url = https://github.com/ryan-williams/parquet-helpers
 [submodule "path"]
 	path = path
 	url = https://github.com/ryan-williams/path-helpers.git
