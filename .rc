@@ -99,7 +99,7 @@ load_helpers \
 	js \
 	less line linux ls \
 	nav net num \
-	parallel perl perms \
+	parallel parquet perl perms \
 	R rsync rust \
 	screen size sort ssh sql \
 	whitespace \
