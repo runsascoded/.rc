@@ -72,7 +72,7 @@ checkout_and_cherrypick() {
         du=()
         while IFS= read -r line; do
             du+=("$line")
-        done < <(git diff --name-only --diff-filter=DU)
+        done < <(git status -s | grep '^DU' | cut -c4-)
         if [ ${#du[@]} -gt 0 ]; then
           cmd=(git rm -r --cached "${du[@]}")
           echo "Deleting modified non-server modules: ${cmd[*]}" >&2
@@ -81,7 +81,7 @@ checkout_and_cherrypick() {
         uu=()
         while IFS= read -r line; do
             uu+=("$line")
-        done < <(git diff --name-only --diff-filter=UU)
+        done < <(git status -s | grep '^UU' | cut -c4-)
         if [ ${#uu[@]} -gt 0 ]; then
           echo "Found conflicting files:" >&2
           echo "${uu[@]}" >&2
