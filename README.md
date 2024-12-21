@@ -1,5 +1,4 @@
-dotfiles
-=========
+# dotfiles
 
 Bash aliases and helper scripts
 
@@ -65,6 +64,16 @@ brew install \
     sqlite \
     xz \
     zlib
+```
+
+## Git configs
+I typically set these global configs as well:
+```bash
+git config --global init.defaultBranch main
+git config --global clone.defaultRemoteName
+git config --global push.default current
+git config --global receive.denyCurrentBranch ignore
+git config --global diff.noprefix true
 ```
 
 [server]: https://github.com/runsascoded/.rc/tree/server
