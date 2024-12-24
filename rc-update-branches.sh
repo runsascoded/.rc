@@ -64,36 +64,36 @@ cherry_pick() {
 }
 
 checkout_and_cherrypick() {
-    git checkout "$1"
-    git fetch
-    git rebase
-    if ! cherry_pick; then
-      while [ -f .git/CHERRY_PICK_HEAD ]; do
-        du=()
-        while IFS= read -r line; do
-            du+=("$line")
-        done < <(git status -s | grep '^DU' | cut -c4-)
-        if [ ${#du[@]} -gt 0 ]; then
-          cmd=(git rm -r --cached "${du[@]}")
-          echo "Deleting modified non-server modules: ${cmd[*]}" >&2
-          "${cmd[@]}"
-        fi
-        uu=()
-        while IFS= read -r line; do
-            uu+=("$line")
-        done < <(git status -s | grep '^UU' | cut -c4-)
-        if [ ${#uu[@]} -gt 0 ]; then
-          echo "Found conflicting files:" >&2
-          echo "${uu[@]}" >&2
-          exit 1
-        fi
-        if ! git commit --no-edit; then
-          git cherry-pick --skip
-        else
-          git cherry-pick --continue || true
-        fi
-      done
-    fi
+  git checkout "$1"
+  git fetch
+  git rebase
+  if ! cherry_pick; then
+    while [ -f .git/CHERRY_PICK_HEAD ]; do
+      du=()
+      while IFS= read -r line; do
+          du+=("$line")
+      done < <(git status -s | grep '^DU' | cut -c4-)
+      if [ ${#du[@]} -gt 0 ]; then
+        cmd=(git rm -r --cached "${du[@]}")
+        echo "Deleting modified non-server modules: ${cmd[*]}" >&2
+        "${cmd[@]}"
+      fi
+      uu=()
+      while IFS= read -r line; do
+          uu+=("$line")
+      done < <(git status -s | grep '^UU' | cut -c4-)
+      if [ ${#uu[@]} -gt 0 ]; then
+        echo "Found conflicting files:" >&2
+        echo "${uu[@]}" >&2
+        exit 1
+      fi
+      if ! git commit --no-edit; then
+        git cherry-pick --skip
+      else
+        git cherry-pick --continue || true
+      fi
+    done
+  fi
 }
 
 push
