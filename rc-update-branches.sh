@@ -15,25 +15,42 @@
 
 set -ex
 
+err() {
+  echo "$*" >&2
+}
+
 cur="$(git current-branch)"
 if [ "$cur" != "gh-all" ]; then
-    echo "Expected to be on gh-all branch" >&2
+    err "Expected to be on gh-all branch"
     exit 1
 fi
+
+usage() {
+  err "Usage: $0 [-b <base>] [-f] [-n] [-p] [<repos...>]"
+  err
+  err "  -b <base>  Use <base> as the base commit (default: gh/all)"
+  err "  -f         Force push"
+  err "  -n         Skip push"
+  err "  -p         Push only"
+  exit 1
+}
+
 args=()
 base=
-skip_push=
+push_args=()
+push_dry_run=
 push_only=
-while [ $# -gt 0 ]; do
-  case "$1" in
-    -b) shift; base="$1" ;;
-    -n) skip_push=1 ;;
-    -p) push_only=1 ;;
-    *) args+=("$1") ;;
+while getopts "b:fnp" opt; do
+  case "$opt" in
+    b) base="$OPTARG" ;;
+    f) push_args+=(-f) ;;
+    n) push_dry_run=1 ; push_args+=(-n) ;;
+    p) push_only=1 ;;
+    \?) usage ;;
   esac
-  shift
 done
-set -- "${args[@]}"
+shift $((OPTIND-1))
+
 if [ $# -eq 0 ]; then
   set gh-server gl-all gl-server
 fi
@@ -45,19 +62,18 @@ else
 fi
 head="$(git log -1 --format=%h gh-all)"
 refs="$base..$head"
-echo "\$refs: $refs" >&2
+err "\$refs: $refs"
 
 push() {
-  if [ -n "$skip_push" ]; then
-    echo "$(git symbolic-ref -q --short HEAD): skipping push" >&2
-  else
-    git push
+  if [ -n "$push_dry_run" ]; then
+    err "$(git symbolic-ref -q --short HEAD): dry-run push"
   fi
+  git push "${push_args[@]}"
 }
 
 cherry_pick() {
   if [ "$base" == "$head" ]; then
-    echo "No new commits to cherry-pick" >&2
+    err "No new commits to cherry-pick"
     return 0
   fi
   git cherry-pick --no-edit "$refs"
@@ -75,7 +91,7 @@ checkout_and_cherrypick() {
       done < <(git status -s | grep '^DU' | cut -c4-)
       if [ ${#du[@]} -gt 0 ]; then
         cmd=(git rm -r --cached "${du[@]}")
-        echo "Deleting modified non-server modules: ${cmd[*]}" >&2
+        err "Deleting modified non-server modules: ${cmd[*]}"
         "${cmd[@]}"
       fi
       uu=()
@@ -83,8 +99,8 @@ checkout_and_cherrypick() {
           uu+=("$line")
       done < <(git status -s | grep '^UU' | cut -c4-)
       if [ ${#uu[@]} -gt 0 ]; then
-        echo "Found conflicting files:" >&2
-        echo "${uu[@]}" >&2
+        err "Found conflicting files:"
+        err "${uu[@]}"
         exit 1
       fi
       if ! git commit --no-edit; then
