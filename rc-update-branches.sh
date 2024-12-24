@@ -90,7 +90,7 @@ checkout_and_cherrypick() {
         if ! git commit --no-edit; then
           git cherry-pick --skip
         else
-          git cherry-pick --continue || 1
+          git cherry-pick --continue || true
         fi
       done
     fi
