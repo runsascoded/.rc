@@ -91,7 +91,7 @@ load_helpers diff file path jar
 load_helpers \
 	arg av aws \
 	"case" col color comm \
-	datetime docker \
+	datetime docker dvc \
 	emacs \
 	find \
 	geo go grep \
