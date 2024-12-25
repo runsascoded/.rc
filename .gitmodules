@@ -31,6 +31,9 @@
 [submodule "docker"]
 	path = docker
 	url = https://github.com/ryan-williams/docker-helpers.git
+[submodule "dvc"]
+	path = dvc
+	url = https://github.com/ryan-williams/dvc-helpers
 [submodule "emacs"]
 	path = emacs
 	url = https://github.com/ryan-williams/emacs-helpers.git
