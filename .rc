@@ -99,14 +99,12 @@ load_helpers \
 	js \
 	less line linux ls \
 	nav net num \
-	parallel parquet perl perms \
+	parallel parquet perl perms py \
 	R rsync rust \
 	screen size sort ssh sql \
-	whitespace \
+	watchman whitespace \
 	xml \
 	zip
-
-load_helpers py  # brew, path; also make sure pyenv is first on path
 
 export gh="$REPO/git"
 export gha="$gh/aliases"
