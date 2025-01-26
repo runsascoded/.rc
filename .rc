@@ -84,7 +84,6 @@ load_helpers path
 load_helpers git  # this module should stand alone / be import-able outside of this repo
 
 load_helpers which
-load_helpers brew  # which
 
 # which
 load_helpers diff file path jar
@@ -104,14 +103,12 @@ load_helpers \
 	js \
 	less line linux ls \
 	nav net num \
-	parallel parquet perl perms postgres \
+	parallel parquet perl perms py \
 	R rsync ruby rust \
 	screen size sort ssh sql \
 	watchman whitespace \
 	xml \
 	zip
-
-load_helpers py  # brew, path; also make sure pyenv is first on path
 
 export gh="$REPO/git"
 export gha="$gh/aliases"
