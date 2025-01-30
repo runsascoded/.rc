@@ -13,7 +13,7 @@
 # $all ∖setminus server$. Such conflicts are trivially resolved by re-`rm`ing the submodules
 # from the `*-server` branches, so this script does that as well.
 
-set -ex
+set -e
 
 err() {
   echo "$*" >&2
@@ -35,7 +35,6 @@ usage() {
   exit 1
 }
 
-args=()
 base=
 push_args=()
 push_dry_run=
@@ -50,6 +49,8 @@ while getopts "b:fnp" opt; do
   esac
 done
 shift $((OPTIND-1))
+
+set -x
 
 if [ $# -eq 0 ]; then
   set gh-server gl-all gl-server
