@@ -72,7 +72,27 @@ git config --global push.default current              # a.k.a. `gpdc`
 git config --global receive.denyCurrentBranch ignore  # a.k.a. `gaps`
 git config --global diff.noprefix true                # a.k.a. `gdnpt`
 ```
-(aliases defined in [git-helpers])
+(aliases above are defined in [git-helpers])
+
+Additionally, a global `.gitignore` can be initialized like:
+```bash
+mkdir ~/git
+cat >~/git/ignore <<EOF
+*.egg-info
+.ipynb_checkpoints
+__pycache__
+.jupyter
+.python-version
+*.iml
+.idea
+node_modules
+.vite
+```
+
+[`git/.git-rc`] automatically adds `~/git/ignore` and `~/global.gitignore` to the global `core.excludesfile` config, if they exist.
+
+Similarly, it adds `~/git/attributes` and `~/.gitattributes` to the global `core.attributesfile` config, if they exist.
+
 
 [`clone-and-source.sh`]: https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh
 [`.rc`]: .rc
@@ -85,3 +105,5 @@ git config --global diff.noprefix true                # a.k.a. `gdnpt`
 [`install_conda`]: https://github.com/ryan-williams/py-helpers/blob/2d87d1e9268eb0306ca9a9a6608d90ee500d92b5/.conda-rc#L16-L49
 [Hammerspoon]: https://www.hammerspoon.org/
 [git-helpers]: https://github.com/ryan-williams/git-helpers
+
+[`git/.git-rc`]: git/.git-rc
