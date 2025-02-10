@@ -66,32 +66,41 @@ brew install \
 ## Git configs
 I typically set these global configs as well:
 ```bash
+# Link global Git config file to ~/git/config
+mkdir -p git
+touch git/config
+ln -s git/config ~/.gitconfig
+touch git/ignore
+rs  # Reload shell
+
+# Set default Git configs
 git config --global init.defaultBranch main           # a.k.a. `gdbm`
 git config --global clone.defaultRemoteName u         # a.k.a. `gcdr u`
 git config --global push.default current              # a.k.a. `gpdc`
 git config --global receive.denyCurrentBranch ignore  # a.k.a. `gaps`
 git config --global diff.noprefix true                # a.k.a. `gdnpt`
+git config --gloabl diff.submodule log                # a.k.a. `gcdsl`
 ```
 (aliases above are defined in [git-helpers])
 
-Additionally, a global `.gitignore` can be initialized like:
+Additionally, here's how I configure some common global `.gitignore` patterns:
 ```bash
-mkdir ~/git
-cat >~/git/ignore <<EOF
-*.egg-info
-.ipynb_checkpoints
-__pycache__
-.jupyter
-.python-version
-*.iml
-.idea
-node_modules
-.vite
+# a.k.a. `gggi ...`
+git global-gitignore \
+  "*.egg-info" \
+  ".ipynb_checkpoints" \
+  "__pycache__" \
+  ".jupyter" \
+  ".python-version" \
+  "*.iml" \
+  ".idea" \
+  "node_modules" \
+  ".vite"
 ```
 
-[`git/.git-rc`] automatically adds `~/git/ignore` and `~/global.gitignore` to the global `core.excludesfile` config, if they exist.
-
-Similarly, it adds `~/git/attributes` and `~/.gitattributes` to the global `core.attributesfile` config, if they exist.
+[`git/.git-rc`] automatically adds several configuration paths, if they exist:
+- `core.excludesfile`: `~/git/ignore`, `~/global.gitignore`
+- `core.attributesfile`: `~/git/attributes`, `~/.gitattributes`
 
 
 [`clone-and-source.sh`]: https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh
@@ -106,4 +115,4 @@ Similarly, it adds `~/git/attributes` and `~/.gitattributes` to the global `core
 [Hammerspoon]: https://www.hammerspoon.org/
 [git-helpers]: https://github.com/ryan-williams/git-helpers
 
-[`git/.git-rc`]: git/.git-rc
+[`git/.git-rc`]: https://github.com/ryan-williams/git-helpers/blob/main/.git-rc
