@@ -46,7 +46,7 @@ git config --global clone.defaultRemoteName u         # a.k.a. `gcdr u`
 git config --global push.default current              # a.k.a. `gpdc`
 git config --global receive.denyCurrentBranch ignore  # a.k.a. `gaps`
 git config --global diff.noprefix true                # a.k.a. `gdnpt`
-git config --gloabl diff.submodule log                # a.k.a. `gcdsl`
+git config --global diff.submodule log                # a.k.a. `gcdsl`
 ```
 (aliases above are defined in [git-helpers])
 
