@@ -31,38 +31,9 @@ A few submodules require additional setup steps (but can be ignored if unused):
 - [python](./py): doesn't install Python, but provides [`install_pyenv`] and [`install_conda`] helpers.
 
 ## Git configs
-I typically set these global configs as well:
+I typically run [git/config/init-instance] once per instance, to initialize global configs:
 ```bash
-# Link global Git config file to ~/git/config
-mkdir -p git
-touch git/config
-ln -s git/config ~/.gitconfig
-touch git/ignore
-rs  # Reload shell
-
-# Set default Git configs
-git config --global init.defaultBranch main           # a.k.a. `gdbm`
-git config --global clone.defaultRemoteName u         # a.k.a. `gcdr u`
-git config --global push.default current              # a.k.a. `gpdc`
-git config --global receive.denyCurrentBranch ignore  # a.k.a. `gaps`
-git config --global diff.noprefix true                # a.k.a. `gdnpt`
-git config --global diff.submodule log                # a.k.a. `gcdsl`
-```
-(aliases above are defined in [git-helpers])
-
-Additionally, here's how I configure some common global `.gitignore` patterns:
-```bash
-# a.k.a. `gggi ...`
-git global-gitignore \
-  "*.egg-info" \
-  ".ipynb_checkpoints" \
-  "__pycache__" \
-  ".jupyter" \
-  ".python-version" \
-  "*.iml" \
-  ".idea" \
-  "node_modules" \
-  ".vite"
+. .rc/git/config/init-instance
 ```
 
 [`git/.git-rc`] automatically adds several configuration paths, if they exist:
@@ -83,3 +54,4 @@ git global-gitignore \
 [git-helpers]: https://github.com/ryan-williams/git-helpers
 
 [`git/.git-rc`]: https://github.com/ryan-williams/git-helpers/blob/main/.git-rc
+[git/config/init-instance]: https://github.com/ryan-williams/git-helpers/blob/main/config/init-instance
