@@ -63,7 +63,9 @@ brew install \
     zlib
 ```
 
-## Git configs
+## Configs
+
+### `git`
 I typically run [git/config/init-instance] once per instance, to initialize global configs:
 ```bash
 . .rc/git/config/init-instance
@@ -72,6 +74,13 @@ I typically run [git/config/init-instance] once per instance, to initialize glob
 [`git/.git-rc`] automatically adds several configuration paths, if they exist:
 - `core.excludesfile`: `~/git/ignore`, `~/global.gitignore`
 - `core.attributesfile`: `~/git/attributes`, `~/.gitattributes`
+
+### `htop`
+Configure custom `htop` format ([`htoprc`]) for `root` user:
+```
+sudo mkdir -p /root/.config/htop
+sudo ln $HOME/.rc/linux/htoprc /root/.config/htop/
+```
 
 
 [`clone-and-source.sh`]: https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh
@@ -88,3 +97,4 @@ I typically run [git/config/init-instance] once per instance, to initialize glob
 
 [`git/.git-rc`]: https://github.com/ryan-williams/git-helpers/blob/main/.git-rc
 [git/config/init-instance]: https://github.com/ryan-williams/git-helpers/blob/main/config/init-instance
+[`htoprc`]: https://github.com/ryan-williams/linux-helpers/blob/main/htoprc
