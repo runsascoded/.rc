@@ -24,11 +24,15 @@ submodules=("dvc" "parquet" "py")
 
 # Function to handle submodule checkouts
 submodules_checkout() {
-  local target_branch="$1"; shift
   for submodule in "${submodules[@]}"; do
     if [ -d "$submodule" ]; then
-      echo "Checking out $submodule@$target_branch" >&2
-      git x "$submodule" checkout "$target_branch"
+      for target_branch in "$@"; do
+        if git x "$submodule" show-ref --verify --quiet "refs/heads/$target_branch"; then
+          echo "Checking out $submodule@$target_branch" >&2
+          git x "$submodule" checkout "$target_branch"
+          break
+        fi
+      done
     fi
   done
 }
@@ -36,8 +40,8 @@ submodules_checkout() {
 # Only proceed for branch checkouts (type 1)
 if [ "$checkout_type" = "1" ]; then
   case "$new_branch" in
-    gl-all | gl-server) submodules_checkout "gl-main" ;;
-    gh-all | gh-server) submodules_checkout "gh-main" ;;
+    gl-all | gl-server) submodules_checkout gl-main glm ;;
+    gh-all | gh-server) submodules_checkout gh-main ghm ;;
     *) ;;
   esac
 fi
