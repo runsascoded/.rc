@@ -86,7 +86,7 @@ load_helpers git  # this module should stand alone / be import-able outside of t
 load_helpers which
 
 # which
-load_helpers diff file path jar
+load_helpers diff file path jar kubectl
 
 load_helpers \
 	arg av aws \
