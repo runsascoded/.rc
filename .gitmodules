@@ -1,3 +1,6 @@
+[submodule "1pass"]
+	path = 1pass
+	url = https://github.com/ryan-williams/1pass-helpers
 [submodule "arg"]
 	path = arg
 	url = https://github.com/ryan-williams/arg-helpers.git

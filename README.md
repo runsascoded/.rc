@@ -38,6 +38,7 @@ On OSX, these brew packages should cover most or all of the above:
 
 ```bash
 brew install \
+    1password-cli \
     autoconf \
     coreutils \
     gettext \

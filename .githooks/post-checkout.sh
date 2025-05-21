@@ -20,7 +20,7 @@ if [ -z "$new_branch" ]; then
   exit 0
 fi
 
-submodules=(aws dvc parquet py)
+submodules=("1pass" aws dvc parquet py)
 
 # Function to handle submodule checkouts
 submodules_checkout() {
