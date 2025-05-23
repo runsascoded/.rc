@@ -58,9 +58,9 @@
 [submodule "histogram"]
 	path = histogram
 	url = https://github.com/ryan-williams/histogram-helpers.git
-[submodule "jar"]
-	path = jar
-	url = https://github.com/ryan-williams/jar-helpers.git
+[submodule "java"]
+	path = java
+	url = https://github.com/ryan-williams/java-helpers.git
 [submodule "js"]
 	path = js
 	url = https://github.com/ryan-williams/js-helpers.git
