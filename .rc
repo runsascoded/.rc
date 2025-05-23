@@ -78,32 +78,30 @@ load_helpers() {
 }
 export -f load_helpers
 
-load_helpers bash  # load this module first; it provides `prepend_to_path` above!
+load_helpers bash  # Load this module first; it provides `prepend_to_path` above!
 load_helpers path
 
-load_helpers git  # this module should stand alone / be import-able outside of this repo
-
-load_helpers which
-
-# which
-load_helpers 1pass diff file path jar kubectl
+load_helpers git    # This module should stand alone / be import-able outside of this repo
+load_helpers which  # Some modules below use the `which-exists` helper
 
 if [[ "$(uname -a)" =~ ^Darwin* ]]; then
   load_helpers osx
 fi
 
 load_helpers \
+	1pass \
 	arg av aws \
 	"case" col color comm \
-	datetime docker dvc \
+	datetime diff docker dvc \
 	emacs \
-	find \
+	file find \
 	geo go grep \
 	head-tail histogram \
-	js \
+	jar js \
+	kubectl
 	less line linux ls \
 	nav net num \
-	parallel parquet perl perms py \
+	parallel parquet path perl perms py \
 	R rsync ruby rust \
 	screen size sort ssh sql \
 	watchman whitespace \
