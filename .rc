@@ -98,7 +98,7 @@ load_helpers \
 	geo go grep \
 	head-tail histogram \
 	jar js \
-	kubectl
+	kubectl \
 	less line linux ls \
 	nav net num \
 	parallel parquet path perl perms py \
