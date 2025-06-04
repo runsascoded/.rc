@@ -97,7 +97,7 @@ load_helpers \
 	file find \
 	geo go grep \
 	head-tail histogram \
-	jar js \
+	java js \
 	kubectl \
 	less line linux ls \
 	nav net num \
