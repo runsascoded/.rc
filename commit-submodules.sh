@@ -19,4 +19,4 @@ for b in gh-server gl-all gl-server; do
 done
 git checkout gh-all
 
-rc-update-branches.sh -p
+#rc-update-branches.sh -p
