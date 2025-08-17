@@ -114,3 +114,9 @@ export gha="$gh/aliases"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 dedupe_path_var PATH PYTHONPATH
+
+# Initialize direnv if available
+if which direnv &>/dev/null; then
+  debug "Initializing direnv hook"
+  eval "$(direnv hook bash)"
+fi
