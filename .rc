@@ -44,7 +44,7 @@ load_helpers() {
         local dir="$MODULES/$module"
         if [ -d "$dir" ]; then
           debug "Adding $dir to \$PATH and sourcing rc files..."
-          try_source "$dir"/.*rc
+          try_source "$dir"/.*-rc "$dir"/.rc
           prepend_to_path "$dir"
           local ssh_config="$dir/.ssh/config"
           if [ -s "$ssh_config" ]; then
@@ -78,7 +78,7 @@ load_helpers() {
 }
 export -f load_helpers
 
-load_helpers bash  # Load this module first; it provides `prepend_to_path` above!
+load_helpers bash  # Load this module first; it provides `prepend_to_path` referenced above
 load_helpers path
 
 load_helpers git    # This module should stand alone / be import-able outside of this repo
