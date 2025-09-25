@@ -92,7 +92,7 @@ load_helpers \
 	1pass \
 	arg av aws \
 	"case" col color comm \
-	datetime diff docker dvc \
+	datetime diff direnv docker dvc \
 	emacs \
 	file find \
 	geo go grep \
@@ -115,8 +115,3 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 dedupe_path_var PATH PYTHONPATH
 
-# Initialize direnv if available
-if which direnv &>/dev/null; then
-  debug "Initializing direnv hook"
-  eval "$(direnv hook bash)"
-fi

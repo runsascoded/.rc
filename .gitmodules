@@ -28,6 +28,9 @@
 [submodule "diff"]
 	path = diff
 	url = https://github.com/ryan-williams/diff-helpers.git
+[submodule "direnv"]
+	path = direnv
+	url = https://github.com/ryan-williams/direnv-helpers.git
 [submodule "docker"]
 	path = docker
 	url = https://github.com/ryan-williams/docker-helpers.git
