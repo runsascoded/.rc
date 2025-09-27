@@ -1,0 +1,33 @@
+name: Sync from "all" branch
+
+on:
+  push:
+    branches:
+      - all
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    # The Python script will handle loop detection more intelligently
+    # by checking if commits are actually being bounced back
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all branches
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: false
+
+      - name: Fetch all branch
+        run: git fetch origin all
+
+      - name: Sync from all to server
+        run: |
+          . git/.git-rc
+          ./sync-branches-wrapper.sh --source all --target server
