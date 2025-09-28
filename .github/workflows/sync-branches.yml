@@ -1,9 +1,9 @@
-name: Sync from "server" branch
+name: Sync from "test-all" branch
 
 on:
   push:
     branches:
-      - server
+      - test-all
   workflow_dispatch:
 
 jobs:
@@ -24,10 +24,10 @@ jobs:
         with:
           enable-cache: false
 
-      - name: Fetch server branch
-        run: git fetch origin server:server
+      - name: Fetch test-all branch
+        run: git fetch origin test-all:test-all
 
-      - name: Sync from all to server
+      - name: Sync from test-all to test-server
         run: |
           . git/.git-rc
-          ./sync-branches-wrapper.sh --source all --target server
+          ./sync-branches-wrapper.sh --source test-all --target test-server
