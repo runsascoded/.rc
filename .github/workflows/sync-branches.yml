@@ -27,7 +27,7 @@ jobs:
       - name: Fetch all branch
         run: git fetch origin all
 
-      - name: Sync from all to server
+      - name: Sync from all to srv
         run: |
           . git/.git-rc
-          ./sync-branches-wrapper.sh --source all --target server
+          ./sync-branches-wrapper.sh --source all --target srv
