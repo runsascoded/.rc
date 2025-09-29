@@ -9,12 +9,12 @@ Bash aliases and helper scripts
 
 This downloads [`clone-and-source.sh`] and runs it on this repo/branch, cloning into `.rc/`, appending to `.bashrc` (to `source` [`.rc`] in new sessions), and `source`ing [`.rc`] in the current session.
 
-The [server] branch is default; this branch ([all]) includes a few additional modules:
+The [srv] branch is default; this branch ([all]) includes a few additional modules:
 ```bash
 submodules() {
     git ls-tree "$@" | grep commit | awk '{print $4}'
 }
-comm -3 <(submodules server) <(submodules all)
+comm -3 <(submodules srv) <(submodules all)
 #	hammerspoon
 #	osx
 #	ruby
@@ -86,9 +86,9 @@ sudo ln $HOME/.rc/linux/htoprc /root/.config/htop/
 
 [`clone-and-source.sh`]: https://github.com/ryan-williams/git-helpers/blob/master/clone/clone-and-source.sh
 [`.rc`]: .rc
-[server]: https://gitlab.com/runsascoded/.rc/tree/server
-[all]: https://gitlab.com/runsascoded/.rc/tree/all
-[gl .rc]: https://gitlab.com/runsascoded/.rc/tree/all
+[srv]: https://github.com/runsascoded/.rc/tree/srv
+[all]: https://github.com/runsascoded/.rc/tree/all
+[gl .rc]: https://gitlab.com/runsascoded/.rc
 [gl rc]: https://gitlab.com/runsascoded/rc
 
 [`install_pyenv`]: https://github.com/ryan-williams/py-helpers/blob/2d87d1e9268eb0306ca9a9a6608d90ee500d92b5/.py-rc#L163-L202
