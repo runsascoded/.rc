@@ -154,6 +154,9 @@
 [submodule "whitespace"]
 	path = whitespace
 	url = https://github.com/ryan-williams/whitespace-helpers.git
+[submodule "xlsx"]
+	path = xlsx
+	url = https://github.com/ryan-williams/xlsx-helpers.git
 [submodule "xml"]
 	path = xml
 	url = https://github.com/ryan-williams/xml-helpers.git

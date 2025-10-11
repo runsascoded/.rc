@@ -105,7 +105,7 @@ load_helpers \
 	R rsync ruby rust \
 	screen size sort ssh sql \
 	watchman whitespace \
-	xml \
+	xlsx xml \
 	zip
 
 export gh="$REPO/git"
