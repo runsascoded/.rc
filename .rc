@@ -89,7 +89,6 @@ if [[ "$(uname -a)" =~ ^Darwin* ]]; then
 fi
 
 load_helpers \
-	1pass \
 	arg av aws \
 	"case" col color comm \
 	datetime diff direnv docker dvc \
