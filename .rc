@@ -95,7 +95,7 @@ load_helpers \
 	datetime diff direnv docker dvc \
 	emacs \
 	file find \
-	geo go grep \
+	gcloud geo go grep \
 	head-tail histogram \
 	java js \
 	kubectl \
@@ -112,6 +112,10 @@ export gh="$REPO/git"
 export gha="$gh/aliases"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+
+if [ -d "$HOME/.claude/bin" ]; then
+  export PATH="$PATH:$HOME/.claude/bin"
+fi
 
 dedupe_path_var PATH PYTHONPATH
 
