@@ -25,7 +25,7 @@ vb() {
 # Uncomment to log info about files being sourced, etc.
 # VERBOSE=1
 
-export REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 try_source() {
     for arg in "$@"; do
@@ -38,7 +38,7 @@ try_source() {
     done
 }
 
-export MODULES="$REPO"
+MODULES="$REPO"
 load_helpers() {
     for module in "$@"; do
         local dir="$MODULES/$module"
@@ -116,6 +116,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 if [ -d "$HOME/.claude/bin" ]; then
   export PATH="$PATH:$HOME/.claude/bin"
 fi
+
+[ -f ~/.claude/rc ] && source ~/.claude/rc
 
 dedupe_path_var PATH PYTHONPATH
 
