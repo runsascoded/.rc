@@ -108,6 +108,10 @@ load_helpers \
 	xml \
 	zip
 
+# tmux helpers (config lives in ~/.config/tmux/, not a .rc submodule)
+try_source "$HOME/.config/tmux/.tmux-rc"
+prepend_to_path "$HOME/.config/tmux"
+
 export gh="$REPO/git"
 export gha="$gh/aliases"
 
